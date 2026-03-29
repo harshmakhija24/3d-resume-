@@ -14,7 +14,7 @@ const setCharacter = (
       try {
         let character: THREE.Object3D;
         loader.load(
-          "/models/character_unencrypted.glb",
+          import.meta.env.BASE_URL + "models/character_unencrypted.glb",
           async (gltf) => {
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
