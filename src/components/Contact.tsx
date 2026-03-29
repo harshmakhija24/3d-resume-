@@ -11,36 +11,35 @@ const Contact = () => {
             <h4>Connect</h4>
             <p>
               <a
-                href="https://www.linkedin.com/in/akashrmalhotra/"
+                href="https://www.linkedin.com/in/harshmakhija24/"
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="disable"
               >
-                LinkedIn — akashrmalhotra
+                LinkedIn — harshmakhija24
               </a>
             </p>
+            <p>
+              <a
+                href="mailto:harsh.makhija24@iimb.ac.in"
+                data-cursor="disable"
+              >
+                harsh.makhija24@iimb.ac.in
+              </a>
+            </p>
+            <p>+91 8302079889</p>
             <h4>Education</h4>
             <p>
-              PGPWE (MBA), Indian Institute of Management, Lucknow — 2021–2023
+              BBA, Indian Institute of Management Bangalore — 2024–Present
             </p>
             <p>
-              B.Tech Computer Science, Manav Rachna Educational Institutions —
-              2009–2013
+              Diploma in Advertising, NAEMD (IGNOU) — 2023–2024 · Rank 4/41
             </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
             <a
-              href="https://github.com/akashrmalhotra"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              GitHub <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/akashrmalhotra/"
+              href="https://www.linkedin.com/in/harshmakhija24/"
               target="_blank"
               rel="noreferrer"
               data-cursor="disable"
@@ -49,27 +48,16 @@ const Contact = () => {
               LinkedIn <MdArrowOutward />
             </a>
             <a
-              href="https://www.youtube.com/@Leftbraincoder"
-              target="_blank"
-              rel="noreferrer"
+              href="mailto:harsh.makhija24@iimb.ac.in"
               data-cursor="disable"
               className="contact-social"
             >
-              YouTube <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.instagram.com/leftbraincoder/"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
+              Email <MdArrowOutward />
             </a>
           </div>
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>Akash Malhotra</span>
+              Designed and Developed <br /> by <span>Harsh Makhija</span>
             </h2>
             <h5>
               <MdCopyright /> 2026

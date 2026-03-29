@@ -6,7 +6,8 @@ const Career = () => {
       <div className="career-container">
         <h2>
           My career <span>&</span>
-          <br /> experience
+          <br />
+          experience
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -15,58 +16,58 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Co-Founder</h4>
-                <h5>CallHQ.ai</h5>
+                <h4>BBA Student</h4>
+                <h5>IIM Bangalore</h5>
               </div>
               <h3>NOW</h3>
             </div>
             <p>
-              Building CallHQ.ai, a voice AI platform for
-              automating customer calls, support, and conversions.
+              Pursuing Bachelor of Business Administration at India's premier
+              management institute. Led "Learning Lab" initiative managing curriculum
+              for 150+ students. Studying Business Statistics, Digital Marketing,
+              and Social Media for Business.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Adobe</h4>
-                <h5>6+ years · Noida</h5>
+                <h4>Project Intern</h4>
+                <h5>IIM Bangalore</h5>
               </div>
-              <h3>2017–24</h3>
+              <h3>2025–26</h3>
             </div>
             <p>
-              Senior Lead Software Engineer (Feb 2024 – May 2024). Lead Software
-              Engineer (Feb 2021 – Feb 2024). Software Engineer II (Dec 2017 –
-              Feb 2021): internationalization, globalization, and localization for
-              Adobe Technical Communication Suite; functional and linguistic testing
-              strategy; in-house tooling; collaboration with product and engineering
-              for high-quality localized releases.
+              Supported talent acquisition by screening candidates for institutional
+              programs. Managed official social media content and strategy.
+              Collaborated on podcast production and stakeholder interviews.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Consultant</h4>
-                <h5>Genpact Headstrong </h5>
+                <h4>Co-Founder</h4>
+                <h5>Last Life · E-Sports</h5>
               </div>
-              <h3>2016–17</h3>
+              <h3>2024</h3>
             </div>
             <p>
-              Sep 2016 – Nov 2017. Developed and maintained WCF services consumed
-              by the UI; deployment support across environments; NUnit tests and
-              coverage; bug fixes from QA and users; database work.
+              Launched and scaled an e-sports tournament platform to 12,000+ users
+              in just 45 days. Generated ₹1.5 Lakh+ revenue with a 25% net profit
+              margin through strategic marketing and partnerships.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Sf Engineer</h4>
-                <h5>Infogain</h5>
+                <h4>Diploma – Advertising</h4>
+                <h5>NAEMD · IGNOU</h5>
               </div>
-              <h3>2013-16</h3>
+              <h3>2023–24</h3>
             </div>
             <p>
-              Software engineering across enterprise projects, contributing to
-              design, development, and delivery of business applications.
+              Diploma in Advertising, Media, Events & Public Relations. Graduated
+              with Distinction — GPA 7.33/10, Rank 4 out of 41. Managed logistics
+              for events valued at ₹12 Crore.
             </p>
           </div>
         </div>

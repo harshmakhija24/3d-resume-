@@ -87,20 +87,21 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>AI & AUTOMATION</h3>
-              <h4>Workflow Intelligence for Organizations</h4>
+              <h3>DIGITAL MARKETING</h3>
+              <h4>Growth Strategy & Brand Building</h4>
               <p>
-                AI specialist helping organizations automate workflows—internal ops
-                and customer-facing—so teams ship faster with less manual work.
+                Crafting data-driven campaigns that build brand presence, drive
+                engagement, and convert audiences into communities across digital
+                platforms.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">LLMs &amp; agents</div>
-                <div className="what-tags">Workflow design</div>
-                <div className="what-tags">RAG &amp; retrieval</div>
-                <div className="what-tags">Evals &amp; guardrails</div>
-                <div className="what-tags">Integrations</div>
-                <div className="what-tags">Product strategy</div>
+                <div className="what-tags">Social Media</div>
+                <div className="what-tags">Content Strategy</div>
+                <div className="what-tags">Google Analytics</div>
+                <div className="what-tags">SEO & SEM</div>
+                <div className="what-tags">Canva</div>
+                <div className="what-tags">Campaign Management</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -124,21 +125,21 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>BUILD &amp; SCALE</h3>
-              <h4>Shipping AI in Production</h4>
+              <h3>ENTREPRENEURSHIP</h3>
+              <h4>Build, Launch & Scale Ventures</h4>
               <p>
-                I build the systems behind it: APIs, data, voice/real-time, and
-                full-stack products—production-ready, not slide decks.
+                From idea to execution — I build businesses that solve real problems.
+                I've scaled platforms to thousands of users, led event operations,
+                and founded social impact initiatives.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Python</div>
-                <div className="what-tags">REST &amp; real-time APIs</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">React</div>
-                <div className="what-tags">Cloud &amp; infra</div>
+                <div className="what-tags">Business Analytics</div>
+                <div className="what-tags">Event Management</div>
+                <div className="what-tags">Advanced Excel</div>
+                <div className="what-tags">Notion</div>
+                <div className="what-tags">Project Management</div>
+                <div className="what-tags">Stakeholder Relations</div>
               </div>
               <div className="what-arrow"></div>
             </div>
