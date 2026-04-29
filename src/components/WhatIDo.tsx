@@ -87,22 +87,12 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>DIGITAL MARKETING</h3>
-              <h4>Growth Strategy & Brand Building</h4>
+              <h3>VIBECODING</h3>
+              <h4>AI-Driven Tech Creation</h4>
               <p>
-                Crafting data-driven campaigns that build brand presence, drive
-                engagement, and convert audiences into communities across digital
-                platforms.
+                Leveraging advanced AI tools like Antigravity, Codex, and others to rapidly prototype, build, and deploy tech solutions and dashboards without being a traditional developer.
               </p>
-              <h5>Skillset & tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tags">Social Media</div>
-                <div className="what-tags">Content Strategy</div>
-                <div className="what-tags">Google Analytics</div>
-                <div className="what-tags">SEO & SEM</div>
-                <div className="what-tags">Canva</div>
-                <div className="what-tags">Campaign Management</div>
-              </div>
+              <a href="#" className="what-link" onClick={(e) => e.preventDefault()}>Explore Projects <span>&#8594;</span></a>
               <div className="what-arrow"></div>
             </div>
           </div>
@@ -125,22 +115,12 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>ENTREPRENEURSHIP</h3>
-              <h4>Build, Launch & Scale Ventures</h4>
+              <h3>SOCIAL SERVICE</h3>
+              <h4>Community Impact & NGO Leadership</h4>
               <p>
-                From idea to execution — I build businesses that solve real problems.
-                I've scaled platforms to thousands of users, led event operations,
-                and founded social impact initiatives.
+                Leading and managing high-impact projects such as the Healing Society and the GMCKS Siksha project, driving meaningful change through structured organizational efforts.
               </p>
-              <h5>Skillset & tools</h5>
-              <div className="what-content-flex">
-                <div className="what-tags">Business Analytics</div>
-                <div className="what-tags">Event Management</div>
-                <div className="what-tags">Advanced Excel</div>
-                <div className="what-tags">Notion</div>
-                <div className="what-tags">Project Management</div>
-                <div className="what-tags">Stakeholder Relations</div>
-              </div>
+              <a href="#" className="what-link" onClick={(e) => e.preventDefault()}>Explore Experience <span>&#8594;</span></a>
               <div className="what-arrow"></div>
             </div>
           </div>
