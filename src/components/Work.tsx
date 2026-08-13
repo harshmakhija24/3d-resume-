@@ -57,7 +57,7 @@ const Work = () => {
       if (isAnimating) return;
       setIsAnimating(true);
       setCurrentIndex(index);
-      setTimeout(() => setIsAnimating(false), 500);
+      setTimeout(() => setIsAnimating(false), 400);
     },
     [isAnimating]
   );
