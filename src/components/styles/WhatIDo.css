@@ -43,7 +43,7 @@
   width: 450px;
   height: 33%;
   min-height: 50%;
-  transition: 0.5s;
+  transition: min-height 500ms cubic-bezier(0.77, 0, 0.175, 1), padding 500ms cubic-bezier(0.77, 0, 0.175, 1);
   /* border: 0.5px dashed rgba(255, 255, 255, 0.3); */
   position: relative;
   padding: 50px;
@@ -150,10 +150,13 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--accentColor);
-  transition: 0.3s;
+  transition: opacity 150ms cubic-bezier(0.23, 1, 0.32, 1), transform 150ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 .what-link:hover {
   opacity: 0.7;
+}
+.what-link:active {
+  transform: scale(0.97);
 }
 .what-link span {
   margin-left: 5px;

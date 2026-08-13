@@ -32,20 +32,6 @@ const projects = [
     image: import.meta.env.BASE_URL + "images/ngo.png",
     link: "https://linkedin.com/in/harshmakhija24",
   },
-  {
-    title: "IIMB Learning Lab",
-    category: "Academic Initiative",
-    tools: "Curriculum Design, Student Mentorship, Team Coordination",
-    image: import.meta.env.BASE_URL + "images/iimb.png",
-    link: "https://linkedin.com/in/harshmakhija24",
-  },
-  {
-    title: "Event Management",
-    category: "₹12 Crore Events Portfolio",
-    tools: "Logistics, Sponsorship, Operations, Stakeholder Management",
-    image: import.meta.env.BASE_URL + "images/events.png",
-    link: "https://linkedin.com/in/harshmakhija24",
-  },
 ];
 
 const Work = () => {

@@ -101,8 +101,8 @@ const Career = () => {
             </div>
             <p>
               Diploma in Advertising, Media, Events & Public Relations. Graduated
-              with Distinction — GPA 7.33/10, Rank 4 out of 41. Managed logistics
-              for events valued at ₹12 Crore.
+              with Distinction — GPA 7.33/10, Rank 4 out of 41. Worked with Zingolu
+              Organisers managing logistics for events valued at ₹12 Crore.
             </p>
           </div>
         </div>
