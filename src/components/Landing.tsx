@@ -40,7 +40,7 @@ const Landing = ({ children }: PropsWithChildren) => {
 
             <div className="landing-ctas">
               <a href="#work" className="btn btn-primary">View My Work</a>
-              <a href="/Harsh_Makhija_CV.pdf" download="Harsh_Makhija_CV.pdf" className="btn btn-secondary">Download Resume</a>
+              <a href={import.meta.env.BASE_URL + "Harsh_Makhija_CV.pdf"} download="Harsh_Makhija_CV.pdf" className="btn btn-secondary">Download Resume</a>
             </div>
           </div>
         </div>
