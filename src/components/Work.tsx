@@ -16,7 +16,7 @@ const projects = [
     title: "Wandr",
     category: "Group Travel Discovery Platform",
     tools: "Group-quiz preference-matching algorithm, Destination safety scoring",
-    image: import.meta.env.BASE_URL + "images/wandr.png",
+    image: import.meta.env.BASE_URL + "images/events.png", // Valid image from folder
     link: "https://harshmakhija24.github.io/DDT-PROJECT-",
     themeClass: "accent-tech"
   },
@@ -102,14 +102,14 @@ const Work = () => {
                 <div className="carousel-slide" key={index}>
                   <div className="carousel-content">
                     <div className="carousel-info">
-                      <div className="carousel-number">
-                        <h3>0{index + 1}</h3>
-                      </div>
                       <div className="carousel-details">
-                        <h4 className={project.themeClass}>{project.title}</h4>
-                        <p className="carousel-category">
+                        <span className={`carousel-number-tag ${project.themeClass}`}>
+                          PROJECT 0{index + 1}
+                        </span>
+                        <h3 className={`carousel-title ${project.themeClass}`}>{project.title}</h3>
+                        <h4 className="carousel-category">
                           {project.category}
-                        </p>
+                        </h4>
                         <div className="carousel-tools">
                           <span className="tools-label">Tools & Features</span>
                           <p>{project.tools}</p>

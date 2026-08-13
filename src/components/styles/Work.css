@@ -57,28 +57,53 @@
 .carousel-info {
   flex: 1;
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 20px;
   align-items: flex-start;
 }
 
-.carousel-number h3 {
-  font-size: 60px;
-  line-height: 1;
-  margin: 0;
+.carousel-number-tag {
+  font-size: 11px;
+  letter-spacing: 2px;
   font-weight: 600;
-  opacity: 0.3;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-number-tag.accent-tech {
+  color: var(--accentColor);
+  border-color: rgba(94, 234, 212, 0.2);
+}
+
+.carousel-number-tag.accent-business {
+  color: var(--accentSecondary);
+  border-color: rgba(232, 181, 99, 0.2);
 }
 
 .carousel-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  align-items: flex-start;
 }
 
-.carousel-details h4 {
-  font-size: 28px;
-  font-weight: 500;
+.carousel-title {
+  font-size: 42px;
+  font-weight: 600;
   margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.carousel-title.accent-tech {
+  color: var(--accentColor);
+}
+
+.carousel-title.accent-business {
+  color: var(--accentSecondary);
 }
 
 .carousel-category {
@@ -257,12 +282,8 @@
     font-size: 50px;
   }
 
-  .carousel-details h4 {
-    font-size: 22px;
-  }
-
-  .carousel-number h3 {
-    font-size: 45px;
+  .carousel-title {
+    font-size: 32px;
   }
 
   .carousel-content {
@@ -317,12 +338,8 @@
     margin-bottom: 30px;
   }
 
-  .carousel-number h3 {
-    font-size: 35px;
-  }
-
-  .carousel-details h4 {
-    font-size: 20px;
+  .carousel-title {
+    font-size: 26px;
   }
 
   .carousel-content {

@@ -29,7 +29,7 @@
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  height: 1440px; /* Fixed height for absolute positioning on desktop */
+  height: 1680px; /* Fixed height for absolute positioning on desktop */
 }
 
 /* ── SVG Background ── */
@@ -95,12 +95,12 @@
 /* ── Node Cards ── */
 .career-node-card {
   width: 100%;
-  max-width: 380px;
-  height: 220px;
+  max-width: 420px;
+  height: 260px;
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 24px 32px;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -162,7 +162,7 @@
 .career-node-desc {
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #d4d4d8;
   margin: 0;
 }

@@ -135,7 +135,7 @@ const Career = () => {
           <div className="career-svg-container">
             <svg 
               ref={svgRef}
-              viewBox="0 0 1000 1420" 
+              viewBox="0 0 1000 1680" 
               className="career-svg-lines"
             >
               {/* SVG Drop Shadow Filter */}
@@ -147,20 +147,20 @@ const Career = () => {
               </defs>
               
               {/* Row 1 to Row 2 */}
-              <path d="M500 220 C500 260, 250 260, 250 300" className="tree-line" filter="url(#glow)" />
-              <path d="M500 220 C500 260, 750 260, 750 300" className="tree-line" filter="url(#glow)" />
+              <path d="M500 260 C500 300, 250 300, 250 340" className="tree-line" filter="url(#glow)" />
+              <path d="M500 260 C500 300, 750 300, 750 340" className="tree-line" filter="url(#glow)" />
               
               {/* Row 2 to Row 3 */}
-              <path d="M250 520 C250 560, 500 560, 500 600" className="tree-line" filter="url(#glow)" />
-              <path d="M750 520 C750 560, 500 560, 500 600" className="tree-line" filter="url(#glow)" />
+              <path d="M250 600 C250 640, 500 640, 500 680" className="tree-line" filter="url(#glow)" />
+              <path d="M750 600 C750 640, 500 640, 500 680" className="tree-line" filter="url(#glow)" />
               
               {/* Row 3 to Row 4 */}
-              <path d="M500 820 C500 860, 250 860, 250 900" className="tree-line" filter="url(#glow)" />
-              <path d="M500 820 C500 860, 750 860, 750 900" className="tree-line" filter="url(#glow)" />
+              <path d="M500 940 C500 980, 250 980, 250 1020" className="tree-line" filter="url(#glow)" />
+              <path d="M500 940 C500 980, 750 980, 750 1020" className="tree-line" filter="url(#glow)" />
 
               {/* Row 4 to Row 5 */}
-              <path d="M250 1120 C250 1160, 500 1160, 500 1200" className="tree-line" filter="url(#glow)" />
-              <path d="M750 1120 C750 1160, 500 1160, 500 1200" className="tree-line" filter="url(#glow)" />
+              <path d="M250 1280 C250 1320, 500 1320, 500 1360" className="tree-line" filter="url(#glow)" />
+              <path d="M750 1280 C750 1320, 500 1320, 500 1360" className="tree-line" filter="url(#glow)" />
             </svg>
           </div>
 
@@ -169,7 +169,7 @@ const Career = () => {
               <div 
                 key={index} 
                 className={`career-tree-node pos-${item.position}`}
-                style={{ top: `${item.row * 300}px` }}
+                style={{ top: `${item.row * 340}px` }}
               >
                 <div className={`career-node-card ${item.themeClass}`}>
                   <div className="career-node-header">
