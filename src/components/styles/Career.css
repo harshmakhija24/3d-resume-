@@ -94,8 +94,10 @@
 
 /* ── Node Cards ── */
 .career-node-card {
-  width: 380px;
+  width: 100%;
+  max-width: 380px;
   height: 220px;
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 24px;
@@ -212,9 +214,13 @@
 
 /* ── Responsive Mobile Layout ── */
 @media only screen and (max-width: 900px) {
+  .career-section {
+    padding: 60px 20px;
+  }
+
   .career-tree-wrapper {
     height: auto;
-    padding-left: 20px;
+    padding-left: 10px;
     padding-bottom: 50px;
   }
   
@@ -227,7 +233,7 @@
     content: '';
     position: absolute;
     top: 0;
-    left: 20px;
+    left: 10px;
     width: 2px;
     height: 100%;
     background: linear-gradient(to bottom, var(--accentColor), var(--accentSecondary));
@@ -239,21 +245,27 @@
     top: auto !important;
     left: 0 !important;
     transform: none !important;
-    margin-left: 50px;
-    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+  }
+
+  .career-node-card {
+    height: auto;
+    min-height: 200px;
+    max-width: 100%;
   }
 
   .pos-center, .pos-left, .pos-right {
     width: 100%;
-    max-width: 380px;
+    max-width: 100%;
   }
 
   /* Adjust connection dots for mobile */
   .career-node-card::before {
-    top: 20px;
-    left: -36px;
+    top: 30px;
+    left: -35px; /* Centers the 12px dot on the 2px line which is at left: 10px */
   }
   .career-node-card::after {
-    display: none;
+    display: none; /* Only need top dot on mobile */
   }
 }
