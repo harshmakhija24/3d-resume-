@@ -10,6 +10,7 @@ const projects = [
     tools: "Serverless AI Chatbot, LLM Multilingual Translation, Supabase RBAC",
     image: import.meta.env.BASE_URL + "images/krishitek.png",
     link: "https://krishitek-website.vercel.app",
+    themeClass: "accent-tech"
   },
   {
     title: "Wandr",
@@ -17,6 +18,7 @@ const projects = [
     tools: "Group-quiz preference-matching algorithm, Destination safety scoring",
     image: import.meta.env.BASE_URL + "images/wandr.png",
     link: "https://harshmakhija24.github.io/DDT-PROJECT-",
+    themeClass: "accent-tech"
   },
   {
     title: "Last Life",
@@ -24,6 +26,7 @@ const projects = [
     tools: "Platform Launch, Community Growth, Revenue Generation, Marketing",
     image: import.meta.env.BASE_URL + "images/lastlife.png",
     link: "https://linkedin.com/in/harshmakhija24",
+    themeClass: "accent-business"
   },
   {
     title: "Aham Aatm Deepah Association",
@@ -31,6 +34,7 @@ const projects = [
     tools: "Community Outreach, Mental Health, Pranic Healing, Food & Clothing",
     image: import.meta.env.BASE_URL + "images/ngo.png",
     link: "https://linkedin.com/in/harshmakhija24",
+    themeClass: "accent-business"
   },
 ];
 
@@ -102,7 +106,7 @@ const Work = () => {
                         <h3>0{index + 1}</h3>
                       </div>
                       <div className="carousel-details">
-                        <h4>{project.title}</h4>
+                        <h4 className={project.themeClass}>{project.title}</h4>
                         <p className="carousel-category">
                           {project.category}
                         </p>

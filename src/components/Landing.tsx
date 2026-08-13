@@ -7,6 +7,9 @@ const Landing = ({ children }: PropsWithChildren) => {
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
           <div className="landing-intro">
+            <div className="landing-status">
+              <span className="status-dot"></span> Currently: Tech Intern @ IIMBx
+            </div>
             <h2>Hello! I'm</h2>
             <h1>
               HARSH
@@ -16,14 +19,29 @@ const Landing = ({ children }: PropsWithChildren) => {
           </div>
           <div className="landing-info">
             <h3>Entrepreneur &</h3>
-            <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Business</div>
-              <div className="landing-h2-2">Marketing</div>
-            </h2>
-            <h2>
-              <div className="landing-h2-info">Marketing</div>
-              <div className="landing-h2-info-1">Business</div>
-            </h2>
+            <p className="landing-tagline">
+              Building at the intersection of business strategy and AI-driven product.
+            </p>
+            
+            <div className="landing-stats">
+              <div className="stat-item">
+                <span className="stat-label">Users Scaled</span>
+                <span className="stat-value accent-tech">12,000+</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Events Managed</span>
+                <span className="stat-value accent-tech">₹12Cr+</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-label">Lives Impacted</span>
+                <span className="stat-value accent-tech">10,000+</span>
+              </div>
+            </div>
+
+            <div className="landing-ctas">
+              <a href="#work" className="btn btn-primary">View My Work</a>
+              <a href="/Harsh_Makhija_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Download Resume</a>
+            </div>
           </div>
         </div>
         {children}

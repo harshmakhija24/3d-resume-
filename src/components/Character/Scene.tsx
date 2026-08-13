@@ -81,26 +81,29 @@ const Scene = () => {
       const onMouseMove = (event: MouseEvent) => {
         handleMouseMove(event, (x, y) => (mouse = { x, y }));
       };
+      document.addEventListener("mousemove", onMouseMove);
+      
       let debounce: number | undefined;
+      const onTouchMove = (e: TouchEvent) => handleTouchMove(e, (x, y) => (mouse = { x, y }));
+      
       const onTouchStart = (event: TouchEvent) => {
         const element = event.target as HTMLElement;
         debounce = setTimeout(() => {
-          element?.addEventListener("touchmove", (e: TouchEvent) =>
-            handleTouchMove(e, (x, y) => (mouse = { x, y }))
-          );
+          element?.addEventListener("touchmove", onTouchMove);
         }, 200);
       };
 
-      const onTouchEnd = () => {
+      const onTouchEnd = (event: TouchEvent) => {
+        const element = event.target as HTMLElement;
+        element?.removeEventListener("touchmove", onTouchMove);
+        clearTimeout(debounce);
+        
         handleTouchEnd((x, y, interpolationX, interpolationY) => {
           mouse = { x, y };
           interpolation = { x: interpolationX, y: interpolationY };
         });
       };
 
-      document.addEventListener("mousemove", (event) => {
-        onMouseMove(event);
-      });
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchstart", onTouchStart);
@@ -142,6 +145,7 @@ const Scene = () => {
           document.removeEventListener("mousemove", onMouseMove);
           landingDiv.removeEventListener("touchstart", onTouchStart);
           landingDiv.removeEventListener("touchend", onTouchEnd);
+          landingDiv.removeEventListener("touchmove", onTouchMove);
         }
       };
     }

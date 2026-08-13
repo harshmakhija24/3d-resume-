@@ -30,7 +30,7 @@ const WhatIDo = () => {
         <h2 className="title">
           W<span className="hat-h2">HAT</span>
           <div>
-            I<span className="do-h2"> DO</span>
+            I<span className="do-h2 accent-tech"> DO</span>
           </div>
         </h2>
       </div>
@@ -87,12 +87,12 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>VIBECODING</h3>
+              <h3 className="accent-tech">VIBECODING</h3>
               <h4>AI-Driven Tech Creation</h4>
               <p>
                 Leveraging advanced AI tools like Antigravity, Codex, and others to rapidly prototype, build, and deploy tech solutions and dashboards without being a traditional developer.
               </p>
-              <a href="#work" className="what-link">Explore Projects <span>&#8594;</span></a>
+              <a href="#work" className="what-link accent-tech">Explore Projects <span>&#8594;</span></a>
               <div className="what-arrow"></div>
             </div>
           </div>
@@ -115,12 +115,12 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>SOCIAL SERVICE</h3>
+              <h3 className="accent-business">SOCIAL SERVICE</h3>
               <h4>Community Impact & NGO Leadership</h4>
               <p>
                 Leading and managing high-impact projects such as the Healing Society and the GMCKS Siksha project, driving meaningful change through structured organizational efforts.
               </p>
-              <a href="#career" className="what-link">Explore Experience <span>&#8594;</span></a>
+              <a href="#career" className="what-link accent-business">Explore Experience <span>&#8594;</span></a>
               <div className="what-arrow"></div>
             </div>
           </div>

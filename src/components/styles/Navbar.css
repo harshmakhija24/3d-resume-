@@ -3,7 +3,7 @@
   max-width: var(--cMaxWidth);
   width: var(--cWidth);
   justify-content: space-between;
-  padding: 20px 0px;
+  padding: 15px 20px;
   margin-bottom: -100px;
   box-sizing: border-box;
   position: fixed;
@@ -11,6 +11,12 @@
   transform: translateX(-50%);
   top: 0;
   z-index: 9999;
+  background: rgba(5, 5, 5, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 .header ul {
   font-size: 12px;

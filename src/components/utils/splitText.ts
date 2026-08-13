@@ -1,6 +1,5 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
 
 interface ParaElement extends HTMLElement {
@@ -8,7 +7,7 @@ interface ParaElement extends HTMLElement {
   split?: SplitText;
 }
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
@@ -17,7 +16,7 @@ export default function setSplitText() {
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
 
   const TriggerStart = window.innerWidth <= 1024 ? "top 60%" : "20% 60%";
-  const ToggleAction = "play pause resume reverse";
+  const ToggleAction = "play none none reverse";
 
   paras.forEach((para: ParaElement) => {
     para.classList.add("visible");

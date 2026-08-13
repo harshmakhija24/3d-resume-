@@ -10,6 +10,7 @@
   color-scheme: light dark;
   color: #eae5ec;
   background-color: var(--backgroundColor);
+  letter-spacing: 0.015em;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,6 +20,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   --accentColor: #5eead4;
+  --accentSecondary: #e8b563;
   --backgroundColor: #0a0e17;
   --vh: 100vh;
   --vh: 100svh;
@@ -31,11 +33,18 @@ h4,
 h5,
 h6 {
   font-family: "Geist", sans-serif;
+  letter-spacing: -0.04em;
 }
 
-body {
-  overflow: hidden;
+.accent-tech {
+  color: var(--accentColor) !important;
 }
+
+.accent-business {
+  color: var(--accentSecondary) !important;
+}
+
+/* Removed overflow: hidden to allow native scrolling */
 
 a {
   color: inherit;

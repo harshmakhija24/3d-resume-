@@ -1,10 +1,15 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
+let charTimelines: gsap.core.Timeline[] = [];
+
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
   camera: THREE.PerspectiveCamera
 ) {
+  charTimelines.forEach(tl => tl.kill());
+  charTimelines = [];
+
   let intensity: number = 0;
   if ((window as any)._monitorInterval) clearInterval((window as any)._monitorInterval);
   (window as any)._monitorInterval = setInterval(() => {
@@ -119,6 +124,8 @@ export function setCharTimeline(
         )
         .fromTo(".whatIDO", { y: 0 }, { y: "15%", duration: 2 }, 0)
         .to(character.rotation, { x: -0.04, duration: 2, delay: 1 }, 0);
+      
+      charTimelines.push(tl1, tl2, tl3);
     }
   } else {
     if (character) {
@@ -130,64 +137,41 @@ export function setCharTimeline(
         },
       });
       tM2.to(".what-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
+      charTimelines.push(tM2);
     }
   }
 }
 
+let allTimelines: gsap.core.Timeline[] = [];
+
 export function setAllTimeline() {
+  allTimelines.forEach(tl => tl.kill());
+  allTimelines = [];
+
+  // Simple fade-in for career cards as section scrolls into view
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".career-section",
-      start: "top 30%",
-      end: "100% center",
+      start: "top 60%",
+      end: "top 10%",
       scrub: true,
       invalidateOnRefresh: true,
     },
   });
+
   careerTimeline
     .fromTo(
-      ".career-timeline",
-      { maxHeight: "10%" },
-      { maxHeight: "100%", duration: 0.5 },
-      0
-    )
-
-    .fromTo(
-      ".career-timeline",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.1 },
-      0
-    )
-    .fromTo(
       ".career-info-box",
-      { opacity: 0 },
-      { opacity: 1, stagger: 0.1, duration: 0.5 },
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, stagger: 0.08, duration: 0.5, ease: "power2.out" },
       0
     )
     .fromTo(
-      ".career-dot",
-      { animationIterationCount: "infinite" },
-      {
-        animationIterationCount: "1",
-        delay: 0.3,
-        duration: 0.1,
-      },
+      ".career-timeline-progress",
+      { width: "0%" },
+      { width: "100%", duration: 0.5 },
       0
     );
 
-  if (window.innerWidth > 1024) {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: "20%", duration: 0.5, delay: 0.2 },
-      0
-    );
-  } else {
-    careerTimeline.fromTo(
-      ".career-section",
-      { y: 0 },
-      { y: 0, duration: 0.5, delay: 0.2 },
-      0
-    );
-  }
+  allTimelines.push(careerTimeline);
 }
