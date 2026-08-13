@@ -51,17 +51,17 @@
 
 .tree-line {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 3;
+  stroke: var(--accentColor);
+  stroke-width: 4;
   stroke-linecap: round;
   transition: stroke 0.3s ease;
   vector-effect: non-scaling-stroke;
 }
 
-/* Active animated stroke (GSAP adds dash array/offset) */
-.tree-line {
-  stroke: var(--accentColor);
-  stroke-width: 4;
+.tree-line.glow-line {
+  stroke-width: 16;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 /* ── Node Grid ── */
@@ -105,9 +105,11 @@
   background-color: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   box-sizing: border-box;
+  will-change: transform, opacity;
 }
 
 .career-node-card:hover {

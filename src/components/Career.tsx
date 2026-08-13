@@ -138,29 +138,29 @@ const Career = () => {
               viewBox="0 0 1000 1680" 
               className="career-svg-lines"
             >
-              {/* SVG Drop Shadow Filter */}
-              <defs>
-                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-              
               {/* Row 1 to Row 2 */}
-              <path d="M500 260 C500 300, 250 300, 250 340" className="tree-line" filter="url(#glow)" />
-              <path d="M500 260 C500 300, 750 300, 750 340" className="tree-line" filter="url(#glow)" />
+              <path d="M500 260 C500 300, 250 300, 250 340" className="tree-line glow-line" />
+              <path d="M500 260 C500 300, 250 300, 250 340" className="tree-line" />
+              <path d="M500 260 C500 300, 750 300, 750 340" className="tree-line glow-line" />
+              <path d="M500 260 C500 300, 750 300, 750 340" className="tree-line" />
               
               {/* Row 2 to Row 3 */}
-              <path d="M250 600 C250 640, 500 640, 500 680" className="tree-line" filter="url(#glow)" />
-              <path d="M750 600 C750 640, 500 640, 500 680" className="tree-line" filter="url(#glow)" />
+              <path d="M250 600 C250 640, 500 640, 500 680" className="tree-line glow-line" />
+              <path d="M250 600 C250 640, 500 640, 500 680" className="tree-line" />
+              <path d="M750 600 C750 640, 500 640, 500 680" className="tree-line glow-line" />
+              <path d="M750 600 C750 640, 500 640, 500 680" className="tree-line" />
               
               {/* Row 3 to Row 4 */}
-              <path d="M500 940 C500 980, 250 980, 250 1020" className="tree-line" filter="url(#glow)" />
-              <path d="M500 940 C500 980, 750 980, 750 1020" className="tree-line" filter="url(#glow)" />
+              <path d="M500 940 C500 980, 250 980, 250 1020" className="tree-line glow-line" />
+              <path d="M500 940 C500 980, 250 980, 250 1020" className="tree-line" />
+              <path d="M500 940 C500 980, 750 980, 750 1020" className="tree-line glow-line" />
+              <path d="M500 940 C500 980, 750 980, 750 1020" className="tree-line" />
 
               {/* Row 4 to Row 5 */}
-              <path d="M250 1280 C250 1320, 500 1320, 500 1360" className="tree-line" filter="url(#glow)" />
-              <path d="M750 1280 C750 1320, 500 1320, 500 1360" className="tree-line" filter="url(#glow)" />
+              <path d="M250 1280 C250 1320, 500 1320, 500 1360" className="tree-line glow-line" />
+              <path d="M250 1280 C250 1320, 500 1320, 500 1360" className="tree-line" />
+              <path d="M750 1280 C750 1320, 500 1320, 500 1360" className="tree-line glow-line" />
+              <path d="M750 1280 C750 1320, 500 1320, 500 1360" className="tree-line" />
             </svg>
           </div>
 
