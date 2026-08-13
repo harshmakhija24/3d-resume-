@@ -92,7 +92,7 @@ const WhatIDo = () => {
               <p>
                 Leveraging advanced AI tools like Antigravity, Codex, and others to rapidly prototype, build, and deploy tech solutions and dashboards without being a traditional developer.
               </p>
-              <a href="#" className="what-link" onClick={(e) => e.preventDefault()}>Explore Projects <span>&#8594;</span></a>
+              <a href="#work" className="what-link">Explore Projects <span>&#8594;</span></a>
               <div className="what-arrow"></div>
             </div>
           </div>
@@ -120,7 +120,7 @@ const WhatIDo = () => {
               <p>
                 Leading and managing high-impact projects such as the Healing Society and the GMCKS Siksha project, driving meaningful change through structured organizational efforts.
               </p>
-              <a href="#" className="what-link" onClick={(e) => e.preventDefault()}>Explore Experience <span>&#8594;</span></a>
+              <a href="#career" className="what-link">Explore Experience <span>&#8594;</span></a>
               <div className="what-arrow"></div>
             </div>
           </div>

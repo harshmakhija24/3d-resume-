@@ -5,6 +5,20 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
+    title: "Krishitek Digital Platform",
+    category: "Full-Stack Overhaul",
+    tools: "Serverless AI Chatbot, LLM Multilingual Translation, Supabase RBAC",
+    image: import.meta.env.BASE_URL + "images/krishitek.png",
+    link: "https://krishitek-website.vercel.app",
+  },
+  {
+    title: "Wandr",
+    category: "Group Travel Discovery Platform",
+    tools: "Group-quiz preference-matching algorithm, Destination safety scoring",
+    image: import.meta.env.BASE_URL + "images/wandr.png",
+    link: "https://harshmakhija24.github.io/DDT-PROJECT-",
+  },
+  {
     title: "Last Life",
     category: "E-Sports Tournament Platform",
     tools: "Platform Launch, Community Growth, Revenue Generation, Marketing",
@@ -12,7 +26,7 @@ const projects = [
     link: "https://linkedin.com/in/harshmakhija24",
   },
   {
-    title: "NGO – Mental Wellness",
+    title: "Aham Aatm Deepah Association",
     category: "Social Impact Initiative",
     tools: "Community Outreach, Mental Health, Pranic Healing, Food & Clothing",
     image: import.meta.env.BASE_URL + "images/ngo.png",

@@ -2,7 +2,7 @@ import "./styles/Career.css";
 
 const Career = () => {
   return (
-    <div className="career-section section-container">
+    <div className="career-section section-container" id="career">
       <div className="career-container">
         <h2>
           My career <span>&</span>
@@ -16,13 +16,13 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Project Intern</h4>
+                <h4>Tech Intern</h4>
                 <h5>IIMBx</h5>
               </div>
               <h3>NOW</h3>
             </div>
             <p>
-              Working on creating AI-driven dashboards for the CEO and Project Managers. Also assisted with strategic platform redesign during the first month.
+              Architected a B2B Course Suggestion Engine utilizing TF-IDF matching and LLMs for reduced token sizing. Developed an AI Management Intelligence System and Executive Monitoring Dashboard for project metrics.
             </p>
           </div>
           <div className="career-info-box">
@@ -49,7 +49,7 @@ const Career = () => {
               <h3>2024–26</h3>
             </div>
             <p>
-              Directed operations for an NGO (Company Limited by Shares), overseeing the Healing Society and GMCKS Siksha projects. Managed the organization's strategic closure process in March 2026.
+              Helped scale community initiatives impacting 10,000+ beneficiaries. Led the GMCKS Shiksha Project, building holistic learning initiatives focused on academics and life skills. Managed strategic closure in March 2026.
             </p>
           </div>
           <div className="career-info-box">
@@ -61,9 +61,20 @@ const Career = () => {
               <h3>2025–26</h3>
             </div>
             <p>
-              Served from July 22, 2025 to Jan 2, 2026. Supported talent acquisition by screening candidates for institutional
-              programs. Managed official social media content and strategy.
-              Collaborated on podcast production and stakeholder interviews.
+              Served from July 22, 2025 to Jan 2, 2026. Supported talent acquisition by screening 1,000+ candidates for institutional
+              programs. Produced 25+ short-form videos and podcasts. Drafted the Zonal Representative Charter and redesigned the DBE retake exam policy.
+            </p>
+          </div>
+          <div className="career-info-box">
+            <div className="career-info-in">
+              <div className="career-role">
+                <h4>Global Cohort Program</h4>
+                <h5>Hiroshima University, Japan</h5>
+              </div>
+              <h3>2024–25</h3>
+            </div>
+            <p>
+              Agile COIL e-START Program. Selected by IIM Bangalore for a global cohort across 10 Asia-Pacific/European universities, collaborating on disaster resilience and community health.
             </p>
           </div>
           <div className="career-info-box">
