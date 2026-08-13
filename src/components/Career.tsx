@@ -1,84 +1,127 @@
-import { useState, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import "./styles/Career.css";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const careerTimeline = [
   {
     title: "Tech Intern",
     company: "IIMBx",
     duration: "NOW",
-    description: "Architected a B2B Course Suggestion Engine utilizing TF-IDF matching and LLMs for reduced token sizing. Developed an AI Management Intelligence System and Executive Monitoring Dashboard for project metrics.",
-    themeClass: "accent-tech"
+    description: "Architected a B2B Course Suggestion Engine utilizing TF-IDF matching and LLMs for reduced token sizing.",
+    themeClass: "accent-tech",
+    position: "center",
+    row: 0
   },
   {
     title: "BBA Student",
     company: "IIM Bangalore",
     duration: "NOW",
-    description: "Pursuing Bachelor of Business Administration at India's premier management institute. Led \"Learning Lab\" initiative managing curriculum for 150+ students. Studying Business Statistics, Digital Marketing, and Social Media for Business.",
-    themeClass: "accent-business"
+    description: "Pursuing BBA at India's premier management institute. Led \"Learning Lab\" initiative managing curriculum for 150+ students.",
+    themeClass: "accent-business",
+    position: "left",
+    row: 1
   },
   {
     title: "Non-Executive Director",
-    company: "Aham Aatm Deepah Association",
+    company: "Aham Aatm Deepah",
     duration: "2024–26",
-    description: "Helped scale community initiatives impacting 10,000+ beneficiaries. Led the GMCKS Shiksha Project, building holistic learning initiatives focused on academics and life skills. Managed strategic closure in March 2026.",
-    themeClass: "accent-business"
+    description: "Helped scale community initiatives impacting 10,000+ beneficiaries. Led the GMCKS Shiksha Project.",
+    themeClass: "accent-business",
+    position: "right",
+    row: 1
   },
   {
     title: "Project Intern",
     company: "IIM Bangalore",
     duration: "2025–26",
-    description: "Served from July 22, 2025 to Jan 2, 2026. Supported talent acquisition by screening 1,000+ candidates for institutional programs. Produced 25+ short-form videos and podcasts. Drafted the Zonal Representative Charter and redesigned the DBE retake exam policy.",
-    themeClass: "accent-business"
+    description: "Supported talent acquisition by screening 1,000+ candidates. Produced 25+ short-form videos and podcasts.",
+    themeClass: "accent-business",
+    position: "center",
+    row: 2
   },
   {
-    title: "Global Cohort Program",
-    company: "Hiroshima University, Japan",
+    title: "Global Cohort",
+    company: "Hiroshima University",
     duration: "2024–25",
-    description: "Agile COIL e-START Program. Selected by IIM Bangalore for a global cohort across 10 Asia-Pacific/European universities, collaborating on disaster resilience and community health.",
-    themeClass: "accent-business"
+    description: "Agile COIL e-START Program. Selected for a global cohort across 10 Asia-Pacific/European universities.",
+    themeClass: "accent-business",
+    position: "left",
+    row: 3
   },
   {
     title: "Co-Founder",
     company: "Last Life · E-Sports",
     duration: "2024",
-    description: "Launched and scaled an e-sports tournament platform to 12,000+ users in just 45 days. Generated ₹1.5 Lakh+ revenue with a 25% net profit margin through strategic marketing and partnerships.",
-    themeClass: "accent-business"
+    description: "Launched e-sports platform to 12,000+ users in 45 days. Generated ₹1.5 Lakh+ revenue.",
+    themeClass: "accent-business",
+    position: "right",
+    row: 3
   },
   {
     title: "Diploma – Advertising",
     company: "NAEMD · IGNOU",
     duration: "2023–24",
-    description: "Diploma in Advertising, Media, Events & Public Relations. Graduated with Distinction — GPA 7.33/10, Rank 4 out of 41. Worked with Zingolu Organisers managing logistics for events valued at ₹12 Crore.",
-    themeClass: "accent-business"
+    description: "Diploma in Advertising, Media, Events & PR. Graduated with Distinction. Managed events valued at ₹12 Crore.",
+    themeClass: "accent-business",
+    position: "center",
+    row: 4
   }
 ];
 
 const Career = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
 
-  const goToSlide = useCallback(
-    (index: number) => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setCurrentIndex(index);
-      setTimeout(() => setIsAnimating(false), 400);
-    },
-    [isAnimating]
-  );
+  useEffect(() => {
+    if (!containerRef.current || !svgRef.current) return;
 
-  const goToPrev = useCallback(() => {
-    const newIndex =
-      currentIndex === 0 ? careerTimeline.length - 1 : currentIndex - 1;
-    goToSlide(newIndex);
-  }, [currentIndex, goToSlide]);
+    // We will animate the paths drawing themselves using stroke-dasharray and stroke-dashoffset
+    const paths = svgRef.current.querySelectorAll("path");
+    
+    paths.forEach(path => {
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = `${length}`;
+      path.style.strokeDashoffset = `${length}`;
+      
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 60%",
+          end: "bottom 80%",
+          scrub: 1,
+        }
+      });
+    });
 
-  const goToNext = useCallback(() => {
-    const newIndex =
-      currentIndex === careerTimeline.length - 1 ? 0 : currentIndex + 1;
-    goToSlide(newIndex);
-  }, [currentIndex, goToSlide]);
+    // Fade up the cards
+    gsap.fromTo(
+      ".career-tree-node",
+      { opacity: 0, y: 50 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        stagger: 0.1, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 70%",
+          end: "bottom 80%",
+          scrub: 0.5
+        }
+      }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => {
+        if (t.trigger === containerRef.current) t.kill();
+      });
+    };
+  }, []);
 
   return (
     <div className="career-section" id="career">
@@ -87,71 +130,56 @@ const Career = () => {
           My <span>Career</span>
         </h2>
 
-        <div className="career-carousel-wrapper">
-          {/* Navigation Arrows */}
-          <button
-            className="career-carousel-arrow career-carousel-arrow-left"
-            onClick={goToPrev}
-            aria-label="Previous role"
-            data-cursor="disable"
-          >
-            <MdArrowBack />
-          </button>
-          <button
-            className="career-carousel-arrow career-carousel-arrow-right"
-            onClick={goToNext}
-            aria-label="Next role"
-            data-cursor="disable"
-          >
-            <MdArrowForward />
-          </button>
-
-          {/* Slides */}
-          <div className="career-carousel-track-container">
-            <div
-              className="career-carousel-track"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-              }}
+        <div className="career-tree-wrapper" ref={containerRef}>
+          {/* SVG Background Lines (Desktop only) */}
+          <div className="career-svg-container">
+            <svg 
+              ref={svgRef}
+              viewBox="0 0 1000 1420" 
+              className="career-svg-lines"
             >
-              {careerTimeline.map((item, index) => (
-                <div className="career-carousel-slide" key={index}>
-                  <div className="career-carousel-content">
-                    <div className="career-carousel-info">
-                      <div className="career-carousel-number">
-                        <h3>0{index + 1}</h3>
-                      </div>
-                      <div className="career-carousel-details">
-                        <h4 className={item.themeClass}>{item.title}</h4>
-                        <p className="career-carousel-company">
-                          {item.company}
-                        </p>
-                        <div className="career-carousel-tools">
-                          <p>{item.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="career-carousel-image-wrapper">
-                       <h2 className={`massive-year ${item.themeClass}`}>{item.duration}</h2>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+              {/* SVG Drop Shadow Filter */}
+              <defs>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              
+              {/* Row 1 to Row 2 */}
+              <path d="M500 220 C500 260, 250 260, 250 300" className="tree-line" filter="url(#glow)" />
+              <path d="M500 220 C500 260, 750 260, 750 300" className="tree-line" filter="url(#glow)" />
+              
+              {/* Row 2 to Row 3 */}
+              <path d="M250 520 C250 560, 500 560, 500 600" className="tree-line" filter="url(#glow)" />
+              <path d="M750 520 C750 560, 500 560, 500 600" className="tree-line" filter="url(#glow)" />
+              
+              {/* Row 3 to Row 4 */}
+              <path d="M500 820 C500 860, 250 860, 250 900" className="tree-line" filter="url(#glow)" />
+              <path d="M500 820 C500 860, 750 860, 750 900" className="tree-line" filter="url(#glow)" />
+
+              {/* Row 4 to Row 5 */}
+              <path d="M250 1120 C250 1160, 500 1160, 500 1200" className="tree-line" filter="url(#glow)" />
+              <path d="M750 1120 C750 1160, 500 1160, 500 1200" className="tree-line" filter="url(#glow)" />
+            </svg>
           </div>
 
-          {/* Dot Indicators */}
-          <div className="career-carousel-dots">
-            {careerTimeline.map((_, index) => (
-              <button
-                key={index}
-                className={`career-carousel-dot ${
-                  index === currentIndex ? "career-carousel-dot-active" : ""
-                }`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to role ${index + 1}`}
-                data-cursor="disable"
-              />
+          <div className="career-tree-grid">
+            {careerTimeline.map((item, index) => (
+              <div 
+                key={index} 
+                className={`career-tree-node pos-${item.position}`}
+                style={{ top: `${item.row * 300}px` }}
+              >
+                <div className={`career-node-card ${item.themeClass}`}>
+                  <div className="career-node-header">
+                    <span className="career-node-duration">{item.duration}</span>
+                  </div>
+                  <h4 className="career-node-title">{item.title}</h4>
+                  <h5 className="career-node-company">{item.company}</h5>
+                  <p className="career-node-desc">{item.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>

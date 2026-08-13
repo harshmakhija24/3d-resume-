@@ -71,8 +71,7 @@ const SocialIcons = () => {
       <a
         className="resume-button"
         href={import.meta.env.BASE_URL + "Harsh_Makhija_CV.pdf"}
-        target="_blank"
-        rel="noreferrer"
+        download="Harsh_Makhija_CV.pdf"
       >
         <HoverLinks text="RESUME" />
         <span>
