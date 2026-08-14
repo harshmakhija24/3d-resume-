@@ -1,190 +1,130 @@
 import { useEffect, useRef } from "react";
-import "./styles/Career.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./styles/Career.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const careerTimeline = [
   {
+    year: "2026 — now",
     title: "Tech Intern",
     company: "IIMBx",
-    duration: "NOW",
-    description: "Architected a B2B Course Suggestion Engine utilizing TF-IDF matching and LLMs for reduced token sizing.",
-    themeClass: "accent-tech",
-    position: "center",
-    row: 0
+    description:
+      "Building a B2B course suggestion engine with TF-IDF matching and LLM support, with a focus on useful recommendations and efficient token usage.",
+    tag: "AI PRODUCT"
   },
   {
+    year: "2024 — now",
     title: "BBA Student",
-    company: "IIM Bangalore",
-    duration: "NOW",
-    description: "Pursuing BBA at India's premier management institute. Led \"Learning Lab\" initiative managing curriculum for 150+ students.",
-    themeClass: "accent-business",
-    position: "left",
-    row: 1
+    company: "Indian Institute of Management Bangalore",
+    description:
+      "Studying business while leading Learning Lab, a student initiative that shaped curriculum and learning experiences for 150+ students.",
+    tag: "EDUCATION"
   },
   {
+    year: "2024 — 2026",
     title: "Non-Executive Director",
     company: "Aham Aatm Deepah",
-    duration: "2024–26",
-    description: "Helped scale community initiatives impacting 10,000+ beneficiaries. Led the GMCKS Shiksha Project.",
-    themeClass: "accent-business",
-    position: "right",
-    row: 1
+    description:
+      "Supported community initiatives that served more than 10,000 people through education, food, clothing, and wellbeing programs.",
+    tag: "SOCIAL IMPACT"
   },
   {
+    year: "2025 — 2026",
     title: "Project Intern",
     company: "IIM Bangalore",
-    duration: "2025–26",
-    description: "Supported talent acquisition by screening 1,000+ candidates. Produced 25+ short-form videos and podcasts.",
-    themeClass: "accent-business",
-    position: "center",
-    row: 2
+    description:
+      "Supported talent acquisition by screening 1,000+ candidates and produced 25+ short-form videos and podcasts for the institution.",
+    tag: "PEOPLE + MEDIA"
   },
   {
+    year: "2024 — 2025",
     title: "Global Cohort",
-    company: "Hiroshima University",
-    duration: "2024–25",
-    description: "Agile COIL e-START Program. Selected for a global cohort across 10 Asia-Pacific/European universities.",
-    themeClass: "accent-business",
-    position: "left",
-    row: 3
+    company: "Hiroshima University · Agile COIL e-START",
+    description:
+      "Selected for an international cohort working across 10 Asia-Pacific and European universities.",
+    tag: "GLOBAL PROGRAM"
   },
   {
+    year: "2024",
     title: "Co-Founder",
-    company: "Last Life · E-Sports",
-    duration: "2024",
-    description: "Launched e-sports platform to 12,000+ users in 45 days. Generated ₹1.5 Lakh+ revenue.",
-    themeClass: "accent-business",
-    position: "right",
-    row: 3
+    company: "Last Life · E-sports",
+    description:
+      "Launched an e-sports platform that reached 12,000+ users in 45 days and generated more than ₹1.5 lakh in revenue.",
+    tag: "VENTURE"
   },
   {
-    title: "Diploma – Advertising",
+    year: "2023 — 2024",
+    title: "Diploma in Advertising",
     company: "NAEMD · IGNOU",
-    duration: "2023–24",
-    description: "Diploma in Advertising, Media, Events & PR. Graduated with Distinction. Managed events valued at ₹12 Crore.",
-    themeClass: "accent-business",
-    position: "center",
-    row: 4
+    description:
+      "Graduated with distinction in Advertising, Media, Events & PR; ranked 4th out of 41 students.",
+    tag: "FOUNDATION"
   }
 ];
 
 const Career = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current || !svgRef.current) return;
+    if (!containerRef.current) return;
 
-    // We will animate the paths drawing themselves using stroke-dasharray and stroke-dashoffset
-    const paths = svgRef.current.querySelectorAll("path");
-    
-    paths.forEach(path => {
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = `${length}`;
-      path.style.strokeDashoffset = `${length}`;
-      
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 60%",
-          end: "bottom 80%",
-          scrub: 1,
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        ".career-card",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+            once: true
+          }
         }
-      });
-    });
+      );
+    }, containerRef);
 
-    // Fade up the cards
-    gsap.fromTo(
-      ".career-tree-node",
-      { opacity: 0, y: 50 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        stagger: 0.1, 
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-          end: "bottom 80%",
-          scrub: 0.5
-        }
-      }
-    );
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => {
-        if (t.trigger === containerRef.current) t.kill();
-      });
-    };
+    return () => context.revert();
   }, []);
 
   return (
-    <div className="career-section" id="career">
+    <section className="career-section" id="career" ref={containerRef}>
       <div className="career-container section-container">
-        <h2>
-          My <span>Career</span>
-        </h2>
-
-        <div className="career-tree-wrapper" ref={containerRef}>
-          {/* SVG Background Lines (Desktop only) */}
-          <div className="career-svg-container">
-            <svg 
-              ref={svgRef}
-              viewBox="0 0 1000 1680" 
-              className="career-svg-lines"
-            >
-              {/* Row 1 to Row 2 */}
-              <path d="M500 260 C500 300, 250 300, 250 340" className="tree-line glow-line" />
-              <path d="M500 260 C500 300, 250 300, 250 340" className="tree-line" />
-              <path d="M500 260 C500 300, 750 300, 750 340" className="tree-line glow-line" />
-              <path d="M500 260 C500 300, 750 300, 750 340" className="tree-line" />
-              
-              {/* Row 2 to Row 3 */}
-              <path d="M250 600 C250 640, 500 640, 500 680" className="tree-line glow-line" />
-              <path d="M250 600 C250 640, 500 640, 500 680" className="tree-line" />
-              <path d="M750 600 C750 640, 500 640, 500 680" className="tree-line glow-line" />
-              <path d="M750 600 C750 640, 500 640, 500 680" className="tree-line" />
-              
-              {/* Row 3 to Row 4 */}
-              <path d="M500 940 C500 980, 250 980, 250 1020" className="tree-line glow-line" />
-              <path d="M500 940 C500 980, 250 980, 250 1020" className="tree-line" />
-              <path d="M500 940 C500 980, 750 980, 750 1020" className="tree-line glow-line" />
-              <path d="M500 940 C500 980, 750 980, 750 1020" className="tree-line" />
-
-              {/* Row 4 to Row 5 */}
-              <path d="M250 1280 C250 1320, 500 1320, 500 1360" className="tree-line glow-line" />
-              <path d="M250 1280 C250 1320, 500 1320, 500 1360" className="tree-line" />
-              <path d="M750 1280 C750 1320, 500 1320, 500 1360" className="tree-line glow-line" />
-              <path d="M750 1280 C750 1320, 500 1320, 500 1360" className="tree-line" />
-            </svg>
+        <div className="career-heading">
+          <div>
+            <p className="section-kicker">03 / TRAJECTORY</p>
+            <h2>
+              My <span>Career</span>
+            </h2>
           </div>
+          <p className="career-heading-note">
+            A nonlinear path across product, business, community, and technology.
+          </p>
+        </div>
 
-          <div className="career-tree-grid">
-            {careerTimeline.map((item, index) => (
-              <div 
-                key={index} 
-                className={`career-tree-node pos-${item.position}`}
-                style={{ top: `${item.row * 340}px` }}
-              >
-                <div className={`career-node-card ${item.themeClass}`}>
-                  <div className="career-node-header">
-                    <span className="career-node-duration">{item.duration}</span>
-                  </div>
-                  <h4 className="career-node-title">{item.title}</h4>
-                  <h5 className="career-node-company">{item.company}</h5>
-                  <p className="career-node-desc">{item.description}</p>
-                </div>
+        <div className="career-timeline">
+          {careerTimeline.map((item) => (
+            <article className="career-card" key={`${item.year}-${item.title}`}>
+              <div className="career-card-marker" aria-hidden="true" />
+              <div className="career-card-meta">
+                <span className="career-card-year">{item.year}</span>
+                <span className="career-card-tag">{item.tag}</span>
               </div>
-            ))}
-          </div>
+              <div className="career-card-content">
+                <h3>{item.title}</h3>
+                <p className="career-card-company">{item.company}</p>
+                <p className="career-card-description">{item.description}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

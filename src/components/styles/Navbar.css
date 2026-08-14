@@ -12,7 +12,7 @@
   padding: 1.15rem 0;
   transform: translateX(-50%);
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+  border-bottom: 1px solid var(--lineColor);
 }
 
 .header ul {
@@ -22,14 +22,14 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  color: #9da9b0;
+  color: var(--mutedColor);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.16em;
 }
 
 .header ul li { cursor: pointer; }
-.header ul a:hover { color: #f0f2ed; }
+.header ul a:hover { color: var(--inkColor); }
 
 .navbar-title {
   display: inline-flex;
@@ -37,28 +37,28 @@
   justify-content: center;
   width: 2.2rem;
   height: 2.2rem;
-  color: #0b0e13;
+  color: #171b17;
   border-radius: 50%;
-  background: #75d3c2;
+  background: var(--accentColor);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: -0.05em;
 }
 
-.navbar-title:hover { color: #0b0e13; background: #a1e2d5; }
+.navbar-title:hover { color: #171b17; background: #d7f49a; }
 
 .navbar-connect {
   position: absolute;
   top: 50%;
   left: 50%;
   display: none;
-  color: #83919b;
+  color: var(--mutedColor);
   transform: translate(-50%, -50%);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
 }
 
-.navbar-connect:hover { color: #f0f2ed; }
+.navbar-connect:hover { color: var(--inkColor); }
 
 @media only screen and (min-width: 500px) {
   .header { padding: 1.3rem 0; }

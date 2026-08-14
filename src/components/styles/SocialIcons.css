@@ -1,103 +1,39 @@
 .icons-section {
   position: fixed;
-  max-width: var(--cMaxWidth);
-  width: var(--cWidth);
-  bottom: 0;
+  right: clamp(1rem, 3vw, 3rem);
+  bottom: clamp(1rem, 2.4vw, 2rem);
   z-index: 99;
-  left: 50%;
-  transform: translateX(-50%);
+  pointer-events: none;
 }
-.social-icons {
-  position: absolute;
-  left: -20px;
-  bottom: 20px;
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 999;
-  padding: 10px;
-}
-.social-icons:hover {
-  transition: 0.3s;
-  color: var(--backgroundColor);
-}
-.social-icons a:hover {
-  color: var(--backgroundColor);
-  /* transform: scale(1.2); */
-}
-.social-icons span {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  display: flex;
-}
-.social-icons a {
-  --siLeft: 50%;
-  --siTop: 50%;
-  position: absolute;
-  left: var(--siLeft, 50%);
-  top: var(--siTop, 50%);
-  transform: translate(-50%, -50%);
-  display: flex;
-  font-size: 23px;
-  will-change: left, top;
-  transition: transform 0.3s ease-out;
-}
+
 .resume-button {
-  position: absolute;
-  z-index: 99;
-  display: flex;
-  gap: 5px;
-  bottom: 40px;
-  right: 0;
-  width: auto;
-  text-wrap: nowrap;
-  letter-spacing: 4px;
-  font-size: 15px;
-  line-height: 15px;
-  font-weight: 600;
-  color: #5e5e5e;
-  cursor: pointer;
-  transition: 0.5s;
-  transform-origin: left bottom;
-  transform: translateX(100%) rotateZ(-90deg);
-}
-.resume-button:hover {
-  color: #fff;
-}
-div.resume-button span {
-  color: #fff;
-  font-size: 17px;
-  margin-top: -1px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 0.55rem;
+  min-height: 2.45rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--lineColor);
+  border-radius: 999px;
+  color: var(--bodyColor);
+  background: rgba(23, 27, 23, 0.82);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.18);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  pointer-events: auto;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
-.check-line {
-  position: fixed;
-  top: 655px;
-  left: 0;
-  height: 1px;
-  background-color: #ffffff;
-  width: 100%;
-  z-index: 99999;
+
+.resume-button svg { font-size: 1rem; }
+
+.resume-button:hover {
+  border-color: var(--accentColor);
+  color: var(--accentColor);
+  background: rgba(200, 239, 117, 0.08);
+  transform: translateY(-2px);
 }
-@media only screen and (min-width: 900px) {
-  .social-icons {
-    display: flex;
-    gap: 20px;
-  }
-  .social-icons a {
-    font-size: 28px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .resume-button {
-    transform: none;
-    font-size: 20px;
-    line-height: 20px;
-  }
-  div.resume-button span {
-    font-size: 23px;
-    margin-top: -1.5px;
-  }
+
+@media screen and (max-width: 700px) {
+  .icons-section { right: 1rem; bottom: 1rem; }
+  .resume-button { min-height: 2.25rem; padding: 0.55rem 0.7rem; }
 }

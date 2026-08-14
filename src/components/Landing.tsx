@@ -13,7 +13,7 @@ const Landing = ({ children }: PropsWithChildren) => {
         <div className="landing-intro">
           <div className="landing-status">
             <span className="status-dot" />
-            <span>Available for ambitious builds</span>
+            <span>Business strategy · Product · AI</span>
           </div>
           <p className="landing-eyebrow">01 / PROFILE</p>
           <h2>Hello, I&apos;m</h2>
@@ -21,35 +21,35 @@ const Landing = ({ children }: PropsWithChildren) => {
             Harsh
             <span>Makhija</span>
           </h1>
-          <p className="landing-role">Entrepreneur · Product strategist · Builder</p>
+          <p className="landing-role">BBA · IIM Bangalore / Product strategy · Builder</p>
         </div>
 
         <div className="landing-info">
           <p className="landing-eyebrow">BUSINESS × TECHNOLOGY</p>
-          <h3>Making complex ideas useful.</h3>
+          <h3>I turn ambitious ideas into useful systems.</h3>
           <p className="landing-tagline">
-            I build products, communities, and growth systems where business strategy meets
-            practical AI.
+            I work across business strategy, product thinking, and practical AI — from early
+            prototypes to platforms used by real communities.
           </p>
 
           <div className="landing-stats" aria-label="Selected impact metrics">
             <div className="stat-item">
               <span className="stat-value accent-tech">12K+</span>
-              <span className="stat-label">Users reached</span>
+              <span className="stat-label">Users in 45 days</span>
             </div>
             <div className="stat-item">
-              <span className="stat-value accent-business">₹12Cr+</span>
+              <span className="stat-value accent-tech">₹12Cr+</span>
               <span className="stat-label">Event value managed</span>
             </div>
             <div className="stat-item">
               <span className="stat-value accent-tech">10K+</span>
-              <span className="stat-label">Lives impacted</span>
+              <span className="stat-label">People served through NGO work</span>
             </div>
           </div>
 
           <div className="landing-ctas">
             <a href="#work" className="btn btn-primary">
-              Explore selected work <span aria-hidden="true">↗</span>
+              View selected work <span aria-hidden="true">↗</span>
             </a>
             <a
               href={`${import.meta.env.BASE_URL}Harsh_Makhija_CV.pdf`}
@@ -58,10 +58,10 @@ const Landing = ({ children }: PropsWithChildren) => {
               download="Harsh_Makhija_CV.pdf"
               className="btn btn-secondary"
             >
-              View CV <span aria-hidden="true">↓</span>
+              Download CV <span aria-hidden="true">↓</span>
             </a>
           </div>
-          <p className="landing-note">The character reacts to your movement. Scroll to see the work behind it.</p>
+          <p className="landing-note">Scroll to see the products, communities, and experiences behind the numbers.</p>
         </div>
       </div>
 

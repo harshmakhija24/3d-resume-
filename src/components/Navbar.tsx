@@ -1,27 +1,16 @@
-
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
-import { gsap } from "gsap";
 import "./styles/Navbar.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="#landingDiv" className="navbar-title" data-cursor="disable">
+        <a href="#landingDiv" className="navbar-title" data-cursor="disable" aria-label="Back to home">
           HM
         </a>
-        <a
-          href="https://www.linkedin.com/in/harshmakhija24/"
-          className="navbar-connect"
-          data-cursor="disable"
-          target="_blank"
-          rel="noreferrer"
-        >
-          linkedin.com/in/harshmakhija24
-        </a>
+        <span className="navbar-connect" aria-label="Portfolio focus">
+          PRODUCT · AI · COMMUNITY
+        </span>
         <ul>
           <li>
             <a data-href="#about" href="#about">
@@ -41,9 +30,9 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
-      <div className="nav-fade"></div>
+      <div className="landing-circle1" aria-hidden="true"></div>
+      <div className="landing-circle2" aria-hidden="true"></div>
+      <div className="nav-fade" aria-hidden="true"></div>
     </>
   );
 };

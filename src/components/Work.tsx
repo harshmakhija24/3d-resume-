@@ -8,7 +8,7 @@ const projects = [
     title: "Krishitek Digital Platform",
     category: "Full-Stack Overhaul",
     tools: "Serverless AI Chatbot, LLM Multilingual Translation, Supabase RBAC",
-    image: import.meta.env.BASE_URL + "images/krishitek.png",
+    image: import.meta.env.BASE_URL + "images/preview1.png",
     link: "https://krishitek-website.vercel.app",
     themeClass: "accent-tech"
   },
@@ -25,7 +25,7 @@ const projects = [
     category: "E-Sports Tournament Platform",
     tools: "Platform Launch, Community Growth, Revenue Generation, Marketing",
     image: import.meta.env.BASE_URL + "images/lastlife.png",
-    link: "https://linkedin.com/in/harshmakhija24",
+    link: "https://www.linkedin.com/in/harshmakhija24/",
     themeClass: "accent-business"
   },
   {
@@ -33,7 +33,7 @@ const projects = [
     category: "Social Impact Initiative",
     tools: "Community Outreach, Mental Health, Pranic Healing, Food & Clothing",
     image: import.meta.env.BASE_URL + "images/ngo.png",
-    link: "https://linkedin.com/in/harshmakhija24",
+    link: "https://www.linkedin.com/in/harshmakhija24/",
     themeClass: "accent-business"
   },
 ];
