@@ -39,8 +39,16 @@
 .carousel-track-container {
   width: 100%;
   overflow: hidden;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
   border-top: 1px solid var(--lineColor);
   border-bottom: 1px solid var(--lineColor);
+}
+
+.carousel-track-container:focus-visible {
+  outline: 2px solid var(--accentColor);
+  outline-offset: 6px;
 }
 
 .carousel-track {
@@ -189,18 +197,33 @@
 .carousel-dots { display: flex; gap: 10px; }
 
 .carousel-dot {
-  width: 32px;
-  height: 3px;
+  position: relative;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
-  background: var(--lineColor);
+  background: transparent;
   cursor: pointer;
-  transition: 160ms ease;
+  transition: transform 160ms ease;
+}
+
+.carousel-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  left: 4px;
+  height: 3px;
+  transform: translateY(-50%);
+  background: var(--lineColor);
+  transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .carousel-dot:hover,
-.carousel-dot:focus-visible,
-.carousel-dot-active { background: var(--accentColor); }
+.carousel-dot:focus-visible { transform: translateY(-1px); }
+.carousel-dot:hover::after,
+.carousel-dot:focus-visible::after,
+.carousel-dot-active::after { background: var(--accentColor); }
 
 .carousel-index {
   color: var(--mutedColor);
@@ -306,9 +329,11 @@
 
 @media only screen and (max-width: 520px) {
   .carousel-slide { padding: 28px 0; }
-  .carousel-title { font-size: 38px; }
-  .carousel-arrow { width: 34px; height: 34px; }
-  .carousel-arrow-left { left: 8px; }
-  .carousel-arrow-right { right: 8px; }
+  .carousel-title { font-size: clamp(2.2rem, 11vw, 2.8rem); }
+  .carousel-arrow { width: 44px; height: 44px; }
+  .carousel-arrow-left { left: 4px; }
+  .carousel-arrow-right { right: 4px; }
   .carousel-image-frame { aspect-ratio: 1.2; }
+  .carousel-footer { margin-top: 16px; }
+  .carousel-dots { gap: 2px; margin-left: -8px; }
 }

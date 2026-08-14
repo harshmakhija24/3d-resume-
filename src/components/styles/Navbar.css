@@ -29,6 +29,8 @@
 }
 
 .header ul li { cursor: pointer; }
+.header ul a { display: inline-flex; align-items: center; min-height: 44px; }
+.header ul a:active { transform: scale(0.97); }
 .header ul a:hover { color: var(--inkColor); }
 
 .navbar-title {
@@ -76,7 +78,8 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .header { width: calc(100% - 2.2rem); }
-  .header ul { gap: 0.9rem; font-size: 0.58rem; }
-  .navbar-title { width: 2rem; height: 2rem; }
+  .header { width: calc(100% - 2.2rem); padding-top: calc(0.75rem + env(safe-area-inset-top)); padding-bottom: 0.55rem; }
+  .header ul { gap: 0.55rem; font-size: 0.58rem; }
+  .navbar-title { width: 2.2rem; height: 2.2rem; }
+  .navbar-connect { display: none; }
 }

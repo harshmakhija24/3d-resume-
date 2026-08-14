@@ -10,10 +10,25 @@ interface ParaElement extends HTMLElement {
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function setSplitText() {
-  ScrollTrigger.config({ ignoreMobileResize: true });
-  if (window.innerWidth < 900) return;
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
+  const clearSplits = (elements: NodeListOf<ParaElement>) => {
+    elements.forEach((element) => {
+      element.anim?.progress(1).kill();
+      element.split?.revert();
+      element.anim = undefined;
+      element.split = undefined;
+    });
+  };
+
+  if (window.innerWidth < 900) {
+    clearSplits(paras);
+    clearSplits(titles);
+    ScrollTrigger.refresh();
+    return;
+  }
+
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
   const TriggerStart = window.innerWidth <= 1024 ? "top 60%" : "20% 60%";
   const ToggleAction = "play none none reverse";

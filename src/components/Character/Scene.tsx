@@ -12,8 +12,9 @@ const Scene = () => {
   const resizeHandlerRef = useRef<(() => void) | null>(null);
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
     const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
-    const canAfford3D = window.innerWidth > 860 && !prefersReducedMotion && !saveData;
+    const canAfford3D = window.innerWidth > 1024 && !isCoarsePointer && !prefersReducedMotion && !saveData;
     if (!canAfford3D) return;
 
     if (canvasDiv.current) {
@@ -27,7 +28,7 @@ const Scene = () => {
         antialias: false,
         powerPreference: "high-performance",
       });
-      const renderScale = window.innerWidth > 1024 ? 0.62 : 0.72;
+      const renderScale = window.innerWidth > 1440 ? 0.62 : 0.68;
       renderer.setSize(container.width * renderScale, container.height * renderScale, false);
       renderer.domElement.style.width = "100%";
       renderer.domElement.style.height = "100%";

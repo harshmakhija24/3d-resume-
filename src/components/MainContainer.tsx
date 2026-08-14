@@ -13,13 +13,23 @@ import setSplitText from "./utils/splitText";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   useEffect(() => {
+    let resizeFrame = 0;
+    let resizeTimer: number | undefined;
     const resizeHandler = () => {
-      setSplitText();
+      window.cancelAnimationFrame(resizeFrame);
+      window.clearTimeout(resizeTimer);
+      resizeFrame = window.requestAnimationFrame(() => {
+        resizeTimer = window.setTimeout(() => setSplitText(), 120);
+      });
     };
     resizeHandler();
-    window.addEventListener("resize", resizeHandler);
+    window.addEventListener("resize", resizeHandler, { passive: true });
+    window.addEventListener("orientationchange", resizeHandler, { passive: true });
     return () => {
+      window.cancelAnimationFrame(resizeFrame);
+      window.clearTimeout(resizeTimer);
       window.removeEventListener("resize", resizeHandler);
+      window.removeEventListener("orientationchange", resizeHandler);
     };
   }, []);
 

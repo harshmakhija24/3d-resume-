@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { type KeyboardEvent, type PointerEvent, useCallback, useRef, useState } from "react";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import WorkImage from "./WorkImage";
 import "./styles/Work.css";
@@ -60,6 +60,7 @@ const projects: Project[] = [
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const pointerStartX = useRef<number | null>(null);
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -80,6 +81,31 @@ const Work = () => {
     const newIndex = currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse") return;
+    pointerStartX.current = event.clientX;
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (pointerStartX.current === null) return;
+    const distance = event.clientX - pointerStartX.current;
+    pointerStartX.current = null;
+    if (Math.abs(distance) < 48) return;
+    if (distance < 0) goToNext();
+    else goToPrev();
+  };
+
+  const handleCarouselKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToPrev();
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToNext();
+    }
+  };
 
   return (
     <section className="work-section" id="work" aria-labelledby="work-title">
@@ -114,7 +140,15 @@ const Work = () => {
             <MdArrowForward />
           </button>
 
-          <div className="carousel-track-container">
+          <div
+            className="carousel-track-container"
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={() => { pointerStartX.current = null; }}
+            onKeyDown={handleCarouselKeyDown}
+            tabIndex={0}
+            aria-label="Swipe or use arrow keys to browse selected work"
+          >
             <div
               className="carousel-track"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}

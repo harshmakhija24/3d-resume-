@@ -344,7 +344,11 @@
     justify-content: left;
   }
   .what-box:last-child {
-    height: 500px;
+    height: auto;
+  }
+  .what-box-in {
+    height: min(450px, 72svh);
+    min-height: 340px;
   }
   .what-box {
     width: 500px;
@@ -373,7 +377,7 @@
     padding: 30px;
   }
   .what-content p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .what-noTouch:hover,
   .what-content-active {
@@ -393,6 +397,19 @@
   }
 }
 @media only screen and (max-width: 550px) {
+  .whatIDO {
+    padding-top: 1rem;
+  }
+  .what-box { min-width: 0; }
+  .what-box h2 {
+    font-size: clamp(2.8rem, 14vw, 3.5rem);
+    line-height: 0.95;
+  }
+  .what-box-in {
+    height: min(400px, 70svh);
+    min-height: 300px;
+  }
+
   .whatIDO {
     place-items: inherit;
     align-items: start;
