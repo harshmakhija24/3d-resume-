@@ -2,11 +2,7 @@ import * as THREE from "three";
 import { GLTF, GLTFLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 
-const setCharacter = (
-  renderer: THREE.WebGLRenderer,
-  scene: THREE.Scene,
-  camera: THREE.PerspectiveCamera
-) => {
+const setCharacter = (camera: THREE.PerspectiveCamera) => {
   const loader = new GLTFLoader();
 
   const loadCharacter = () => {
@@ -17,7 +13,6 @@ const setCharacter = (
           import.meta.env.BASE_URL + "models/character_unencrypted.glb",
           async (gltf) => {
             character = gltf.scene;
-            await renderer.compileAsync(character, camera, scene);
             character.traverse((child: any) => {
               if (child.isMesh) {
                 const mesh = child as THREE.Mesh;

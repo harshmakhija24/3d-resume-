@@ -121,6 +121,8 @@
   max-height: 1080px;
   transform: translateX(-50%);
   pointer-events: none;
+  opacity: 0.76;
+  filter: saturate(0.82) contrast(0.96);
 }
 
 .character-model::after {

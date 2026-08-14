@@ -2,19 +2,20 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
-import { useLoading } from "../../context/LoadingProvider";
 import handleResize from "./utils/resizeUtils";
 import setAnimations from "./utils/animationUtils";
-import { setProgress } from "../Loading";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
-  const hoverDivRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef(new THREE.Scene());
-  const { setLoading } = useLoading();
 
   const resizeHandlerRef = useRef<(() => void) | null>(null);
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+    const canAfford3D = window.innerWidth > 860 && !prefersReducedMotion && !saveData;
+    if (!canAfford3D) return;
+
     if (canvasDiv.current) {
       let rect = canvasDiv.current.getBoundingClientRect();
       let container = { width: rect.width, height: rect.height };
@@ -52,12 +53,11 @@ const Scene = () => {
       let isInViewport = true;
       let animId = 0;
       let lastFrameTime = performance.now();
-      let renderUntil = performance.now() + 6000;
+      let renderUntil = 0;
       let scrollEndTimer: number | undefined;
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
-      const { loadCharacter } = setCharacter(renderer, scene, camera);
+      const { loadCharacter } = setCharacter(camera);
 
       loadCharacter().then((gltf) => {
         if (gltf) {
@@ -67,14 +67,10 @@ const Scene = () => {
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
-          progress.loaded().then(() => {
-            setTimeout(() => {
-              light.turnOnLights();
-              animations.startIntro();
-              renderUntil = performance.now() + 4500;
-              startRenderLoop();
-            }, 900);
-          });
+          light.turnOnLights();
+          animations.startIntro();
+          renderUntil = performance.now() + 2400;
+          startRenderLoop();
           const onResize = () => handleResize(renderer, camera, canvasDiv, character);
           window.addEventListener("resize", onResize);
           resizeHandlerRef.current = onResize;
@@ -178,8 +174,8 @@ const Scene = () => {
     <>
       <div className="character-container">
         <div className="character-model" ref={canvasDiv}>
-          <div className="character-rim"></div>
-          <div className="character-hover" ref={hoverDivRef}></div>
+                        <div className="character-rim"></div>
+
         </div>
       </div>
     </>

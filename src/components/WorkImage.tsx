@@ -1,50 +1,54 @@
-import { useState } from "react";
-import { MdArrowOutward } from "react-icons/md";
+import { MdArrowOutward, MdLanguage } from "react-icons/md";
 
 interface Props {
   image: string;
   alt?: string;
-  video?: string;
   link?: string;
+  linkLabel?: string;
 }
 
-const WorkImage = (props: Props) => {
-  const [isVideo, setIsVideo] = useState(false);
-  const [video, setVideo] = useState("");
-  const handleMouseEnter = async () => {
-    if (props.video) {
-      setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      setVideo(blobUrl);
-    }
-  };
+const WorkImage = ({ image, alt, link, linkLabel = "View live project" }: Props) => {
+  const imageContent = (
+    <div className="work-image-frame">
+      <img
+        src={image}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        onError={(event) => {
+          event.currentTarget.onerror = null;
+          event.currentTarget.src = import.meta.env.BASE_URL + "images/placeholder.webp";
+        }}
+      />
+      <span className="work-image-sheen" aria-hidden="true" />
+    </div>
+  );
+
+  if (!link) {
+    return (
+      <div className="work-image">
+        {imageContent}
+        <span className="work-link work-link-static">Selected work · details on request</span>
+      </div>
+    );
+  }
 
   return (
     <div className="work-image">
       <a
         className="work-image-in"
-        href={props.link}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => setIsVideo(false)}
+        href={link}
         target="_blank"
-        data-cursor={"disable"}
+        rel="noreferrer noopener"
+        aria-label={`${linkLabel}: ${alt ?? "project"}`}
+        data-cursor="disable"
       >
-        {props.link && (
-          <div className="work-link">
-            <MdArrowOutward />
-          </div>
-        )}
-        <img
-          src={props.image}
-          alt={props.alt}
-          onError={(event) => {
-            event.currentTarget.onerror = null;
-            event.currentTarget.src = import.meta.env.BASE_URL + "images/placeholder.webp";
-          }}
-        />
-        {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
+        {imageContent}
+        <span className="work-link">
+          <MdLanguage aria-hidden="true" />
+          <span>{linkLabel}</span>
+          <MdArrowOutward aria-hidden="true" />
+        </span>
       </a>
     </div>
   );
