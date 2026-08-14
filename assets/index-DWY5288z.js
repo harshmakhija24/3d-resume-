@@ -1,4 +1,4 @@
-import{r as ls,j as mi}from"./index-BzoAnUzj.js";import{g as Gn,S as ro}from"./ScrollTrigger-0lJgtTtq.js";/**
+import{r as ls,j as mi}from"./index-DXy1pPxj.js";import{g as Gn,S as ro}from"./ScrollTrigger-0lJgtTtq.js";/**
  * @license
  * Copyright 2010-2024 Three.js Authors
  * SPDX-License-Identifier: MIT
