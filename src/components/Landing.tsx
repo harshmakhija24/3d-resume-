@@ -17,7 +17,7 @@ const Landing = ({ children }: PropsWithChildren) => {
           </div>
           <h2>Hello, I&apos;m</h2>
           <h1 id="hero-title">
-            Harsh
+            <span className="hero-first-name">Harsh</span>{" "}
             <span>Makhija</span>
           </h1>
           <p className="landing-role">BBA · IIM Bangalore / Product strategy · Builder</p>
