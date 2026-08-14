@@ -1,9 +1,5 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 import "./styles/Career.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const careerTimeline = [
   {
@@ -67,30 +63,6 @@ const careerTimeline = [
 const Career = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const context = gsap.context(() => {
-      gsap.fromTo(
-        ".career-card",
-        { opacity: 0, y: 28 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.08,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 75%",
-            once: true
-          }
-        }
-      );
-    }, containerRef);
-
-    return () => context.revert();
-  }, []);
 
   return (
     <section className="career-section" id="career" ref={containerRef}>
