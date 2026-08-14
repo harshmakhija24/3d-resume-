@@ -13,6 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   --accentColor: #c8ef75;
   --accentSecondary: #c8ef75;
+  --pinkAccent: #f0a6bd;
+  --pinkSoft: rgba(240, 166, 189, 0.13);
+  --pinkLine: rgba(240, 166, 189, 0.34);
   --backgroundColor: #171b17;
   --panelColor: #1d231d;
   --inkColor: #f1eee6;
@@ -70,9 +73,7 @@ main {
 }
 
 .main-active {
-  opacity: 0;
-  animation: fadeIn 1s 1;
-  animation-fill-mode: forwards;
+  opacity: 1;
 }
 
 @keyframes fadeIn { 100% { opacity: 1; } }
@@ -114,7 +115,7 @@ main {
 
 .section-kicker {
   margin: 0 0 1.2rem;
-  color: var(--accentColor);
+  color: var(--pinkAccent);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.18em;

@@ -31,12 +31,12 @@ export function initialFX() {
     { opacity: 0, y: 80, filter: "blur(5px)" },
     {
       opacity: 1,
-      duration: 1.2,
+      duration: 0.55,
       filter: "blur(0px)",
       ease: "power3.inOut",
       y: 0,
       stagger: 0.015,
-      delay: 0.3,
+      delay: 0.04,
     }
   );
 
@@ -45,11 +45,11 @@ export function initialFX() {
     { opacity: 0, y: 20 },
     {
       opacity: 1,
-      duration: 1.2,
+      duration: 0.5,
       ease: "power1.inOut",
       y: 0,
-      stagger: 0.1,
-      delay: 1.0,
+      stagger: 0.06,
+      delay: 0.08,
     }
   );
 
@@ -58,9 +58,9 @@ export function initialFX() {
     { opacity: 0 },
     {
       opacity: 1,
-      duration: 1.2,
+      duration: 0.45,
       ease: "power1.inOut",
-      delay: 0.1,
+      delay: 0.04,
     }
   );
 }

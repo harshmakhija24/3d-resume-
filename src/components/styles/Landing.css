@@ -39,8 +39,8 @@
   z-index: 1;
   opacity: 0.28;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(240, 166, 189, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 166, 189, 0.045) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 90%);
 }
@@ -192,7 +192,7 @@
 
 .landing-eyebrow {
   margin: 0 0 1.25rem;
-  color: var(--mutedColor);
+  color: var(--pinkAccent);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -207,9 +207,9 @@
   margin-bottom: 2rem;
   padding: 0.55rem 0.8rem;
   color: var(--bodyColor);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--pinkLine);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--pinkSoft);
   font-size: 0.72rem;
   letter-spacing: 0.05em;
 }
@@ -218,8 +218,8 @@
   width: 0.42rem;
   height: 0.42rem;
   border-radius: 50%;
-  background: var(--accentColor);
-  box-shadow: 0 0 0 0.25rem rgba(200, 239, 117, 0.12), 0 0 1rem rgba(200, 239, 117, 0.45);
+  background: var(--pinkAccent);
+  box-shadow: 0 0 0 0.25rem rgba(240, 166, 189, 0.16), 0 0 1rem rgba(240, 166, 189, 0.45);
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 

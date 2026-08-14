@@ -21,7 +21,7 @@ const Loading = () => {
       } catch (error) {
         console.warn("Entrance animation skipped", error);
       }
-    }, 350);
+    }, 120);
 
     return () => {
       cancelled = true;
