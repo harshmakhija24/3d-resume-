@@ -4,12 +4,6 @@ import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
 import { useLoading } from "../../context/LoadingProvider";
 import handleResize from "./utils/resizeUtils";
-import {
-  handleMouseMove,
-  handleTouchEnd,
-  handleHeadRotation,
-  handleTouchMove,
-} from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
 
@@ -29,12 +23,18 @@ const Scene = () => {
 
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true,
+        antialias: false,
+        powerPreference: "high-performance",
       });
-      renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      const renderScale = window.innerWidth > 1024 ? 0.62 : 0.72;
+      renderer.setSize(container.width * renderScale, container.height * renderScale, false);
+      renderer.domElement.style.width = "100%";
+      renderer.domElement.style.height = "100%";
+      renderer.setPixelRatio(1);
+      renderer.shadowMap.enabled = false;
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
       canvasDiv.current.appendChild(renderer.domElement);
 
       const camera = new THREE.PerspectiveCamera(14.5, aspect, 0.1, 1000);
@@ -48,6 +48,12 @@ const Scene = () => {
       let mixer: THREE.AnimationMixer;
 
       const clock = new THREE.Clock();
+      let isPageVisible = document.visibilityState === "visible";
+      let isInViewport = true;
+      let animId = 0;
+      let lastFrameTime = performance.now();
+      let renderUntil = performance.now() + 6000;
+      let scrollEndTimer: number | undefined;
 
       const light = setLighting(scene);
       let progress = setProgress((value) => setLoading(value));
@@ -56,7 +62,6 @@ const Scene = () => {
       loadCharacter().then((gltf) => {
         if (gltf) {
           const animations = setAnimations(gltf);
-          hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
           mixer = animations.mixer;
           let character = gltf.scene;
           scene.add(character);
@@ -66,6 +71,8 @@ const Scene = () => {
             setTimeout(() => {
               light.turnOnLights();
               animations.startIntro();
+              renderUntil = performance.now() + 4500;
+              startRenderLoop();
             }, 900);
           });
           const onResize = () => handleResize(renderer, camera, canvasDiv, character);
@@ -74,64 +81,86 @@ const Scene = () => {
         }
       });
 
-      let mouse = { x: 0, y: 0 },
-        interpolation = { x: 0.1, y: 0.2 };
-
-      const onMouseMove = (event: MouseEvent) => {
-        handleMouseMove(event, (x, y) => (mouse = { x, y }));
+      const requestRender = (duration = 260) => {
+        renderUntil = Math.max(renderUntil, performance.now() + duration);
+        startRenderLoop();
       };
-      document.addEventListener("mousemove", onMouseMove);
-      
-      let debounce: number | undefined;
-      const onTouchMove = (e: TouchEvent) => handleTouchMove(e, (x, y) => (mouse = { x, y }));
-      
-      const onTouchStart = (event: TouchEvent) => {
-        const element = event.target as HTMLElement;
-        debounce = setTimeout(() => {
-          element?.addEventListener("touchmove", onTouchMove);
-        }, 200);
+      const stopRenderLoop = () => {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = 0;
+        }
       };
 
-      const onTouchEnd = (event: TouchEvent) => {
-        const element = event.target as HTMLElement;
-        element?.removeEventListener("touchmove", onTouchMove);
-        clearTimeout(debounce);
-        
-        handleTouchEnd((x, y, interpolationX, interpolationY) => {
-          mouse = { x, y };
-          interpolation = { x: interpolationX, y: interpolationY };
-        });
-      };
+      const renderLoop = (time: number) => {
+        if (!isPageVisible || !isInViewport || time > renderUntil) {
+          animId = 0;
+          return;
+        }
 
-      const landingDiv = document.getElementById("landingDiv");
-      if (landingDiv) {
-        landingDiv.addEventListener("touchstart", onTouchStart);
-        landingDiv.addEventListener("touchend", onTouchEnd);
-      }
-      let animId: number;
-      const animate = () => {
-        animId = requestAnimationFrame(animate);
+        if (time - lastFrameTime < 1000 / 30) {
+          animId = requestAnimationFrame(renderLoop);
+          return;
+        }
+
+        const delta = Math.min((time - lastFrameTime) / 1000, 0.05);
+        lastFrameTime = time;
+
         if (headBone) {
-          handleHeadRotation(
-            headBone,
-            mouse.x,
-            mouse.y,
-            interpolation.x,
-            interpolation.y,
-            THREE.MathUtils.lerp
-          );
           light.setPointLight(screenLight);
         }
-        const delta = clock.getDelta();
         if (mixer) {
-          mixer.update(delta);
+          mixer.update(delta || clock.getDelta());
         }
         renderer.render(scene, camera);
+        animId = requestAnimationFrame(renderLoop);
       };
-      animate();
+
+      const startRenderLoop = () => {
+        if (!animId && isPageVisible && isInViewport) {
+          lastFrameTime = performance.now();
+          animId = requestAnimationFrame(renderLoop);
+        }
+      };
+
+      const onVisibilityChange = () => {
+        isPageVisible = document.visibilityState === "visible";
+        if (isPageVisible) requestRender(1200);
+        else stopRenderLoop();
+      };
+      document.addEventListener("visibilitychange", onVisibilityChange);
+
+      const onScroll = () => {
+        stopRenderLoop();
+        window.clearTimeout(scrollEndTimer);
+        scrollEndTimer = window.setTimeout(() => requestRender(180), 140);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          isInViewport = entry.isIntersecting;
+          if (isInViewport) startRenderLoop();
+          else stopRenderLoop();
+        },
+        { threshold: 0.02 }
+      );
+      observer.observe(canvasDiv.current);
+      startRenderLoop();
+
       return () => {
-        clearTimeout(debounce);
-        cancelAnimationFrame(animId);
+        window.clearTimeout(scrollEndTimer);
+        stopRenderLoop();
+        observer.disconnect();
+        document.removeEventListener("visibilitychange", onVisibilityChange);
+        window.removeEventListener("scroll", onScroll);
+        scene.traverse((object) => {
+          const mesh = object as THREE.Mesh;
+          if (mesh.geometry) mesh.geometry.dispose();
+          const material = mesh.material;
+          if (Array.isArray(material)) material.forEach((item) => item.dispose());
+          else if (material) material.dispose();
+        });
         scene.clear();
         renderer.dispose();
         if (resizeHandlerRef.current) {
@@ -140,11 +169,6 @@ const Scene = () => {
         }
         if (canvasDiv.current) {
           canvasDiv.current.removeChild(renderer.domElement);
-        }
-        document.removeEventListener("mousemove", onMouseMove);
-        if (landingDiv) {
-          landingDiv.removeEventListener("touchstart", onTouchStart);
-          landingDiv.removeEventListener("touchend", onTouchEnd);
         }
       };
     }

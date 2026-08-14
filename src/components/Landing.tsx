@@ -15,7 +15,6 @@ const Landing = ({ children }: PropsWithChildren) => {
             <span className="status-dot" />
             <span>Business strategy · Product · AI</span>
           </div>
-          <p className="landing-eyebrow">01 / PROFILE</p>
           <h2>Hello, I&apos;m</h2>
           <h1 id="hero-title">
             Harsh
@@ -49,16 +48,7 @@ const Landing = ({ children }: PropsWithChildren) => {
 
           <div className="landing-ctas">
             <a href="#work" className="btn btn-primary">
-              View selected work <span aria-hidden="true">↗</span>
-            </a>
-            <a
-              href={`${import.meta.env.BASE_URL}Harsh_Makhija_CV.pdf`}
-              target="_blank"
-              rel="noopener noreferrer"
-              download="Harsh_Makhija_CV.pdf"
-              className="btn btn-secondary"
-            >
-              Download CV <span aria-hidden="true">↓</span>
+              Explore selected work <span aria-hidden="true">↗</span>
             </a>
           </div>
           <p className="landing-note">Scroll to see the products, communities, and experiences behind the numbers.</p>

@@ -12,7 +12,10 @@ export default function handleResize(
   let canvas3d = canvasDiv.current.getBoundingClientRect();
   const width = canvas3d.width;
   const height = canvas3d.height;
-  renderer.setSize(width, height);
+  const renderScale = window.innerWidth > 1024 ? 0.62 : 0.72;
+  renderer.setSize(width * renderScale, height * renderScale, false);
+  renderer.domElement.style.width = "100%";
+  renderer.domElement.style.height = "100%";
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   const workTrigger = ScrollTrigger.getById("work");

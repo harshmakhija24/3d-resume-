@@ -10,11 +10,6 @@ export function setCharTimeline(
   charTimelines.forEach(tl => tl.kill());
   charTimelines = [];
 
-  let intensity: number = 0;
-  if ((window as any)._monitorInterval) clearInterval((window as any)._monitorInterval);
-  (window as any)._monitorInterval = setInterval(() => {
-    intensity = Math.random();
-  }, 200);
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".landing-section",
@@ -58,11 +53,7 @@ export function setCharTimeline(
       object.material.transparent = true;
       object.material.opacity = 0;
       object.material.emissive.set("#B0F5EA");
-      gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
-        emissiveIntensity: () => intensity * 8,
-        duration: () => Math.random() * 0.6,
-        delay: () => Math.random() * 0.1,
-      });
+      object.material.emissiveIntensity = 1.8;
       screenLight = object;
     }
   });
