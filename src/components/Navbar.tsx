@@ -62,9 +62,6 @@ const Navbar = () => {
         <a href="#landingDiv" className="navbar-title" data-cursor="disable" aria-label="Back to home">
           HM
         </a>
-        <span className="navbar-connect" aria-label="Portfolio focus">
-          PRODUCT · AI · COMMUNITY
-        </span>
         <ul>
           <li>
             <a data-href="#about" href="#about" className={linkClass("about")} aria-current={activeSection === "about" ? "page" : undefined}>

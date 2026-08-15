@@ -33,17 +33,31 @@ const WorkImage = ({
       if (event.key === "Escape") setIsPreviewOpen(false);
     };
 
-    const previousOverflow = document.body.style.overflow;
     document.documentElement.classList.add("cursor-iframe");
-    document.body.style.overflow = "hidden";
+
+    const closeOnOutsideScroll = (event: Event) => {
+      const dialog = document.querySelector(".product-preview-dialog");
+      const target = event.target;
+
+      // Keep native scrolling inside the embedded product. Close only when the
+      // user scrolls over the backdrop/header/footer area outside the iframe.
+      if (!dialog || !(target instanceof Node) || !dialog.contains(target)) {
+        setIsPreviewOpen(false);
+      }
+    };
+
     window.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("wheel", closeOnOutsideScroll, { capture: true, passive: true });
+    window.addEventListener("touchmove", closeOnOutsideScroll, { capture: true, passive: true });
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.documentElement.classList.remove("cursor-iframe");
       window.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("wheel", closeOnOutsideScroll, true);
+      window.removeEventListener("touchmove", closeOnOutsideScroll, true);
     };
   }, [isPreviewOpen]);
+
 
   const imageContent = (
     <div className="work-image-frame">
@@ -136,7 +150,7 @@ const WorkImage = ({
           />
         </div>
         <div className="product-preview-footer">
-          <p><strong>Interactive preview:</strong> hover menus, cards, and controls inside the frame. Open the full demo for the most spacious view.</p>
+          <p><strong>Interactive preview:</strong> hover menus, cards, and controls inside the frame. Scroll inside the frame to explore; scroll outside it to close. Open the full demo for the most spacious view.</p>
           <a className="product-preview-open" href={previewLink} target="_blank" rel="noreferrer noopener" data-cursor="disable">
             <MdOpenInNew aria-hidden="true" /> Open full demo
           </a>
