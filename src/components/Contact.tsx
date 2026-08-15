@@ -40,7 +40,7 @@ const Contact = () => {
           <div className="contact-box">
             <h4>Education</h4>
             <p>BBA, Indian Institute of Management Bangalore — 2024–Present</p>
-            <p>Diploma in Advertising, NAEMD (IGNOU) — 2023–2024 · Rank 4/41</p>
+            <p>Diploma in Advertising, NAEMD (IGNOU) — 2023–2024 · 7.33 CGPA · Rank 4/41</p>
           </div>
 
           <div className="contact-box contact-signature">
