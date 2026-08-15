@@ -46,16 +46,16 @@ const ahamAatmGallery: GalleryImage[] = [
 
 const projects: Project[] = [
   {
-    title: "KrishiTech",
+    title: "KrishiTek",
     category: "Product build · Agriculture and AI",
     tools: "KrishiBot · multilingual AI journeys · Supabase RBAC · farmer-first UX",
     outcome:
       "Reworked a farmer-facing platform into a clearer product journey across discovery, dealer workflows, and AI support.",
     image: import.meta.env.BASE_URL + "images/product-krishitech.svg",
     link: "https://krishitek-website.vercel.app",
-    linkLabel: "Experience KrishiTech",
+    linkLabel: "Experience KrishiTek",
     previewLink: "https://krishitek-website.vercel.app",
-    previewLabel: "Preview KrishiTech",
+    previewLabel: "Preview KrishiTek",
     kind: "product",
     themeClass: "accent-tech",
   },
