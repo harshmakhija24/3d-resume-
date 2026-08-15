@@ -7,14 +7,10 @@ const About = () => {
         <p className="section-kicker">02 / CONTEXT</p>
         <h3 className="title">About Me</h3>
         <p className="para">
-          I&apos;m a BBA student at IIM Bangalore who works at the intersection of business strategy,
-          product development, and practical AI.
+          I&apos;m a BBA(DBE) student at IIM Bangalore building at the intersection of product, growth, and applied AI.
         </p>
         <p className="para">
-          My edge is moving from a question to a working system quickly: shaping the idea,
-          validating the experience, and using modern AI tools to prototype responsibly. I&apos;ve
-          built chatbots, recommendation engines, RBAC-backed platforms, and growth systems for
-          both institutional and commercial contexts.
+          My edge is moving from a question to a working system quickly. At IIMBx, I engineered executive dashboards and integrated Gemini AI into a conversational interface; across KrishiTech, Wandr, and Last Life, I have shaped products, journeys, and growth systems from the user need backwards.
         </p>
         <div className="about-stats" aria-label="Selected experience highlights">
           <span className="stat-line">
@@ -31,8 +27,7 @@ const About = () => {
           </span>
         </div>
         <p className="para about-close">
-          I like work that connects a clear business objective to something people can actually
-          use.
+          I do my best work where a clear business objective meets something people can actually use — and where the team can measure whether it worked.
         </p>
       </div>
     </div>

@@ -13,22 +13,21 @@ const Landing = ({ children }: PropsWithChildren) => {
         <div className="landing-intro">
           <div className="landing-status">
             <span className="status-dot" />
-            <span>Business strategy · Product · AI</span>
+            <span>AI product · Growth systems · Strategy</span>
           </div>
           <h2>Hello, I&apos;m</h2>
           <h1 id="hero-title">
             <span className="hero-first-name">Harsh</span>{" "}
             <span>Makhija</span>
           </h1>
-          <p className="landing-role">BBA · IIM Bangalore / Product strategy · Builder</p>
+          <p className="landing-role">BBA · IIM Bangalore / Product + growth builder</p>
         </div>
 
         <div className="landing-info">
-          <p className="landing-eyebrow">BUSINESS × TECHNOLOGY</p>
-          <h3>I turn ambitious ideas into useful systems.</h3>
+          <p className="landing-eyebrow">AI × GROWTH</p>
+          <h3>I turn AI-enabled ideas into useful systems.</h3>
           <p className="landing-tagline">
-            I work across business strategy, product thinking, and practical AI — from early
-            prototypes to platforms used by real communities.
+            I connect product thinking, practical AI, and growth execution — from Gemini-enabled dashboards to platforms adopted by real communities.
           </p>
 
           <div className="landing-stats" aria-label="Selected impact metrics">

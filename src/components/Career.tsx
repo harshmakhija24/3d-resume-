@@ -7,7 +7,7 @@ const careerTimeline = [
     title: "Tech Intern",
     company: "IIMBx",
     description:
-      "Building a B2B course suggestion engine with TF-IDF matching and LLM support, with a focus on useful recommendations and efficient token usage.",
+      "Engineered two executive dashboards for SWAYAM and BBA DBE; integrated Gemini AI into a conversational leadership interface and managed deployment with Git, cPanel, and technical documentation.",
     tag: "AI PRODUCT"
   },
   {
@@ -31,7 +31,7 @@ const careerTimeline = [
     title: "Project Intern",
     company: "IIM Bangalore",
     description:
-      "Supported talent acquisition by screening 1,000+ candidates and produced 25+ short-form videos and podcasts for the institution.",
+      "Screened and shortlisted 1,000+ candidates for research projects, while supporting official social content and producing 25+ videos and podcasts for the institution.",
     tag: "PEOPLE + MEDIA"
   },
   {
@@ -39,15 +39,15 @@ const careerTimeline = [
     title: "Global Cohort",
     company: "Hiroshima University · Agile COIL e-START",
     description:
-      "Selected for an international cohort working across 10 Asia-Pacific and European universities.",
-    tag: "GLOBAL PROGRAM"
+      "Selected for the Agile COIL e-START cohort across 10 universities; contributed comparative Disaster Response & Resilience research and translated the findings into a clear visual presentation.",
+    tag: "GLOBAL · CASE STUDY"
   },
   {
     year: "2024",
     title: "Co-Founder",
     company: "Last Life · E-sports",
     description:
-      "Launched an e-sports platform that reached 12,000+ users in 45 days and generated more than ₹1.5 lakh in revenue.",
+      "Launched an e-sports platform that reached 12,000+ users in 45 days, generated ₹1.5 lakh+ in revenue, and achieved a 25% net profit margin.",
     tag: "VENTURE"
   },
   {
