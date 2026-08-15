@@ -5,9 +5,18 @@ interface Props {
   alt?: string;
   link?: string;
   linkLabel?: string;
+  secondaryLink?: string;
+  secondaryLabel?: string;
 }
 
-const WorkImage = ({ image, alt, link, linkLabel = "View live project" }: Props) => {
+const WorkImage = ({
+  image,
+  alt,
+  link,
+  linkLabel = "View live project",
+  secondaryLink,
+  secondaryLabel = "View source",
+}: Props) => {
   const imageContent = (
     <div className="work-image-frame">
       <img
@@ -44,12 +53,34 @@ const WorkImage = ({ image, alt, link, linkLabel = "View live project" }: Props)
         data-cursor="disable"
       >
         {imageContent}
-        <span className="work-link">
+      </a>
+      <div className="work-link-row">
+        <a
+          className="work-link"
+          href={link}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={`${linkLabel}: ${alt ?? "project"}`}
+          data-cursor="disable"
+        >
           <MdLanguage aria-hidden="true" />
           <span>{linkLabel}</span>
           <MdArrowOutward aria-hidden="true" />
-        </span>
-      </a>
+        </a>
+        {secondaryLink && (
+          <a
+            className="work-link work-link-secondary"
+            href={secondaryLink}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label={`${secondaryLabel}: ${alt ?? "project"}`}
+            data-cursor="disable"
+          >
+            <span>{secondaryLabel}</span>
+            <MdArrowOutward aria-hidden="true" />
+          </a>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Website Auditor product preview</title>
+  <desc id="desc">A fictional website audit and redesign workspace with page inventory, content signals, and a Northstar Learning preview.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#171d1a"/>
+      <stop offset="1" stop-color="#3a302f"/>
+    </linearGradient>
+    <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1a5ae"/>
+      <stop offset="1" stop-color="#d87589"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="860" rx="42" fill="url(#bg)"/>
+  <circle cx="1060" cy="740" r="250" fill="#d6f77d" opacity=".05"/>
+  <rect x="72" y="70" width="1056" height="720" rx="24" fill="#131816" stroke="#5a5b50" stroke-width="2"/>
+  <rect x="72" y="70" width="1056" height="66" rx="24" fill="#252c25"/>
+  <circle cx="108" cy="103" r="8" fill="#ef8e9b"/>
+  <circle cx="136" cy="103" r="8" fill="#e1c86f"/>
+  <circle cx="164" cy="103" r="8" fill="#9dcf77"/>
+  <text x="210" y="110" fill="#e9f1e5" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2">NORTHSTAR LEARNING / AUDIT STUDIO</text>
+  <rect x="72" y="136" width="250" height="654" fill="#1c241f"/>
+  <text x="110" y="186" fill="#d6f77d" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">WORKSPACE</text>
+  <rect x="104" y="218" width="184" height="42" rx="10" fill="#d6f77d"/>
+  <text x="124" y="244" fill="#192119" font-family="Arial, sans-serif" font-size="13" font-weight="700">Overview</text>
+  <text x="124" y="300" fill="#a7b2a3" font-family="Arial, sans-serif" font-size="13">Page inventory</text>
+  <text x="124" y="350" fill="#a7b2a3" font-family="Arial, sans-serif" font-size="13">Content signals</text>
+  <text x="124" y="400" fill="#a7b2a3" font-family="Arial, sans-serif" font-size="13">Design directions</text>
+  <text x="124" y="450" fill="#a7b2a3" font-family="Arial, sans-serif" font-size="13">Preview routes</text>
+  <line x1="104" y1="650" x2="288" y2="650" stroke="#435042"/>
+  <text x="104" y="692" fill="#8d9c88" font-family="Arial, sans-serif" font-size="11" letter-spacing="1">CASE STUDY DEMO</text>
+  <text x="104" y="720" fill="#f0c5ca" font-family="Arial, sans-serif" font-size="15" font-weight="700">Audit → Structure → UI</text>
+  <text x="360" y="190" fill="#f0f5ed" font-family="Arial, sans-serif" font-size="30" font-weight="700">Make the experience easier to enter.</text>
+  <text x="360" y="222" fill="#9ca99a" font-family="Arial, sans-serif" font-size="14">A fictional education platform audit, turned into a navigable design system.</text>
+  <rect x="360" y="266" width="218" height="126" rx="18" fill="#273128"/>
+  <text x="388" y="302" fill="#879886" font-family="Arial, sans-serif" font-size="12">PAGES REVIEWED</text>
+  <text x="388" y="356" fill="#d6f77d" font-family="Arial, sans-serif" font-size="38" font-weight="700">53</text>
+  <rect x="596" y="266" width="218" height="126" rx="18" fill="#273128"/>
+  <text x="624" y="302" fill="#879886" font-family="Arial, sans-serif" font-size="12">SIGNALS FOUND</text>
+  <text x="624" y="356" fill="#f0c5ca" font-family="Arial, sans-serif" font-size="38" font-weight="700">18</text>
+  <rect x="832" y="266" width="244" height="126" rx="18" fill="#352a2d"/>
+  <text x="860" y="302" fill="#c9a1a8" font-family="Arial, sans-serif" font-size="12">DESIGN DIRECTIONS</text>
+  <text x="860" y="356" fill="#f7dfe1" font-family="Arial, sans-serif" font-size="27" font-weight="700">04 routes</text>
+  <rect x="360" y="430" width="430" height="258" rx="20" fill="#202a22"/>
+  <text x="390" y="474" fill="#f0f5ed" font-family="Arial, sans-serif" font-size="17" font-weight="700">Audit signal map</text>
+  <text x="390" y="502" fill="#81907e" font-family="Arial, sans-serif" font-size="12">Where content and navigation need a clearer handoff</text>
+  <rect x="390" y="542" width="130" height="22" rx="11" fill="#d6f77d"/>
+  <rect x="390" y="580" width="248" height="22" rx="11" fill="#9ab864" opacity=".68"/>
+  <rect x="390" y="618" width="188" height="22" rx="11" fill="#f1a5ae" opacity=".8"/>
+  <text x="538" y="558" fill="#c6d7bd" font-family="Arial, sans-serif" font-size="11">Navigation clarity</text>
+  <text x="654" y="596" fill="#c6d7bd" font-family="Arial, sans-serif" font-size="11">Content hierarchy</text>
+  <text x="594" y="634" fill="#c6d7bd" font-family="Arial, sans-serif" font-size="11">Conversion paths</text>
+  <rect x="808" y="430" width="268" height="258" rx="20" fill="#f1ebe2"/>
+  <rect x="830" y="456" width="224" height="36" rx="8" fill="#2b4031"/>
+  <text x="848" y="480" fill="#d6f77d" font-family="Arial, sans-serif" font-size="12" font-weight="700">NORTHSTAR LEARNING</text>
+  <text x="830" y="538" fill="#243126" font-family="Arial, sans-serif" font-size="21" font-weight="700">Learn with a</text>
+  <text x="830" y="564" fill="#243126" font-family="Arial, sans-serif" font-size="21" font-weight="700">clearer next step.</text>
+  <rect x="830" y="596" width="112" height="30" rx="15" fill="#e68e9d"/>
+  <text x="851" y="616" fill="#311f26" font-family="Arial, sans-serif" font-size="10" font-weight="700">EXPLORE</text>
+  <text x="360" y="742" fill="#f1a5ae" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">WEBSITE AUDITOR / FICTIONAL DEMO</text>
+</svg>

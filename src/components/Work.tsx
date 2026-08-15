@@ -17,7 +17,10 @@ type Project = {
   image: string;
   link?: string;
   linkLabel?: string;
+  secondaryLink?: string;
+  secondaryLabel?: string;
   gallery?: GalleryImage[];
+  kind: "product" | "venture" | "impact";
   themeClass: "accent-tech" | "accent-business";
 };
 
@@ -42,35 +45,66 @@ const ahamAatmGallery: GalleryImage[] = [
 const projects: Project[] = [
   {
     title: "KrishiTech",
-    category: "Digital product · Full-stack overhaul",
-    tools: "AI chatbot · multilingual LLM workflows · Supabase RBAC",
+    category: "Product build · Agriculture and AI",
+    tools: "KrishiBot · multilingual AI journeys · Supabase RBAC · farmer-first UX",
     outcome:
-      "A farmer-first agriculture platform with product discovery, dealer journeys, and KrishiBot AI support.",
+      "Reworked a farmer-facing platform into a clearer product journey across discovery, dealer workflows, and AI support.",
     image: import.meta.env.BASE_URL + "images/preview1.png",
     link: "https://krishitek-website.vercel.app",
     linkLabel: "Experience KrishiTech",
+    kind: "product",
     themeClass: "accent-tech",
   },
   {
     title: "PM Dashboard",
-    category: "Built product · Project intelligence demo",
-    tools: "Project portfolio · milestone tracking · team ledgers · PM insights",
+    category: "Product build · Project intelligence",
+    tools: "Portfolio tracking · milestone risk · team allocation · delivery signals",
     outcome:
-      "A fictionalized operations dashboard that makes project risk, velocity, and team allocation visible in one working interface.",
+      "A working operations dashboard that turns project status, velocity, and resourcing into an executive-ready view.",
     image: import.meta.env.BASE_URL + "images/product-pm-dashboard.svg",
-    link: import.meta.env.BASE_URL + "demos/pm-dashboard/",
-    linkLabel: "Open PM Dashboard",
+    link: "https://harshmakhija24.github.io/pm-dashboard-demo-/",
+    linkLabel: "Open live demo",
+    secondaryLink: import.meta.env.BASE_URL + "demos/pm-dashboard/",
+    secondaryLabel: "Portfolio fallback",
+    kind: "product",
     themeClass: "accent-business",
   },
   {
     title: "Course Intelligence",
-    category: "Built product · Recommendation operations demo",
+    category: "Product build · Recommendation operations",
     tools: "Course catalogue · explainable recommendations · graph view · CRUD workflows",
     outcome:
-      "A working recommendation and catalogue-operations system with local deterministic fallback, filters, graph exploration, and report export.",
+      "A usable recommendation and catalogue-operations system with filters, graph exploration, deterministic fallback, and report export.",
     image: import.meta.env.BASE_URL + "images/product-course-intelligence.svg",
-    link: import.meta.env.BASE_URL + "demos/suggestion-engine/",
-    linkLabel: "Open Course Intelligence",
+    link: "https://harshmakhija24.github.io/suggestion-engine-demo-/",
+    linkLabel: "Open live demo",
+    secondaryLink: import.meta.env.BASE_URL + "demos/suggestion-engine/",
+    secondaryLabel: "Portfolio fallback",
+    kind: "product",
+    themeClass: "accent-tech",
+  },
+  {
+    title: "CEO Dashboard",
+    category: "Product build · Executive learning operations",
+    tools: "Programme intelligence · KPI views · stage drill-downs · deterministic AI assistant",
+    outcome:
+      "A fictional executive control room that connects programme health, course completion, and operating decisions in one interface.",
+    image: import.meta.env.BASE_URL + "images/product-ceo-dashboard.svg",
+    link: "https://harshmakhija24.github.io/ceo-dashboard-portfolio-demo-/",
+    linkLabel: "Open live demo",
+    kind: "product",
+    themeClass: "accent-business",
+  },
+  {
+    title: "Website Auditor",
+    category: "Product build · Audit-to-design workflow",
+    tools: "Content audit · route systems · UI direction · Northstar Learning demo",
+    outcome:
+      "A navigable audit and redesign workspace showing how research, content structure, and interface decisions become a coherent platform.",
+    image: import.meta.env.BASE_URL + "images/product-website-auditor.svg",
+    link: "https://harshmakhija24.github.io/wesbite-auditor-cum-designer-demo-/",
+    linkLabel: "Open live demo",
+    kind: "product",
     themeClass: "accent-tech",
   },
   {
@@ -82,6 +116,7 @@ const projects: Project[] = [
     image: import.meta.env.BASE_URL + "images/events.png",
     link: "https://harshmakhija24.github.io/DDT-PROJECT-/",
     linkLabel: "View live prototype",
+    kind: "venture",
     themeClass: "accent-tech",
   },
   {
@@ -91,6 +126,7 @@ const projects: Project[] = [
     outcome:
       "Built and launched a platform that reached 12,000+ users in 45 days and generated ₹1.5L+ in revenue.",
     image: import.meta.env.BASE_URL + "images/lastlife.png",
+    kind: "venture",
     themeClass: "accent-business",
   },
   {
@@ -101,6 +137,7 @@ const projects: Project[] = [
       "Supported community programs that served more than 10,000 people through practical, local initiatives.",
     image: import.meta.env.BASE_URL + "images/ngo.png",
     gallery: ahamAatmGallery,
+    kind: "impact",
     themeClass: "accent-business",
   },
 ];
@@ -224,7 +261,7 @@ const Work = () => {
             </h2>
           </div>
           <p className="work-heading-note">
-            A small set of products, ventures, and community systems I have helped shape.
+            Five working product systems first, then the venture and community work that grounds how I build.
           </p>
         </div>
 
@@ -265,7 +302,7 @@ const Work = () => {
                     <div className="carousel-info">
                       <div className="carousel-details">
                         <span className={`carousel-number-tag ${project.themeClass}`}>
-                          PROJECT 0{index + 1}
+                          {project.kind === "product" ? "PRODUCT" : project.kind.toUpperCase()} {String(index + 1).padStart(2, "0")}
                         </span>
                         <h3 className={`carousel-title ${project.themeClass}`}>
                           {project.title}
@@ -290,6 +327,8 @@ const Work = () => {
                           alt={`${project.title} project preview`}
                           link={project.link}
                           linkLabel={project.linkLabel}
+                          secondaryLink={project.secondaryLink}
+                          secondaryLabel={project.secondaryLabel}
                         />
                       )}
                     </div>
