@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Northstar Learning · Modern Manager Programme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#172D6B;
+    --navy-d:#0F1D49;
+    --marigold:#C97138;
+    --char:#1A1B1E;
+    --paper:#F4EFE3;
+    --paper-2:#FBF8F1;
+    --stone:#5B5F66;
+    --steel:#5B5F66;
+    --pebble:#9B9591;
+    --sand:#DCD3BC;
+    --line:rgba(26,27,30,.10);
+    --line-d:rgba(244,239,227,.16);
+    --accent:var(--marigold);
+    
+    /* Map banned colors to approved colors to ensure automatic CSS compliance */
+    --eucalyptus:var(--navy);
+    --eucalyptus-d:var(--navy-d);
+    --apricot:var(--marigold);
+  }
+  html,body{background:var(--paper);color:var(--char);font-family:'Inter','IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--navy);color:var(--paper)}
+
+  .display{font-family:'Source Serif 4','Source Serif Pro',Georgia,serif;font-weight:600;letter-spacing:-.022em;line-height:.95;color:var(--char)}
+  .display em{font-style:italic;font-weight:500;color:var(--marigold)}
+  .eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);font-weight:500}
+  .body{font-size:16px;line-height:1.62;color:var(--char)}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+  section{padding:120px 0;position:relative}
+  hr.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(244,239,227,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav__inner{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;max-width:1280px;margin:0 auto;gap:30px}
+  .nav__brand{display:flex;align-items:center;gap:18px}
+  .nav__brand img{height:44px;width:auto;display:block}
+  .nav__brand .ctx{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);padding-left:18px;border-left:1px solid var(--line);line-height:1.4}
+  .nav__brand .ctx b{display:block;color:var(--char);font-weight:600;font-family:'Source Serif 4',serif;font-size:14px;letter-spacing:.01em;text-transform:none;margin-top:3px}
+  .nav__links{display:flex;gap:30px;font-size:13px;color:var(--stone)}
+  .nav__links a:hover{color:var(--char)}
+  .nav__cta{display:inline-block;background:var(--marigold);color:#FFFFFF;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:.02em;transition:transform .2s ease,background .2s ease}
+  .nav__cta:hover{transform:translateY(-1px);background:var(--navy-d)}
+
+  /* HERO – the SHIFT */
+  .hero{padding:0;border-bottom:1px solid var(--line)}
+  .hero__inner{display:grid;grid-template-columns:1.1fr .9fr;min-height:84vh}
+  .hero__left{padding:80px 60px 80px 0;display:flex;flex-direction:column;justify-content:space-between}
+  .hero h1{font-size:clamp(44px,5.4vw,84px);margin-top:30px}
+  .hero p.lede{margin-top:32px;max-width:46ch;font-size:21px;line-height:1.45;color:var(--stone)}
+  .hero__meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-d);background:var(--paper-2)}
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--marigold)}
+
+  /* shift diagram in hero */
+  .hero__right{background:var(--char);color:var(--paper);padding:60px 50px;display:flex;flex-direction:column;justify-content:flex-start;gap:42px;position:relative;overflow:hidden}
+  .hero__right::before{content:"";position:absolute;width:520px;height:520px;background:radial-gradient(closest-side,var(--navy) 0%,transparent 70%);right:-160px;top:-160px;opacity:.32;pointer-events:none}
+  .hero__right::after{content:"";position:absolute;width:480px;height:480px;background:radial-gradient(closest-side,var(--marigold) 0%,transparent 70%);left:-160px;bottom:-180px;opacity:.20;pointer-events:none}
+
+  /* hero opener — sits at top of right panel */
+  .hero__opener{position:relative;z-index:1}
+  .hero__opener .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--marigold);text-transform:uppercase}
+  .hero__opener .h{font-family:'Source Serif 4',serif;font-style:italic;font-size:28px;line-height:1.25;color:var(--paper);font-weight:500;margin-top:14px;max-width:30ch}
+  .hero__opener .h em{font-style:italic;color:var(--marigold);font-weight:600;text-decoration:underline;text-decoration-color:rgba(201,113,56,.4);text-underline-offset:6px}
+
+  .shift{position:relative;z-index:1}
+  .shift .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--marigold);text-transform:uppercase;margin-bottom:20px;display:none}
+  .shift__row{display:grid;grid-template-columns:1fr 32px 1fr;align-items:center;gap:14px;padding:18px 0;border-top:1px solid rgba(244,239,227,.16)}
+  .shift__row:last-child{border-bottom:1px solid rgba(244,239,227,.16)}
+  .shift__from,.shift__to{font-family:'Source Serif 4',serif;font-weight:500;font-size:20px;line-height:1.15;color:var(--paper)}
+  .shift__from{color:rgba(244,239,227,.45);text-decoration:line-through;text-decoration-color:rgba(244,239,227,.25)}
+  .shift__to{color:var(--paper)}
+  .shift__to em{font-style:italic;color:var(--marigold)}
+  .shift__arr{font-family:'IBM Plex Mono',monospace;color:var(--navy);text-align:center;font-size:18px}
+
+  /* hero closer — sits at bottom */
+  .hero__closer{position:relative;z-index:1;display:flex;align-items:center;gap:18px;margin-top:auto;padding-top:28px}
+  .hero__closer .stamp{font-family:'Source Serif 4',serif;font-style:italic;font-weight:600;font-size:54px;line-height:.9;color:var(--marigold);letter-spacing:-.02em}
+  .hero__closer .copy{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:rgba(244,239,227,.7);text-transform:uppercase;line-height:1.45}
+  .hero__closer .copy b{display:block;font-family:'Source Serif 4',serif;font-style:normal;font-weight:600;color:var(--paper);font-size:16px;letter-spacing:.01em;text-transform:none;margin-top:4px}
+
+  /* stats */
+  .stats{background:var(--char);color:var(--paper);padding:70px 0}
+  .stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+  .stat .n{font-family:'Source Serif 4',serif;font-size:74px;font-weight:500;line-height:1;letter-spacing:-.02em;color:var(--paper)}
+  .stat .n em{color:var(--marigold);font-style:italic}
+  .stat .l{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,227,.55);margin-top:14px}
+
+  /* section head */
+  .sec-head{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:end;margin-bottom:60px}
+  .sec-head h2{font-size:clamp(38px,5vw,68px);font-family:'Source Serif 4',serif;font-weight:600;letter-spacing:-.02em;line-height:1;color:var(--char)}
+  .sec-head h2 em{font-style:italic;color:var(--navy);font-weight:500}
+  .sec-head p{max-width:54ch;font-size:18px;line-height:1.55;color:var(--stone)}
+
+  /* World Café origin band */
+  .origin{background:var(--paper-2);padding:90px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .origin__inner{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+  .origin .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--navy);text-transform:uppercase}
+  .origin h2{font-family:'Source Serif 4',serif;font-size:clamp(36px,4.6vw,60px);font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--char);margin-top:16px}
+  .origin h2 em{font-style:italic;color:var(--navy);font-weight:500}
+  .origin .pull{font-family:'Source Serif 4',serif;font-style:italic;font-size:30px;line-height:1.3;color:var(--char);margin-top:24px;max-width:42ch}
+  .origin .cred{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--stone);text-transform:uppercase;margin-top:14px}
+  .origin .right{padding:50px;background:var(--char);color:var(--paper);border-radius:8px;position:relative;overflow:hidden}
+  .origin .right::after{content:"";position:absolute;width:360px;height:360px;background:radial-gradient(closest-side,var(--marigold) 0%,transparent 70%);right:-120px;bottom:-120px;opacity:.18;pointer-events:none}
+  .origin .right .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--marigold);text-transform:uppercase}
+  .origin .right .head{font-family:'Source Serif 4',serif;font-size:28px;font-weight:500;color:var(--paper);margin-top:14px;line-height:1.2}
+  .origin .right ul{margin-top:24px;display:flex;flex-direction:column;gap:14px;position:relative;z-index:1}
+  .origin .right li{display:grid;grid-template-columns:30px 1fr;gap:12px;font-size:14px;line-height:1.55;color:rgba(244,239,227,.85)}
+  .origin .right li::before{content:"";width:18px;height:1px;background:var(--marigold);margin-top:11px;align-self:start}
+
+  /* 8 capabilities — ranked */
+  .caps{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+  .cap{padding:32px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start}
+  .cap:nth-child(odd){padding-right:40px;border-right:1px solid var(--line)}
+  .cap:nth-child(even){padding-left:40px}
+  .cap .n{font-family:'Source Serif 4',serif;font-style:italic;font-size:42px;font-weight:600;color:var(--navy);line-height:1}
+  .cap h3{font-family:'Source Serif 4',serif;font-weight:500;font-size:22px;line-height:1.18;color:var(--char);margin-bottom:8px}
+  .cap p{font-size:14.5px;line-height:1.55;color:var(--stone)}
+
+  /* curriculum buckets */
+  .buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .bkt{background:var(--paper-2);padding:40px 32px;display:flex;flex-direction:column;gap:14px;min-height:380px;transition:background .25s,color .25s}
+  .bkt:hover{background:var(--navy);color:var(--paper)}
+  .bkt:hover .bkt__num,.bkt:hover .bkt__name,.bkt:hover .bkt__list li{color:var(--paper)}
+  .bkt:hover .bkt__list li::before{background:var(--marigold)}
+  .bkt__num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--navy);text-transform:uppercase;transition:color .25s}
+  .bkt__name{font-family:'Source Serif 4',serif;font-weight:600;font-size:28px;line-height:1.1;color:var(--char);transition:color .25s}
+  .bkt__list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:auto}
+  .bkt__list li{font-size:14px;line-height:1.5;color:var(--stone);padding-left:18px;position:relative;transition:color .25s}
+  .bkt__list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--navy);transition:background .25s}
+
+  /* archetypes */
+  .arche{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+  .arch{padding:36px 32px;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,border-color .25s}
+  .arch:hover{transform:translateY(-3px);border-color:var(--navy)}
+  .arch__icon{width:48px;height:48px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-size:22px;font-style:italic;font-weight:600;color:var(--marigold)}
+  .arch__name{font-family:'Source Serif 4',serif;font-size:26px;font-weight:600;color:var(--char);line-height:1.1}
+  .arch__role{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--navy);text-transform:uppercase}
+  .arch__desc{font-size:14.5px;line-height:1.55;color:var(--stone)}
+
+  /* structure ribbon */
+  .struct{margin-top:48px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .st{background:var(--paper-2);padding:30px 22px;display:flex;flex-direction:column;gap:10px;min-height:200px}
+  .st .icn{font-family:'Source Serif 4',serif;font-style:italic;font-size:34px;color:var(--navy);font-weight:600;line-height:1}
+  .st .h{font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:var(--char);line-height:1.18}
+  .st .lead{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--navy);text-transform:uppercase}
+  .st .d{font-size:13px;color:var(--stone);line-height:1.5;margin-top:auto}
+
+  /* SPOC band */
+  .spoc{background:var(--char);color:var(--paper);padding:120px 0;position:relative;overflow:hidden}
+  .spoc::before{content:"";position:absolute;width:680px;height:680px;background:radial-gradient(closest-side,var(--navy) 0%,transparent 70%);left:-220px;top:-200px;opacity:.22;pointer-events:none}
+  .spoc::after{content:"SPOC";position:absolute;right:60px;bottom:-30px;font-family:'Source Serif 4',serif;font-style:italic;font-weight:600;font-size:280px;color:rgba(201,113,56,.05);line-height:.8;pointer-events:none}
+  .spoc__inner{display:grid;grid-template-columns:.7fr 1.3fr;gap:80px;align-items:start;position:relative;z-index:1}
+  .spoc .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--marigold);text-transform:uppercase}
+  .spoc h2{font-family:'Source Serif 4',serif;font-size:clamp(40px,5.2vw,72px);font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--paper);margin-top:18px}
+  .spoc h2 em{font-style:italic;color:var(--marigold);font-weight:500}
+  .spoc__body{font-size:18px;line-height:1.65;color:rgba(244,239,227,.82);max-width:64ch}
+  .spoc__body p + p{margin-top:18px}
+  .spoc__grid{margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .spoc__grid .l{padding:22px;background:rgba(244,239,227,.04);border:1px solid rgba(244,239,227,.16);border-radius:6px}
+  .spoc__grid .l .e{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase}
+  .spoc__grid .l .h{font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:var(--paper);margin-top:8px;line-height:1.25}
+  .spoc__grid .l .d{font-size:14px;color:rgba(244,239,227,.75);margin-top:8px;line-height:1.55}
+
+  /* org types */
+  .orgs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+  .org{padding:40px 32px;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+  .org::after{content:"";position:absolute;right:-50px;bottom:-50px;width:160px;height:160px;border-radius:50%;background:var(--navy);opacity:.07}
+  .org .e{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--navy);text-transform:uppercase}
+  .org .h{font-family:'Source Serif 4',serif;font-size:30px;font-weight:600;color:var(--char);line-height:1.05}
+  .org .d{font-size:14.5px;line-height:1.6;color:var(--stone)}
+
+  /* who/elig */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  .who{background:var(--navy);color:var(--paper);padding:60px;border-radius:8px}
+  .who h3{font-family:'Source Serif 4',serif;font-size:32px;font-weight:500;color:var(--paper);margin-bottom:30px;line-height:1.1}
+  .who h3 em{color:var(--marigold);font-style:italic}
+  .who ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .who li{display:grid;grid-template-columns:30px 1fr;gap:14px;font-size:15px;line-height:1.55;color:rgba(244,239,227,.85)}
+  .who li::before{content:"";width:18px;height:1px;background:var(--marigold);margin-top:11px;align-self:start}
+  .who li b{color:var(--paper);font-weight:600}
+
+  .elig{padding:60px;border:1px solid var(--line);border-radius:8px;background:var(--paper-2)}
+  .elig h3{font-family:'Source Serif 4',serif;font-size:32px;font-weight:500;color:var(--char);margin-bottom:30px;line-height:1.1}
+  .elig h3 em{color:var(--navy);font-style:italic}
+  .elig ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .elig li{display:grid;grid-template-columns:30px 1fr;gap:14px;font-size:15px;line-height:1.55;color:var(--char)}
+  .elig li::before{content:"";width:18px;height:1px;background:var(--navy);margin-top:11px;align-self:start}
+
+  /* CTA */
+  .final{background:var(--char);color:var(--paper);padding:140px 0;position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;width:760px;height:760px;background:radial-gradient(closest-side,var(--navy) 0%,transparent 70%);left:-220px;top:-220px;opacity:.22;pointer-events:none}
+  .final::after{content:"";position:absolute;width:580px;height:580px;background:radial-gradient(closest-side,var(--marigold) 0%,transparent 70%);right:-200px;bottom:-200px;opacity:.18;pointer-events:none}
+  .final__inner{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:end;position:relative;z-index:1}
+  .final h2{font-family:'Source Serif 4',serif;font-size:clamp(50px,6.4vw,92px);font-weight:600;line-height:.96;letter-spacing:-.02em;color:var(--paper)}
+  .final h2 em{font-style:italic;color:var(--marigold);font-weight:500}
+  .final p{margin-top:28px;max-width:46ch;font-size:18px;line-height:1.55;color:rgba(244,239,227,.78)}
+  .final__ctas{display:flex;flex-direction:column;gap:16px}
+  .btn{display:inline-flex;align-items:center;justify-content:space-between;padding:22px 28px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:.01em;transition:transform .2s ease,background .2s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn--primary{background:var(--marigold);color:#FFFFFF}
+  .btn--primary:hover{background:var(--navy);color:#FFFFFF}
+  .btn--ghost{background:transparent;color:var(--paper);border:1px solid rgba(244,239,227,.3)}
+  .btn .arrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em}
+
+  .info{padding:60px 0 0;border-top:1px solid rgba(244,239,227,.18);margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;z-index:1}
+  .info .b{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,227,.5)}
+  .info .t{font-family:'Source Serif 4',serif;font-size:22px;font-weight:500;color:var(--paper);margin-top:10px;line-height:1.2}
+  .info .s{font-size:14px;color:rgba(244,239,227,.7);margin-top:6px}
+
+  /* footer */
+  .foot{padding:36px 0;border-top:1px solid var(--line);background:var(--paper)}
+  .foot__inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+  .foot__brand img{height:34px;width:auto;display:block;opacity:.85}
+  .foot__legal{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--stone);text-transform:uppercase}
+
+  @media (max-width:1100px){
+    .hero__inner{grid-template-columns:1fr}
+    .hero__left{padding:60px 0 60px}
+    .hero__right{padding:60px 30px}
+    .stats .grid{grid-template-columns:repeat(2,1fr)}
+    .caps{grid-template-columns:1fr}
+    .cap{padding-right:0!important;padding-left:0!important;border-right:0!important}
+    .buckets{grid-template-columns:1fr}
+    .origin__inner{grid-template-columns:1fr}
+    .arche{grid-template-columns:1fr}
+    .struct{grid-template-columns:1fr 1fr}
+    .spoc__inner{grid-template-columns:1fr}
+    .orgs{grid-template-columns:1fr}
+    .two-col{grid-template-columns:1fr}
+    .final__inner{grid-template-columns:1fr;gap:40px}
+    .info{grid-template-columns:repeat(2,1fr)}
+    .sec-head{grid-template-columns:1fr;gap:30px}
+    .spoc__grid{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 22px}
+    section{padding:80px 0}
+    .nav__links{display:none}
+    .nav__inner{padding:14px 22px;gap:14px}
+    .nav__brand img{height:36px}
+    .nav__brand .ctx{display:none}
+    .stats .grid{grid-template-columns:1fr}
+    .struct{grid-template-columns:1fr}
+    .info{grid-template-columns:1fr}
+    .who,.elig{padding:36px}
+    .final{padding:90px 0}
+  }
+
+  /* Scroll-reveal motion */
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(28px);animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-timeline:view();animation-range:entry 0% cover 22%}
+    .reveal-fast{opacity:0;transform:translateY(18px);animation:rise .7s cubic-bezier(.2,.8,.2,1) both;animation-timeline:view();animation-range:entry 0% cover 18%}
+    .reveal-delay-1{animation-delay:80ms}
+    .reveal-delay-2{animation-delay:160ms}
+    .reveal-delay-3{animation-delay:240ms}
+    @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    .hero-rise{opacity:0;transform:translateY(34px);animation:heroRise 1.05s cubic-bezier(.2,.8,.2,1) forwards}
+    .hero-rise-1{animation-delay:120ms}
+    .hero-rise-2{animation-delay:240ms}
+    .hero-rise-3{animation-delay:360ms}
+    @keyframes heroRise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.reveal-fast,.hero-rise{opacity:1!important;transform:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__brand" data-testid="nav-brand">
+      <img src="./images/northstar-mark.svg" alt="Northstar Learning · An initiative of Northstar Learning" />
+      <span class="ctx">Programme<b>New-Age Managers</b></span>
+    </a>
+    <nav class="nav__links">
+      <a href="#programme" data-testid="nav-programme">Programme</a>
+      <a href="#capabilities" data-testid="nav-capabilities">Capabilities</a>
+      <a href="#faculty" data-testid="nav-faculty">Faculty</a>
+      <a href="#curriculum" data-testid="nav-curriculum">Curriculum</a>
+      <a href="#testimonials" data-testid="nav-testimonials">Testimonials</a>
+      <a href="#faqs" data-testid="nav-faqs">FAQs</a>
+    </nav>
+    <a href="#nominate" class="nav__cta" data-testid="nav-cta-nominate">Nominate Your Team →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="programme">
+  <div class="wrap"><div class="hero__inner">
+    <div class="hero__left">
+      <div>
+        <div class="eyebrow hero-rise">Leadership Development · Cohort 2026</div>
+        <h1 class="display hero-rise hero-rise-1">
+          The manager<br/>your business needs<br/>
+          <em>isn't the one</em><br/>your business has.
+        </h1>
+        <p class="lede hero-rise hero-rise-2">A six-month leadership development programme for the new generation of managers — co-created with HR leaders from startups, owner-driven and traditional firms across India. Blended learning. Live online. Campus immersion. Capstone on a real business problem.</p>
+        <div class="hero__meta hero-rise hero-rise-3">
+          <span class="chip"><span class="dot"></span> 3–5 yrs experience</span>
+          <span class="chip"><span class="dot"></span> Blended · 6 months</span>
+          <span class="chip"><span class="dot"></span> 3 learning buckets · 15 themes</span>
+          <span class="chip"><span class="dot"></span> SPOC co-facilitated</span>
+        </div>
+        <div class="hero-rise hero-rise-3" style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#nominate" class="nav__cta" style="padding: 16px 32px; font-size: 15px; background: var(--marigold); border-radius: 999px;">Nominate Your Team →</a>
+          <a href="mailto:namadmissions@northstar-learning.example" class="btn btn--ghost" style="padding: 16px 32px; font-size: 15px; border: 1px solid var(--line); color: var(--char); border-radius: 999px;">Talk to Admissions</a>
+        </div>
+      </div>
+      <div style="margin-top:50px"><span class="eyebrow">Built from Northstar Learning World Café · Bengaluru &amp; Mumbai · March 2026</span></div>
+    </div>
+
+    <div class="hero__right">
+      <div class="hero__opener">
+        <div class="tag">// the shift underway</div>
+        <div class="h">Every HR leader in the room agreed: the new-age manager is no longer a controller. <em>They're an orchestrator, a coach, a multiplier.</em></div>
+      </div>
+
+      <div class="shift">
+        <div class="lbl">// the four shifts</div>
+        <div class="shift__row">
+          <div class="shift__from">Doer + controller</div>
+          <div class="shift__arr">→</div>
+          <div class="shift__to"><em>Orchestrator.</em></div>
+        </div>
+        <div class="shift__row">
+          <div class="shift__from">Fixed job descriptions</div>
+          <div class="shift__arr">→</div>
+          <div class="shift__to">Fluid roles, pods.</div>
+        </div>
+        <div class="shift__row">
+          <div class="shift__from">Approval chains</div>
+          <div class="shift__arr">→</div>
+          <div class="shift__to">Decentralised decisions.</div>
+        </div>
+        <div class="shift__row">
+          <div class="shift__from">Top-down boss</div>
+          <div class="shift__arr">→</div>
+          <div class="shift__to"><em>Multiplier.</em></div>
+        </div>
+      </div>
+
+      <div class="hero__closer">
+        <div class="stamp">04</div>
+        <div class="copy">Shifts to make<b>One programme · six months</b></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat reveal" style="animation-delay:0ms"><div class="n">06<em>mo</em></div><div class="l">Blended · live online + campus</div></div>
+      <div class="stat reveal" style="animation-delay:80ms"><div class="n">08</div><div class="l">Capabilities · HR-ranked</div></div>
+      <div class="stat reveal" style="animation-delay:160ms"><div class="n">03</div><div class="l">Learning buckets · self · others · org</div></div>
+      <div class="stat reveal" style="animation-delay:240ms"><div class="n">01</div><div class="l">Capstone · on your own business</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORLD CAFÉ ORIGIN -->
+<section class="origin" id="origin">
+  <div class="wrap">
+    <div class="origin__inner">
+      <div>
+        <div class="tag">Origin · Northstar Learning World Café 2026</div>
+        <h2>Co-created with HR leaders. <em>Not lifted from a textbook.</em></h2>
+        <p class="pull">"Business is professional… but culture is personal."</p>
+        <div class="cred">— Northstar Learning World Café · Bengaluru &amp; Mumbai · March 2026</div>
+      </div>
+      <div class="right">
+        <div class="lbl">// what the room agreed on</div>
+        <div class="head">The new-age manager is no longer an administrator or a top-down boss.</div>
+        <ul>
+          <li>HR leaders from startups, owner-driven firms and traditional organisations.</li>
+          <li>Two cities. Two intensive sessions. One clear consensus.</li>
+          <li>Eight capabilities ranked by frequency across every table in the room.</li>
+          <li>A blueprint that respects how different organisation types actually run — not a one-size-fits-all curriculum.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 CAPABILITIES -->
+<section class="wrap" id="capabilities" style="padding-top:140px">
+  <div class="sec-head reveal-fast">
+    <h2>Eight capabilities, <em>ranked by HR leaders.</em></h2>
+    <p>Frequency-ranked across every World Café table — capabilities that the people who hire, develop and lose managers said matter most in 2026. Universal across organisation types; only the starting point and speed of development change.</p>
+  </div>
+  <div class="caps">
+    <div class="cap reveal"><div class="n">01</div><div><h3>Learning Agility</h3><p>Unlearn and relearn fast. Speed plus innovation under ambiguity.</p></div></div>
+    <div class="cap reveal"><div class="n">02</div><div><h3>Emotional Intelligence</h3><p>Navigate generational gaps, hybrid realities and diverse employee needs without flattening them.</p></div></div>
+    <div class="cap reveal"><div class="n">03</div><div><h3>Change Leadership</h3><p>Own the transition. Role-model behaviour. Manage the very real fear of becoming invisible.</p></div></div>
+    <div class="cap reveal"><div class="n">04</div><div><h3>Digital Fluency &amp; AI</h3><p>Leverage tech tools. Translate customer complexity into solutions teams can build.</p></div></div>
+    <div class="cap reveal"><div class="n">05</div><div><h3>Purpose Clarity</h3><p>Connect personal purpose to organisational north star. Make purpose observable in behaviour.</p></div></div>
+    <div class="cap reveal"><div class="n">06</div><div><h3>Delegation &amp; Empowerment</h3><p>Simplify approval processes. Remove redundant layers. Give real authority, not the illusion of it.</p></div></div>
+    <div class="cap reveal"><div class="n">07</div><div><h3>Critical Thinking</h3><p>Double-click on issues. Run bold experiments inside safe pods. Decide with data, not vibes.</p></div></div>
+    <div class="cap reveal"><div class="n">08</div><div><h3>Coaching Leadership</h3><p>Mentor. Give regular feedback. Build a "hi-touch + hi-tech" culture — not annual reviews.</p></div></div>
+  </div>
+</section>
+
+<!-- ARCHETYPES -->
+<section class="wrap" style="padding-top:0">
+  <div class="sec-head reveal-fast">
+    <h2>Three archetypes. <em>One manager.</em></h2>
+    <p>The new-age manager wears three hats every week. NAM is engineered to develop all three — not in sequence, but in parallel — across the six months.</p>
+  </div>
+  <div class="arche">
+    <div class="arch reveal">
+      <div class="arch__icon">C</div>
+      <div class="arch__role">Archetype 01</div>
+      <div class="arch__name">The Coach.</div>
+      <div class="arch__desc">Builds people. Doesn't direct them. Replaces approval bottlenecks with feedback loops. Embeds coaching as a daily practice — not an annual review.</div>
+    </div>
+    <div class="arch reveal reveal-delay-1">
+      <div class="arch__icon">∆</div>
+      <div class="arch__role">Archetype 02</div>
+      <div class="arch__name">The Change Enabler.</div>
+      <div class="arch__desc">Owns transformation visibly. Role-models the behaviour the team is being asked to adopt. Manages the fear of becoming invisible in the new structure.</div>
+    </div>
+    <div class="arch reveal reveal-delay-2">
+      <div class="arch__icon">⇄</div>
+      <div class="arch__role">Archetype 03</div>
+      <div class="arch__name">The Digital Translator.</div>
+      <div class="arch__desc">Bridges technology and people. Translates customer complexity into solutions. Brings AI and analytics into the manager's working toolkit — not the engineering team's only.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section class="wrap" id="faculty" style="padding-top:80px; padding-bottom:80px;">
+  <div class="sec-head reveal-fast">
+    <h2>Taught by distinguished <em>Northstar Learning Faculty.</em></h2>
+    <p>Learn directly from the same faculty who teach on the Northstar Learning campus — bringing decades of research, advisory, and corporate experience to your screen.</p>
+  </div>
+  <div class="arche" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="arch reveal" style="padding: 24px; text-align: center;">
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--navy); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; font-size: 28px; font-style: italic; color: var(--paper);">SM</div>
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">Prof. Saurav Mehta</h4>
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 6px; letter-spacing: 0.15em; text-transform: uppercase;">Strategy &amp; Organisation</p>
+      <p style="font-size: 13px; color: var(--stone); margin-top: 10px; line-height: 1.45;">Teaches strategy formulation, inclusive business models, and organisational design.</p>
+    </div>
+    <div class="arch reveal reveal-delay-1" style="padding: 24px; text-align: center;">
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--navy); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; font-size: 28px; font-style: italic; color: var(--paper);">VS</div>
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">Prof. Tara Iyer</h4>
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 6px; letter-spacing: 0.15em; text-transform: uppercase;">Organisational Behaviour &amp; HRM</p>
+      <p style="font-size: 13px; color: var(--stone); margin-top: 10px; line-height: 1.45;">Expert in people management, leadership development, and future of work.</p>
+    </div>
+    <div class="arch reveal reveal-delay-2" style="padding: 24px; text-align: center;">
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--navy); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; font-size: 28px; font-style: italic; color: var(--paper);">HS</div>
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">Prof. Hema Reddy</h4>
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 6px; letter-spacing: 0.15em; text-transform: uppercase;">Production &amp; Operations</p>
+      <p style="font-size: 13px; color: var(--stone); margin-top: 10px; line-height: 1.45;">Teaches service operations excellence, supply chain strategy, and process design.</p>
+    </div>
+    <div class="arch reveal reveal-delay-3" style="padding: 24px; text-align: center;">
+      <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--navy); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; font-size: 28px; font-style: italic; color: var(--paper);">DK</div>
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">Prof. Dev Mehra</h4>
+      <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 6px; letter-spacing: 0.15em; text-transform: uppercase;">Decision Sciences</p>
+      <p style="font-size: 13px; color: var(--stone); margin-top: 10px; line-height: 1.45;">Specialises in business analytics, data-driven decision-making, and AI applications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="wrap" id="curriculum" style="padding-top:80px">
+  <div class="sec-head reveal-fast">
+    <h2>Three buckets, <em>fifteen themes.</em></h2>
+    <p>2–3 hours of faculty-led online learning per module · 25–30 hours per theme · customised pathways for startups, owner-driven and traditional organisations. Lead self, lead others, lead the organisation — that's the arc.</p>
+  </div>
+  <div class="buckets">
+    <div class="bkt">
+      <div class="bkt__num">Bucket 01</div>
+      <div class="bkt__name">Understanding Self.</div>
+      <p style="font-size: 13px; font-style: italic; opacity: 0.8; margin-bottom: 12px;">Focus on personal leadership style, emotional intelligence, and communication effectiveness.</p>
+      <ul class="bkt__list">
+        <li>Leading Self &amp; Others Essentials</li>
+        <li>Emotional Intelligence</li>
+        <li>Personal Effectiveness</li>
+        <li>Communication Essentials</li>
+        <li>Changing Paradigms &amp; New-Age Context</li>
+      </ul>
+    </div>
+    <div class="bkt">
+      <div class="bkt__num">Bucket 02</div>
+      <div class="bkt__name">Understanding Others.</div>
+      <p style="font-size: 13px; font-style: italic; opacity: 0.8; margin-bottom: 12px;">Master team dynamics, mentoring, coaching, and stakeholder relationship management.</p>
+      <ul class="bkt__list">
+        <li>Managing Teams</li>
+        <li>Mentoring &amp; Coaching</li>
+        <li>Stakeholder Management</li>
+        <li>Performance Management</li>
+        <li>Leadership &amp; Inspiration</li>
+      </ul>
+    </div>
+    <div class="bkt">
+      <div class="bkt__num">Bucket 03</div>
+      <div class="bkt__name">Understanding the Organisation.</div>
+      <p style="font-size: 13px; font-style: italic; opacity: 0.8; margin-bottom: 12px;">Gain essential business acumen across strategy, finance, data decision-making, and marketing.</p>
+      <ul class="bkt__list">
+        <li>Data-Driven Decision Making</li>
+        <li>Strategic Management</li>
+        <li>Marketing Overview</li>
+        <li>Business Finance</li>
+        <li>Business Law &amp; Execution</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- programme structure ribbon -->
+  <div style="margin-top:80px">
+    <div class="eyebrow" style="margin-bottom:18px">Programme structure · five learning surfaces</div>
+    <div class="struct">
+      <div class="st"><div class="icn">⌘</div><div class="lead">Northstar Learning Faculty</div><div class="h">Management Foundations</div><div class="d">Theory, frameworks, cases and caselets — taught by Northstar Learning faculty.</div></div>
+      <div class="st"><div class="icn">⚙︎</div><div class="lead">Faculty + SMEs</div><div class="h">Skills Workshops</div><div class="d">Psychometric tools, real-life skills, applied workshops by SMEs.</div></div>
+      <div class="st"><div class="icn">◇</div><div class="lead">Company SPOC</div><div class="h">Company Context</div><div class="d">Context, challenges and explorations specific to your firm — led by your SPOC.</div></div>
+      <div class="st"><div class="icn">▲</div><div class="lead">Northstar Learning Faculty</div><div class="h">Capstone Project</div><div class="d">Action learning on a real issue from inside your organisation.</div></div>
+      <div class="st"><div class="icn">✦</div><div class="lead">Leaders + Alumni</div><div class="h">Leadership Talks</div><div class="d">Inspiration, guidance and perspective from senior leaders and Northstar Learning alumni.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND PROMISE BAND -->
+<div class="reveal-fast" style="text-align: center; padding: 48px 20px; background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-family: 'Source Serif 4', Georgia, serif; font-size: 24px; font-style: italic; color: var(--navy); font-weight: 500;">
+  "The same faculty. Wherever you are."
+</div>
+
+<!-- SPOC PARTNER MODEL -->
+<section class="spoc" id="partner">
+  <div class="wrap">
+    <div class="spoc__inner">
+      <div>
+        <div class="lbl">The Partner Model</div>
+        <h2>Your SPOC isn't a logistics owner. <em>They're a co-facilitator.</em></h2>
+      </div>
+      <div>
+        <div class="spoc__body">
+          <p>NAM is engineered as a partnership — not a vendor-delivered training. A Single Point of Contact (SPOC) from your organisation is embedded as an active co-facilitator of every cohort: contextualising frameworks to your culture, mentoring nominees, and feeding back monthly to the Northstar Learning team.</p>
+          <p>This is what HR leaders in the World Café said matters most: "learning as a system" — journals, micro-learning slots, peer forums, role-modelling by leaders, and safe experimentation pods with governance.</p>
+        </div>
+        <div class="spoc__grid">
+          <div class="l"><div class="e">Embed</div><div class="h">SPOC as co-facilitator</div><div class="d">Joins faculty sessions. Contextualises content. Owns the company-specific track.</div></div>
+          <div class="l"><div class="e">Mentor</div><div class="h">Monthly feedback loops</div><div class="d">Coaching becomes a daily practice — not an annual review. Real authority, real feedback.</div></div>
+          <div class="l"><div class="e">Customise</div><div class="h">Pathways by org type</div><div class="d">Startups, owner-driven firms and traditional organisations follow different starting points.</div></div>
+          <div class="l"><div class="e">Capstone</div><div class="h">Real-business action</div><div class="d">Safe experimentation pods with governance. Move a number that matters to your firm.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="origin" id="testimonials" style="padding: 90px 0;">
+  <div class="wrap">
+    <div class="sec-head reveal-fast" style="margin-bottom: 40px;">
+      <h2>Voice of the <em>cohort.</em></h2>
+      <p>Hear from managers who transformed their leadership approach through the Modern Manager Programme.</p>
+    </div>
+    <div class="arche" style="grid-template-columns: repeat(2, 1fr); gap: 40px;">
+      <div class="arch reveal" style="background: var(--paper); border: 1px solid var(--line);">
+        <p style="font-family: 'Source Serif 4', serif; font-style: italic; font-size: 18px; line-height: 1.5; color: var(--char);">"The transition from a technical contributor to an orchestrator was my biggest challenge. The coaching frameworks from Prof. Tara gave me practical tools to manage generational differences in my team."</p>
+        <div style="margin-top: 20px; border-top: 1px solid var(--line); padding-top: 15px;">
+          <strong style="font-family: 'Source Serif 4', serif; font-size: 16px; color: var(--char);">Ananya Sen</strong>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 4px; text-transform: uppercase;">Engineering Manager · Tech Unicorn (Batch 1)</p>
+        </div>
+      </div>
+      <div class="arch reveal reveal-delay-1" style="background: var(--paper); border: 1px solid var(--line);">
+        <p style="font-family: 'Source Serif 4', serif; font-style: italic; font-size: 18px; line-height: 1.5; color: var(--char);">"The action learning project alone paid back the program fee. We redesigned our delegation process, eliminating three approval layers and increasing team decision speed by 40%."</p>
+        <div style="margin-top: 20px; border-top: 1px solid var(--line); padding-top: 15px;">
+          <strong style="font-family: 'Source Serif 4', serif; font-size: 16px; color: var(--char);">Rajesh Nair</strong>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 4px; text-transform: uppercase;">Operations Lead · Manufacturing Firm (Batch 1)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORG TYPES -->
+<section class="wrap" style="padding-top: 80px;">
+  <div class="sec-head reveal-fast">
+    <h2>One programme. <em>Three contexts.</em></h2>
+    <p>Universal capabilities, customised pathways. NAM is delivered with company-specific calibration — because the manager you're developing inside a 200-person startup isn't the same as the one inside a fifty-year-old conglomerate.</p>
+  </div>
+  <div class="orgs">
+    <div class="org reveal"><div class="e">Context 01</div><div class="h">Startups.</div><div class="d">Founder-grown managers learning structure without losing speed. Heavy emphasis on delegation, performance management and bringing rigour to ambiguity.</div></div>
+    <div class="org reveal reveal-delay-1"><div class="e">Context 02</div><div class="h">Owner-driven firms.</div><div class="d">Family-business managers transitioning from owner-loyalty to professional discipline. Strong focus on stakeholder management, strategic clarity and modern coaching.</div></div>
+    <div class="org reveal reveal-delay-2"><div class="e">Context 03</div><div class="h">Traditional companies.</div><div class="d">Managers from large hierarchical organisations unlearning approval-chain habits. Heavy emphasis on empowerment, digital fluency and change leadership.</div></div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="wrap" style="padding-top:0">
+  <div class="sec-head reveal-fast">
+    <h2>Who you'll <em>nominate.</em></h2>
+    <p>NAM is built primarily as a corporate nomination programme — but also accepts self-nominated high-potential managers who meet the eligibility bar.</p>
+  </div>
+  <div class="two-col">
+    <div class="who">
+      <h3>Nominate <em>if:</em></h3>
+      <ul>
+        <li><span><b>3–5 years of managerial experience</b> — individuals who've earned the title, but not yet the consistent leadership behaviour.</span></li>
+        <li><span><b>High-potential managers</b> — flagged in your succession or talent reviews as next in line for cross-functional or team-lead roles.</span></li>
+        <li><span><b>Self-nominated candidates</b> who meet the eligibility criteria and bring a real organisational problem to anchor their capstone.</span></li>
+      </ul>
+    </div>
+    <div class="elig">
+      <h3>What's <em>included:</em></h3>
+      <ul>
+        <li>6-month blended learning programme with on-campus immersion sessions at Northstar Learning.</li>
+        <li>Live online sessions by Northstar Learning Faculty and Subject Matter Experts.</li>
+        <li>Northstar Learning SPOC mentoring &amp; structured monthly feedback sessions.</li>
+        <li>Industry-expert skills workshops, reflection journals and micro-learning slots.</li>
+        <li>Capstone project guidance &amp; support — anchored in your business.</li>
+        <li>Northstar Learning Certificate of Completion on successful programme exit.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="wrap" id="faqs" style="padding-top: 80px; padding-bottom: 80px;">
+  <div class="sec-head reveal-fast" style="margin-bottom: 40px;">
+    <h2>Frequently Asked <em>Questions.</em></h2>
+    <p>Everything you need to know about the Modern Manager Programme.</p>
+  </div>
+  <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">What is the eligibility criteria for the programme?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">The programme is designed for professionals with a minimum of 3 years of work experience and a graduate degree from a recognized university. It is ideal for newly-promoted managers, team leads, or those transitioning into leadership roles.</p>
+    </div>
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">What are the technical and platform requirements?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">The programme is hosted on the Northstar Learning learning platform (built on Open edX). We recommend using a laptop or desktop computer with a modern browser such as Google Chrome, Mozilla Firefox, Microsoft Edge, or Safari, along with a stable high-speed internet connection.</p>
+    </div>
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">How does the corporate nomination process work?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">Organizations can nominate a cohort of managers. A dedicated Single Point of Contact (SPOC) from the nominating company co-facilitates the corporate context track, aligning the capstone projects to actual business challenges.</p>
+    </div>
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">Is there an installment option for the fee?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">Yes, the program fee of ₹ 1,50,000 + 18% GST can be paid in two equal installments: the first installment at the time of enrollment, and the second installment prior to the mid-term campus immersion.</p>
+    </div>
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">What certificate will I receive upon completion?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">Upon successfully completing all weekly assessments and the final Action Learning Capstone Project, you will receive a Certificate of Completion in Modern Management from Northstar Learning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final" id="nominate">
+  <div class="wrap">
+    <div class="final__inner">
+      <div>
+        <h2>Build the manager<br/>your business <em>actually needs</em><br/>in 2026.</h2>
+        <p>The gap between doing and leading is real — and costly. NAM closes it. Nominate your team for the 2026 cohort, or talk to admissions about a customised corporate intake.</p>
+      </div>
+      <div class="final__ctas">
+        <a class="btn btn--primary" href="https://northstar-learning.example/" data-testid="cta-nominate-team">Nominate Your Team <span class="arrow">→</span></a>
+        <a class="btn btn--ghost" href="mailto:namadmissions@northstar-learning.example" data-testid="cta-talk-admissions">Talk to admissions <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="info">
+      <div><div class="b">Cohort</div><div class="t">August 2026</div><div class="s">6-month blended cohort starting soon</div></div>
+      <div><div class="b">Program Fee</div><div class="t">₹ 1,50,000 + GST</div><div class="s">2 installments available</div></div>
+      <div><div class="b">Timeline</div><div class="t">Apply by 15 July 2026</div><div class="s">Rolling batch admissions</div></div>
+      <div><div class="b">Admissions desk</div><div class="t">namadmissions@northstar-learning.example</div><div class="s">+91 90000 12347</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__inner">
+      <div class="foot__brand"><img src="./images/northstar-mark.svg" alt="Northstar Learning · An initiative of Northstar Learning" /></div>
+      <div class="foot__legal">© 2026 · Northstar Learning Studio</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

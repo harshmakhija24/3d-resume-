@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northstar Learning Demo Dashboard</title>
+  <meta name="description" content="Northstar Learning Demo Dashboard — 3-way comparison of old website, marketing HTML, and v1 staging wireframes">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">Northstar Learning</div>
+      <div class="sidebar-subtitle">Audit Dashboard</div>
+    </div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer">
+      <div class="crawler-status"><span class="status-dot"></span><span>Crawler Active</span></div>
+      <div class="sidebar-version">v3.0 · May 2026</div>
+    </div>
+  </aside>
+  <main class="main" id="main-content">
+    <header class="topbar">
+      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+      <div class="topbar-title">
+        <h1>Programme Audit Overview</h1>
+        <p class="topbar-desc">3-way comparison: Old Website · Marketing HTML · v1 Staging</p>
+      </div>
+    </header>
+    <div class="content-area" id="content-area">
+      <!-- Breadcrumb navigation (hidden by default) -->
+      <div id="breadcrumb" style="display: none;">
+        <a href="#" id="back-to-home" class="breadcrumb-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Back to Folders
+        </a>
+      </div>
+
+      <!-- Top-Level Home View -->
+      <div id="home-view">
+        <div class="folder-card" id="folder-northstar">
+          <div class="folder-icon">📁</div>
+          <div class="folder-title">Northstar Learning</div>
+          <div class="folder-desc">Executive Education Programmes</div>
+        </div>
+        <div class="folder-card" id="folder-open-courses">
+          <div class="folder-icon">📁</div>
+          <div class="folder-title">Open Courses</div>
+          <div class="folder-desc">MOOCs & Government Portal Courses</div>
+        </div>
+      </div>
+
+      <!-- Open Courses Empty State -->
+      <div id="open-courses-view" style="display: none;">
+        <div class="empty-state-icon">📭</div>
+        <h2>No Programmes Found</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">There are currently no Open Courses programmes available for audit.</p>
+      </div>
+
+      <!-- Northstar Learning Program Grid -->
+      <div id="northstar-view" style="display: none;">
+        <div class="card-grid" id="programme-grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for detailed audit -->
+  <div class="modal-overlay" id="audit-modal">
+    <div class="modal-container">
+      <button class="modal-close" id="close-modal" aria-label="Close">×</button>
+      <div class="modal-header">
+        <button class="modal-back" id="modal-back" aria-label="Back">← Back to Dashboard</button>
+        <div id="modal-header-content"></div>
+      </div>
+      <div class="modal-tabs" id="modal-tabs"></div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Wireframe viewer -->
+  <div class="wf-viewer" id="wf-viewer">
+    <div class="wf-viewer-toolbar" id="wf-toolbar">
+      <button class="wf-viewer-back" id="wf-back" aria-label="Back">← Back</button>
+      <div class="wf-viewer-title" id="wf-title"></div>
+      <div class="wf-viewer-tabs" id="wf-source-tabs"></div>
+      <div class="wf-viewer-actions" id="wf-actions"></div>
+      <button class="wf-viewer-close" id="wf-close" aria-label="Close">×</button>
+    </div>
+    <div class="wf-viewer-body" id="wf-body">
+      <div class="wf-col" id="wf-col-left"><div class="wf-col-label" id="wf-label-left"></div><pre class="wf-pane" id="wf-pane-left"></pre></div>
+      <div class="wf-col" id="wf-col-middle"><div class="wf-col-label" id="wf-label-middle"></div><pre class="wf-pane" id="wf-pane-middle"></pre></div>
+      <div class="wf-col" id="wf-col-right"><div class="wf-col-label" id="wf-label-right"></div><pre class="wf-pane" id="wf-pane-right"></pre></div>
+    </div>
+  </div>
+
+  <!-- Grader Report Modal -->
+  <div class="modal-overlay" id="grader-modal" style="display:none; z-index:25;">
+    <div class="modal-container" style="max-width:1100px;">
+      <button class="modal-close" id="grader-modal-close" aria-label="Close">×</button>
+      <div class="modal-header" id="grader-modal-header">
+        <button class="modal-back" id="grader-modal-back">← Back to Dashboard</button>
+        <div id="grader-modal-title"></div>
+      </div>
+      <div class="modal-body" id="grader-modal-body" style="padding:1.5rem;"></div>
+    </div>
+  </div>
+    <!-- Data & Logic (with cache busters) -->
+  <script src="data/data.js?v=20260611_v2"></script>
+  <script src="js/app.js?v=20260611_v2"></script>
+</body>
+</html>

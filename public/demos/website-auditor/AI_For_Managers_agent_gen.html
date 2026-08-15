@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Northstar Learning · Certificate in Applied AI for Managers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --crimson:#AE2C2A;
+    --crimson-d:#7E1F1E;
+    --marigold:#C97138;
+    --char:#1A1B1E;
+    --ink:#1A1B1E;
+    --paper:#F4EFE3;        /* parchment */
+    --paper-2:#FBF8F1;
+    --stone:#5B5F66;
+    --steel:#5B5F66;
+    --pebble:#9B9591;
+    --sand:#DCD3BC;
+    --line:rgba(26,27,30,.10);
+    --line-d:rgba(244,239,227,.16);
+    --navy:#172D6B;
+    --accent:var(--marigold);
+  }
+  html,body{background:var(--char);color:var(--paper);font-family:'Inter','IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--crimson);color:var(--paper)}
+  .display{font-family:'Source Serif 4','Source Serif Pro',Georgia,serif;font-weight:600;letter-spacing:-.022em;line-height:.95;color:var(--paper)}
+  .display em{font-style:italic;font-weight:500;color:var(--marigold)}
+  .eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--marigold);font-weight:500}
+  .body{font-size:16px;line-height:1.62;color:var(--paper)}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+  section{padding:120px 0;position:relative}
+  hr.rule{border:0;border-top:1px solid var(--line-d);margin:0}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(26,27,30,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-d)}
+  .nav__inner{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;max-width:1280px;margin:0 auto;gap:30px}
+  .nav__brand{display:flex;align-items:center;gap:18px}
+  .nav__brand img{height:44px;width:auto;display:block;filter:invert(1) brightness(2)}
+  .nav__brand .ctx{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);padding-left:18px;border-left:1px solid var(--line-d);line-height:1.4}
+  .nav__brand .ctx b{display:block;color:var(--paper);font-weight:600;font-family:'Source Serif 4',serif;font-size:14px;letter-spacing:.01em;text-transform:none;margin-top:3px}
+  .nav__links{display:flex;gap:30px;font-size:13px;color:var(--stone)}
+  .nav__links a:hover{color:var(--paper)}
+  .nav__cta{display:inline-block;background:var(--marigold);color:var(--char);padding:11px 20px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:.02em;transition:transform .2s ease,background .2s ease}
+  .nav__cta:hover{transform:translateY(-1px);background:var(--paper)}
+  .hero{padding:0;border-bottom:1px solid var(--line-d)}
+  .hero__inner{display:grid;grid-template-columns:1.15fr .85fr;min-height:82vh}
+  .hero__left{padding:80px 60px 80px 0;display:flex;flex-direction:column;justify-content:space-between}
+  .hero h1{font-size:clamp(50px,7vw,92px);margin-top:30px}
+  .hero p.lede{margin-top:32px;max-width:46ch;font-size:21px;line-height:1.45;color:rgba(244,239,227,.8)}
+  .hero__meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid rgba(244,239,227,.2);border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);background:transparent}
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--marigold)}
+  .hero__right{background:var(--paper);color:var(--char);padding:80px 56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .hero__right::after{content:"";position:absolute;width:560px;height:560px;background:radial-gradient(closest-side,var(--marigold) 0%,transparent 70%);right:-200px;bottom:-200px;opacity:.15;pointer-events:none}
+  .hero__right::before{content:"AI";position:absolute;top:30px;right:50px;font-family:'Source Serif 4',serif;font-size:230px;font-style:italic;color:rgba(201,113,56,.08);font-weight:600;line-height:.8;pointer-events:none}
+  .hero__plate{position:relative;z-index:1}
+  .hero__plate .nameplate{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--marigold);text-transform:uppercase;margin-bottom:18px}
+  .hero__plate h3{font-family:'Source Serif 4',serif;font-size:28px;font-weight:500;line-height:1.2;color:var(--char);font-style:italic}
+  .hero__plate h3 em{color:var(--marigold);font-style:italic;font-weight:600}
+  .hero__themes{margin-top:44px;display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+  .ht{padding:14px 18px;border:1px solid rgba(26,27,30,.15);border-radius:6px;background:rgba(26,27,30,.04);display:grid;grid-template-columns:46px 1fr;align-items:center;gap:14px}
+  .ht .n{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--marigold)}
+  .ht .l{font-family:'Source Serif 4',serif;font-size:16px;font-weight:500;color:var(--char);line-height:1.2}
+  .hero__quote{margin-top:54px;font-family:'Source Serif 4',serif;font-style:italic;font-size:24px;line-height:1.35;color:var(--char);max-width:38ch;position:relative;z-index:1}
+  .hero__quote-l{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(26,27,30,.55);margin-top:18px;text-transform:uppercase}
+  .stats{background:var(--paper);color:var(--char);padding:70px 0}
+  .stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+  .stat .n{font-family:'Source Serif 4',serif;font-size:74px;font-weight:500;line-height:1;letter-spacing:-.02em;color:var(--char)}
+  .stat .n em{color:var(--marigold);font-style:italic}
+  .stat .l{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,27,30,.55);margin-top:14px}
+  .sec-head{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:end;margin-bottom:60px}
+  .sec-head h2{font-size:clamp(38px,5vw,68px);font-family:'Source Serif 4',serif;font-weight:600;letter-spacing:-.02em;line-height:1;color:var(--paper)}
+  .sec-head h2 em{font-style:italic;color:var(--marigold);font-weight:500}
+  .sec-head p{max-width:54ch;font-size:18px;line-height:1.55;color:rgba(244,239,227,.8)}
+  .objs{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line-d)}
+  .obj{padding:38px 0;border-bottom:1px solid var(--line-d);display:grid;grid-template-columns:54px 1fr;gap:24px}
+  .obj:nth-child(odd){padding-right:40px;border-right:1px solid var(--line-d)}
+  .obj:nth-child(even){padding-left:40px}
+  .obj .n{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--marigold);padding-top:5px}
+  .obj h3{font-family:'Source Serif 4',serif;font-weight:500;font-size:22px;line-height:1.18;color:var(--paper);margin-bottom:8px}
+  .obj p{font-size:15px;line-height:1.55;color:rgba(244,239,227,.7)}
+  .courses{margin-top:48px;border-top:1px solid var(--line-d)}
+  .crow{display:grid;grid-template-columns:50px 1.6fr 1.6fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line-d);align-items:baseline;transition:background .25s ease}
+  .crow:hover{background:rgba(244,239,227,.05)}
+  .cnum{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--marigold);padding-left:10px}
+  .cname{font-family:'Source Serif 4',serif;font-size:20px;font-weight:500;color:var(--paper);line-height:1.2}
+  .cfaculty{font-size:14px;color:rgba(244,239,227,.7);font-style:italic;line-height:1.4}
+  .spot{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;background:var(--paper);color:var(--char);padding:72px;border-radius:8px;position:relative;overflow:hidden}
+  .spot::after{content:"AI";position:absolute;top:30px;right:60px;font-family:'Source Serif 4',serif;font-size:200px;font-style:italic;color:rgba(201,113,56,.06);font-weight:600;line-height:.8;pointer-events:none}
+  .spot__img{aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:#f4efe3;position:relative;z-index:1;box-shadow:0 30px 70px -30px rgba(0,0,0,.15)}
+  .spot__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.08) contrast(1.04) brightness(1.02)}
+  .spot__content{position:relative;z-index:1}
+  .spot__quote{font-family:'Source Serif 4',serif;font-size:30px;line-height:1.25;font-weight:500;font-style:italic;color:var(--char)}
+  .spot__name{margin-top:36px;font-family:'Source Serif 4',serif;font-size:28px;font-weight:600;color:var(--marigold)}
+  .spot__role{margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,27,30,.6)}
+  .spot__eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(26,27,30,.5);margin-bottom:20px}
+  .fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+  .fac{display:flex;flex-direction:column;gap:14px}
+  .fac__img{aspect-ratio:1/1.18;border-radius:4px;overflow:hidden;background:var(--line-d);position:relative}
+  .fac__img img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(.05) contrast(1.04);transition:filter .35s ease,transform .6s ease}
+  .fac:hover .fac__img img{filter:grayscale(0) contrast(1.06);transform:scale(1.025)}
+  .fac__name{font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:var(--paper);line-height:1.2}
+  .fac__role{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--marigold)}
+  .fac__course{font-size:13px;color:rgba(244,239,227,.6);line-height:1.5}
+  .capstone{background:rgba(244,239,227,.03);padding:120px 0;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
+  .cap__inner{display:grid;grid-template-columns:.6fr 1.4fr;gap:80px;align-items:start}
+  .cap__tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--marigold)}
+  .cap h2{font-family:'Source Serif 4',serif;font-size:clamp(40px,5.2vw,72px);font-weight:600;line-height:.98;letter-spacing:-.02em;color:var(--paper);margin-top:18px}
+  .cap h2 em{font-style:italic;color:var(--marigold);font-weight:500}
+  .cap__body p{font-size:18px;line-height:1.6;color:rgba(244,239,227,.8);max-width:62ch}
+  .cap__body p + p{margin-top:18px}
+  .arch{padding:36px 32px;background:rgba(244,239,227,.03);border:1px solid var(--line-d);border-radius:8px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,border-color .25s}
+  .arch:hover{transform:translateY(-3px);border-color:var(--marigold)}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  .who{background:var(--paper);color:var(--char);padding:60px;border-radius:8px}
+  .who h3{font-family:'Source Serif 4',serif;font-size:32px;font-weight:500;color:var(--char);margin-bottom:30px;line-height:1.1}
+  .who h3 em{color:var(--marigold);font-style:italic}
+  .who ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .who li{display:grid;grid-template-columns:30px 1fr;gap:14px;font-size:15px;line-height:1.55;color:rgba(26,27,30,.85)}
+  .who li::before{content:"";width:18px;height:1px;background:var(--marigold);margin-top:11px;align-self:start}
+  .who li b{color:var(--char);font-weight:600}
+  .elig{padding:60px;border:1px solid var(--line-d);border-radius:8px;background:transparent}
+  .elig h3{font-family:'Source Serif 4',serif;font-size:32px;font-weight:500;color:var(--paper);margin-bottom:30px;line-height:1.1}
+  .elig h3 em{color:var(--marigold);font-style:italic}
+  .elig ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .elig li{display:grid;grid-template-columns:30px 1fr;gap:14px;font-size:15px;line-height:1.55;color:var(--paper)}
+  .elig li::before{content:"";width:18px;height:1px;background:var(--marigold);margin-top:11px;align-self:start}
+  .timeline{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line-d);border-radius:6px;overflow:hidden}
+  .tl{padding:30px 26px;background:rgba(244,239,227,.03);border-right:1px solid var(--line-d);position:relative}
+  .tl:last-child{border-right:0}
+  .tl .m{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase}
+  .tl .h{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;color:var(--paper);margin-top:10px;line-height:1.2}
+  .tl .d{font-size:13px;color:rgba(244,239,227,.6);margin-top:8px;line-height:1.5}
+  .tl::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;color:var(--marigold);background:var(--char);padding:0 4px;font-size:14px}
+  .tl:last-child::after{display:none}
+  .fee-wrap{margin-top:30px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
+  .fee-table{background:rgba(244,239,227,.03);border:1px solid var(--line-d);border-radius:8px;overflow:hidden}
+  .fee-row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:20px 28px;border-bottom:1px solid var(--line-d);align-items:baseline}
+  .fee-row:last-child{border-bottom:0;background:var(--paper);color:var(--char)}
+  .fee-row:last-child .label,.fee-row:last-child .v{color:var(--char)}
+  .fee-row:last-child .v{color:var(--marigold)}
+  .label{font-size:14px;color:rgba(244,239,227,.7);font-weight:500}
+  .v{font-family:'Source Serif 4',serif;font-size:22px;font-weight:600;color:var(--paper)}
+  .fee-note{font-size:13px;color:rgba(244,239,227,.6);margin-top:18px;font-style:italic}
+  .fee-aside{padding:28px;border:1px solid var(--line-d);border-radius:8px;background:transparent}
+  .fee-aside .e{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase}
+  .fee-aside .h{font-family:'Source Serif 4',serif;font-size:24px;font-weight:600;color:var(--paper);margin-top:10px;line-height:1.2}
+  .fee-aside .d{font-size:14px;color:rgba(244,239,227,.6);margin-top:10px;line-height:1.6}
+  .fee-aside ul{margin-top:14px;display:flex;flex-direction:column;gap:8px;padding-left:18px}
+  .fee-aside li{font-size:13px;color:var(--paper);line-height:1.5}
+  .final{background:var(--paper);color:var(--char);padding:140px 0;position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;width:760px;height:760px;background:radial-gradient(closest-side,var(--marigold) 0%,transparent 70%);left:-220px;top:-220px;opacity:0.12;pointer-events:none}
+  .final::after{content:"";position:absolute;width:580px;height:580px;background:radial-gradient(closest-side,var(--navy) 0%,transparent 70%);right:-200px;bottom:-200px;opacity:.08;pointer-events:none}
+  .final__inner{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:end;position:relative;z-index:1}
+  .final h2{font-family:'Source Serif 4',serif;font-size:clamp(50px,6.4vw,92px);font-weight:600;line-height:.96;letter-spacing:-.02em;color:var(--char)}
+  .final h2 em{font-style:italic;color:var(--marigold);font-weight:500}
+  .final p{margin-top:28px;max-width:46ch;font-size:18px;line-height:1.55;color:rgba(26,27,30,.78)}
+  .final__ctas{display:flex;flex-direction:column;gap:16px}
+  .btn{display:inline-flex;align-items:center;justify-content:space-between;padding:22px 28px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:.01em;transition:transform .2s ease,background .2s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn--primary{background:var(--char);color:#FFFFFF}
+  .btn--primary:hover{background:var(--marigold);color:#FFFFFF}
+  .btn--ghost{background:transparent;color:var(--char);border:1px solid rgba(26,27,30,.3)}
+  .btn .arrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em}
+  .info{padding:60px 0 0;border-top:1px solid rgba(26,27,30,.18);margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;z-index:1}
+  .info .b{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,27,30,.5)}
+  .info .t{font-family:'Source Serif 4',serif;font-size:22px;font-weight:500;color:var(--char);margin-top:10px;line-height:1.2}
+  .info .s{font-size:14px;color:rgba(26,27,30,.7);margin-top:6px}
+  .foot{padding:36px 0;border-top:1px solid var(--line-d);background:var(--char)}
+  .foot__inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+  .foot__brand img{height:34px;width:auto;display:block;opacity:.85;filter:invert(1) brightness(2)}
+  .foot__legal{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:rgba(244,239,227,.5);text-transform:uppercase}
+  @media (max-width:1100px){
+    .hero__inner{grid-template-columns:1fr}
+    .hero__left{padding:60px 0 80px}
+    .hero__right{padding:60px 30px}
+    .hero__themes{flex-direction:column}
+    .ht{grid-template-columns:46px 1fr}
+    .stats .grid{grid-template-columns:repeat(2,1fr)}
+    .objs{grid-template-columns:1fr}
+    .obj{padding-right:0!important;padding-left:0!important;border-right:0!important}
+    .spot{grid-template-columns:1fr;padding:50px}
+    .fac-grid{grid-template-columns:repeat(2,1fr)}
+    .two-col{grid-template-columns:1fr}
+    .timeline{grid-template-columns:1fr 1fr}
+    .tl{border-right:0;border-bottom:1px solid var(--line-d)}
+    .tl::after{display:none}
+    .fee-wrap{grid-template-columns:1fr}
+    .final__inner{grid-template-columns:1fr;gap:40px}
+    .info{grid-template-columns:repeat(2,1fr)}
+    .sec-head{grid-template-columns:1fr;gap:30px}
+    .cap__inner{grid-template-columns:1fr;gap:30px}
+    .crow{grid-template-columns:40px 1fr;gap:14px}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 22px}
+    section{padding:80px 0}
+    .nav__links{display:none}
+    .nav__inner{padding:14px 22px;gap:14px}
+    .nav__brand img{height:36px}
+    .nav__brand .ctx{display:none}
+    .stats .grid{grid-template-columns:1fr}
+    .fac-grid{grid-template-columns:1fr}
+    .info{grid-template-columns:1fr}
+    .spot{padding:30px}
+    .who,.elig{padding:36px}
+    .final{padding:90px 0}
+    .hero__themes{flex-direction:column}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(28px);animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-timeline:view();animation-range:entry 0% cover 22%}
+    .reveal-fast{opacity:0;transform:translateY(18px);animation:rise .7s cubic-bezier(.2,.8,.2,1) both;animation-timeline:view();animation-range:entry 0% cover 18%}
+    .reveal-delay-1{animation-delay:80ms}
+    .reveal-delay-2{animation-delay:160ms}
+    .reveal-delay-3{animation-delay:240ms}
+    @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    .hero-rise{opacity:0;transform:translateY(34px);animation:heroRise 1.05s cubic-bezier(.2,.8,.2,1) forwards}
+    .hero-rise-1{animation-delay:120ms}
+    .hero-rise-2{animation-delay:240ms}
+    .hero-rise-3{animation-delay:360ms}
+    .hero-rise-4{animation-delay:480ms}
+    @keyframes heroRise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.reveal-fast,.hero-rise{opacity:1!important;transform:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+<!-- PROTOTYPE BANNER PCAIM -->
+<div style="background:#1A1B1E;color:#F4EFE3;text-align:center;padding:13px 20px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;position:sticky;top:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.35);">
+  🚧 PCAIM · Prototype — Certificate in Applied AI for Managers&nbsp;|&nbsp;<span style="color:#C97138;">Dark Theme</span>
+</div>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__brand" data-testid="nav-brand">
+      <img src="./images/northstar-mark.svg" alt="Northstar Learning · An initiative of Northstar Learning" />
+      <span class="ctx">Programme<b>AI for Managers</b></span>
+    </a>
+    <nav class="nav__links">
+      <a href="#programme" data-testid="nav-programme">Programme</a>
+      <a href="#curriculum" data-testid="nav-curriculum">Curriculum</a>
+      <a href="#faculty" data-testid="nav-faculty">Faculty</a>
+      <a href="#audience" data-testid="nav-audience">Audience</a>
+      <a href="#fees" data-testid="nav-fees">Fees</a>
+    </nav>
+    <a href="#apply" class="nav__cta" data-testid="nav-cta-apply">Apply Now →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="programme">
+  <div class="wrap"><div class="hero__inner">
+    <div class="hero__left">
+      <div>
+        <div class="eyebrow hero-rise">Certificate in Applied AI for Managers</div>
+        <h1 class="display hero-rise hero-rise-1">Lead with data.<br/>Not with <em>vibes.</em></h1>
+        <p class="lede hero-rise hero-rise-2">A 10-month, fully online programme designed for mid-career and senior managers to grasp the business value of AI, build strong foundations in data science, and leverage machine learning effectively.</p>
+        <div class="hero__meta hero-rise hero-rise-3">
+          <span class="chip"><span class="dot"></span> 10 months · Fully online</span>
+          <span class="chip"><span class="dot"></span> 8 sequential modules</span>
+          <span class="chip"><span class="dot"></span> Python, SPSS, Excel, Tableau</span>
+        </div>
+        <div class="hero-rise hero-rise-3" style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#apply" class="nav__cta" style="padding: 16px 32px; font-size: 15px; border-radius: 999px;">Apply Now →</a>
+          <a href="mailto:hello@northstar-learning.example" class="btn btn--ghost" style="padding: 16px 32px; font-size: 15px; border: 1px solid rgba(244,239,227,.3); color: var(--paper); border-radius: 999px;">Talk to Admissions</a>
+        </div>
+      </div>
+      <div style="margin-top:50px"><span class="eyebrow">Registrations close: 15 Dec 2025 · Inauguration: 20 Dec 2025</span></div>
+    </div>
+    <div class="hero__right">
+      <div class="hero__plate">
+        <div class="nameplate">// programme.signal</div>
+        <h3>"Harness the innovation of ChatGPT, LLMs &amp; beyond to <em>drive AI adoption responsibly.</em>"</h3>
+      </div>
+      <div class="hero__themes">
+        <div class="ht"><div class="n">M1</div><div class="l">Foundation of Data Science</div></div>
+        <div class="ht"><div class="n">M2</div><div class="l">Data Visualization and Story Telling</div></div>
+        <div class="ht"><div class="n">M3</div><div class="l">Predictive Analysis</div></div>
+        <div class="ht"><div class="n">M4</div><div class="l">Machine Learning with Business Applications</div></div>
+      </div>
+      <div>
+        <p class="hero__quote">Harvard Business Publishing case studies, peer discussions, and practical assignments to develop technical proficiency and tell stories with data.</p>
+        <div class="hero__quote-l">— PCAIM · Northstar Learning</div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat reveal" style="animation-delay:0ms"><div class="n">10<em>mo</em></div><div class="l">Duration · fully online</div></div>
+      <div class="stat reveal" style="animation-delay:80ms"><div class="n">08</div><div class="l">Sequential modules</div></div>
+      <div class="stat reveal" style="animation-delay:160ms"><div class="n">04</div><div class="l">Core tools (Python, SPSS, Excel, Tableau)</div></div>
+      <div class="stat reveal" style="animation-delay:240ms"><div class="n">01</div><div class="l">Northstar Learning certificate</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIVES -->
+<section class="wrap" style="padding-top:140px">
+  <div class="sec-head reveal-fast">
+    <h2>Grasp the <em>Business Value</em> of AI.</h2>
+    <p>Master AI technologies including ANNs, Deep Learning, CNNs, RNNs, LSTM, Transformers, and Gen AI. Apply descriptive, diagnostic, predictive, and prescriptive analytics to drive strategy.</p>
+  </div>
+  <hr class="rule" />
+  <div class="objs">
+    <div class="obj reveal"><div class="n">01</div><div><h3>Foundation of Data Science</h3><p>Speak data with confidence. Build strong analytical foundations.</p></div></div>
+    <div class="obj reveal"><div class="n">02</div><div><h3>Data Visualization and Story Telling</h3><p>Turn numbers into boardroom influence. Tell stories with data using dashboards.</p></div></div>
+    <div class="obj reveal"><div class="n">03</div><div><h3>Predictive Analysis</h3><p>Forecast outcomes that guide strategy and business decisions.</p></div></div>
+    <div class="obj reveal"><div class="n">04</div><div><h3>Machine Learning with Business Applications</h3><p>See algorithms in action on real business problems.</p></div></div>
+    <div class="obj reveal"><div class="n">05</div><div><h3>Machine Learning using Python</h3><p>Practical skills to engage with technical teams and develop technical proficiency.</p></div></div>
+    <div class="obj reveal"><div class="n">06</div><div><h3>Generative AI</h3><p>Harness the innovation of ChatGPT, LLMs &amp; beyond. Drive AI adoption responsibly considering ethics and risks.</p></div></div>
+  </div>
+</section>
+
+<!-- BRAND PROMISE BAND -->
+<div class="reveal-fast" style="text-align: center; padding: 48px 20px; background: rgba(244,239,227,.03); border-top: 1px solid var(--line-d); border-bottom: 1px solid var(--line-d); font-family: 'Source Serif 4', Georgia, serif; font-size: 24px; font-style: italic; color: var(--paper); font-weight: 500;">
+  "The same faculty. Wherever you are."
+</div>
+
+<!-- CURRICULUM -->
+<section class="wrap" id="curriculum">
+  <div class="sec-head reveal-fast">
+    <h2>8 Modules. <em>In order.</em></h2>
+    <p>A structured approach to integrating AI into strategic roles, from data science foundations to reinforcement learning and generative AI.</p>
+  </div>
+  
+  <div class="courses">
+    <div class="crow">
+      <div class="cnum">01</div>
+      <div class="cname">Foundation of Data Science</div>
+      <div class="cfaculty">"Speak data with confidence."</div>
+    </div>
+    <div class="crow">
+      <div class="cnum">02</div>
+      <div class="cname">Data Visualization and Story Telling</div>
+      <div class="cfaculty">"Turn numbers into boardroom influence."</div>
+    </div>
+    <div class="crow">
+      <div class="cnum">03</div>
+      <div class="cname">Predictive Analysis</div>
+      <div class="cfaculty">"Forecast outcomes that guide strategy."</div>
+    </div>
+    <div class="crow">
+      <div class="cnum">04</div>
+      <div class="cname">Machine Learning with Business Applications</div>
+      <div class="cfaculty">"See algorithms in action on real business problems."</div>
+    </div>
+    <div class="crow">
+      <div class="cnum">05</div>
+      <div class="cname">Machine Learning using Python</div>
+      <div class="cfaculty">"Practical skills to engage with technical teams."</div>
+    </div>
+    <div class="crow">
+      <div class="cnum">06</div>
+      <div class="cname">Artificial Neural Network and Deep Learning</div>
+      <div class="cfaculty">"Understand the power behind modern AI."</div>
+    </div>
+    <div class="crow">
+      <div class="cnum">07</div>
+      <div class="cname">Reinforcement Learning</div>
+      <div class="cfaculty">"Lead in dynamic, uncertain environments."</div>
+    </div>
+    <div class="crow">
+      <div class="cnum">08</div>
+      <div class="cname">Generative AI</div>
+      <div class="cfaculty">"Harness the innovation of ChatGPT, LLMs &amp; beyond."</div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY SPOTLIGHT -->
+<section class="wrap" id="faculty">
+  <div class="eyebrow" style="margin-bottom:32px">Faculty · Northstar Learning</div>
+  <div class="spot">
+    <div class="spot__img reveal">
+      <img src="./images/faculty/demo-faculty.svg" alt="Prof. Dev Mehra" onerror="this.src='./images/faculty/demo-faculty.svg'" />
+    </div>
+    <div class="spot__content">
+      <div class="spot__eyebrow">Programme Lead</div>
+      <p class="spot__quote reveal reveal-delay-1">"The goal isn't just to understand algorithms, but to grasp the business value of AI and apply advanced analytics to drive strategy and innovation."</p>
+      <div class="spot__name reveal reveal-delay-2">Prof. Dev Mehra</div>
+      <div class="spot__role">Quantitative Methods &amp; Information Systems</div>
+    </div>
+  </div>
+
+  <div class="fac-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="fac">
+      <div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Shreya Suri" onerror="this.src='./images/faculty/demo-faculty.svg'" /></div>
+      <div class="fac__name">Prof. Shreya Suri</div>
+      <div class="fac__role">Faculty</div>
+      <div class="fac__course">Information Systems</div>
+    </div>
+    <div class="fac">
+      <div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Mira Sen" onerror="this.src='./images/faculty/demo-faculty.svg'" /></div>
+      <div class="fac__name">Prof. Mira Sen</div>
+      <div class="fac__role">Python &amp; MLOps</div>
+      <div class="fac__course">Practical skills to engage with technical teams.</div>
+    </div>
+    <div class="fac">
+      <div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Neel Bhasin" onerror="this.src='./images/faculty/demo-faculty.svg'" /></div>
+      <div class="fac__name">Prof. Neel Bhasin</div>
+      <div class="fac__role">Deep Learning</div>
+      <div class="fac__course">Understand the power behind modern AI.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="wrap" id="audience" style="padding-top:0">
+  <div class="sec-head reveal-fast">
+    <h2>Built for managers <em>steering AI initiatives.</em></h2>
+    <p>If you are looking to integrate AI into your strategic role, PCAIM closes the gap between business leadership and technical implementation.</p>
+  </div>
+  <div class="two-col">
+    <div class="who">
+      <h3>Target <em>Audience:</em></h3>
+      <ul>
+        <li><span><b>Mid-career and senior managers</b> integrating AI into strategic roles.</span></li>
+        <li><span><b>Consultants, IT professionals,</b> and project managers steering AI/ML initiatives.</span></li>
+        <li><span><b>Entrepreneurs</b> leveraging AI for innovation and scalability.</span></li>
+      </ul>
+    </div>
+    <div class="elig">
+      <h3>You should apply <em>if</em> you have:</h3>
+      <ul>
+        <li><span><b>Minimum 3 years</b> of professional experience.</span></li>
+        <li><span><b>A graduate degree</b> in any discipline.</span></li>
+        <li><span><b>A desire to leverage</b> data visualization, predictive analytics, and machine learning effectively.</span></li>
+      </ul>
+      <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(244,239,227,.2);">
+        <h4 style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--paper);margin-bottom:12px;">Grading &amp; Credential</h4>
+        <p style="font-size:14px;color:rgba(244,239,227,.8);line-height:1.5;">End-of-week assessments + final exam. Minimum 60% required per course. Graduates receive a Northstar Learning certificate with demo alumni access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES & DATES -->
+<section class="wrap" id="fees" style="padding-top: 80px;">
+  <h2 class="sec-head reveal-fast"><span>Dates &amp; Contact</span></h2>
+  <div class="fee-wrap">
+    <div class="fee-table">
+      <div class="fee-row"><div class="label">Registrations open</div><div class="v">30 Aug 2025</div></div>
+      <div class="fee-row"><div class="label">Registrations close</div><div class="v">15 Dec 2025</div></div>
+      <div class="fee-row"><div class="label">Inauguration</div><div class="v">20 Dec 2025</div></div>
+      <div class="fee-row"><div class="label">Credential</div><div class="v" style="font-size:18px;">Professional Certificate</div></div>
+    </div>
+    <div class="fee-aside">
+      <div class="e">Admissions Support</div>
+      <div class="h">Get in touch</div>
+      <div class="d">Monday–Friday, 10 AM – 6 PM</div>
+      <ul>
+        <li>Email: hello@northstar-learning.example</li>
+        <li>Phone: +91 90000 12345</li>
+        <li>WhatsApp: +91 90000 12346</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final__inner">
+    <div>
+      <h2>Ready to harness AI?</h2>
+      <p>Join the Certificate in Applied AI for Managers and drive data-driven strategies.</p>
+    </div>
+    <div class="final__ctas">
+      <a href="#apply" class="btn btn--primary">Apply Now <span class="arrow">→</span></a>
+      <a href="mailto:hello@northstar-learning.example" class="btn btn--ghost">Contact Admissions <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <div class="foot__brand"><img src="./images/northstar-mark.svg" alt="Northstar Learning" /></div>
+    <div class="foot__legal">© Northstar Learning 2026. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Northstar Learning faculty placeholder</title>
+  <desc id="desc">A neutral editorial portrait placeholder for the fictional demo catalogue.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#24332e"/><stop offset="1" stop-color="#7d8f7a"/></linearGradient>
+  </defs>
+  <rect width="640" height="800" fill="url(#bg)"/>
+  <circle cx="320" cy="282" r="116" fill="#f0c6a8"/>
+  <path d="M201 278c20-104 78-151 123-151 74 0 119 61 122 153-41-35-92-54-151-46-27 4-58 18-94 44z" fill="#1d2724"/>
+  <path d="M134 758c18-166 82-236 186-236s169 70 186 236z" fill="#f3b63f"/>
+  <path d="M240 420c27 25 53 38 80 38 28 0 55-13 81-38v89c-28 27-55 41-81 41-27 0-54-14-80-41z" fill="#e5a886"/>
+  <text x="320" y="714" text-anchor="middle" fill="#1d2724" font-family="IBM Plex Mono,monospace" font-size="22" letter-spacing="2">NORTHSTAR FACULTY</text>
+</svg>
