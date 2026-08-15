@@ -174,7 +174,9 @@
   height: min(76vh, 54rem);
   opacity: 0.8;
   transform: translateX(-50%);
-  filter: saturate(0.94) contrast(1.02) drop-shadow(0 1.6rem 2.8rem rgba(0, 0, 0, 0.24));
+  /* Keep the WebGL canvas on a compositor layer; CSS filters force a costly
+     offscreen repaint while the hero is moving through the viewport. */
+  will-change: transform, opacity;
   pointer-events: none;
 }
 

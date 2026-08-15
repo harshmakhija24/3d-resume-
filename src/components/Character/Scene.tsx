@@ -27,8 +27,9 @@ const Scene = () => {
       powerPreference: "high-performance",
       preserveDrawingBuffer: false,
     });
-    const renderScale = window.innerWidth >= 1800 ? 0.82 : 0.88;
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.35);
+    // Keep the hero crisp while leaving headroom for page scrolling and text.
+    const renderScale = window.innerWidth >= 1800 ? 0.74 : 0.78;
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.15);
     renderer.setPixelRatio(pixelRatio);
     renderer.setSize(Math.max(1, rect.width * renderScale), Math.max(1, rect.height * renderScale), false);
     renderer.domElement.style.width = "100%";
@@ -55,8 +56,11 @@ const Scene = () => {
     let neckBaseRotation = new THREE.Euler();
     let mixer: THREE.AnimationMixer | null = null;
     let animationId = 0;
+    let lastRenderTime = 0;
     let isPageVisible = document.visibilityState === "visible";
     let isInViewport = false;
+    let isScrolling = false;
+    let scrollStopTimer = 0;
     let cancelled = false;
 
     const stopRenderLoop = () => {
@@ -66,11 +70,19 @@ const Scene = () => {
       }
     };
 
-    const renderLoop = () => {
+    const renderLoop = (timestamp = performance.now()) => {
       if (cancelled || !isPageVisible || !isInViewport || !character) {
         animationId = 0;
         return;
       }
+
+      // The page does not need a 60 FPS hero loop; reserving those frames for
+      // scrolling makes the transition feel immediate without killing the idle.
+      if (timestamp - lastRenderTime < 1000 / 30) {
+        animationId = requestAnimationFrame(renderLoop);
+        return;
+      }
+      lastRenderTime = timestamp;
 
       const delta = Math.min(clock.getDelta(), 0.05);
       mixer?.update(delta);
@@ -86,15 +98,25 @@ const Scene = () => {
     };
 
     const startRenderLoop = () => {
-      if (!animationId && isPageVisible && isInViewport && character) {
+      if (!animationId && isPageVisible && isInViewport && !isScrolling && character) {
         clock.start();
         animationId = requestAnimationFrame(renderLoop);
       }
     };
 
+    const onScroll = () => {
+      isScrolling = true;
+      stopRenderLoop();
+      window.clearTimeout(scrollStopTimer);
+      scrollStopTimer = window.setTimeout(() => {
+        isScrolling = false;
+        startRenderLoop();
+      }, 110);
+    };
+
     const onVisibilityChange = () => {
       isPageVisible = document.visibilityState === "visible";
-      if (isPageVisible) startRenderLoop();
+      if (isPageVisible && !isScrolling) startRenderLoop();
       else stopRenderLoop();
     };
 
@@ -104,7 +126,7 @@ const Scene = () => {
       camera.aspect = nextRect.width / nextRect.height;
       camera.updateProjectionMatrix();
       renderer.setSize(Math.max(1, nextRect.width * renderScale), Math.max(1, nextRect.height * renderScale), false);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.35));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.15));
       startRenderLoop();
     };
 
@@ -118,6 +140,7 @@ const Scene = () => {
     );
     observer.observe(container);
     document.addEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
 
     const { loadCharacter } = setCharacter();
@@ -167,6 +190,8 @@ const Scene = () => {
       stopRenderLoop();
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("scroll", onScroll);
+      window.clearTimeout(scrollStopTimer);
       window.removeEventListener("resize", onResize);
       scene.traverse((object) => {
         const mesh = object as THREE.Mesh;
