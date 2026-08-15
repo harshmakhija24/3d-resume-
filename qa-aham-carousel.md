@@ -18,3 +18,9 @@
 ## Production verification
 
 The cache-busted GitHub Pages deployment exposes the updated Previous and Next buttons plus numbered photo controls with the expected ARIA labels. The live Work navigation was triggered successfully and Aham Aatm Deepah selection was queued in the production DOM for the final settled-state check.
+
+## Final production verification
+
+The production HTML now references the JavaScript and CSS assets with a fresh build-time query version, preventing the old same-filename bundle from being reused by browser caches. A fresh live session exposes `PREV`, `NEXT`, `PHOTO 01 / 03`, and numbered 01/02/03 controls in the deployed DOM.
+
+The production session exposed the new carousel controls and versioned assets. A direct browser click from the current Work session remained on the first project card, so final visual capture will use a direct DOM selection of the Aham project button before judging the settled card.
