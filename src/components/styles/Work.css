@@ -175,22 +175,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   transform: translateY(-50%);
-  border: 1px solid var(--lineColor);
+  border: 1px solid rgba(200, 239, 117, 0.72);
   border-radius: 50%;
-  background: var(--panelColor);
-  color: var(--inkColor);
+  background: rgba(17, 22, 17, 0.94);
+  box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.28), 0 0 0 0.25rem rgba(200, 239, 117, 0.06);
+  color: var(--accentColor);
   cursor: pointer;
-  transition: 160ms ease;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
 }
 
 .carousel-arrow:hover,
 .carousel-arrow:focus-visible {
   border-color: var(--accentColor);
-  color: var(--accentColor);
-  transform: translateY(-50%) scale(1.05);
+  background: var(--accentColor);
+  box-shadow: 0 0.8rem 1.7rem rgba(0, 0, 0, 0.34), 0 0 0 0.3rem rgba(200, 239, 117, 0.12);
+  color: #171b17;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-arrow:focus-visible {
+  outline: 2px solid var(--inkColor);
+  outline-offset: 4px;
+}
+
+.carousel-arrow svg {
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .carousel-arrow-left { left: -58px; }
@@ -561,7 +574,7 @@
   .carousel-slide { padding: 28px 0; }
   .work-projects-anchor { scroll-margin-top: 5.25rem; }
   .carousel-title { font-size: clamp(2.2rem, 11vw, 2.8rem); }
-  .carousel-arrow { width: 44px; height: 44px; }
+  .carousel-arrow { width: 48px; height: 48px; }
   .carousel-arrow-left { left: 4px; }
   .carousel-arrow-right { right: 4px; }
   .carousel-image-frame { aspect-ratio: 1.2; }
