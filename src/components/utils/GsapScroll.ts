@@ -51,13 +51,15 @@ export function setCharTimeline(
     .to(character.rotation, { y: 0.3, duration: 1 }, 0)
     .to(camera.position, { z: 22.5, duration: 1 }, 0)
     .to(character.position, { x: -2.1, duration: 1 }, 0)
-    .to(".landing-container", { opacity: 0.5, duration: 0.55 }, 0.64)
-    .to(".character-model", { opacity: 0.2, duration: 0.45 }, 0.7);
+      .to(".landing-intro, .landing-info", { opacity: 0.92, duration: 0.55 }, 0.62)
+      .to(".landing-bottom-bar", { opacity: 0.72, duration: 0.45 }, 0.68)
+      .to(".landing-scroll-cue", { opacity: 0, duration: 0.24 }, 0.76)
+      .to(".character-model", { opacity: 0.24, duration: 0.45 }, 0.7);
 
   const workTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".about-section",
-      start: "center 55%",
+      start: "top 92%",
       end: "bottom top",
       scrub: 0.45,
       invalidateOnRefresh: true,

@@ -1,0 +1,2 @@
+## Local Landing-to-About QA
+The rebuilt local preview was checked from the top of the page and after scrolling one viewport into the Landing-to-About boundary. The About heading, lede, paragraphs, chips, metrics, and closing paragraph now appear as complete readable content without clipped words or delayed character cascades. The hero exit is visibly calmer because the Landing copy fades only slightly, the bottom metrics ease out, and the scroll cue disappears. A second viewport scroll confirms later sections remain intact and visually consistent.

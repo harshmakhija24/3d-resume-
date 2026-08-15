@@ -35,10 +35,15 @@ export default function setSplitText() {
 
   paras.forEach((para: ParaElement) => {
     para.classList.add("visible");
-    if (para.anim) {
-      para.anim.progress(1).kill();
-      para.split?.revert();
-    }
+    para.anim?.progress(1).kill();
+    para.split?.revert();
+    para.anim = undefined;
+    para.split = undefined;
+
+    // About Me is the first content handoff after the hero. Keeping its copy
+    // intact prevents clipped words and lets the section arrive as one calm,
+    // readable block while the later sections retain their reveal treatment.
+    if (para.closest(".about-section")) return;
 
     para.split = new SplitText(para, {
       type: "lines,words",
@@ -47,7 +52,7 @@ export default function setSplitText() {
 
     para.anim = gsap.fromTo(
       para.split.words,
-      { autoAlpha: 0, y: 80 },
+      { autoAlpha: 0, y: 28 },
       {
         autoAlpha: 1,
         scrollTrigger: {
@@ -55,18 +60,23 @@ export default function setSplitText() {
           toggleActions: ToggleAction,
           start: TriggerStart,
         },
-        duration: 1,
+        duration: 0.72,
         ease: "power3.out",
         y: 0,
-        stagger: 0.02,
+        stagger: 0.012,
       }
     );
   });
   titles.forEach((title: ParaElement) => {
-    if (title.anim) {
-      title.anim.progress(1).kill();
-      title.split?.revert();
-    }
+    title.anim?.progress(1).kill();
+    title.split?.revert();
+    title.anim = undefined;
+    title.split = undefined;
+
+    // The About heading should land with its copy, not arrive as a delayed
+    // character cascade immediately after the hero.
+    if (title.closest(".about-section")) return;
+
     title.split = new SplitText(title, {
       type: "chars,lines",
       linesClass: "split-line",
