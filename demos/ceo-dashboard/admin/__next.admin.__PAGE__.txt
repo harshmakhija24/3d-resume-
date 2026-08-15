@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/3d-resume-/demos/ceo-dashboard/_next/static/chunks/0ggjz2f4bby9v.js","/3d-resume-/demos/ceo-dashboard/_next/static/chunks/0o~269zocnb95.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"style":{"padding":"2rem"},"children":[["$","h1",null,{"children":"Admin Dashboard"}],["$","p",null,{"children":"RBAC Route Scaffolded: Data Pipeline Sync Management"}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"NGHiBZKLTZftlenPc4D05"}
+4:null
