@@ -162,6 +162,7 @@ const projects: Project[] = [
 
 const AhamAatmGallery = ({ images }: { images: GalleryImage[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const pointerStartX = useRef<number | null>(null);
   const activeImage = images[activeIndex];
 
   const showPrevious = () => {
@@ -172,10 +173,31 @@ const AhamAatmGallery = ({ images }: { images: GalleryImage[] }) => {
     setActiveIndex((index) => (index === images.length - 1 ? 0 : index + 1));
   };
 
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse") return;
+    pointerStartX.current = event.clientX;
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (pointerStartX.current === null) return;
+    const distance = event.clientX - pointerStartX.current;
+    pointerStartX.current = null;
+    if (Math.abs(distance) < 42) return;
+    if (distance < 0) showNext();
+    else showPrevious();
+  };
+
   return (
     <div className="aham-gallery" aria-label="Aham Aatm Deepah field documentation">
-      <div className="aham-gallery-frame">
-        <img src={activeImage.src} alt={activeImage.alt} loading="lazy" />
+      <div
+        className="aham-gallery-frame"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={() => { pointerStartX.current = null; }}
+        role="group"
+        aria-label={`Photo ${activeIndex + 1} of ${images.length}. Swipe or use the buttons to browse.`}
+      >
+        <img src={activeImage.src} alt={activeImage.alt} loading="lazy" draggable="false" />
         <button
           className="aham-gallery-arrow aham-gallery-arrow-left"
           type="button"
@@ -184,6 +206,7 @@ const AhamAatmGallery = ({ images }: { images: GalleryImage[] }) => {
           data-cursor="disable"
         >
           <MdArrowBack aria-hidden="true" />
+          <span>PREV</span>
         </button>
         <button
           className="aham-gallery-arrow aham-gallery-arrow-right"
@@ -192,26 +215,37 @@ const AhamAatmGallery = ({ images }: { images: GalleryImage[] }) => {
           aria-label="Next Aham Aatm Deepah photo"
           data-cursor="disable"
         >
+          <span>NEXT</span>
           <MdArrowForward aria-hidden="true" />
         </button>
-        <span className="aham-gallery-count">
-          {String(activeIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+        <span className="aham-gallery-count" aria-live="polite">
+          PHOTO {String(activeIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
         </span>
       </div>
       <div className="aham-gallery-footer">
-        <p>{activeImage.caption}</p>
-        <div className="aham-gallery-dots" aria-label="Aham Aatm Deepah photo navigation">
-          {images.map((image, index) => (
-            <button
-              key={image.src}
-              className={`aham-gallery-dot ${index === activeIndex ? "aham-gallery-dot-active" : ""}`}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Show Aham Aatm Deepah photo ${index + 1}`}
-              aria-current={index === activeIndex ? "true" : undefined}
-              data-cursor="disable"
-            />
-          ))}
+        <div className="aham-gallery-caption">
+          <span className="aham-gallery-caption-label">FIELD NOTE</span>
+          <p>{activeImage.caption}</p>
+        </div>
+        <div className="aham-gallery-navigation">
+          <span className="aham-gallery-hint">SWIPE OR SELECT</span>
+          <div className="aham-gallery-dots" aria-label="Aham Aatm Deepah photo navigation" role="tablist">
+            {images.map((image, index) => (
+              <button
+                key={image.src}
+                className={`aham-gallery-dot ${index === activeIndex ? "aham-gallery-dot-active" : ""}`}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Show Aham Aatm Deepah photo ${index + 1}`}
+                aria-current={index === activeIndex ? "true" : undefined}
+                aria-selected={index === activeIndex}
+                role="tab"
+                data-cursor="disable"
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
