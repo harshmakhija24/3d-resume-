@@ -1,3 +1,4 @@
+import { TbNotes } from "react-icons/tb";
 import HoverLinks from "./HoverLinks";
 import "./styles/Navbar.css";
 
@@ -35,6 +36,18 @@ const Navbar = () => {
           <li>
             <a data-href="#contact" href="#contact">
               <HoverLinks text="CONTACT" />
+            </a>
+          </li>
+          <li>
+            <a
+              className="navbar-cv"
+              href={import.meta.env.BASE_URL + "HarshMakhija.pdf"}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Harsh Makhija CV"
+            >
+              <span>CV</span>
+              <TbNotes aria-hidden="true" />
             </a>
           </li>
         </ul>

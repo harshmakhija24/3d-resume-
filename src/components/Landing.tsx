@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import { TbNotes } from "react-icons/tb";
 import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
@@ -32,6 +33,14 @@ const Landing = ({ children }: PropsWithChildren) => {
           <div className="landing-ctas">
             <a href="#work-projects" className="btn btn-primary">
               Explore selected work <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href={import.meta.env.BASE_URL + "HarshMakhija.pdf"}
+              className="btn landing-cv-btn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View CV <TbNotes aria-hidden="true" />
             </a>
           </div>
           <p className="landing-note">Products, communities, and experiences behind the numbers.</p>

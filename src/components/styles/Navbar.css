@@ -33,6 +33,21 @@
 .header ul a:active { transform: scale(0.97); }
 .header ul a:hover { color: var(--inkColor); }
 
+.navbar-cv {
+  gap: 0.38rem;
+  padding: 0.42rem 0.65rem;
+  border: 1px solid rgba(200, 239, 117, 0.72);
+  border-radius: 999px;
+  background: rgba(200, 239, 117, 0.1);
+  color: var(--accentColor) !important;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.navbar-cv svg { font-size: 0.95rem; }
+.navbar-cv:hover { border-color: var(--pinkAccent); background: rgba(240, 166, 189, 0.14); color: var(--inkColor) !important; transform: translateY(-1px); }
+
 .navbar-title {
   display: inline-flex;
   align-items: center;
@@ -81,5 +96,7 @@
   .header { width: calc(100% - 2.2rem); padding-top: calc(0.75rem + env(safe-area-inset-top)); padding-bottom: 0.55rem; }
   .header ul { gap: 0.55rem; font-size: 0.58rem; }
   .navbar-title { width: 2.2rem; height: 2.2rem; }
+  .navbar-cv { padding: 0.36rem 0.5rem; font-size: 0.55rem; }
+  .navbar-cv svg { display: none; }
   .navbar-connect { display: none; }
 }

@@ -6,10 +6,11 @@ const SocialIcons = () => {
     <div className="icons-section" aria-label="Resume utility">
       <a
         className="resume-button"
-        href={import.meta.env.BASE_URL + "Harsh_Makhija_CV.pdf"}
-        download="Harsh_Makhija_CV.pdf"
+        href={import.meta.env.BASE_URL + "HarshMakhija.pdf"}
+        download="HarshMakhija.pdf"
+        aria-label="Download Harsh Makhija CV"
       >
-        <span>CV</span>
+        <span>Download CV</span>
         <TbNotes aria-hidden="true" />
       </a>
     </div>
