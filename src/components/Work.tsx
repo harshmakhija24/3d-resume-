@@ -48,7 +48,29 @@ const projects: Project[] = [
       "A farmer-first agriculture platform with product discovery, dealer journeys, and KrishiBot AI support.",
     image: import.meta.env.BASE_URL + "images/preview1.png",
     link: "https://krishitek-website.vercel.app",
-    linkLabel: "Open live site",
+    linkLabel: "Experience KrishiTech",
+    themeClass: "accent-tech",
+  },
+  {
+    title: "PM Dashboard",
+    category: "Built product · Project intelligence demo",
+    tools: "Project portfolio · milestone tracking · team ledgers · PM insights",
+    outcome:
+      "A fictionalized operations dashboard that makes project risk, velocity, and team allocation visible in one working interface.",
+    image: import.meta.env.BASE_URL + "images/product-pm-dashboard.svg",
+    link: import.meta.env.BASE_URL + "demos/pm-dashboard/",
+    linkLabel: "Open PM Dashboard",
+    themeClass: "accent-business",
+  },
+  {
+    title: "Course Intelligence",
+    category: "Built product · Recommendation operations demo",
+    tools: "Course catalogue · explainable recommendations · graph view · CRUD workflows",
+    outcome:
+      "A working recommendation and catalogue-operations system with local deterministic fallback, filters, graph exploration, and report export.",
+    image: import.meta.env.BASE_URL + "images/product-course-intelligence.svg",
+    link: import.meta.env.BASE_URL + "demos/suggestion-engine/",
+    linkLabel: "Open Course Intelligence",
     themeClass: "accent-tech",
   },
   {

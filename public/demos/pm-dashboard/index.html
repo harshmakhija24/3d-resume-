@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Orchestrator | Portfolio PM Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="demo-disclosure" role="status"><strong>PORTFOLIO DEMO</strong><span>Fictionalized sample data · no live project systems or personal records connected</span></div>
+    <div class="dashboard-layout">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <span class="logo-text">MASTR</span>
+                <span class="logo-sub">ORCHESTRATOR</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-view="hawkeye">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    Hawkeye View
+                </a>
+                <a href="#" class="nav-item" data-view="teamOverview">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    Team View
+                </a>
+                <a href="#" class="nav-item" data-view="pmInsights">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    PM Insights
+                </a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content" id="main-content-scroll">
+            
+            <header class="top-nav">
+                <h1>Project Operations Intelligence</h1>
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <span id="last-synced" style="font-size:11px; color:var(--text-tertiary); font-variant-numeric:tabular-nums;"></span>
+                    <div class="status-indicator">
+                        <span class="pulse-dot active"></span> Demo Data
+                    </div>
+                </div>
+            </header>
+            
+            <div id="view-container">
+                <!-- ========================================== -->
+                <!-- Hawkeye View                               -->
+                <!-- ========================================== -->
+                <section id="hawkeye-view" class="view-panel active">
+                    
+                    <div class="metrics-grid" style="grid-template-columns: repeat(5, 1fr);">
+                        <!-- Project Portfolios -->
+                        <div class="metric-card glass-panel">
+                            <h3>Project Portfolios</h3>
+                            <div style="display:flex; flex-direction: column; gap:10px; margin-top:8px;">
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Total</span>
+                                    <span style="color:var(--text-primary); font-weight:700; font-size:16px;" id="proj-total">--</span>
+                                </div>
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Active</span>
+                                    <span style="color:var(--success-green); font-weight:700; font-size:16px;" id="proj-active">--</span>
+                                </div>
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Archived</span>
+                                    <span style="color:var(--text-tertiary); font-weight:700; font-size:16px;" id="proj-archived">--</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Milestones -->
+                        <div class="metric-card glass-panel" id="milestone-trigger" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                            <h3>
+                                Milestones
+                                <div class="tooltip-container"><span class="info-icon">i</span><div class="tooltip">Fictional milestone data across the demo portfolio. Click to view details.</div></div>
+                            </h3>
+                            <div style="display:flex; flex-direction: column; gap:10px; margin-top:8px;">
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Total</span>
+                                    <span style="color:var(--text-primary); font-weight:700; font-size:16px;" id="ms-total">--</span>
+                                </div>
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Completed</span>
+                                    <span style="color:var(--success-green); font-weight:700; font-size:16px;" id="ms-comp">--</span>
+                                </div>
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">In Progress</span>
+                                    <span style="color:#f59e0b; font-weight:700; font-size:16px;" id="ms-inprogress">--</span>
+                                </div>
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Not Started</span>
+                                    <span style="color:var(--danger-red); font-weight:700; font-size:16px;" id="ms-notstarted">--</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Velocity -->
+                        <div class="metric-card glass-panel" id="velocity-trigger" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                            <h3>
+                                Task Velocity
+                                <div class="tooltip-container"><span class="info-icon">i</span><div class="tooltip">Tasks completed across all active projects in the given time period. Click to see full breakdown.</div></div>
+                            </h3>
+                            <p style="font-size:11px; color:var(--text-tertiary); margin-top:2px;">Tasks Completed over Last 7 &amp; 30 Days</p>
+                            <div style="display:flex; flex-direction: column; gap:10px; margin-top:8px;">
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Last 7 Days</span>
+                                    <span style="color:var(--accent-blue); font-weight:700; font-size:16px;" id="vel-7d">--</span>
+                                </div>
+                                <div style="display:flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500;">
+                                    <span style="color:var(--text-secondary);">Last 30 Days</span>
+                                    <span style="color:var(--text-primary); font-weight:700; font-size:16px;" id="vel-30d">--</span>
+                                </div>
+                            </div>
+                            <span style="font-size:11px; color:var(--accent-blue); text-decoration:underline; margin-top:6px; display:inline-block;">Click to see completed tasks</span>
+                        </div>
+
+                        <!-- Bottlenecks -->
+                        <div class="metric-card glass-panel danger" id="bottleneck-trigger" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                            <h3>
+                                Overdue Tasks
+                                <div class="tooltip-container"><span class="info-icon">i</span><div class="tooltip">Real-time count of tasks past their due date that are NOT completed. Click to see full breakdown by person.</div></div>
+                            </h3>
+                            <div class="metric-value" id="total-bottlenecks" style="color:var(--danger-red);">--</div>
+                            <span style="font-size:11px; color:var(--danger-red); text-decoration:underline;">Click to review all overdue tasks</span>
+                        </div>
+
+                        <!-- Unscheduled Tasks -->
+                        <div class="metric-card glass-panel warning" id="unscheduled-trigger" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                            <h3>
+                                Unscheduled Tasks
+                                <div class="tooltip-container"><span class="info-icon">i</span><div class="tooltip">Tasks with NO due date set. These can slip indefinitely without visibility. Click to review and assign deadlines.</div></div>
+                            </h3>
+                            <div class="metric-value" id="total-unscheduled" style="color:#f59e0b;">--</div>
+                            <span style="font-size:11px; color:#f59e0b; text-decoration:underline;">Click to review unscheduled tasks</span>
+                        </div>
+                    </div>
+
+                    <div class="project-list glass-panel">
+                        <h2>Project Portfolios <span style="font-size: 11px; color: var(--text-tertiary); font-weight: normal; margin-left: 10px;">(Click any row to view assigned teams)</span></h2>
+                        
+                        <!-- COMBINED FILTER / SORT BAR -->
+                        <div id="project-filter-bar" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Status</label>
+                                <select id="filter-status" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All</option>
+                                    <option value="Active" style="background:#1e293b; color:#f1f5f9;">Active</option>
+                                    <option value="Archived" style="background:#1e293b; color:#f1f5f9;">Archived</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Overdue</label>
+                                <select id="sort-overdue" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="none" style="background:#1e293b; color:#f1f5f9;">Default</option>
+                                    <option value="desc" style="background:#1e293b; color:#f1f5f9;">High to Low</option>
+                                    <option value="asc" style="background:#1e293b; color:#f1f5f9;">Low to High</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Risk Level</label>
+                                <select id="sort-risk" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="none" style="background:#1e293b; color:#f1f5f9;">Default</option>
+                                    <option value="desc" style="background:#1e293b; color:#f1f5f9;">High to Low</option>
+                                    <option value="asc" style="background:#1e293b; color:#f1f5f9;">Low to High</option>
+                                </select>
+                            </div>
+                            <button id="reset-filters" style="background:transparent; color:var(--accent-blue); border:1px solid var(--accent-blue); border-radius:6px; padding:6px 14px; font-size:12px; font-family:inherit; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='var(--accent-blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent-blue)'">Reset All</button>
+                        </div>
+
+                        <div class="table-container">
+                            <table id="projects-table" class="interactive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Project Name</th>
+                                        <th>Status</th>
+                                        <th>Team Size</th>
+                                        <th>Overdue Tasks</th>
+                                        <th>
+                                            Risk Level
+                                            <div class="tooltip-container"><span class="info-icon">i</span><div class="tooltip">High = 10+ overdue tasks. Medium = 5-9. Low = under 5.</div></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- Layer 2: Team Allocation                   -->
+                <!-- ========================================== -->
+                <section id="project-detail-view" class="view-panel" style="display: none;">
+                    <div class="back-nav glass-panel" id="back-to-hawkeye-1" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        Back to Hawkeye Overview
+                    </div>
+
+                    <div class="project-list glass-panel">
+                        <h2>Team Allocation: <span id="drill-project-name" style="color: var(--text-primary);">Loading...</span></h2>
+                        
+                        <!-- Priority Distribution Bar -->
+                        <div id="priority-dist" style="display:none; margin-bottom: 20px; gap: 12px; flex-wrap: wrap;">
+                            <span class="status-badge status-high" id="pd-high" style="font-size:13px; padding: 6px 14px;">-- High</span>
+                            <span class="status-badge status-med" id="pd-med" style="font-size:13px; padding: 6px 14px;">-- Medium</span>
+                            <span class="status-badge status-low" id="pd-low" style="font-size:13px; padding: 6px 14px;">-- Low</span>
+                        </div>
+
+                        <p id="team-subtitle" style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">Review individual task loads. Click any member to view their complete task ledger.</p>
+                        
+                        <div id="team-loader" style="display:none; padding:40px; text-align:center;">
+                            <div style="font-size: 18px; color: var(--accent-blue); margin-bottom: 16px;" id="team-load-pct">0%</div>
+                            <div style="width: 100%; max-width: 300px; margin: 0 auto; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                                <div id="team-load-bar" style="width: 0%; height: 100%; background: var(--accent-blue); transition: width 0.1s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container" id="team-table-wrapper">
+                            <table id="team-drill-table" class="interactive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Team Member</th>
+                                        <th>Role</th>
+                                        <th>Tasks Completed</th>
+                                        <th>Tasks Pending</th>
+                                        <th>Overdue</th>
+                                        <th>Risk Trigger</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- Layer 3: Task Ledger                       -->
+                <!-- ========================================== -->
+                <section id="user-ledger-view" class="view-panel" style="display: none;">
+                    <div class="back-nav glass-panel" id="back-to-team" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        Back (Close View)
+                    </div>
+
+                    <div class="project-list glass-panel">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
+                            <div>
+                                <h2>Task Ledger: <span id="drill-user-name" style="color: var(--text-primary);">Loading...</span></h2>
+                                <p style="color: var(--text-secondary); margin-top: 4px; font-size: 14px;">Fictional task ledger. Click a row or demo icon to inspect the local record.</p>
+                            </div>
+                            <div class="filter-group" id="ledger-filters" style="display: none;">
+                                <button class="filter-btn active" data-status="All">All</button>
+                                <button class="filter-btn" data-status="In Progress">In Progress</button>
+                                <button class="filter-btn" data-status="Pending">Not Started</button>
+                                <button class="filter-btn" data-status="Completed">Completed</button>
+                            </div>
+                        </div>
+
+                        <div id="ledger-loader" style="display:none; padding:40px; text-align:center;">
+                            <div style="font-size: 18px; color: var(--accent-blue); margin-bottom: 16px;" id="ledger-load-pct">0%</div>
+                            <div style="width: 100%; max-width: 300px; margin: 0 auto; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                                <div id="ledger-load-bar" style="width: 0%; height: 100%; background: var(--accent-blue); transition: width 0.1s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="table-container" id="ledger-table-wrapper">
+                            <table class="interactive-table" id="task-ledger-table">
+                                <thead>
+                                    <tr>
+                                        <th>Task Name</th>
+                                        <th>Status</th>
+                                        <th>Priority</th>
+                                        <th>Start Date</th>
+                                        <th>Due Date</th>
+                                        <th>Deadline</th>
+                                        <th>Notes</th>
+                                        <th>Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- Milestone Details                          -->
+                <!-- ========================================== -->
+                <section id="milestone-detail-view" class="view-panel" style="display: none;">
+                    <div class="back-nav glass-panel" id="back-to-hawkeye-3" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        Back to Hawkeye Overview
+                    </div>
+
+                    <div class="project-list glass-panel">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
+                            <div>
+                                <h2 style="color: var(--accent-blue);">Milestones Timeline</h2>
+                                <p style="color: var(--text-secondary); margin-top: 4px; font-size: 14px;">Demo milestones. Click any row to view the fictional project team.</p>
+                            </div>
+                            <div class="filter-group" id="milestone-filters" style="display: none;">
+                                <button class="filter-btn active" data-status="All">All</button>
+                                <button class="filter-btn" data-status="Completed">Completed</button>
+                                <button class="filter-btn" data-status="In Progress">In Progress</button>
+                                <button class="filter-btn" data-status="Not Started">Not Started</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table id="global-milestone-table" class="interactive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Milestone Title</th>
+                                        <th>Project</th>
+                                        <th>Assignee</th>
+                                        <th>Due Date</th>
+                                        <th>Completed Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- Bottleneck Details                         -->
+                <!-- ========================================== -->
+                <section id="bottleneck-detail-view" class="view-panel" style="display: none;">
+                    <div class="back-nav glass-panel" id="back-to-hawkeye-2" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        Back to Hawkeye Overview
+                    </div>
+
+                    <div class="project-list glass-panel">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <h2 style="color: var(--danger-red);">Overdue Task Breakdown <span id="bottleneck-live-count" style="font-size:14px; color:var(--text-tertiary); font-weight:400; margin-left:8px;"></span></h2>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">All tasks past their due date. <strong style="color:var(--text-primary)">Click any row to open that person's full ledger.</strong></p>
+
+                        <!-- BOTTLENECK FILTER BAR -->
+                        <div id="bottleneck-filter-bar" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Project</label>
+                                <select id="bn-filter-project" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All Projects</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Days Late</label>
+                                <select id="bn-sort-days" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="desc" style="background:#1e293b; color:#f1f5f9;">High to Low</option>
+                                    <option value="asc" style="background:#1e293b; color:#f1f5f9;">Low to High</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Impact</label>
+                                <select id="bn-filter-impact" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All Levels</option>
+                                    <option value="Critical" style="background:#1e293b; color:#f1f5f9;">Critical</option>
+                                    <option value="High" style="background:#1e293b; color:#f1f5f9;">High</option>
+                                    <option value="Medium" style="background:#1e293b; color:#f1f5f9;">Medium</option>
+                                </select>
+                            </div>
+                            <button id="bn-reset-filters" style="background:transparent; color:var(--accent-blue); border:1px solid var(--accent-blue); border-radius:6px; padding:6px 14px; font-size:12px; font-family:inherit; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='var(--accent-blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent-blue)'">Reset All</button>
+                        </div>
+                        <p id="bn-showing-count" style="color:var(--text-tertiary); font-size:12px; margin-bottom:12px;"></p>
+
+                        <div class="table-container">
+                            <table id="global-bottleneck-table" class="interactive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Task Name</th>
+                                        <th>Assignee</th>
+                                        <th>Project</th>
+                                        <th>Priority</th>
+                                        <th>Days Late</th>
+                                        <th>Impact Level</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- Velocity Detail View                       -->
+                <!-- ========================================== -->
+                <section id="velocity-detail-view" class="view-panel" style="display: none;">
+                    <div class="back-nav glass-panel" id="back-to-hawkeye-4" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        Back to Hawkeye Overview
+                    </div>
+
+                    <div class="project-list glass-panel">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <h2 style="color: var(--accent-blue);">Completed Tasks <span id="velocity-live-count" style="font-size:14px; color:var(--text-tertiary); font-weight:400; margin-left:8px;"></span></h2>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">Tasks closed by the team in the last 30 days. <strong style="color:var(--text-primary)">Review output, priorities, and delivery timing.</strong></p>
+
+                        <!-- VELOCITY FILTER BAR -->
+                        <div id="velocity-filter-bar" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Period</label>
+                                <select id="vel-filter-period" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All (30 Days)</option>
+                                    <option value="7d" style="background:#1e293b; color:#f1f5f9;">Last 7 Days</option>
+                                    <option value="30d" style="background:#1e293b; color:#f1f5f9;">8-30 Days Ago</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Project</label>
+                                <select id="vel-filter-project" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All Projects</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Priority</label>
+                                <select id="vel-filter-priority" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All Priorities</option>
+                                    <option value="High" style="background:#1e293b; color:#f1f5f9;">High</option>
+                                    <option value="Medium" style="background:#1e293b; color:#f1f5f9;">Medium</option>
+                                    <option value="Low" style="background:#1e293b; color:#f1f5f9;">Low</option>
+                                    <option value="None" style="background:#1e293b; color:#f1f5f9;">None</option>
+                                </select>
+                            </div>
+                            <button id="vel-reset-filters" style="background:transparent; color:var(--accent-blue); border:1px solid var(--accent-blue); border-radius:6px; padding:6px 14px; font-size:12px; font-family:inherit; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='var(--accent-blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent-blue)'">Reset All</button>
+                        </div>
+                        <p id="vel-showing-count" style="color:var(--text-tertiary); font-size:12px; margin-bottom:12px;"></p>
+
+                        <div class="table-container">
+                            <table id="velocity-detail-table" class="interactive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Task Name</th>
+                                        <th>Assignee</th>
+                                        <th>Project</th>
+                                        <th>Priority</th>
+                                        <th>Completed</th>
+                                        <th>Due Date</th>
+                                        <th>Delivery</th>
+                                        <th>Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+                <!-- ========================================== -->
+                <!-- Team Overview View                          -->
+                <!-- ========================================== -->
+                <section id="team-overview-view" class="view-panel" style="display: none;">
+                    <div class="project-list glass-panel">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <h2 style="color: var(--accent-blue);">Team Overview <span id="team-overview-count" style="font-size:14px; color:var(--text-tertiary); font-weight:400; margin-left:8px;"></span></h2>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">All team members across active projects, grouped by role. <strong style="color:var(--text-primary)">Click any card to see that team's members below.</strong></p>
+                        
+                        <div class="team-cards-grid" id="team-cards-container"></div>
+
+                        <div id="team-members-section" style="display:none;">
+                            <h3 id="team-members-title" style="font-size:15px; color:var(--text-primary); margin-bottom:16px;"></h3>
+                            <div class="table-container">
+                                <table id="team-members-table" class="interactive-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Member</th>
+                                            <th>Projects</th>
+                                            <th>Completed</th>
+                                            <th>Pending</th>
+                                            <th>Overdue</th>
+                                            <th>Risk</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- PM Insights View                            -->
+                <!-- ========================================== -->
+                <section id="pm-insights-view" class="view-panel" style="display: none;">
+                    <div class="project-list glass-panel">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <h2 style="color: var(--accent-blue);">PM Insights Agent</h2>
+                                <span id="insights-source-badge" style="font-size:11px; padding:3px 10px; border-radius:12px; background:rgba(59,130,246,0.1); color:var(--accent-blue); font-weight:600;"></span>
+                            </div>
+                            <button id="refresh-insights" style="background:transparent; color:var(--accent-blue); border:1px solid var(--accent-blue); border-radius:6px; padding:6px 14px; font-size:12px; font-family:inherit; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='var(--accent-blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent-blue)'">↻ Refresh</button>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">Deterministic portfolio-demo analysis of project health, risks, and recommendations.</p>
+                        
+                        <div class="insights-container" id="insights-container">
+                            <div class="shimmer-line"></div>
+                            <div class="shimmer-line"></div>
+                            <div class="shimmer-line"></div>
+                            <div class="shimmer-line"></div>
+                        </div>
+
+                        <div class="ai-chat-container">
+                            <p style="font-size:12px; color:var(--text-tertiary); margin-bottom:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Ask a follow-up question</p>
+                            <div class="ai-chat-input-row">
+                                <input type="text" class="ai-chat-input" id="ai-question-input" placeholder="e.g. Which team member has the most overdue tasks?" />
+                                <button class="ai-chat-send" id="ai-question-send">Ask Demo Copilot</button>
+                            </div>
+                            <div id="ai-answer-container"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========================================== -->
+                <!-- No Due Date Detail View                     -->
+                <!-- ========================================== -->
+                <section id="unscheduled-detail-view" class="view-panel" style="display: none;">
+                    <div class="back-nav glass-panel" id="back-to-hawkeye-6" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; cursor: pointer;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                        Back to Hawkeye Overview
+                    </div>
+
+                    <div class="project-list glass-panel">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                            <h2 style="color: #f59e0b;">Unscheduled Tasks <span id="unscheduled-live-count" style="font-size:14px; color:var(--text-tertiary); font-weight:400; margin-left:8px;"></span></h2>
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">Tasks with no due date — invisible risks that can slip indefinitely. <strong style="color:var(--text-primary)">Assign deadlines to regain control.</strong></p>
+
+                        <div id="unscheduled-filter-bar" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Project</label>
+                                <select id="unsched-filter-project" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All Projects</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:12px; color:var(--text-tertiary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Priority</label>
+                                <select id="unsched-filter-priority" style="background:#1e293b; color:#f1f5f9; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:6px 12px; font-size:13px; font-family:inherit; cursor:pointer;">
+                                    <option value="All" style="background:#1e293b; color:#f1f5f9;">All Priorities</option>
+                                    <option value="High" style="background:#1e293b; color:#f1f5f9;">High</option>
+                                    <option value="Medium" style="background:#1e293b; color:#f1f5f9;">Medium</option>
+                                    <option value="Low" style="background:#1e293b; color:#f1f5f9;">Low</option>
+                                    <option value="None" style="background:#1e293b; color:#f1f5f9;">None</option>
+                                </select>
+                            </div>
+                            <button id="unsched-reset-filters" style="background:transparent; color:var(--accent-blue); border:1px solid var(--accent-blue); border-radius:6px; padding:6px 14px; font-size:12px; font-family:inherit; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='var(--accent-blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent-blue)'">Reset All</button>
+                        </div>
+                        <p id="unsched-showing-count" style="color:var(--text-tertiary); font-size:12px; margin-bottom:12px;"></p>
+
+                        <div class="table-container">
+                            <table id="unscheduled-detail-table" class="interactive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Task Name</th>
+                                        <th>Assignee</th>
+                                        <th>Project</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                        <th>Start Date</th>
+                                        <th>Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="demo-api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

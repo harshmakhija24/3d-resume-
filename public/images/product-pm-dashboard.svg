@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">PM Dashboard preview</title>
+  <desc id="desc">A dark product dashboard preview with project metrics and a work table.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#101812"/><stop offset="1" stop-color="#243329"/></linearGradient>
+    <linearGradient id="lime" x1="0" x2="1"><stop stop-color="#c8ef75"/><stop offset="1" stop-color="#8dbb54"/></linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="url(#bg)"/>
+  <rect x="34" y="34" width="1132" height="692" rx="24" fill="#18231c" stroke="#536550" stroke-width="2"/>
+  <rect x="34" y="34" width="1132" height="84" rx="24" fill="#213025"/>
+  <circle cx="78" cy="76" r="18" fill="url(#lime)"/><text x="69" y="83" fill="#122014" font-family="Arial" font-size="18" font-weight="700">P</text>
+  <text x="116" y="72" fill="#f4f3ec" font-family="Arial" font-size="22" font-weight="700">PM Dashboard</text>
+  <text x="116" y="96" fill="#9caf9d" font-family="Arial" font-size="13">Fictional portfolio demo · project intelligence</text>
+  <rect x="930" y="58" width="180" height="34" rx="17" fill="#314b36"/><text x="960" y="80" fill="#c8ef75" font-family="Arial" font-size="13" font-weight="700">DEMO DATA</text>
+  <g font-family="Arial">
+    <rect x="64" y="150" width="250" height="128" rx="16" fill="#26382b"/><text x="86" y="183" fill="#aabd9e" font-size="13">ACTIVE PROJECTS</text><text x="86" y="235" fill="#f4f3ec" font-size="42" font-weight="700">04</text><text x="176" y="233" fill="#c8ef75" font-size="13">+2 on track</text>
+    <rect x="332" y="150" width="250" height="128" rx="16" fill="#26382b"/><text x="354" y="183" fill="#aabd9e" font-size="13">MILESTONES</text><text x="354" y="235" fill="#f4f3ec" font-size="42" font-weight="700">06</text><text x="444" y="233" fill="#f0a6bd" font-size="13">01 at risk</text>
+    <rect x="600" y="150" width="250" height="128" rx="16" fill="#26382b"/><text x="622" y="183" fill="#aabd9e" font-size="13">VELOCITY</text><text x="622" y="235" fill="#f4f3ec" font-size="42" font-weight="700">87%</text><text x="748" y="233" fill="#c8ef75" font-size="13">steady</text>
+    <rect x="868" y="150" width="250" height="128" rx="16" fill="#26382b"/><text x="890" y="183" fill="#aabd9e" font-size="13">OVERDUE TASKS</text><text x="890" y="235" fill="#f4f3ec" font-size="42" font-weight="700">03</text><text x="980" y="233" fill="#f0a6bd" font-size="13">needs review</text>
+  </g>
+  <rect x="64" y="310" width="1054" height="354" rx="18" fill="#121b15" stroke="#334635"/>
+  <text x="88" y="350" fill="#f4f3ec" font-family="Arial" font-size="18" font-weight="700">Project portfolio</text>
+  <text x="88" y="381" fill="#8fa48e" font-family="Arial" font-size="12">Click through projects, teams, milestones, and task ledgers.</text>
+  <g font-family="Arial" font-size="13">
+    <text x="88" y="432" fill="#8fa48e">PROJECT</text><text x="430" y="432" fill="#8fa48e">STATUS</text><text x="625" y="432" fill="#8fa48e">RISK</text><text x="820" y="432" fill="#8fa48e">PROGRESS</text>
+    <line x1="88" y1="449" x2="1094" y2="449" stroke="#334635"/>
+    <text x="88" y="486" fill="#f4f3ec" font-weight="700">Northstar Launch</text><text x="430" y="486" fill="#c8ef75">On track</text><text x="625" y="486" fill="#c8ef75">Low</text><rect x="820" y="475" width="190" height="10" rx="5" fill="#314b36"/><rect x="820" y="475" width="143" height="10" rx="5" fill="url(#lime)"/>
+    <line x1="88" y1="512" x2="1094" y2="512" stroke="#26372a"/>
+    <text x="88" y="549" fill="#f4f3ec" font-weight="700">Signal Ops</text><text x="430" y="549" fill="#c8ef75">On track</text><text x="625" y="549" fill="#f0a6bd">Medium</text><rect x="820" y="538" width="190" height="10" rx="5" fill="#314b36"/><rect x="820" y="538" width="108" height="10" rx="5" fill="#f0a6bd"/>
+    <line x1="88" y1="575" x2="1094" y2="575" stroke="#26372a"/>
+    <text x="88" y="612" fill="#f4f3ec" font-weight="700">Horizon Learning</text><text x="430" y="612" fill="#f0a6bd">At risk</text><text x="625" y="612" fill="#f0a6bd">High</text><rect x="820" y="601" width="190" height="10" rx="5" fill="#314b36"/><rect x="820" y="601" width="74" height="10" rx="5" fill="#f0a6bd"/>
+  </g>
+</svg>
