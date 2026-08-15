@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">CEO Dashboard product preview</title>
+  <desc id="desc">A fictional executive operations dashboard with programme health cards, a completion chart, and a task board.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#162019"/>
+      <stop offset="1" stop-color="#2e3a2e"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d6f77d"/>
+      <stop offset="1" stop-color="#9bc85b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="860" rx="42" fill="url(#bg)"/>
+  <circle cx="1010" cy="120" r="220" fill="#d7f57c" opacity=".06"/>
+  <circle cx="90" cy="780" r="270" fill="#ec8e9e" opacity=".06"/>
+  <rect x="72" y="70" width="1056" height="720" rx="24" fill="#121914" stroke="#556653" stroke-width="2"/>
+  <rect x="72" y="70" width="224" height="720" rx="24" fill="#1b271d"/>
+  <text x="112" y="132" fill="#d6f77d" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">NORTHSTAR</text>
+  <text x="112" y="162" fill="#9dad9b" font-family="Arial, sans-serif" font-size="12" letter-spacing="2">EXECUTIVE OPS</text>
+  <rect x="104" y="214" width="160" height="44" rx="12" fill="#d6f77d"/>
+  <text x="126" y="242" fill="#172019" font-family="Arial, sans-serif" font-size="14" font-weight="700">Overview</text>
+  <text x="126" y="302" fill="#a6b4a2" font-family="Arial, sans-serif" font-size="14">Programmes</text>
+  <text x="126" y="354" fill="#a6b4a2" font-family="Arial, sans-serif" font-size="14">Delivery board</text>
+  <text x="126" y="406" fill="#a6b4a2" font-family="Arial, sans-serif" font-size="14">Data explorer</text>
+  <text x="126" y="458" fill="#a6b4a2" font-family="Arial, sans-serif" font-size="14">AI review</text>
+  <line x1="104" y1="680" x2="264" y2="680" stroke="#425442"/>
+  <circle cx="126" cy="723" r="18" fill="#ec8e9e"/>
+  <text x="158" y="729" fill="#c5d0c1" font-family="Arial, sans-serif" font-size="13">Portfolio demo</text>
+  <text x="342" y="138" fill="#f0f5ed" font-family="Arial, sans-serif" font-size="30" font-weight="700">Executive learning overview</text>
+  <text x="342" y="168" fill="#91a08e" font-family="Arial, sans-serif" font-size="14">Fictional snapshot · 15 Aug 2026</text>
+  <rect x="342" y="210" width="188" height="98" rx="18" fill="#253126"/>
+  <text x="366" y="244" fill="#8e9e8b" font-family="Arial, sans-serif" font-size="12">ACTIVE PROGRAMMES</text>
+  <text x="366" y="285" fill="#f2f7ee" font-family="Arial, sans-serif" font-size="34" font-weight="700">07</text>
+  <rect x="550" y="210" width="188" height="98" rx="18" fill="#253126"/>
+  <text x="574" y="244" fill="#8e9e8b" font-family="Arial, sans-serif" font-size="12">AVG. COMPLETION</text>
+  <text x="574" y="285" fill="#d6f77d" font-family="Arial, sans-serif" font-size="34" font-weight="700">76%</text>
+  <rect x="758" y="210" width="302" height="98" rx="18" fill="#412c36"/>
+  <text x="782" y="244" fill="#d8aeb5" font-family="Arial, sans-serif" font-size="12">REVIEW SIGNAL</text>
+  <text x="782" y="285" fill="#f7dfe1" font-family="Arial, sans-serif" font-size="22" font-weight="700">3 need attention</text>
+  <rect x="342" y="344" width="468" height="300" rx="20" fill="#1d291f"/>
+  <text x="370" y="384" fill="#f0f5ed" font-family="Arial, sans-serif" font-size="17" font-weight="700">Completion by programme</text>
+  <text x="370" y="412" fill="#829180" font-family="Arial, sans-serif" font-size="12">A decision-ready view of delivery health</text>
+  <line x1="386" y1="578" x2="772" y2="578" stroke="#415141"/>
+  <line x1="386" y1="510" x2="772" y2="510" stroke="#334334"/>
+  <line x1="386" y1="442" x2="772" y2="442" stroke="#334334"/>
+  <polyline points="396,542 456,496 516,520 576,468 636,490 696,434 756,454" fill="none" stroke="url(#lime)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="756" cy="454" r="8" fill="#d6f77d"/>
+  <text x="386" y="610" fill="#738372" font-family="Arial, sans-serif" font-size="11">Swayam</text>
+  <text x="680" y="610" fill="#738372" font-family="Arial, sans-serif" font-size="11">BBA DBE</text>
+  <rect x="832" y="344" width="228" height="300" rx="20" fill="#1d291f"/>
+  <text x="860" y="384" fill="#f0f5ed" font-family="Arial, sans-serif" font-size="17" font-weight="700">Next actions</text>
+  <rect x="860" y="422" width="172" height="50" rx="12" fill="#2d3a2e"/>
+  <circle cx="884" cy="447" r="8" fill="#d6f77d"/>
+  <text x="904" y="443" fill="#d8e3d4" font-family="Arial, sans-serif" font-size="12">QA review</text>
+  <text x="904" y="460" fill="#7f907c" font-family="Arial, sans-serif" font-size="11">Due this week</text>
+  <rect x="860" y="488" width="172" height="50" rx="12" fill="#2d3a2e"/>
+  <circle cx="884" cy="513" r="8" fill="#ec8e9e"/>
+  <text x="904" y="509" fill="#d8e3d4" font-family="Arial, sans-serif" font-size="12">Cohort review</text>
+  <text x="904" y="526" fill="#7f907c" font-family="Arial, sans-serif" font-size="11">Needs decision</text>
+  <text x="342" y="704" fill="#d6f77d" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">CEO DASHBOARD / FICTIONAL DEMO</text>
+</svg>
