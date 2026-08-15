@@ -54,7 +54,7 @@ export function initialFX() {
   );
 
   gsap.fromTo(
-    [".header", ".icons-section", ".nav-fade"],
+    [".icons-section", ".nav-fade"],
     { opacity: 0 },
     {
       opacity: 1,

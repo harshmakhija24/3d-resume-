@@ -42,7 +42,7 @@ export function setCharTimeline(
       trigger: ".landing-section",
       start: "top top",
       end: "bottom top",
-      scrub: true,
+      scrub: 0.45,
       invalidateOnRefresh: true,
     },
   });
@@ -51,15 +51,15 @@ export function setCharTimeline(
     .to(character.rotation, { y: 0.3, duration: 1 }, 0)
     .to(camera.position, { z: 22.5, duration: 1 }, 0)
     .to(character.position, { x: -2.1, duration: 1 }, 0)
-    .to(".landing-container", { opacity: 0, duration: 0.4 }, 0.55)
-    .to(".character-model", { opacity: 0, duration: 0.3 }, 0.58);
+    .to(".landing-container", { opacity: 0.5, duration: 0.55 }, 0.64)
+    .to(".character-model", { opacity: 0.2, duration: 0.45 }, 0.7);
 
   const workTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".about-section",
       start: "center 55%",
       end: "bottom top",
-      scrub: true,
+      scrub: 0.45,
       invalidateOnRefresh: true,
     },
   });

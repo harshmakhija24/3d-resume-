@@ -9,16 +9,34 @@
   width: var(--cWidth);
   max-width: var(--cMaxWidth);
   margin-bottom: -100px;
-  padding: 1.15rem 0;
+  padding: 0.82rem 0;
   transform: translateX(-50%);
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(241, 238, 230, 0.16);
+  border-bottom: 1px solid rgba(241, 238, 230, 0.12);
+  transition: padding 220ms cubic-bezier(0.23, 1, 0.32, 1), border-color 220ms ease;
 }
+
+.header::before {
+  position: absolute;
+  inset: 0 -1rem;
+  z-index: -1;
+  content: "";
+  border: 1px solid transparent;
+  border-radius: 0 0 1rem 1rem;
+  background: linear-gradient(180deg, rgba(17, 22, 17, 0.74), rgba(17, 22, 17, 0.28)) padding-box;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(16px) saturate(120%);
+  transition: opacity 220ms ease, border-color 220ms ease;
+}
+
+.header-scrolled { padding: 0.6rem 0; border-color: rgba(241, 238, 230, 0.18); }
+.header-scrolled::before { border-color: rgba(240, 166, 189, 0.14); opacity: 1; }
 
 .header ul {
   display: flex;
   align-items: center;
-  gap: clamp(0.85rem, 2.2vw, 2.5rem);
+  gap: clamp(0.7rem, 1.9vw, 2.2rem);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -29,13 +47,29 @@
 }
 
 .header ul li { cursor: pointer; }
-.header ul a { display: inline-flex; align-items: center; min-height: 44px; }
+.header ul a { position: relative; display: inline-flex; align-items: center; min-height: 40px; }
 .header ul a:active { transform: scale(0.97); }
 .header ul a:hover { color: var(--inkColor); }
+.header ul a.nav-item::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.16rem;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: var(--accentColor);
+  opacity: 0;
+  transform: scaleX(0.2);
+  transform-origin: center;
+  transition: opacity 160ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.header ul a.nav-item.nav-active { color: var(--inkColor); }
+.header ul a.nav-item.nav-active::after,
+.header ul a.nav-item:hover::after { opacity: 1; transform: scaleX(1); }
 
 .navbar-cv {
   gap: 0.38rem;
-  padding: 0.42rem 0.65rem;
+  padding: 0.38rem 0.62rem;
   border: 1px solid rgba(200, 239, 117, 0.72);
   border-radius: 999px;
   background: rgba(200, 239, 117, 0.1);
@@ -60,9 +94,10 @@
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: -0.05em;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms ease;
 }
 
-.navbar-title:hover { color: #171b17; background: #d7f49a; }
+.navbar-title:hover { color: #171b17; background: #d7f49a; transform: rotate(-5deg) scale(1.04); }
 
 .navbar-connect {
   position: absolute;
@@ -73,13 +108,14 @@
   transform: translate(-50%, -50%);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
+  transition: color 160ms ease;
 }
 
 .navbar-connect:hover { color: var(--inkColor); }
 
 @media only screen and (min-width: 500px) {
-  .header { padding: 1.3rem 0; }
-  .header ul { gap: 2.1rem; font-size: 0.72rem; }
+  .header { padding: 1rem 0; }
+  .header ul { gap: 1.85rem; font-size: 0.72rem; }
 }
 
 @media only screen and (min-width: 900px) {
@@ -87,16 +123,21 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  .header { padding: 1.65rem 0; }
-  .header ul { gap: 3.3rem; font-size: 0.76rem; }
+  .header { padding: 1.18rem 0; }
+  .header-scrolled { padding: 0.72rem 0; }
+  .header ul { gap: 2.75rem; font-size: 0.76rem; }
   .navbar-connect { font-size: 0.72rem; }
 }
 
 @media only screen and (max-width: 500px) {
-  .header { width: calc(100% - 2.2rem); padding-top: calc(0.75rem + env(safe-area-inset-top)); padding-bottom: 0.55rem; }
-  .header ul { gap: 0.55rem; font-size: 0.58rem; }
-  .navbar-title { width: 2.2rem; height: 2.2rem; }
-  .navbar-cv { padding: 0.36rem 0.5rem; font-size: 0.55rem; }
+  .header { width: calc(100% - 2.2rem); padding-top: calc(0.62rem + env(safe-area-inset-top)); padding-bottom: 0.48rem; }
+  .header-scrolled { padding-top: calc(0.5rem + env(safe-area-inset-top)); padding-bottom: 0.4rem; }
+  .header::before { inset: 0 -0.45rem; border-radius: 0 0 0.8rem 0.8rem; }
+  .header ul { gap: 0.48rem; font-size: 0.56rem; }
+  .header ul a { min-height: 36px; }
+  .header ul a.nav-item::after { bottom: 0.05rem; }
+  .navbar-title { width: 2.15rem; height: 2.15rem; }
+  .navbar-cv { padding: 0.34rem 0.48rem; font-size: 0.54rem; }
   .navbar-cv svg { display: none; }
   .navbar-connect { display: none; }
 }

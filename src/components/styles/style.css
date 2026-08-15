@@ -2,19 +2,13 @@
   position: relative;
   display: flex;
   text-wrap: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
+
 .hover-in {
   position: relative;
-  transition: 0.3s;
+  transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.hover-in div {
-  display: flex;
-  position: absolute;
-  top: 100%;
-  left: 0;
-}
-.hover-link:hover .hover-in {
-  transform: translateY(-100%);
-  color: var(--accentColor);
-}
+
+.hover-in div { display: none; }
+.hover-link:hover .hover-in { color: var(--accentColor); transform: translateY(-1px); }
