@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Wandr DDT project preview</title>
+  <desc id="desc">A product concept preview for Wandr, showing hidden destinations, safety scores, and group quiz matching.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f5ec"/>
+      <stop offset="1" stop-color="#dce8dc"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#193d30"/>
+      <stop offset="1" stop-color="#102a22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e27c3f"/>
+      <stop offset="1" stop-color="#c85e35"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#0a2a1d" flood-opacity=".16"/>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="900" rx="34" fill="url(#bg)"/>
+  <circle cx="1200" cy="88" r="160" fill="#c8dfcb" opacity=".5" filter="url(#soft)"/>
+  <circle cx="180" cy="800" r="180" fill="#f0cdb0" opacity=".42" filter="url(#soft)"/>
+
+  <g transform="translate(72 66)">
+    <rect width="1256" height="768" rx="30" fill="#f7f8f1" stroke="#c9d8ca"/>
+    <path d="M0 92H1256" stroke="#dce4d8"/>
+    <circle cx="45" cy="45" r="11" fill="#e27c3f"/>
+    <circle cx="76" cy="45" r="11" fill="#cbdc92"/>
+    <circle cx="107" cy="45" r="11" fill="#9bb7a3"/>
+    <text x="145" y="53" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#173e2d">Wandr</text>
+    <text x="1060" y="51" font-family="Arial, sans-serif" font-size="13" letter-spacing="2.3" fill="#5d7464">DDT PROJECT</text>
+
+    <g transform="translate(54 152)">
+      <text x="0" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="#69826e">COMMUNITY-POWERED TRAVEL</text>
+      <text x="0" y="90" font-family="Georgia, serif" font-size="60" font-weight="700" fill="#173e2d">Your group. Your</text>
+      <text x="0" y="152" font-family="Georgia, serif" font-size="60" font-weight="700" fill="#173e2d">vibe.</text>
+      <text x="0" y="222" font-family="Georgia, serif" font-size="55" font-style="italic" fill="#d46d3c">Hidden places,</text>
+      <text x="0" y="280" font-family="Georgia, serif" font-size="55" font-style="italic" fill="#d46d3c">found together.</text>
+      <text x="0" y="337" font-family="Arial, sans-serif" font-size="18" fill="#5c7064">A group quiz that finds a shared shortlist</text>
+      <text x="0" y="365" font-family="Arial, sans-serif" font-size="18" fill="#5c7064">of hidden, community-verified places.</text>
+      <rect x="0" y="412" width="176" height="52" rx="26" fill="url(#accent)"/>
+      <text x="88" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#fffaf1">TAKE THE QUIZ</text>
+      <rect x="192" y="412" width="178" height="52" rx="26" fill="#f7f8f1" stroke="#173e2d" stroke-width="2"/>
+      <text x="281" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#173e2d">SEE HOW IT WORKS</text>
+    </g>
+
+    <g transform="translate(690 146)" filter="url(#shadow)">
+      <rect width="510" height="470" rx="28" fill="url(#panel)"/>
+      <text x="34" y="49" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.5" fill="#a8d4a5">GROUP MATCHING</text>
+      <text x="34" y="93" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#f3f5e9">Find the shared vibe.</text>
+      <text x="34" y="124" font-family="Arial, sans-serif" font-size="16" fill="#bbcfbd">A live shortlist for everyone in the group.</text>
+
+      <path d="M32 180 C120 116, 184 246, 278 188 S406 132, 476 216" fill="none" stroke="#315f48" stroke-width="2" stroke-dasharray="5 8"/>
+      <circle cx="110" cy="175" r="40" fill="#f5f1dc"/>
+      <circle cx="110" cy="175" r="14" fill="#8dbf82"/>
+      <text x="110" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#173e2d">A</text>
+      <circle cx="300" cy="188" r="40" fill="#f5f1dc"/>
+      <circle cx="300" cy="188" r="14" fill="#e27c3f"/>
+      <text x="300" y="197" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#fffaf1">B</text>
+      <circle cx="426" cy="220" r="40" fill="#f5f1dc"/>
+      <circle cx="426" cy="220" r="14" fill="#c9d97f"/>
+      <text x="426" y="229" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#173e2d">C</text>
+
+      <rect x="34" y="286" width="442" height="142" rx="20" fill="#f5f1dc"/>
+      <text x="58" y="321" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5" fill="#6b7f70">COMMUNITY VERIFIED SPOTS</text>
+      <rect x="58" y="346" width="128" height="48" rx="14" fill="#fffdf3"/>
+      <text x="72" y="368" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#173e2d">Araku Valley</text>
+      <text x="72" y="386" font-family="Arial, sans-serif" font-size="12" fill="#d46d3c">Safety: ★★★★★</text>
+      <rect x="200" y="346" width="128" height="48" rx="14" fill="#fffdf3"/>
+      <text x="214" y="368" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#173e2d">Chitkul</text>
+      <text x="214" y="386" font-family="Arial, sans-serif" font-size="12" fill="#d46d3c">Safety: ★★★★☆</text>
+      <rect x="342" y="346" width="110" height="48" rx="14" fill="#fffdf3"/>
+      <text x="354" y="368" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#173e2d">Tarkarli</text>
+      <text x="354" y="386" font-family="Arial, sans-serif" font-size="12" fill="#d46d3c">★★★★★</text>
+    </g>
+
+    <g transform="translate(690 650)">
+      <circle cx="20" cy="16" r="10" fill="#e27c3f"/>
+      <text x="42" y="22" font-family="Arial, sans-serif" font-size="14" fill="#69826e">Group quiz</text>
+      <rect x="142" y="7" width="230" height="18" rx="9" fill="#dbe8d5"/>
+      <rect x="142" y="7" width="158" height="18" rx="9" fill="#7aaf83"/>
+      <text x="393" y="22" font-family="Arial, sans-serif" font-size="14" fill="#69826e">68%</text>
+    </g>
+
+    <text x="54" y="716" font-family="Arial, sans-serif" font-size="13" letter-spacing="2" fill="#90a092">PRODUCT DESIGN CONCEPT · GROUP TRAVEL · SAFETY-AWARE DISCOVERY</text>
+  </g>
+</svg>
