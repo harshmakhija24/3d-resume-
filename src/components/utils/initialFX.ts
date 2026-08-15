@@ -17,7 +17,6 @@ export function initialFX() {
     [
       ".landing-info h3", 
       ".landing-intro h2", 
-      ".landing-intro h1", 
       ".landing-tagline"
     ],
     {
@@ -36,6 +35,19 @@ export function initialFX() {
       ease: "power3.inOut",
       y: 0,
       stagger: 0.015,
+      delay: 0.04,
+    }
+  );
+
+  gsap.fromTo(
+    ".landing-intro h1",
+    { opacity: 0, y: 48, filter: "blur(4px)" },
+    {
+      opacity: 1,
+      duration: 0.6,
+      filter: "blur(0px)",
+      ease: "power3.out",
+      y: 0,
       delay: 0.04,
     }
   );

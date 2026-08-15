@@ -283,14 +283,23 @@
   text-shadow: 0 0.08rem 1.2rem rgba(0, 0, 0, 0.16);
 }
 
-.landing-intro h1 .split-line:first-child span {
+.landing-intro h1 .hero-first-name {
   color: var(--accentColor);
   font-weight: 700;
 }
 
-.landing-intro h1 .split-line:last-child span {
+.landing-intro h1 .hero-last-name {
   color: var(--inkColor);
   font-weight: 650;
+}
+
+.landing-intro h1 .hero-j {
+  display: inline-block;
+  font-size: 0.9em;
+  font-weight: 600;
+  line-height: 1;
+  transform: translateY(-0.02em) scaleX(0.95) scaleY(0.85);
+  transform-origin: 50% 74%;
 }
 
 .landing-info {

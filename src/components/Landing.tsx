@@ -19,7 +19,7 @@ const Landing = ({ children }: PropsWithChildren) => {
           <p className="landing-greeting">Hello, I&apos;m</p>
           <h1 id="hero-title">
             <span className="hero-first-name">Harsh</span>
-            <span>Makhija</span>
+            <span className="hero-last-name">Makhi<span className="hero-j">j</span>a</span>
           </h1>
         </div>
 
