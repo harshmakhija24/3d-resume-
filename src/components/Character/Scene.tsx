@@ -52,6 +52,7 @@ const Scene = () => {
     let headBone: THREE.Object3D | null = null;
     let neckBone: THREE.Object3D | null = null;
     let headBaseRotation = new THREE.Euler();
+    let neckBaseRotation = new THREE.Euler();
     let mixer: THREE.AnimationMixer | null = null;
     let animationId = 0;
     let isPageVisible = document.visibilityState === "visible";
@@ -65,7 +66,7 @@ const Scene = () => {
       }
     };
 
-    const renderLoop = (time: number) => {
+    const renderLoop = () => {
       if (cancelled || !isPageVisible || !isInViewport || !character) {
         animationId = 0;
         return;
@@ -75,11 +76,10 @@ const Scene = () => {
       mixer?.update(delta);
 
       if (headBone) {
-        const idleTime = time * 0.001;
-        headBone.rotation.x = headBaseRotation.x - 0.12 + Math.sin(idleTime * 0.65) * 0.012;
-        headBone.rotation.y = headBaseRotation.y + Math.sin(idleTime * 0.42) * 0.018;
+        // Keep the model-authored neutral gaze; source clips must not pull the face down.
+        headBone.rotation.copy(headBaseRotation);
       }
-      if (neckBone) neckBone.rotation.x = -0.22;
+      if (neckBone) neckBone.rotation.copy(neckBaseRotation);
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(renderLoop);
@@ -125,7 +125,8 @@ const Scene = () => {
       .then((gltf) => {
         if (cancelled) return;
         character = gltf.scene;
-        character.rotation.y = 0.18;
+        // A neutral yaw keeps the character looking straight at the viewer.
+        character.rotation.y = 0;
         character.traverse((object: any) => {
           if (["Cube002", "Plane", "Plane002", "Plane003", "Plane004", "screenlight"].includes(object.name)) {
             object.visible = false;
@@ -138,21 +139,21 @@ const Scene = () => {
         neckBone = character.getObjectByName("spine005") || character.getObjectByName("spine.005") || null;
 
         if (headBone) {
-          headBone.rotation.x = 0.015;
-          headBone.rotation.y = 0;
+          // Lift the authored pitch into a direct viewer-facing pose while preserving yaw/roll.
           headBaseRotation.copy(headBone.rotation);
+          headBaseRotation.x = 0.20;
         }
-        if (neckBone) neckBone.rotation.x = 0.18;
+        if (neckBone) {
+          neckBaseRotation.copy(neckBone.rotation);
+          neckBaseRotation.x = 0.06;
+        }
 
         scene.add(character);
         container.classList.add("character-loaded");
         lighting.turnOnLights();
         animations.startIntro(() => {
-          if (headBone) {
-            headBone.rotation.copy(headBaseRotation);
-            headBone.rotation.x = headBaseRotation.x - 0.12;
-          }
-          if (neckBone) neckBone.rotation.x = -0.22;
+          if (headBone) headBone.rotation.copy(headBaseRotation);
+          if (neckBone) neckBone.rotation.copy(neckBaseRotation);
         });
         startRenderLoop();
       })
