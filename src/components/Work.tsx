@@ -17,6 +17,8 @@ type Project = {
   image: string;
   link?: string;
   linkLabel?: string;
+  previewLink?: string;
+  previewLabel?: string;
   secondaryLink?: string;
   secondaryLabel?: string;
   gallery?: GalleryImage[];
@@ -52,6 +54,8 @@ const projects: Project[] = [
     image: import.meta.env.BASE_URL + "images/product-krishitech.svg",
     link: "https://krishitek-website.vercel.app",
     linkLabel: "Experience KrishiTech",
+    previewLink: "https://krishitek-website.vercel.app",
+    previewLabel: "Preview KrishiTech",
     kind: "product",
     themeClass: "accent-tech",
   },
@@ -64,6 +68,8 @@ const projects: Project[] = [
     image: import.meta.env.BASE_URL + "images/product-pm-dashboard.svg",
     link: import.meta.env.BASE_URL + "demos/pm-dashboard/",
     linkLabel: "Open working demo",
+    previewLink: import.meta.env.BASE_URL + "demos/pm-dashboard/",
+    previewLabel: "Preview PM Dashboard",
     secondaryLink: "https://github.com/harshmakhija24/pm-dashboard-demo-",
     secondaryLabel: "View repository",
     kind: "product",
@@ -78,6 +84,8 @@ const projects: Project[] = [
     image: import.meta.env.BASE_URL + "images/product-course-intelligence.svg",
     link: import.meta.env.BASE_URL + "demos/suggestion-engine/",
     linkLabel: "Open working demo",
+    previewLink: import.meta.env.BASE_URL + "demos/suggestion-engine/",
+    previewLabel: "Preview Course Intelligence",
     secondaryLink: "https://github.com/harshmakhija24/suggestion-engine-demo-",
     secondaryLabel: "View repository",
     kind: "product",
@@ -92,6 +100,8 @@ const projects: Project[] = [
     image: import.meta.env.BASE_URL + "images/product-ceo-dashboard.svg",
     link: import.meta.env.BASE_URL + "demos/ceo-dashboard/",
     linkLabel: "Open working demo",
+    previewLink: import.meta.env.BASE_URL + "demos/ceo-dashboard/",
+    previewLabel: "Preview CEO Dashboard",
     secondaryLink: "https://github.com/harshmakhija24/ceo-dashboard-portfolio-demo",
     secondaryLabel: "View repository",
     kind: "product",
@@ -106,6 +116,8 @@ const projects: Project[] = [
     image: import.meta.env.BASE_URL + "images/product-website-auditor.svg",
     link: import.meta.env.BASE_URL + "demos/website-auditor/",
     linkLabel: "Open working demo",
+    previewLink: import.meta.env.BASE_URL + "demos/website-auditor/",
+    previewLabel: "Preview Website Auditor",
     secondaryLink: "https://github.com/harshmakhija24/wesbite-auditor-cum-designer-demo-",
     secondaryLabel: "View repository",
     kind: "product",
@@ -120,6 +132,8 @@ const projects: Project[] = [
     image: import.meta.env.BASE_URL + "images/events.png",
     link: "https://harshmakhija24.github.io/DDT-PROJECT-/",
     linkLabel: "View live prototype",
+    previewLink: "https://harshmakhija24.github.io/DDT-PROJECT-/",
+    previewLabel: "Preview Wandr",
     kind: "venture",
     themeClass: "accent-tech",
   },
@@ -331,6 +345,8 @@ const Work = () => {
                           alt={`${project.title} project preview`}
                           link={project.link}
                           linkLabel={project.linkLabel}
+                          previewLink={project.previewLink}
+                          previewLabel={project.previewLabel}
                           secondaryLink={project.secondaryLink}
                           secondaryLabel={project.secondaryLabel}
                         />
