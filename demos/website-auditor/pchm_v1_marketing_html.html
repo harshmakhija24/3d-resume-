@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certificate in Health Systems Management | Northstar Learning</title>
+  <meta name="description" content="Build the leadership and operational excellence required to manage modern hospital systems. 10-month online programme designed by senior faculty of Northstar Learning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --canvas: #F4EFE3;      /* Canonical Parchment */
+    --paper: #FBF8F1;       /* Light canvas variation */
+    --charcoal: #1A1B1E;    /* Canonical Charcoal */
+    --muted: #5B5F66;
+    --marigold: #C97138;   /* Canonical Marigold Accent */
+    --navy: #172D6B;       /* Institutional Navy */
+    --crimson: #AE2C2A;    /* Institutional Crimson */
+    --line: rgba(26,27,30,.10);
+    --shadow: 0 20px 50px rgba(17, 24, 39, 0.08);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --max: 1240px;
+    --nav-h: 78px;
+    
+    --accent: var(--marigold);
+    --accent-ink: #FFFFFF;
+    --hero-dark: #1A1B1E;
+    --hero-mid: #25262B;
+    --hero-light: #31333A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { 
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif; 
+    color: var(--charcoal); 
+    background: var(--canvas); 
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+  
+  .eyebrow { 
+    display: inline-flex; 
+    align-items: center; 
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; 
+    letter-spacing: .22em; 
+    text-transform: uppercase; 
+    color: var(--marigold);
+    font-weight: 500;
+  }
+  .display { 
+    font-family: 'Source Serif 4', Georgia, serif; 
+    font-weight: 600; 
+    line-height: 1.1; 
+    letter-spacing: -.02em; 
+    color: var(--charcoal); 
+  }
+  .display em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marigold);
+  }
+  .h1 { font-size: clamp(40px, 6vw, 72px); }
+  .h2 { font-size: clamp(32px, 4vw, 48px); }
+  .h3 { font-size: clamp(22px, 2.6vw, 30px); }
+  .lead { font-size: clamp(18px, 2vw, 21px); line-height: 1.5; color: rgba(255,255,255,.88); max-width: 680px; }
+  .body-lg { font-size: 18px; line-height: 1.6; color: var(--muted); }
+  .body { font-size: 15px; line-height: 1.6; color: var(--muted); }
+  .section { padding: 100px 0; position: relative; }
+  .section.compact { padding: 70px 0; }
+  .section.alt-bg { background: var(--paper); }
+  .kicker { 
+    font-family: 'IBM Plex Mono', monospace; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    letter-spacing: .18em; 
+    color: var(--marigold); 
+    margin-bottom: 14px; 
+    font-weight: 600; 
+  }
+  .btn-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+  .btn { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 52px; 
+    padding: 0 24px; 
+    border-radius: 999px; 
+    font-weight: 700; 
+    font-size: 14px;
+    border: 1px solid transparent; 
+    transition: all .2s ease; 
+    cursor: pointer;
+  }
+  .btn.primary { background: var(--marigold); color: white; box-shadow: 0 10px 20px rgba(201,113,56,.18); }
+  .btn.primary:hover { background: #b0612d; transform: translateY(-1px); }
+  .btn.secondary { background: rgba(255,255,255,.08); color: white; border-color: rgba(255,255,255,.18); backdrop-filter: blur(10px); }
+  .btn.secondary:hover { background: rgba(255,255,255,.16); transform: translateY(-1px); }
+  .btn.ghost { background: transparent; border-color: var(--line); color: var(--charcoal); }
+  .btn.ghost:hover { background: rgba(26,27,30,.04); }
+  
+  .site-header { 
+    position: sticky; 
+    top: 0; 
+    z-index: 40; 
+    backdrop-filter: blur(16px); 
+    background: rgba(244,239,227,.88); 
+    border-bottom: 1px solid var(--line); 
+  }
+  .site-header .bar { min-height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+  .branding { display: flex; align-items: center; gap: 14px; }
+  .branding .mark { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 24px; color: var(--navy); }
+  .branding .mark span { color: var(--crimson); }
+  .branding .ctx { 
+    font-family: 'IBM Plex Mono', monospace; 
+    font-size: 10px; 
+    letter-spacing: .22em; 
+    text-transform: uppercase; 
+    color: var(--muted); 
+    padding-left: 14px; 
+    border-left: 1px solid var(--line); 
+    line-height: 1.4; 
+  }
+  .branding .ctx b { display: block; color: var(--charcoal); font-weight: 600; font-family: 'Source Serif 4', serif; font-size: 13px; letter-spacing: .01em; text-transform: none; margin-top: 2px; }
+  
+  .main-nav { display: flex; align-items: center; gap: 24px; }
+  .main-nav a { font-size: 13px; font-weight: 600; color: var(--charcoal); opacity: .8; text-transform: uppercase; letter-spacing: .08em; }
+  .main-nav a:hover { opacity: 1; color: var(--marigold); }
+  .mobile-toggle { display: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: white; cursor: pointer; }
+  
+  .hero { position: relative; overflow: hidden; color: white; background: linear-gradient(135deg, var(--hero-dark), var(--hero-mid) 52%, var(--hero-light)); }
+  .hero-inner { min-height: calc(85vh - var(--nav-h)); display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding: 60px 0; }
+  .hero-copy { position: relative; z-index: 2; }
+  .hero-copy .display { color: white; margin-top: 18px; margin-bottom: 18px; }
+  .hero-copy .meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+  .meta-chip { 
+    padding: 8px 14px; 
+    border-radius: 999px; 
+    font-size: 11px; 
+    font-weight: 500; 
+    background: rgba(255,255,255,.08); 
+    border: 1px solid rgba(255,255,255,.14); 
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .hero-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 28px; box-shadow: var(--shadow); overflow: hidden; backdrop-filter: blur(18px); position: relative; z-index: 2; }
+  .hero-media { display: flex; flex-direction: column; justify-content: space-between; padding: 24px; min-height: 540px; }
+  .hero-media .placeholder-art { 
+    flex: 1; 
+    border-radius: 18px; 
+    overflow: hidden; 
+    background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.14)); 
+    border: 1px solid rgba(255,255,255,.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    color: rgba(255,255,255,.5);
+    font-size: 18px;
+  }
+  .hero-overlay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat-card { background: white; color: var(--charcoal); border-radius: 16px; padding: 14px; box-shadow: var(--shadow); }
+  .stat-card strong { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 6px; font-family: 'IBM Plex Mono', monospace; }
+  .stat-card span { font-size: 15px; font-weight: 700; line-height: 1.3; display: block; }
+  
+  .card-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+  .card { background: white; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: 28px; transition: border-color .2s ease; }
+  .card:hover { border-color: var(--marigold); }
+  .card.tint { background: var(--paper); border: none; }
+  .span-4 { grid-column: span 4; }
+  .span-6 { grid-column: span 6; }
+  .span-12 { grid-column: span 12; }
+  
+  .icon-badge { 
+    width: 44px; 
+    height: 44px; 
+    border-radius: 12px; 
+    display: grid; 
+    place-items: center; 
+    background: rgba(201,113,56,.1); 
+    color: var(--marigold); 
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px; 
+    font-weight: 700;
+    margin-bottom: 20px; 
+  }
+  .card h3 { margin: 0 0 10px; font-size: 20px; font-family: 'Source Serif 4', serif; font-weight: 600; }
+  .card p { margin: 0; font-size: 14px; line-height: 1.6; }
+  
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+  .profile-card { display: flex; gap: 16px; align-items: flex-start; padding: 24px; border-radius: 20px; border: 1px solid var(--line); background: white; box-shadow: var(--shadow); }
+  .avatar { 
+    width: 48px; 
+    height: 48px; 
+    border-radius: 12px; 
+    background: rgba(201,113,56,.1); 
+    color: var(--marigold); 
+    display: grid; 
+    place-items: center; 
+    font-weight: 700; 
+    font-size: 14px;
+    flex: 0 0 auto; 
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .profile-card h4 { margin: 0 0 6px; font-size: 18px; font-family: 'Source Serif 4', serif; font-weight: 600; }
+  .profile-card p { margin: 0; font-size: 14px; }
+  
+  .timeline { display: grid; gap: 14px; }
+  .step { display: flex; gap: 16px; padding: 20px; border-radius: 18px; border: 1px solid var(--line); background: white; }
+  .step-index { 
+    width: 36px; 
+    height: 36px; 
+    border-radius: 50%; 
+    background: rgba(201,113,56,.1); 
+    display: grid; 
+    place-items: center; 
+    font-weight: 700; 
+    color: var(--marigold); 
+    flex: 0 0 auto; 
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .step h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--charcoal); }
+  .step p { font-size: 14px; color: var(--muted); margin: 0; }
+  
+  .faculty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .faculty-card { background: white; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .faculty-card .faculty-img { 
+    width: 100%; 
+    aspect-ratio: 1/1; 
+    object-fit: cover; 
+    background: #EAE5D9; 
+    filter: grayscale(1) contrast(1.05);
+    opacity: 0.9;
+    border-bottom: 1px solid var(--line);
+  }
+  .faculty-card .info { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .faculty-card h4 { margin: 0 0 4px; font-size: 16px; font-family: 'Source Serif 4', serif; font-weight: 600; }
+  .faculty-card p { margin: 0; font-size: 12px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em; }
+  
+  .quote-band { border-radius: 28px; padding: 48px; color: white; background: linear-gradient(135deg, #172D6B, #1A1B1E); box-shadow: var(--shadow); text-align: center; }
+  .quote-band blockquote { margin: 0 auto 20px; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.4; font-family: 'Source Serif 4', Georgia, serif; font-style: italic; max-width: 900px; }
+  .quote-band cite { display: block; font-style: normal; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--marigold); font-family: 'IBM Plex Mono', monospace; }
+  
+  .outcome-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .outcome { display: flex; gap: 12px; align-items: flex-start; padding: 18px 20px; border-radius: 16px; border: 1px solid var(--line); background: white; }
+  .outcome .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--marigold); margin-top: 6px; flex: 0 0 auto; }
+  .outcome p { margin: 0; font-size: 14px; color: var(--muted); }
+  
+  .cta-panel { position: relative; overflow: hidden; border-radius: 28px; padding: 48px; color: white; box-shadow: var(--shadow); background: linear-gradient(135deg, var(--hero-dark), var(--hero-mid) 60%, var(--hero-light)); }
+  .cta-panel > * { position: relative; z-index: 2; }
+  .cta-panel .kicker { color: rgba(255,255,255,.76); }
+  .cta-panel h2 { margin-bottom: 12px; color: white; }
+  .cta-panel .lead { margin-bottom: 30px; }
+  .detail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
+  .detail { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 20px; }
+  .detail strong { display: block; text-transform: uppercase; letter-spacing: .16em; font-size: 10px; opacity: .7; margin-bottom: 6px; font-family: 'IBM Plex Mono', monospace; }
+  .detail span { font-size: 15px; font-weight: 700; }
+  
+  .faq { display: grid; gap: 12px; }
+  .faq-item { border: 1px solid var(--line); border-radius: 16px; background: white; box-shadow: var(--shadow); overflow: hidden; }
+  .faq-item button { width: 100%; text-align: left; background: transparent; border: 0; padding: 20px; font: inherit; font-weight: 700; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; color: var(--charcoal); }
+  .faq-item button:hover { color: var(--marigold); }
+  .faq-item .answer { display: none; padding: 0 20px 20px; color: var(--muted); line-height: 1.6; font-size: 14px; border-top: 1px solid rgba(26,27,30,.04); padding-top: 16px; }
+  .faq-item.open .answer { display: block; }
+  
+  .sticky-apply { 
+    position: fixed; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    bottom: 18px; 
+    width: min(calc(100% - 28px), 780px); 
+    z-index: 45; 
+    background: rgba(255,255,255,.94); 
+    border: 1px solid rgba(26,27,30,.08); 
+    box-shadow: 0 20px 60px rgba(17,24,39,.12); 
+    border-radius: 999px; 
+    backdrop-filter: blur(16px); 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 16px; 
+    padding: 10px 12px 10px 20px; 
+  }
+  .sticky-apply .mini { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'IBM Plex Mono', monospace; }
+  .sticky-apply strong { display: block; font-size: 14px; color: var(--charcoal); font-family: 'Source Serif 4', serif; font-weight: 600; }
+  
+  .site-footer { background: var(--charcoal); color: rgba(255,255,255,.6); padding: 60px 0 120px; font-size: 14px; }
+  
+  @media (max-width: 1100px) {
+    .hero-inner, .split { grid-template-columns: 1fr; }
+    .hero-media { min-height: 480px; }
+    .detail-grid { grid-template-columns: repeat(2, 1fr); }
+    .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .main-nav { position: fixed; inset: calc(var(--nav-h) + 10px) 16px auto 16px; display: none; flex-direction: column; align-items: stretch; gap: 10px; padding: 20px; border-radius: 22px; background: rgba(255,255,255,.98); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .main-nav.open { display: flex; }
+    .mobile-toggle { display: inline-grid; place-items: center; }
+    .card-grid > * { grid-column: span 12 !important; }
+    .outcome-list { grid-template-columns: 1fr; }
+    .sticky-apply { border-radius: 24px; padding: 16px; align-items: flex-start; flex-direction: column; left: 14px; right: 14px; width: auto; transform: none; bottom: 14px; }
+    .sticky-apply .btn-row { width: 100%; margin-top: 10px; }
+    .sticky-apply .btn { flex: 1; }
+  }
+  @media (max-width: 720px) {
+    .section { padding: 60px 0; }
+    .hero-inner { min-height: auto; padding-top: 30px; }
+    .hero-media { min-height: 400px; }
+    .hero-overlay-grid { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .faculty-grid { grid-template-columns: 1fr; }
+    .btn-row { display: grid; grid-template-columns: 1fr; width: 100%; }
+    .btn { width: 100%; }
+  }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="branding" href="#top">
+        <span class="mark">Northstar Learning<span>x</span></span>
+        <span class="ctx">Programme<b>Hospital Management</b></span>
+      </a>
+      <nav class="main-nav" id="menu">
+        <a href="#why-now">Why Now</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#who-it-is-for">Who It Is For</a>
+        <a href="#faculty">Faculty</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="mobile-toggle" data-target="#menu" aria-label="Open navigation">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Professional Certificate</span>
+          <h1 class="display">Lead hospitals with clarity, confidence, and <em>systems thinking.</em></h1>
+          <p class="lead">A 10-month professional certificate programme designed to equip healthcare practitioners, administrators, and emerging leaders with complete operational and strategic capabilities.</p>
+          <div class="meta">
+            <span class="meta-chip">10 Months Online</span>
+            <span class="meta-chip">9 Core Courses</span>
+            <span class="meta-chip">Faculty-Led Zoom Sessions</span>
+            <span class="meta-chip">Northstar Learning Alumni Community</span>
+          </div>
+          <div class="btn-row">
+            <a href="#apply" class="btn primary">Start Application</a>
+            <a href="#curriculum" class="btn secondary">Explore Curriculum</a>
+          </div>
+        </div>
+        <div class="hero-card hero-media">
+          <div class="placeholder-art">
+            Northstar Learning Campus & Digital Learning
+          </div>
+          <div class="hero-overlay-grid">
+            <div class="stat-card"><strong>Structure</strong><span>9 curriculum courses</span></div>
+            <div class="stat-card"><strong>Format</strong><span>Online + Live Q&A</span></div>
+            <div class="stat-card"><strong>Inaugurated by</strong><span>Dr. Aanya Rao</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Quote Section -->
+    <section class="section compact alt-bg">
+      <div class="container">
+        <div class="quote-band">
+          <blockquote>“Technology and management education will define the future of healthcare. To build resilient hospital systems, our leaders must master both operational efficiency and clinical quality.”</blockquote>
+          <cite>Dr. Aanya Rao · Chairperson, Board of Governors, Northstar Learning & Founder, Narayana Health</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valedictory / Cohort Highlights Section (Restored Content Gap) -->
+    <section class="section compact" style="padding-top: 20px; text-align: center;">
+      <div class="container">
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto;">
+          <div class="card tint span-6" style="padding: 24px;">
+            <h3 style="color: var(--marigold); font-size: 32px; font-weight: 700; margin-bottom: 8px;">100+</h3>
+            <p style="font-weight: 600; font-size: 15px; color: var(--charcoal);">Learners Received Certificates</p>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 4px;">During the Batch 1 Valedictory at Northstar Learning</p>
+          </div>
+          <div class="card tint span-6" style="padding: 24px;">
+            <h3 style="color: var(--marigold); font-size: 32px; font-weight: 700; margin-bottom: 8px;">Karnataka Govt.</h3>
+            <p style="font-weight: 600; font-size: 15px; color: var(--charcoal);">Doctors Cohort Trained</p>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 4px;">Delivering PCHM for Public Healthcare Systems</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Programme Section -->
+    <section class="section" id="why-now">
+      <div class="container">
+        <div class="kicker">Context & Relevance</div>
+        <h2 class="display h2" style="margin-bottom: 20px; max-width: 800px;">Equipping leaders to navigate systemic healthcare challenges.</h2>
+        <p class="body-lg" style="max-width: 800px; margin-bottom: 48px;">Hospital management is no longer just about clinical care. Modern healthcare systems require leaders who can balance operations, quality frameworks, financial constraints, and patient experience in a rapidly evolving ecosystem.</p>
+        
+        <div class="card-grid">
+          <article class="card tint span-4">
+            <div class="icon-badge">✦</div>
+            <h3>Systemic Complexity</h3>
+            <p class="body">Healthcare institutions operate at the intersection of care delivery, regulatory policy, financial budgeting, and clinical quality frameworks.</p>
+          </article>
+          <article class="card tint span-4">
+            <div class="icon-badge">✦</div>
+            <h3>Operational Excellence</h3>
+            <p class="body">Effective administrative decisions directly impact patient recovery times, bed occupancies, clinical resource allocations, and team motivation.</p>
+          </article>
+          <article class="card tint span-4">
+            <div class="icon-badge">✦</div>
+            <h3>Digital Transformation</h3>
+            <p class="body">Modern hospital systems must leverage telemedicine, electronic health records (EHRs), and clinical analytics to build future-ready facilities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="section alt-bg" id="curriculum">
+      <div class="container">
+        <div style="margin-bottom: 48px; max-width: 800px;">
+          <div class="kicker">Syllabus Overview</div>
+          <h2 class="display h2">Structured into 9 core curriculum areas.</h2>
+          <p class="body-lg" style="margin-top:14px;">A sequential, intensive set of courses that takes you from the basics of healthcare delivery models to high-level strategic leadership, financial forecasting, and legal compliance.</p>
+        </div>
+        
+        <div class="card-grid">
+          <article class="card span-4">
+            <div class="icon-badge">01</div>
+            <h3>Hospital Operations</h3>
+            <p class="body">Optimize clinical workflows, supply chains, patient pathways, scheduling, and resource utilisation across OPD and IPD environments.</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">02</div>
+            <h3>Healthcare Finance</h3>
+            <p class="body">Master hospital budgeting, costing models, revenue cycle management, capital expenditures, and financial performance audits.</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">03</div>
+            <h3>Digital Transformation</h3>
+            <p class="body">Evaluate and implement telemedicine frameworks, EMR security, interoperability standards, and health tech innovations.</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">04</div>
+            <h3>Quality Management</h3>
+            <p class="body">Develop clinical audit metrics, quality indicators, safety protocols, and accreditation standards (e.g., NABH, JCI compliance).</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">05</div>
+            <h3>Strategic Leadership</h3>
+            <p class="body">Formulate hospital growth strategies, navigate market expansion, manage public policy challenges, and build competitive advantage.</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">06</div>
+            <h3>Public Health</h3>
+            <p class="body">Understand epidemiology, health economics, public-private partnerships, and community welfare program designs.</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">07</div>
+            <h3>Marketing for Healthcare</h3>
+            <p class="body">Build trust and patient relationships, navigate corporate referral channels, and market specialised care units ethically.</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">08</div>
+            <h3>Organisational Behaviour</h3>
+            <p class="body">Manage diverse clinical and support staffs, resolve workforce conflicts, align incentives, and lead institutional culture shifts.</p>
+          </article>
+          <article class="card span-4">
+            <div class="icon-badge">09</div>
+            <h3>Legal & Regulatory</h3>
+            <p class="body">Understand medical ethics, negligence laws, insurance compliance frameworks, and bio-medical waste regulations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who It Is For Section -->
+    <section class="section" id="who-it-is-for">
+      <div class="container">
+        <div class="kicker">Target Audience</div>
+        <h2 class="display h2" style="margin-bottom: 20px;">Designed to help healthcare professionals self-select.</h2>
+        <p class="body-lg" style="max-width: 800px; margin-bottom: 48px;">Whether you manage clinical delivery, handle operational systems, or build innovative health-tech applications, this curriculum provides the management frameworks you need.</p>
+        
+        <div class="card-grid">
+          <div class="span-6">
+            <article class="profile-card">
+              <div class="avatar">HP</div>
+              <div>
+                <h4>Healthcare Practitioners & Doctors</h4>
+                <p class="body">For clinicians, medical superintendents, and nursing heads stepping up from clinical execution to active management and administration.</p>
+              </div>
+            </article>
+          </div>
+          <div class="span-6">
+            <article class="profile-card">
+              <div class="avatar">HA</div>
+              <div>
+                <h4>Hospital Administrators & Managers</h4>
+                <p class="body">For executives looking after quality compliance, facilities, marketing, HR, finance, or billing who need formal management certification.</p>
+              </div>
+            </article>
+          </div>
+          <div class="span-6">
+            <article class="profile-card">
+              <div class="avatar">IP</div>
+              <div>
+                <h4>Industry Professionals & Advisors</h4>
+                <p class="body">For pharmaceutical managers, healthcare consultants, insurance analysts, and medical device representatives expanding their industry context.</p>
+              </div>
+            </article>
+          </div>
+          <div class="span-6">
+            <article class="profile-card">
+              <div class="avatar">HE</div>
+              <div>
+                <h4>Healthcare Entrepreneurs</h4>
+                <p class="body">For founders, investors, and operators building new age clinics, diagnostic laboratories, digital health platforms, and patient services.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Experience Section -->
+    <section class="section alt-bg" id="experience">
+      <div class="container split">
+        <div>
+          <div class="kicker">Learning Journey</div>
+          <h2 class="display h2" style="margin-bottom: 20px;">Structured for active professionals.</h2>
+          <p class="body-lg" style="margin-bottom: 28px;">This programme delivers thorough academic content with the flexibility required to study alongside your active professional commitment.</p>
+          <div style="background: var(--canvas); border-radius: 20px; padding: 28px; border: 1px solid var(--line);">
+            <h3 style="font-family:'Source Serif 4',serif; font-size:18px; font-weight:600; margin-bottom:12px;">Weekly Commitment</h3>
+            <p class="body" style="margin-bottom:16px;">Expect to dedicate ~5 hours per week. This includes watching pre-recorded course lectures, completing assignments, and participating in forum discussions.</p>
+            <h3 style="font-family:'Source Serif 4',serif; font-size:18px; font-weight:600; margin-bottom:12px;">Active Academic Support</h3>
+            <p class="body">Stay on track with weekly doubt-clearing sessions, moderated discussion forums, and direct email assistance from the learning support team.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="step">
+            <div class="step-index">1</div>
+            <div>
+              <h4>Structured Online Platform</h4>
+              <p>Learn at your own pace through the custom Northstar Learning learning platform. Fully optimized for desktop and laptop devices.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-index">2</div>
+            <div>
+              <h4>Live Faculty Zoom Sessions</h4>
+              <p>Attend 3 interactive live Zoom sessions per course. Scheduled during weekday evenings to minimize clinical and work conflicts.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-index">3</div>
+            <div>
+              <h4>Continuous Assessments</h4>
+              <p>Track your progress via short quizzes, operational assignments, and real case-based projects after each module.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-index">4</div>
+            <div>
+              <h4>Capstone Project</h4>
+              <p>Conclude the programme by developing a comprehensive capstone project that applies lessons from all 9 courses to a real-world hospital problem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="section" id="faculty">
+      <div class="container">
+        <div class="kicker">Distinguished Faculty</div>
+        <h2 class="display h2" style="margin-bottom: 20px;">Learn from the architects of management education.</h2>
+        <p class="body-lg" style="max-width: 820px; margin-bottom: 48px;">Taught directly by senior professors of Northstar Learning Studio who bring extensive research, industry consultancy, and public policy expertise to the classroom.</p>
+        
+        <div class="faculty-grid">
+          <article class="faculty-card">
+            <div class="faculty-img" style="background-image: url('./images/faculty/demo-faculty.svg'); background-size: cover; background-position: center; height: 260px;"></div>
+            <div class="info">
+              <h4>Prof. Saurav Mehta</h4>
+              <p>Strategy & Organisational Insight</p>
+            </div>
+          </article>
+          <article class="faculty-card">
+            <div class="faculty-img" style="background-image: url('./images/faculty/demo-faculty.svg'); background-size: cover; background-position: center; height: 260px;"></div>
+            <div class="info">
+              <h4>Prof. Tara Iyer</h4>
+              <p>Leadership & People Systems</p>
+            </div>
+          </article>
+          <article class="faculty-card">
+            <div class="faculty-img" style="background-image: url('./images/faculty/demo-faculty.svg'); background-size: cover; background-position: center; height: 260px;"></div>
+            <div class="info">
+              <h4>Prof. Hema Reddy</h4>
+              <p>Operations & Service Excellence</p>
+            </div>
+          </article>
+          <article class="faculty-card">
+            <div class="faculty-img" style="background-image: url('./images/faculty/demo-faculty.svg'); background-size: cover; background-position: center; height: 260px;"></div>
+            <div class="info">
+              <h4>Prof. Aarav Kulkarni</h4>
+              <p>Public Policy & Healthcare Systems</p>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align:center; font-family:'Source Serif 4',serif; font-size: 24px; font-weight: 500; font-style: italic; color: var(--marigold); margin-top: 54px;">
+          “The same faculty. Wherever you are.”
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Outcomes Section -->
+    <section class="section alt-bg" id="outcomes">
+      <div class="container split">
+        <div>
+          <div class="kicker">Core Takeaways</div>
+          <h2 class="display h2" style="margin-bottom: 20px;">Transformation without hype.</h2>
+          <p class="body-lg" style="margin-bottom: 20px;">This programme builds deep execution capabilities. You will leave with a structured toolkit to analyze operational inefficiencies and lead growth in hospital networks.</p>
+        </div>
+        <div class="outcome-list">
+          <div class="outcome">
+            <span class="dot"></span>
+            <p>Develop operational dashboards to track patient recovery times, bed allocations, and clinical resource bottlenecks.</p>
+          </div>
+          <div class="outcome">
+            <span class="dot"></span>
+            <p>Read, evaluate, and formulate hospital budgets, costing sheets, and department-level balance sheets with financial fluency.</p>
+          </div>
+          <div class="outcome">
+            <span class="dot"></span>
+            <p>Design quality audit frameworks that ensure your institution satisfies NABH and JCI accreditation guidelines.</p>
+          </div>
+          <div class="outcome">
+            <span class="dot"></span>
+            <p>Communicate operational objectives clearly across clinical, administrative, regulatory, and public board stakeholders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fees Section (Restored Content Gap) -->
+    <section class="section" id="fees">
+      <div class="container">
+        <div class="kicker">Programme Investment</div>
+        <h2 class="display h2" style="margin-bottom: 20px;">Fees & Instalments</h2>
+        <p class="body-lg" style="max-width: 800px; margin-bottom: 40px;">A transparent fee structure designed to be straightforward for working professionals and institutional sponsors.</p>
+        
+        <div class="card tint" style="max-width: 800px; padding: 40px;">
+          <h3 style="font-family:'Source Serif 4',serif; font-size:36px; font-weight:700; color:var(--marigold); margin-bottom: 8px;">₹1,25,000 <span style="font-size: 16px; font-weight: 500; font-family:'Inter', sans-serif; color:var(--muted);">+ 18% GST</span></h3>
+          <p class="body" style="font-weight: 600; color: var(--charcoal); margin-bottom: 24px;">Total Programme Fee</p>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid var(--line); padding-top: 24px;">
+            <div>
+              <div class="eyebrow" style="margin-bottom: 8px;">Payment Schedule</div>
+              <p class="body">Payable in 2 equal instalments</p>
+            </div>
+            <div>
+              <div class="eyebrow" style="margin-bottom: 8px;">Financial Aid</div>
+              <p class="body">No scholarships available. Institutional sponsorships are supported.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application / Detail Panel -->
+    <section class="section" id="apply">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="kicker">Admissions Panel</div>
+          <h2 class="display h2">Build the leadership capability modern healthcare demands.</h2>
+          <p class="lead">Applications are evaluated on a rolling basis. Ensure you submit your graduation credentials and relevant work experience records before the batch deadline.</p>
+          
+          <div class="detail-grid">
+            <div class="detail"><strong>Duration</strong><span>10 Months (Fully Online)</span></div>
+            <div class="detail"><strong>Programme Fee</strong><span>₹1,25,000 + 18% GST</span></div>
+            <div class="detail"><strong>Installments</strong><span>Payable in 2 equal parts</span></div>
+            <div class="detail"><strong>Eligibility</strong><span>Graduate + 3 yrs healthcare exp.</span></div>
+          </div>
+          
+          <div class="btn-row" style="margin-top: 36px;">
+            <a href="mailto:digital.learning@northstar.edu.in" class="btn primary">Contact Admissions</a>
+            <a href="#curriculum" class="btn secondary">View Course Schedule</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section alt-bg" id="faq">
+      <div class="container split">
+        <div>
+          <div class="kicker">FAQ</div>
+          <h2 class="display h2" style="margin-bottom: 20px;">Frequently Asked Questions</h2>
+          <p class="body-lg">Get complete transparency regarding fee structures, live session timetables, and credential certifications.</p>
+        </div>
+        <div class="faq">
+          <div class="faq-item">
+            <button type="button"><span>Who is this programme best suited for?</span><span>＋</span></button>
+            <div class="answer">The programme is designed for healthcare practitioners (doctors, clinical supervisors, nursing directors), administrative executives handling hospital services, health-tech entrepreneurs, and pharma consultants transitioning into leadership roles.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button"><span>What are the eligibility requirements?</span><span>＋</span></button>
+            <div class="answer">Applicants must hold a graduate degree in medicine, nursing, pharmacy, life sciences, management, or allied healthcare disciplines. A minimum of 3 years of relevant professional experience in the healthcare sector is required.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button"><span>What is the fee payment structure?</span><span>＋</span></button>
+            <div class="answer">The programme fee is ₹1,25,000 + 18% GST, payable in two equal instalments. Please note that there are no scholarships, financial concessions, or fee reductions available for this cohort.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button"><span>How are the courses structured and assessed?</span><span>＋</span></button>
+            <div class="answer">The programme comprises 9 courses. Each course requires about 5 hours of work per week and features 3 live Zoom Q&A sessions on weekday evenings. Evaluation includes online quizzes, written assignments, and a mandatory concluding Capstone Project. A minimum score of 60% per course is required to pass.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button"><span>Does this programme provide placement assistance?</span><span>＋</span></button>
+            <div class="answer">No. Northstar Learning does not provide formal placement assistance or job guarantees with this certificate. However, the curriculum and network help professionals advance in hospital administration and health services.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button"><span>What credential will I receive upon graduation?</span><span>＋</span></button>
+            <div class="answer">Learners who complete all assessments and the capstone project with a passing grade will receive a Certificate in Health Systems Management issued by Northstar Learning, with access to the demo alumni community.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Apply Bar -->
+  <div class="sticky-apply">
+    <div>
+      <div class="mini">Hospital Management Programme</div>
+      <strong>Certificate in Health Systems Management</strong>
+    </div>
+    <div class="btn-row" style="margin:0; width:auto;">
+      <a class="btn ghost" href="#curriculum">View Curriculum</a>
+      <a class="btn primary" href="#apply">Apply Now</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container" style="display:flex; flex-direction:column; gap:24px;">
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; border-bottom:1px solid rgba(255,255,255,.1); padding-bottom:30px;">
+        <div>
+          <span style="font-family:'Source Serif 4',serif;font-weight:700;font-size:24px;color:#fff;">Northstar Learning<span style="color:var(--marigold);">x</span></span>
+          <p style="margin-top:10px; max-width:320px; font-size:13px; line-height:1.6; color:rgba(255,255,255,0.6);">The digital learning initiative of the Northstar Learning Studio. Delivering quality management education, wherever you are.</p>
+        </div>
+        <div>
+          <h4 style="color:#fff; margin-bottom:12px; font-size:14px; text-transform:uppercase; letter-spacing:.1em; font-family:'IBM Plex Mono', monospace;">Contact Admissions</h4>
+          <p style="font-size:13px; line-height:1.6; margin:0; color:rgba(255,255,255,0.8);">Email: <a href="mailto:digital.learning@northstar.edu.in" style="color:#fff; text-decoration:underline;">digital.learning@northstar.edu.in</a></p>
+          <p style="font-size:13px; line-height:1.6; margin:0; color:rgba(255,255,255,0.6);">Office Hours: Monday–Friday, 10 AM – 6 PM</p>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:12px; color:rgba(255,255,255,0.4);">
+        <span>© 2026 Northstar Learning Studio. All rights reserved.</span>
+        <span>Designed in alignment with the Northstar Learning Brand Playbook (May 2026).</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // Mobile Navigation toggle
+  document.querySelectorAll('.mobile-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const nav = document.querySelector(btn.dataset.target);
+      nav.classList.toggle('open');
+    });
+  });
+  
+  // Accordion FAQ toggle
+  document.querySelectorAll('.faq-item button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+      const symbol = btn.querySelector('span:last-child');
+      if(symbol) {
+        symbol.textContent = item.classList.contains('open') ? '－' : '＋';
+      }
+    });
+  });
+  </script>
+</body>
+</html>

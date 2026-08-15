@@ -1,0 +1,61 @@
+{
+  "programmeName": "Emerging Leaders Lab",
+  "file": "ELP_Landing.html",
+  "auditDate": "2026-05-25T10:00:00Z",
+  "scores": {
+    "brand": 100,
+    "content": 85,
+    "ux": 60
+  },
+  "summary": "Brand compliance is perfect. However, there are minor content discrepancies (duration/themes) compared to the old site. Major UX bloat in the curriculum section requires tabbed optimization to reduce scroll depth.",
+  "contentGaps": [
+    {
+      "section": "Programme Duration",
+      "oldContent": "7 months",
+      "newContent": "8 months",
+      "verdict": "⚠️ Discrepancy (Verify with SME)"
+    },
+    {
+      "section": "Themes",
+      "oldContent": "6 themes",
+      "newContent": "5 themes",
+      "verdict": "⚠️ Discrepancy (Verify with SME)"
+    },
+    {
+      "section": "Curriculum",
+      "oldContent": "Not listed clearly",
+      "newContent": "11 courses listed",
+      "verdict": "✅ Improved"
+    },
+    {
+      "section": "Sticky CTA",
+      "oldContent": "None",
+      "newContent": "None",
+      "verdict": "🔴 Missing (Conversion Blocker)"
+    }
+  ],
+  "scrollDepth": {
+    "current": 6.5,
+    "target": 4.5
+  },
+  "wireframes": [
+    {
+      "current": "┌──────────────────────┐\n│ Theme Grid (2 rows)  │\n├──────────────────────┤\n│ Course 01            │\n│ Course 02            │\n│ Course 03            │\n│ Course 04            │\n│ Course 05            │\n│ ...                  │\n│ Course 11            │\n└──────────────────────┘\n(Massive vertical scroll)",
+      "proposed": "┌──────────────────────┐\n│ [Themes] [Courses]   │\n├──────────────────────┤\n│ Theme Grid (2 rows)  │\n│                      │\n│                      │\n│                      │\n│                      │\n└──────────────────────┘\n(Tabbed - Saves 1.5 scrolls)"
+    }
+  ],
+  "actionItems": [
+    {
+      "priority": "🔴 Critical",
+      "task": "Add a sticky bottom CTA bar to improve conversion."
+    },
+    {
+      "priority": "🟠 High",
+      "task": "Convert the Themes and Courses sections into a tabbed interface to save vertical scroll."
+    },
+    {
+      "priority": "🟡 Medium",
+      "task": "Verify if the duration is 7 or 8 months with the marketing head."
+    }
+  ]
+}

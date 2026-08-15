@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en" style="scroll-padding-top: 80px;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Business Decisions with Data — Northstar Learning | Northstar Learning</title>
+<!-- [UX FIX] Added meta description for SEO -->
+<meta name="description" content="Master financial literacy with Northstar Learning's Business Decisions with Data programme. A 9-week online course covering financial statements, costing, budgeting, and strategic cost management."/>
+<!-- [UX FIX] Added Open Graph tags -->
+<meta property="og:title" content="Business Decisions with Data — Northstar Learning | Northstar Learning"/>
+<meta property="og:description" content="Master financial literacy with Northstar Learning's Business Decisions with Data programme. A 9-week online course covering financial statements, costing, budgeting, and strategic cost management."/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDxF0Gogs6qWg85dAnIUlPL0TuU3FnrTmMn1QbrsiZ2nBM_Uq3Cu8uoLiRABBg88x6A6tHAjJgNieVcH2znAeHOQRI9jLFT-u2nsCmOApOud6rPinH3lcRXPUy7fRMsqQWKfEF4oQhiYylUq1QJBfEPly4uzrG9oIA9CV8zNkS-3SBLC2YmfiSRCXWRPNlThrs7BYsrlz2JYqnTpjbzveOcML_kfuLCoKia_2rjbaq9YQ4SCaYRqc4np2BrwPx_j7UwWBOcXuUIAg"/>
+<meta property="og:type" content="website"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  /* [UX FIX] Added :focus-visible styles for keyboard navigation */
+  *:focus-visible {
+    outline: 3px solid #C97138;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  button:focus-visible {
+    outline: 3px solid #C97138;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(201, 113, 56, 0.25);
+  }
+  a:focus-visible {
+    outline: 3px solid #C97138;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .parallax-bg {
+      will-change: transform;
+    }
+    .btn-glow {
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(201, 113, 56, 0.5);
+    }
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-shimmer {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+    .glass-card:hover .glass-shimmer {
+      opacity: 1;
+    }
+    .glass-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .curriculum-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .curriculum-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: #C97138;
+      transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .curriculum-item:hover::after {
+      width: 100%;
+    }
+  }
+
+  /* Sticky CTA Bar */
+  #sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  #sticky-cta.visible {
+    transform: translateY(0);
+  }
+</style>
+<!-- Tailwind CSS -->
+<!-- AUDIT FLAG: Tailwind CDN is a render-blocking script in <head>. Consider deferring or moving to a build-time approach for production — needs manual review -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<!-- [BRAND FIX] Stripped all non-brand M3 tokens. Only parchment, charcoal, marigold, crimson, navy + derived shades remain. -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "parchment": "#F4EFE3",
+          "parchment-deep": "#E8E2D2",
+          "charcoal": "#1A1B1E",
+          "charcoal-muted": "#36383D",
+          "marigold": "#C97138",
+          "crimson": "#AE2C2A",
+          "navy": "#172D6B"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "max-width": "1280px",
+          "margin-desktop": "64px",
+          "gutter": "24px",
+          "unit": "8px",
+          "margin-mobile": "20px"
+        },
+        "fontFamily": {
+          "display-lg": ["Source Serif 4"],
+          "body-lg": ["Inter"],
+          "label-bold": ["Inter"],
+          "headline-md": ["Source Serif 4"],
+          "display-lg-mobile": ["Source Serif 4"],
+          "eyebrow-mono": ["IBM Plex Mono"],
+          "cta": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-xl": ["Source Serif 4"]
+        },
+        "fontSize": {
+          "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-bold": ["14px", {"lineHeight": "1", "fontWeight": "600"}],
+          "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+          "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+          "eyebrow-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "cta": ["16px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+          "headline-xl": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-parchment text-charcoal font-body-md antialiased selection:bg-marigold selection:text-charcoal pb-16">
+
+<!-- ============================================================ -->
+<!-- Top Navigation Bar                                           -->
+<!-- ============================================================ -->
+<!-- AUDIT FLAG: <nav> not wrapped in <header> landmark — needs manual review -->
+<!-- [BRAND FIX] bg-surface/80 → bg-parchment/80 -->
+<nav class="fixed top-0 w-full z-50 bg-parchment/80 backdrop-blur-md shadow-sm border-b border-charcoal/10">
+  <div class="flex justify-between items-center max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop h-20">
+    <div class="font-display-lg text-display-lg-mobile font-bold text-navy">
+      Northstar Learning
+    </div>
+    <ul class="hidden md:flex space-x-8">
+      <li>
+        <!-- [BRAND FIX] text-primary → text-marigold -->
+        <a class="font-cta text-cta text-marigold border-b-2 border-marigold pb-1 transition-transform active:scale-95" href="#curriculum">Curriculum</a>
+      </li>
+      <li>
+        <!-- AUDIT FLAG: text-on-surface (#1d1c15) is close but not canonical charcoal (#1A1B1E) — needs manual review -->
+        <a class="font-cta text-cta text-charcoal hover:text-marigold transition-colors duration-200 active:scale-95" href="#faculty">Faculty</a>
+      </li>
+      <li>
+        <a class="font-cta text-cta text-charcoal hover:text-marigold transition-colors duration-200 active:scale-95" href="#outcomes">Outcomes</a>
+      </li>
+      <li>
+        <a class="font-cta text-cta text-charcoal hover:text-marigold transition-colors duration-200 active:scale-95" href="#enroll">Enroll</a>
+      </li>
+    </ul>
+    <button class="hidden md:inline-flex items-center justify-center bg-marigold text-charcoal font-cta text-cta px-6 py-3 rounded hover:bg-marigold/90 btn-glow" aria-label="Enroll now — navigate to enrollment section">
+      Enroll Now
+    </button>
+    <!-- Mobile Menu Trigger -->
+    <!-- [UX FIX] Added aria-label and aria-expanded to hamburger button -->
+    <button class="md:hidden text-charcoal" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="material-symbols-outlined text-3xl">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- Main Content                                                 -->
+<!-- ============================================================ -->
+<main class="pt-20 pb-16">
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- Hero Section                                               -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <!-- Background layer -->
+    <!-- AUDIT FLAG: Hero background div should have role="presentation" if decorative or role="img" + aria-label if meaningful — needs manual review -->
+    <div class="absolute inset-0 z-0 bg-charcoal">
+      <div
+        class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay parallax-bg scale-110"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxF0Gogs6qWg85dAnIUlPL0TuU3FnrTmMn1QbrsiZ2nBM_Uq3Cu8uoLiRABBg88x6A6tHAjJgNieVcH2znAeHOQRI9jLFT-u2nsCmOApOud6rPinH3lcRXPUy7fRMsqQWKfEF4oQhiYylUq1QJBfEPly4uzrG9oIA9CV8zNkS-3SBLC2YmfiSRCXWRPNlThrs7BYsrlz2JYqnTpjbzveOcML_kfuLCoKia_2rjbaq9YQ4SCaYRqc4np2BrwPx_j7UwWBOcXuUIAg'); transform-origin: top center;">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-transparent"></div>
+    </div>
+    <!-- Hero content -->
+    <div class="relative z-10 max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center">
+      <span class="inline-block font-eyebrow-mono text-eyebrow-mono text-marigold mb-6 tracking-widest uppercase">9-Week Programme · Northstar Learning</span>
+      <!-- [BRAND FIX] text-surface-bright → text-parchment (approved brand token for light text on dark bg) -->
+      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tight text-parchment mb-6 max-w-4xl mx-auto drop-shadow-lg">
+        Business Decisions with Data
+      </h1>
+      <!-- [BRAND FIX] text-surface-variant → text-parchment/80 -->
+      <p class="font-body-lg text-body-lg text-parchment/80 max-w-2xl mx-auto mb-10 opacity-90">
+        Master financial literacy with Prof. Mira Sen. Equip yourself with the analytical tools to drive strategic business decisions.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button class="w-full sm:w-auto bg-marigold text-charcoal font-cta text-cta px-8 py-4 rounded shadow-[0_20px_40px_rgba(26,27,30,0.2)] hover:bg-marigold/90 btn-glow" aria-label="Enroll now in Business Decisions with Data">
+          Enroll Now
+        </button>
+        <!-- [BRAND FIX] border-surface-variant → border-parchment/50, text-surface-bright → text-parchment -->
+        <button class="w-full sm:w-auto bg-transparent border border-parchment/50 text-parchment font-cta text-cta px-8 py-4 rounded hover:bg-parchment/10 transition-all duration-300" aria-label="Download programme brochure">
+          Download Brochure
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- Overview Section                                           -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="py-12 bg-parchment relative">
+    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop reveal">
+      <div class="text-left mb-12">
+        <h2 class="font-headline-xl text-headline-xl tracking-tight text-charcoal mb-4">Programme Overview</h2>
+        <div class="w-16 h-1 bg-marigold mb-6"></div>
+        <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+        <p class="font-body-md text-body-md text-charcoal/70 max-w-2xl">
+          Designed for managers and executives who need to move from operational roles into strategic leadership by making sense of financial data.
+        </p>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+
+          <!-- Card 1 -->
+          <div class="glass-card bg-parchment-deep/60 backdrop-blur-md border border-charcoal/5 rounded-lg p-8 hover:shadow-[0_20px_40px_rgba(26,27,30,0.08)] transition-all duration-300 group">
+            <div class="glass-shimmer"></div>
+            <span class="material-symbols-outlined text-marigold text-4xl mb-4 block group-hover:scale-110 transition-transform">query_stats</span>
+            <h3 class="font-headline-md text-charcoal mb-3 text-2xl">Financial Statement Analysis</h3>
+            <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+            <p class="font-body-md text-body-md text-charcoal/70">Decode balance sheets and income statements to understand the true health of any organisation.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card bg-parchment-deep/60 backdrop-blur-md border border-charcoal/5 rounded-lg p-8 hover:shadow-[0_20px_40px_rgba(26,27,30,0.08)] transition-all duration-300 group">
+            <div class="glass-shimmer"></div>
+            <span class="material-symbols-outlined text-marigold text-4xl mb-4 block group-hover:scale-110 transition-transform">account_balance_wallet</span>
+            <h3 class="font-headline-md text-charcoal mb-3 text-2xl">Strategic Costing</h3>
+            <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+            <p class="font-body-md text-body-md text-charcoal/70">Apply Activity Based Costing to find true profit drivers and eliminate hidden inefficiencies.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card bg-parchment-deep/60 backdrop-blur-md border border-charcoal/5 rounded-lg p-8 hover:shadow-[0_20px_40px_rgba(26,27,30,0.08)] transition-all duration-300 group">
+            <div class="glass-shimmer"></div>
+            <span class="material-symbols-outlined text-marigold text-4xl mb-4 block group-hover:scale-110 transition-transform">pie_chart</span>
+            <h3 class="font-headline-md text-charcoal mb-3 text-2xl">Advanced Budgeting</h3>
+            <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+            <p class="font-body-md text-body-md text-charcoal/70">Master Capital Budgeting and Variance Analysis to allocate resources effectively and measure performance against strategic goals.</p>
+          </div>
+
+        </div><!-- /cards grid -->
+    </div><!-- /container -->
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- Outcomes Section                                           -->
+  <!-- ---------------------------------------------------------- -->
+  <!-- [BRAND FIX] bg-surface-container-low → bg-parchment -->
+  <section class="py-12 bg-parchment" id="outcomes">
+    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-left reveal">
+      <span class="font-eyebrow-mono text-eyebrow-mono text-marigold mb-2 block uppercase tracking-wider">Key Takeaways</span>
+      <h2 class="font-headline-xl text-headline-xl tracking-tight text-charcoal mb-12">Programme Outcomes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+
+        <!-- [BRAND FIX] bg-surface → bg-parchment, border-surface-variant → border-parchment-deep -->
+        <!-- [UX FIX] h4 → h3 to fix heading hierarchy skip (H2 → H4 was skipping H3) -->
+        <div class="glass-card p-6 border-l-2 border-parchment-deep hover:border-marigold transition-colors duration-300 bg-parchment shadow-sm hover:shadow-md">
+          <div class="glass-shimmer"></div>
+          <h3 class="font-label-bold text-label-bold text-charcoal mb-2 text-lg">Financial Clarity</h3>
+          <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+          <p class="font-body-md text-body-md text-charcoal/70 text-sm">Read and interpret financial reports with confidence, moving beyond basic metrics to uncover underlying business realities.</p>
+        </div>
+
+        <div class="glass-card p-6 border-l-2 border-parchment-deep hover:border-marigold transition-colors duration-300 bg-parchment shadow-sm hover:shadow-md">
+          <div class="glass-shimmer"></div>
+          <h3 class="font-label-bold text-label-bold text-charcoal mb-2 text-lg">Strategic Resource Allocation</h3>
+          <p class="font-body-md text-body-md text-charcoal/70 text-sm">Make informed decisions on capital investments using rigorous evaluation techniques and risk assessment frameworks.</p>
+        </div>
+
+        <div class="glass-card p-6 border-l-2 border-parchment-deep hover:border-marigold transition-colors duration-300 bg-parchment shadow-sm hover:shadow-md">
+          <div class="glass-shimmer"></div>
+          <h3 class="font-label-bold text-label-bold text-charcoal mb-2 text-lg">Performance Measurement</h3>
+          <p class="font-body-md text-body-md text-charcoal/70 text-sm">Design and use robust budgeting systems that track variances accurately and drive operational accountability.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- Curriculum Section                                         -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="py-12 bg-parchment" id="curriculum">
+    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop reveal">
+
+      <div class="text-left mb-12">
+        <h2 class="font-headline-xl text-headline-xl tracking-tight text-charcoal mb-4">Curriculum Framework</h2>
+        <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+        <p class="font-body-md text-body-md text-charcoal/70">A rigorous 9-module journey designed for incremental mastery.</p>
+      </div>
+
+      <!-- Module list — all siblings, flat structure -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Module 01 -->
+        <!-- [BRAND FIX] bg-surface → bg-parchment -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">01</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Introduction to Financial Statements</div>
+            <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">The language every manager must speak.</div>
+          </div>
+        </div>
+
+        <!-- Module 02 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">02</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Balance Sheet &amp; Income Statement Analysis</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">See what the numbers reveal about any business.</div>
+          </div>
+        </div>
+
+        <!-- Module 03 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">03</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Cash Flow Statements</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">Follow the money that actually runs the company.</div>
+          </div>
+        </div>
+
+        <!-- Module 04 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">04</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Cost Concepts &amp; Classification</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">Know your fixed, variable, and hidden costs.</div>
+          </div>
+        </div>
+
+        <!-- Module 05 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">05</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Activity Based Costing</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">Find where profit is made and where it bleeds.</div>
+          </div>
+        </div>
+
+        <!-- Module 06 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">06</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">CVP Analysis for Decision Making</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">Model the impact of every major decision.</div>
+          </div>
+        </div>
+
+        <!-- Module 07 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">07</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Budgeting &amp; Variance Analysis</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">Set targets. Measure truth. Close the gap.</div>
+          </div>
+        </div>
+
+        <!-- Module 08 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">08</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Capital Budgeting Decisions</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">Evaluate every major investment with rigor.</div>
+          </div>
+        </div>
+
+        <!-- Module 09 -->
+        <div class="curriculum-item flex items-start gap-4 p-6 bg-parchment hover:bg-parchment-deep transition-colors border border-charcoal/5 rounded shadow-sm group cursor-default">
+          <div class="font-eyebrow-mono text-eyebrow-mono text-marigold text-xl w-10 flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity pt-1">09</div>
+          <div>
+            <div class="font-headline-md text-charcoal text-xl mb-1">Strategic Cost Management</div>
+            <div class="font-body-md text-body-md text-charcoal/70 text-sm">Align costs to long-term competitive advantage.</div>
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+
+      <div class="mt-10 text-center max-w-3xl mx-auto">
+        <button class="bg-transparent border-2 border-charcoal text-charcoal font-cta text-cta px-8 py-4 rounded hover:bg-charcoal hover:text-parchment transition-all duration-300" aria-label="Download full syllabus PDF">
+          Download Full Syllabus
+        </button>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- Faculty Section                                            -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="py-12 bg-charcoal" id="faculty">
+    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop reveal">
+
+      <div class="text-left mb-12 max-w-3xl mx-auto">
+        <span class="font-eyebrow-mono text-eyebrow-mono text-marigold mb-2 block uppercase tracking-wider">Your Instructor</span>
+        <!-- [BRAND FIX] text-surface-bright → text-parchment -->
+        <h2 class="font-headline-xl text-headline-xl tracking-tight text-parchment mb-4">Faculty</h2>
+        <div class="w-16 h-1 bg-marigold"></div>
+      </div>
+
+      <div class="max-w-3xl mx-auto flex flex-col md:flex-row gap-10 items-start">
+
+        <!-- Avatar placeholder -->
+        <div class="flex-shrink-0 mx-auto md:mx-0">
+          <div class="w-28 h-28 rounded-full bg-charcoal-muted border-2 border-marigold flex items-center justify-center">
+            <span class="material-symbols-outlined text-marigold text-5xl">person</span>
+          </div>
+        </div>
+
+        <!-- Bio block -->
+        <div class="text-center md:text-left">
+          <!-- AUDIT FLAG: Faculty name 'Prof. Mira Sen' is NOT in canonical reference data (AGENTS.md §4). Programme 'Business Decisions with Data' is not in the reference library. Cannot verify — needs manual review -->
+          <!-- [BRAND FIX] text-surface-bright → text-parchment -->
+          <h3 class="font-headline-md text-headline-md text-parchment mb-1">Prof. Mira Sen</h3>
+          <p class="font-eyebrow-mono text-eyebrow-mono text-marigold mb-1 tracking-wider uppercase">Professor of Accounting &amp; Finance</p>
+          <!-- Brand Promise — appears exactly once on this page -->
+          <p class="font-eyebrow-mono text-eyebrow-mono text-marigold/70 mb-6 tracking-wider">The same faculty. Wherever you are.</p>
+          <!-- [BRAND FIX] text-surface-variant → text-parchment/80 -->
+          <p class="font-body-lg text-body-lg text-parchment/80 leading-relaxed">
+            Prof. Narasimhan brings over two decades of research and teaching experience in financial accounting and management control systems. His case-based teaching style connects accounting theory to real business decisions you face every day.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+            <span class="font-eyebrow-mono text-eyebrow-mono text-marigold/80 bg-marigold/10 border border-marigold/20 px-3 py-1 rounded-full uppercase tracking-wider">Northstar Learning</span>
+            <!-- [BRAND FIX] text-surface-variant/80 → text-parchment/60, bg-surface-variant/10 → bg-parchment/10, border-surface-variant/20 → border-parchment/20 -->
+            <span class="font-eyebrow-mono text-eyebrow-mono text-parchment/60 bg-parchment/10 border border-parchment/20 px-3 py-1 rounded-full uppercase tracking-wider">Financial Accounting</span>
+            <span class="font-eyebrow-mono text-eyebrow-mono text-parchment/60 bg-parchment/10 border border-parchment/20 px-3 py-1 rounded-full uppercase tracking-wider">Management Control</span>
+          </div>
+        </div>
+
+      </div><!-- /flex -->
+    </div><!-- /container -->
+  </section>
+
+  <!-- AUDIT FLAG: FAQs section is completely absent from the page. Programme 'Business Decisions with Data' is NOT in the reference library — cannot auto-generate FAQ content. Needs manual review and content from programme team. -->
+
+  <!-- AUDIT FLAG: Testimonials section is completely absent from the page. Programme 'Business Decisions with Data' is NOT in the reference library — cannot auto-generate testimonials. Needs manual review and real learner quotes. -->
+
+  <!-- AUDIT FLAG: Trust Signals (batch stats, partner logos, inauguration details) are absent. Programme not in reference library — cannot auto-generate. Needs manual review. -->
+
+  <!-- ---------------------------------------------------------- -->
+  <!-- Enroll / Fees CTA Section                                  -->
+  <!-- ---------------------------------------------------------- -->
+  <section class="py-12 bg-parchment-deep" id="enroll">
+    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center reveal">
+      <span class="font-eyebrow-mono text-eyebrow-mono text-marigold mb-2 block uppercase tracking-wider">Ready to Begin</span>
+      <h2 class="font-headline-xl text-headline-xl tracking-tight text-charcoal mb-4">Enroll in the Programme</h2>
+      <div class="w-16 h-1 bg-marigold mx-auto mb-8"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto mb-10">
+        <!-- [BRAND FIX] bg-surface → bg-parchment -->
+        <div class="bg-parchment border border-charcoal/5 rounded-lg p-6 shadow-sm">
+          <p class="font-eyebrow-mono text-eyebrow-mono text-marigold uppercase tracking-wider mb-1">Duration</p>
+          <!-- AUDIT FLAG: Programme duration '9 Weeks' cannot be verified — 'Business Decisions with Data' is not in the reference library — needs manual review -->
+          <p class="font-headline-md text-charcoal text-2xl">9 Weeks</p>
+        </div>
+        <div class="bg-parchment border border-charcoal/5 rounded-lg p-6 shadow-sm">
+          <p class="font-eyebrow-mono text-eyebrow-mono text-marigold uppercase tracking-wider mb-1">Format</p>
+          <p class="font-headline-md text-charcoal text-2xl">Online</p>
+        </div>
+        <div class="bg-parchment border border-charcoal/5 rounded-lg p-6 shadow-sm">
+          <p class="font-eyebrow-mono text-eyebrow-mono text-marigold uppercase tracking-wider mb-1">Credential</p>
+          <p class="font-headline-md text-charcoal text-xl leading-tight">Northstar Learning</p>
+        </div>
+      </div>
+
+      <!-- AUDIT FLAG: No fee/pricing amount is displayed anywhere on the page. Programme not in reference library — cannot auto-insert fee. Needs manual review with programme team to add pricing card. -->
+
+      <!-- AUDIT FLAG: No contact information (email, phone, WhatsApp) is present on the page. Programme not in reference library — cannot auto-insert contact details. Needs manual review. -->
+
+      <!-- [BRAND FIX] text-tertiary → text-charcoal/70 -->
+      <p class="font-body-md text-body-md text-charcoal/70 max-w-xl mx-auto mb-8">
+        Seats are limited. Apply now to secure your place in the next cohort and start building the financial fluency your career demands.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-marigold text-charcoal font-cta text-cta px-10 py-4 rounded hover:bg-marigold/90 btn-glow shadow-[0_10px_30px_rgba(201,113,56,0.3)]" aria-label="Apply now to Business Decisions with Data">
+          Apply Now →
+        </button>
+        <button class="bg-transparent border-2 border-charcoal text-charcoal font-cta text-cta px-10 py-4 rounded hover:bg-charcoal hover:text-parchment transition-all duration-300" aria-label="Talk to an advisor about this programme">
+          Talk to an Advisor
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main><!-- /main -->
+
+<!-- ============================================================ -->
+<!-- Footer                                                       -->
+<!-- ============================================================ -->
+<footer class="w-full bg-charcoal">
+  <div class="py-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop w-full">
+
+    <div class="md:col-span-1 mb-8 md:mb-0">
+      <div class="font-display-lg text-headline-md text-parchment mb-4">Northstar Learning</div>
+      <p class="font-body-md text-body-md text-parchment/70 text-sm">
+        © 2024 Northstar Learning. All rights reserved.<br/>Business Decisions with Data.
+      </p>
+    </div>
+
+    <div class="md:col-span-3 flex flex-col sm:flex-row gap-8 justify-end">
+      <div class="flex flex-col gap-4">
+        <a class="font-eyebrow-mono text-eyebrow-mono text-parchment/70 hover:text-parchment transition-opacity" href="#">Privacy Policy</a>
+        <a class="font-eyebrow-mono text-eyebrow-mono text-parchment/70 hover:text-parchment transition-opacity" href="#">Terms of Service</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <a class="font-eyebrow-mono text-eyebrow-mono text-parchment/70 hover:text-parchment transition-opacity" href="#">Contact Us</a>
+        <a class="font-eyebrow-mono text-eyebrow-mono text-parchment/70 hover:text-parchment transition-opacity" href="#">Accreditation</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- Sticky Bottom CTA Bar                                        -->
+<!-- ============================================================ -->
+<!-- [UX FIX] Added aria-label and role="complementary" to sticky CTA bar -->
+<!-- AUDIT FLAG: 70/15/15 color ratio violation — charcoal surfaces cover ~40% of page area (hero ~25%, faculty ~10%, footer ~5%), exceeding 15% budget by ~25pp. Restructuring page layout is too destructive for auto-fix — needs manual review -->
+<!-- AUDIT FLAG: .glass-shimmer fixed 400px width may exceed 375px mobile viewport — mitigated by position:absolute but needs manual review -->
+<div id="sticky-cta" class="bg-charcoal border-t border-marigold/30 shadow-[0_-4px_20px_rgba(26,27,30,0.3)]" aria-label="Sticky enrollment bar" role="complementary">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-eyebrow-mono text-eyebrow-mono text-parchment/80 tracking-wider text-center sm:text-left">
+      Business Decisions with Data &nbsp;·&nbsp; 9 Weeks &nbsp;·&nbsp; Northstar Learning
+    </p>
+    <button class="flex-shrink-0 bg-marigold text-charcoal font-cta text-cta px-8 py-3 rounded hover:bg-marigold/90 btn-glow whitespace-nowrap" aria-label="Enroll now — sticky bar">
+      Enroll Now →
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Scripts                                                      -->
+<!-- ============================================================ -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ----------------------------------------------------------
+    // Intersection Observer — scroll-reveal
+    // ----------------------------------------------------------
+    if (!prefersReducedMotion) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { root: null, rootMargin: '0px', threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }
+
+    // ----------------------------------------------------------
+    // Parallax hero background
+    // ----------------------------------------------------------
+    const parallaxBg = document.querySelector('.parallax-bg');
+    if (parallaxBg && !prefersReducedMotion) {
+      window.addEventListener('scroll', () => {
+        parallaxBg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+      }, { passive: true });
+    }
+
+    // ----------------------------------------------------------
+    // Glass card shimmer on mousemove
+    // ----------------------------------------------------------
+    if (!prefersReducedMotion) {
+      document.querySelectorAll('.glass-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const shimmer = card.querySelector('.glass-shimmer');
+          if (shimmer) {
+            shimmer.style.left = `${e.clientX - rect.left}px`;
+            shimmer.style.top = `${e.clientY - rect.top}px`;
+          }
+        });
+      });
+    }
+
+    // ----------------------------------------------------------
+    // Sticky CTA bar — show after scrolling 200px past hero
+    // ----------------------------------------------------------
+    const stickyCta = document.getElementById('sticky-cta');
+    const heroSection = document.querySelector('section');
+    if (stickyCta && heroSection) {
+      const showThreshold = heroSection.offsetHeight + 200;
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > showThreshold) {
+          stickyCta.classList.add('visible');
+        } else {
+          stickyCta.classList.remove('visible');
+        }
+      }, { passive: true });
+    }
+  });
+</script>
+
+</body>
+</html>

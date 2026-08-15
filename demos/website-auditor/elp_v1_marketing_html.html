@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Northstar Learning · Emerging Leaders Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --crimson:#AE2C2A;
+    --crimson-d:#7E1F1E;
+    --marigold:#C97138;
+    --char:#1A1B1E;
+    --ink:#1A1B1E;
+    --paper:#F4EFE3;        /* parchment */
+    --paper-2:#FBF8F1;
+    --stone:#5B5F66;
+    --steel:#5B5F66;
+    --pebble:#9B9591;
+    --sand:#DCD3BC;
+    --line:rgba(26,27,30,.10);
+    --line-d:rgba(244,239,227,.16);
+    --accent:var(--marigold);
+  }
+  html,body{background:var(--paper);color:var(--char);font-family:'Inter','IBM Plex Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--crimson);color:var(--paper)}
+
+  .display{font-family:'Source Serif 4','Source Serif Pro',Georgia,serif;font-weight:600;letter-spacing:-.022em;line-height:.95;color:var(--char)}
+  .display em{font-style:italic;font-weight:500;color:var(--marigold)}
+  .eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--marigold);font-weight:500}
+  .body{font-size:16px;line-height:1.62;color:var(--char)}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+  section{padding:120px 0;position:relative}
+  hr.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(244,239,227,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav__inner{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;max-width:1280px;margin:0 auto;gap:30px}
+  .nav__brand{display:flex;align-items:center;gap:18px}
+  .nav__brand img{height:44px;width:auto;display:block}
+  .nav__brand .divider{display:none}
+  .nav__brand .ctx{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);padding-left:18px;border-left:1px solid var(--line);line-height:1.4}
+  .nav__brand .ctx b{display:block;color:var(--char);font-weight:600;font-family:'Source Serif 4',serif;font-size:14px;letter-spacing:.01em;text-transform:none;margin-top:3px}
+  .nav__links{display:flex;gap:30px;font-size:13px;color:var(--steel)}
+  .nav__links a:hover{color:var(--char)}
+  .nav__cta{display:inline-block;background:var(--marigold);color:var(--paper);padding:11px 20px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:.02em;transition:transform .2s ease,background .2s ease}
+  .nav__cta:hover{transform:translateY(-1px);background:var(--char)}
+
+  /* HERO – split, dark right */
+  .hero{padding:0;border-bottom:1px solid var(--line)}
+  .hero__inner{display:grid;grid-template-columns:1.15fr .85fr;min-height:82vh}
+  .hero__left{padding:80px 60px 80px 0;display:flex;flex-direction:column;justify-content:space-between}
+  .hero h1{font-size:clamp(50px,7vw,108px);margin-top:30px}
+  .hero p.lede{margin-top:32px;max-width:46ch;font-size:21px;line-height:1.45;color:var(--stone)}
+  .hero__meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:var(--paper-2)}
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--marigold)}
+
+  .hero__right{background:var(--char);color:var(--paper);padding:80px 56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .hero__right::after{content:"";position:absolute;width:560px;height:560px;background:radial-gradient(closest-side,var(--navy) 0%,transparent 70%);right:-200px;bottom:-200px;opacity:.35;pointer-events:none}
+  .hero__right::before{content:"ELP";position:absolute;top:30px;right:50px;font-family:'Source Serif 4',serif;font-size:230px;font-style:italic;color:rgba(201,113,56,.06);font-weight:600;line-height:.8;pointer-events:none}
+  .hero__plate{position:relative;z-index:1}
+  .hero__plate .nameplate{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--marigold);text-transform:uppercase;margin-bottom:18px}
+  .hero__plate h3{font-family:'Source Serif 4',serif;font-size:28px;font-weight:500;line-height:1.2;color:var(--paper);font-style:italic}
+  .hero__plate h3 em{color:var(--marigold);font-style:italic;font-weight:600}
+  .hero__themes{margin-top:44px;display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+  .ht{padding:14px 18px;border:1px solid rgba(244,239,227,.15);border-radius:6px;background:rgba(244,239,227,.04);display:grid;grid-template-columns:46px 1fr;align-items:center;gap:14px}
+  .ht .n{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--marigold)}
+  .ht .l{font-family:'Source Serif 4',serif;font-size:16px;font-weight:500;color:var(--paper);line-height:1.2}
+  .hero__quote{margin-top:54px;font-family:'Source Serif 4',serif;font-style:italic;font-size:24px;line-height:1.35;color:var(--paper);max-width:38ch;position:relative;z-index:1}
+  .hero__quote-l{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(244,239,227,.55);margin-top:18px;text-transform:uppercase}
+
+  /* stats */
+  .stats{background:var(--char);color:var(--paper);padding:70px 0}
+  .stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+  .stat .n{font-family:'Source Serif 4',serif;font-size:74px;font-weight:500;line-height:1;letter-spacing:-.02em;color:var(--paper)}
+  .stat .n em{color:var(--marigold);font-style:italic}
+  .stat .l{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,227,.55);margin-top:14px}
+
+  /* section head */
+  .sec-head{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:end;margin-bottom:60px}
+  .sec-head h2{font-size:clamp(38px,5vw,68px);font-family:'Source Serif 4',serif;font-weight:600;letter-spacing:-.02em;line-height:1;color:var(--char)}
+  .sec-head h2 em{font-style:italic;color:var(--navy);font-weight:500}
+  .sec-head p{max-width:54ch;font-size:18px;line-height:1.55;color:var(--stone)}
+
+  /* objectives */
+  .objs{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+  .obj{padding:38px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:54px 1fr;gap:24px}
+  .obj:nth-child(odd){padding-right:40px;border-right:1px solid var(--line)}
+  .obj:nth-child(even){padding-left:40px}
+  .obj .n{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--marigold);padding-top:5px}
+  .obj h3{font-family:'Source Serif 4',serif;font-weight:500;font-size:22px;line-height:1.18;color:var(--char);margin-bottom:8px}
+  .obj p{font-size:15px;line-height:1.55;color:var(--stone)}
+
+  /* themes */
+  .themes{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .theme{background:var(--paper-2);padding:36px 26px;display:flex;flex-direction:column;gap:14px;min-height:280px;transition:background .25s ease,color .25s ease;cursor:default}
+  .theme:hover{background:var(--navy);color:var(--paper)}
+  .theme:hover .t__num,.theme:hover .t__name,.theme:hover .t__list li{color:var(--paper)}
+  .theme:hover .t__list li::marker{color:var(--marigold)}
+  .theme:hover .t__count{color:var(--marigold)}
+  .t__num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--marigold);text-transform:uppercase;transition:color .25s}
+  .t__name{font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;line-height:1.18;color:var(--char);transition:color .25s}
+  .t__list{list-style:disc;padding-left:18px;display:flex;flex-direction:column;gap:6px;margin-top:auto}
+  .t__list li{font-size:13px;line-height:1.45;color:var(--stone);transition:color .25s}
+  .t__count{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase;transition:color .25s}
+
+  /* curriculum table (11 courses) */
+  .courses{margin-top:48px;border-top:1px solid var(--line)}
+  .crow{display:grid;grid-template-columns:50px 1.6fr 1fr 140px;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .crow:hover{background:var(--paper-2)}
+  .cnum{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--marigold);padding-left:10px}
+  .cname{font-family:'Source Serif 4',serif;font-size:20px;font-weight:500;color:var(--char);line-height:1.2}
+  .cname .new{display:inline-block;margin-left:10px;padding:2px 8px;background:var(--navy);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;border-radius:999px;vertical-align:middle}
+  .cfaculty{font-size:13px;color:var(--stone);font-style:italic}
+  .cfaculty b{color:var(--char);font-style:normal;font-weight:600}
+  .ctheme{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--marigold);text-transform:uppercase;text-align:right;padding-right:10px}
+
+  /* faculty spotlight — photo card */
+  .spot{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;background:var(--char);color:var(--paper);padding:72px;border-radius:8px;position:relative;overflow:hidden}
+  .spot::after{content:"ELP";position:absolute;top:30px;right:60px;font-family:'Source Serif 4',serif;font-size:200px;font-style:italic;color:rgba(201,113,56,.06);font-weight:600;line-height:.8;pointer-events:none}
+  .spot__img{aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:#0a0c12;position:relative;z-index:1;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+  .spot__img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.08) contrast(1.04) brightness(1.02)}
+  .spot__content{position:relative;z-index:1}
+  .spot__quote{font-family:'Source Serif 4',serif;font-size:30px;line-height:1.25;font-weight:500;font-style:italic;color:var(--paper)}
+  .spot__name{margin-top:36px;font-family:'Source Serif 4',serif;font-size:28px;font-weight:600;color:var(--marigold)}
+  .spot__role{margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,227,.6)}
+  .spot__eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,239,227,.5);margin-bottom:20px}
+
+  /* faculty grid — photo + duotone tint on hover */
+  .fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+  .fac{display:flex;flex-direction:column;gap:14px}
+  .fac__img{aspect-ratio:1/1.18;border-radius:4px;overflow:hidden;background:var(--paper-2);position:relative}
+  .fac__img img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(.05) contrast(1.04);transition:filter .35s ease,transform .6s ease}
+  .fac:hover .fac__img img{filter:grayscale(0) contrast(1.06);transform:scale(1.025)}
+  .fac__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(23,45,107,.0) 100%);pointer-events:none;transition:background .3s}
+  .fac:hover .fac__img::after{background:linear-gradient(180deg,transparent 40%,rgba(23,45,107,.18) 100%)}
+  .fac__name{font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:var(--char);line-height:1.2}
+  .fac__role{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--marigold)}
+  .fac__course{font-size:13px;color:var(--steel);line-height:1.5}
+
+  /* capstone band */
+  .capstone{background:var(--paper-2);padding:120px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cap__inner{display:grid;grid-template-columns:.6fr 1.4fr;gap:80px;align-items:start}
+  .cap__tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--navy)}
+  .cap h2{font-family:'Source Serif 4',serif;font-size:clamp(40px,5.2vw,72px);font-weight:600;line-height:.98;letter-spacing:-.02em;color:var(--char);margin-top:18px}
+  .cap h2 em{font-style:italic;color:var(--navy);font-weight:500}
+  .cap__body p{font-size:18px;line-height:1.6;color:var(--stone);max-width:62ch}
+  .cap__body p + p{margin-top:18px}
+  .cap__list{margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .cap__list .l{padding:22px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+  .cap__list .l .e{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase}
+  .cap__list .l .h{font-family:'Source Serif 4',serif;font-size:18px;font-weight:600;color:var(--char);margin-top:8px;line-height:1.25}
+  .cap__list .l .d{font-size:14px;color:var(--steel);margin-top:8px;line-height:1.55}
+
+  /* archetypes */
+  .arche{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+  .arch{padding:36px 32px;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,border-color .25s}
+  .arch:hover{transform:translateY(-3px);border-color:var(--navy)}
+
+  /* who/elig */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  .who{background:var(--char);color:var(--paper);padding:60px;border-radius:8px}
+  .who h3{font-family:'Source Serif 4',serif;font-size:32px;font-weight:500;color:var(--paper);margin-bottom:30px;line-height:1.1}
+  .who h3 em{color:var(--marigold);font-style:italic}
+  .who ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .who li{display:grid;grid-template-columns:30px 1fr;gap:14px;font-size:15px;line-height:1.55;color:rgba(244,239,227,.85)}
+  .who li::before{content:"";width:18px;height:1px;background:var(--marigold);margin-top:11px;align-self:start}
+  .who li b{color:var(--paper);font-weight:600}
+
+  .elig{padding:60px;border:1px solid var(--line);border-radius:8px;background:var(--paper-2)}
+  .elig h3{font-family:'Source Serif 4',serif;font-size:32px;font-weight:500;color:var(--char);margin-bottom:30px;line-height:1.1}
+  .elig h3 em{color:var(--navy);font-style:italic}
+  .elig ul{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .elig li{display:grid;grid-template-columns:30px 1fr;gap:14px;font-size:15px;line-height:1.55;color:var(--char)}
+  .elig li::before{content:"";width:18px;height:1px;background:var(--navy);margin-top:11px;align-self:start}
+
+  /* timeline */
+  .timeline{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .tl{padding:30px 26px;background:var(--paper-2);border-right:1px solid var(--line);position:relative}
+  .tl:last-child{border-right:0}
+  .tl .m{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase}
+  .tl .h{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;color:var(--char);margin-top:10px;line-height:1.2}
+  .tl .d{font-size:13px;color:var(--steel);margin-top:8px;line-height:1.5}
+  .tl::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;color:var(--marigold);background:var(--paper-2);padding:0 4px;font-size:14px}
+  .tl:last-child::after{display:none}
+
+  /* fees */
+  .fee-wrap{margin-top:30px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
+  .fee-table{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .fee-row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:20px 28px;border-bottom:1px solid var(--line);align-items:baseline}
+  .fee-row:last-child{border-bottom:0;background:var(--char);color:var(--paper)}
+  .fee-row:last-child .label,.fee-row:last-child .v{color:var(--paper)}
+  .fee-row:last-child .v{color:var(--marigold)}
+  .label{font-size:14px;color:var(--stone);font-weight:500}
+  .v{font-family:'Source Serif 4',serif;font-size:22px;font-weight:600;color:var(--char)}
+  .fee-note{font-size:13px;color:var(--steel);margin-top:18px;font-style:italic}
+  .fee-aside{padding:28px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+  .fee-aside .e{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase}
+  .fee-aside .h{font-family:'Source Serif 4',serif;font-size:24px;font-weight:600;color:var(--char);margin-top:10px;line-height:1.2}
+  .fee-aside .d{font-size:14px;color:var(--steel);margin-top:10px;line-height:1.6}
+  .fee-aside ul{margin-top:14px;display:flex;flex-direction:column;gap:8px;padding-left:18px}
+  .fee-aside li{font-size:13px;color:var(--char);line-height:1.5}
+
+  /* CTA */
+  .final{background:var(--char);color:var(--paper);padding:140px 0;position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;width:760px;height:760px;background:radial-gradient(closest-side,var(--navy) 0%,transparent 70%);left:-220px;top:-220px;opacity:0.18;pointer-events:none}
+  .final::after{content:"";position:absolute;width:580px;height:580px;background:radial-gradient(closest-side,var(--marigold) 0%,transparent 70%);right:-200px;bottom:-200px;opacity:.16;pointer-events:none}
+  .final__inner{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:end;position:relative;z-index:1}
+  .final h2{font-family:'Source Serif 4',serif;font-size:clamp(50px,6.4vw,92px);font-weight:600;line-height:.96;letter-spacing:-.02em;color:var(--paper)}
+  .final h2 em{font-style:italic;color:var(--marigold);font-weight:500}
+  .final p{margin-top:28px;max-width:46ch;font-size:18px;line-height:1.55;color:rgba(244,239,227,.78)}
+  .final__ctas{display:flex;flex-direction:column;gap:16px}
+  .btn{display:inline-flex;align-items:center;justify-content:space-between;padding:22px 28px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:.01em;transition:transform .2s ease,background .2s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn--primary{background:var(--marigold);color:#FFFFFF}
+  .btn--primary:hover{background:var(--navy);color:#FFFFFF}
+  .btn--ghost{background:transparent;color:var(--paper);border:1px solid rgba(244,239,227,.3)}
+  .btn .arrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em}
+
+  .info{padding:60px 0 0;border-top:1px solid rgba(244,239,227,.18);margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;z-index:1}
+  .info .b{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,227,.5)}
+  .info .t{font-family:'Source Serif 4',serif;font-size:22px;font-weight:500;color:var(--paper);margin-top:10px;line-height:1.2}
+  .info .s{font-size:14px;color:rgba(244,239,227,.7);margin-top:6px}
+
+  /* footer */
+  .foot{padding:36px 0;border-top:1px solid var(--line);background:var(--paper)}
+  .foot__inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+  .foot__brand img{height:34px;width:auto;display:block;opacity:.85}
+  .foot__legal{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--steel);text-transform:uppercase}
+
+  @media (max-width:1100px){
+    .hero__inner{grid-template-columns:1fr}
+    .hero__left{padding:60px 0 80px}
+    .hero__right{padding:60px 30px}
+    .hero__themes{flex-direction:column}
+    .ht{grid-template-columns:46px 1fr}
+    .stats .grid{grid-template-columns:repeat(2,1fr)}
+    .objs{grid-template-columns:1fr}
+    .obj{padding-right:0!important;padding-left:0!important;border-right:0!important}
+    .themes{grid-template-columns:1fr 1fr}
+    .spot{grid-template-columns:1fr;padding:50px}
+    .fac-grid{grid-template-columns:repeat(2,1fr)}
+    .two-col{grid-template-columns:1fr}
+    .timeline{grid-template-columns:1fr 1fr}
+    .tl{border-right:0;border-bottom:1px solid var(--line)}
+    .tl::after{display:none}
+    .fee-wrap{grid-template-columns:1fr}
+    .final__inner{grid-template-columns:1fr;gap:40px}
+    .info{grid-template-columns:repeat(2,1fr)}
+    .sec-head{grid-template-columns:1fr;gap:30px}
+    .cap__inner{grid-template-columns:1fr;gap:30px}
+    .cap__list{grid-template-columns:1fr}
+    .crow{grid-template-columns:40px 1fr;gap:14px}
+    .ctheme,.cfaculty{grid-column:2;text-align:left;padding-right:0}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 22px}
+    section{padding:80px 0}
+    .nav__links{display:none}
+    .nav__inner{padding:14px 22px;gap:14px}
+    .nav__brand img{height:36px}
+    .nav__brand .ctx{display:none}
+    .stats .grid{grid-template-columns:1fr}
+    .themes{grid-template-columns:1fr}
+    .fac-grid{grid-template-columns:1fr}
+    .info{grid-template-columns:1fr}
+    .spot{padding:30px}
+    .who,.elig{padding:36px}
+    .final{padding:90px 0}
+    .hero__themes{flex-direction:column}
+  }
+
+  /* Scroll-reveal motion */
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(28px);animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-timeline:view();animation-range:entry 0% cover 22%}
+    .reveal-fast{opacity:0;transform:translateY(18px);animation:rise .7s cubic-bezier(.2,.8,.2,1) both;animation-timeline:view();animation-range:entry 0% cover 18%}
+    .reveal-delay-1{animation-delay:80ms}
+    .reveal-delay-2{animation-delay:160ms}
+    .reveal-delay-3{animation-delay:240ms}
+    @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    .hero-rise{opacity:0;transform:translateY(34px);animation:heroRise 1.05s cubic-bezier(.2,.8,.2,1) forwards}
+    .hero-rise-1{animation-delay:120ms}
+    .hero-rise-2{animation-delay:240ms}
+    .hero-rise-3{animation-delay:360ms}
+    .hero-rise-4{animation-delay:480ms}
+    @keyframes heroRise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal,.reveal-fast,.hero-rise{opacity:1!important;transform:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__brand" data-testid="nav-brand">
+      <img src="./images/northstar-mark.svg" alt="Northstar Learning · An initiative of Northstar Learning" />
+      <span class="ctx">Programme<b>Emerging Leaders 2.0</b></span>
+    </a>
+    <nav class="nav__links">
+      <a href="#programme" data-testid="nav-programme">Programme</a>
+      <a href="#curriculum" data-testid="nav-curriculum">Curriculum</a>
+      <a href="#capstone" data-testid="nav-capstone">Capstone</a>
+      <a href="#faculty" data-testid="nav-faculty">Faculty</a>
+      <a href="#testimonials" data-testid="nav-testimonials">Testimonials</a>
+      <a href="#faqs" data-testid="nav-faqs">FAQs</a>
+      <a href="#fees" data-testid="nav-fees">Fees</a>
+    </nav>
+    <a href="#apply" class="nav__cta" data-testid="nav-cta-apply" style="background: var(--marigold);">Apply Now →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="programme">
+  <div class="wrap"><div class="hero__inner">
+    <div class="hero__left">
+      <div>
+        <div class="eyebrow hero-rise">Emerging Leaders Lab · Cohort Aug 2026</div>
+        <h1 class="display hero-rise hero-rise-1">
+          You made the jump<br/>to manager.<br/>
+          Now <em>lead like one.</em>
+        </h1>
+        <p class="lede hero-rise hero-rise-2">Seven months. Five themes. Eleven faculty-led courses. One Action Learning Project on a problem from your own desk. Built for first-time managers and emerging leaders ready to trade individual contribution for genuine influence.</p>
+        <div class="hero__meta hero-rise hero-rise-3">
+          <span class="chip"><span class="dot"></span> 3–8 yrs experience</span>
+          <span class="chip"><span class="dot"></span> 5 themes · 11 courses</span>
+          <span class="chip"><span class="dot"></span> Capstone ALP included</span>
+          <span class="chip"><span class="dot"></span> GenAI for Managers · embedded</span>
+        </div>
+        <div class="hero-rise hero-rise-3" style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#apply" class="nav__cta" style="padding: 16px 32px; font-size: 15px; background: var(--marigold); border-radius: 999px;">Apply Now →</a>
+          <a href="mailto:hello@northstar-learning.example" class="btn btn--ghost" style="padding: 16px 32px; font-size: 15px; border: 1px solid var(--line); color: var(--char); border-radius: 999px;">Talk to Admissions</a>
+        </div>
+      </div>
+      <div style="margin-top:50px"><span class="eyebrow">Inaugural session · August 2026 · Northstar Learning</span></div>
+    </div>
+
+    <div class="hero__right">
+      <div class="hero__plate">
+        <div class="nameplate">// programme.signal</div>
+        <h3>"The skills that got you promoted aren't the ones that will <em>keep you leading.</em>"</h3>
+      </div>
+
+      <div class="hero__themes">
+        <div class="ht"><div class="n">T1</div><div class="l">Leadership</div></div>
+        <div class="ht"><div class="n">T2</div><div class="l">Financial Acumen</div></div>
+        <div class="ht"><div class="n">T3</div><div class="l">Value through Customers</div></div>
+        <div class="ht"><div class="n">T4</div><div class="l">Strategy &amp; Innovation</div></div>
+        <div class="ht"><div class="n">T5</div><div class="l">Data &amp; GenAI</div></div>
+      </div>
+
+      <div>
+        <p class="hero__quote">Faculty-led depth from Northstar Learning. SME guest sessions. Three on-campus immersions plus a valedictory. A capstone that ships, not a certificate that gathers dust.</p>
+        <div class="hero__quote-l">— ELP 2.0 · Cohort Aug 2026</div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat reveal" style="animation-delay:0ms"><div class="n">07<em>mo</em></div><div class="l">Blended · live faculty + on-campus</div></div>
+      <div class="stat reveal" style="animation-delay:80ms"><div class="n">05</div><div class="l">Themes · leadership to AI</div></div>
+      <div class="stat reveal" style="animation-delay:160ms"><div class="n">11</div><div class="l">Faculty-led courses</div></div>
+      <div class="stat reveal" style="animation-delay:240ms"><div class="n">01</div><div class="l">Capstone · Action Learning Project</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="wrap" style="padding-top:140px">
+  <div class="sec-head reveal-fast">
+    <h2>This isn't a refresher course. <em>It's a re-wiring.</em></h2>
+    <p>ELP is built for the moment between getting the title and earning it. Seven months of structured rigour to take you from leading work to leading people, capital, customers, strategy and AI-driven decisions — with one capstone that proves you can.</p>
+  </div>
+  <hr class="rule" />
+  <div class="objs">
+    <div class="obj reveal"><div class="n">01</div><div><h3>Lead with rigour, not instinct.</h3><p>Frameworks from Northstar Learning faculty for project leadership, communication, and influence — calibrated for first-time managers.</p></div></div>
+    <div class="obj reveal"><div class="n">02</div><div><h3>Read a balance sheet like an owner.</h3><p>Valuation, corporate finance, sustainable value creation. Stop deferring to finance — sit with them as a peer.</p></div></div>
+    <div class="obj reveal"><div class="n">03</div><div><h3>Build customer value, end-to-end.</h3><p>CRM and digital marketing taught by faculty who write the curriculum the market uses. Move from acquiring customers to compounding them.</p></div></div>
+    <div class="obj reveal"><div class="n">04</div><div><h3>Think strategically. Innovate operationally.</h3><p>Advanced corporate strategy paired with innovation at the leadership level — the two skills most often missing in the manager who got promoted on execution.</p></div></div>
+    <div class="obj reveal"><div class="n">05</div><div><h3>Decide with data. Not with vibes.</h3><p>A dedicated theme on data-driven decision making and Generative AI for managers. Use the tools as a leader uses them, not as the team uses them.</p></div></div>
+    <div class="obj reveal"><div class="n">06</div><div><h3>Ship something that matters.</h3><p>The Action Learning Project capstone runs across the entire programme. You don't write a paper. You move a number inside your own organisation.</p></div></div>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section class="wrap" id="curriculum">
+  <div class="sec-head reveal-fast">
+    <h2>Five themes. <em>Sequenced like a leader grows.</em></h2>
+    <p>Leadership comes first because everything else compounds on it. Finance and customers come next because that's where the business lives. Strategy and innovation give you altitude. Data and GenAI close the gap between intuition and evidence.</p>
+  </div>
+
+  <div class="themes">
+    <div class="theme">
+      <div class="t__num">Theme 01</div>
+      <div class="t__name">Leadership.</div>
+      <div class="t__count">2 courses · 14+ hrs</div>
+      <ul class="t__list">
+        <li>PM for Impact</li>
+        <li>Communication for Leaders</li>
+      </ul>
+    </div>
+    <div class="theme">
+      <div class="t__num">Theme 02</div>
+      <div class="t__name">Financial Acumen.</div>
+      <div class="t__count">2 courses · 10 modules</div>
+      <ul class="t__list">
+        <li>Valuation &amp; Sustainable Value</li>
+        <li>Corporate Finance</li>
+      </ul>
+    </div>
+    <div class="theme">
+      <div class="t__num">Theme 03</div>
+      <div class="t__name">Value through Customers.</div>
+      <div class="t__count">2 courses · applied</div>
+      <ul class="t__list">
+        <li>Customer Relationship Management</li>
+        <li>Digital Marketing Strategy</li>
+      </ul>
+    </div>
+    <div class="theme">
+      <div class="t__num">Theme 04</div>
+      <div class="t__name">Strategy &amp; Innovation.</div>
+      <div class="t__count">2 courses · advanced</div>
+      <ul class="t__list">
+        <li>Innovation at Leadership Level</li>
+        <li>Advanced Corporate Strategy</li>
+      </ul>
+    </div>
+    <div class="theme">
+      <div class="t__num">Theme 05</div>
+      <div class="t__name">Data &amp; GenAI.</div>
+      <div class="t__count">3 courses · capstone</div>
+      <ul class="t__list">
+        <li>Data-Driven Decisions for Leaders</li>
+        <li>Generative AI for Managers</li>
+        <li>Capstone Orientation</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 11-course table -->
+  <div style="margin-top:80px">
+    <div class="eyebrow" style="margin-bottom:18px">All 11 courses · faculty-led · live + recorded</div>
+    <div class="courses">
+      <div class="crow"><div class="cnum">01</div><div class="cname">PM for Impact <span class="new">NEW</span></div><div class="cfaculty"><b>Tara Iyer</b> · 8 modules</div><div class="ctheme">T1 · Leadership</div></div>
+      <div class="crow"><div class="cnum">02</div><div class="cname">Communication for Leaders</div><div class="cfaculty"><b>Nisha Kapoor</b> · 6 hrs</div><div class="ctheme">T1 · Leadership</div></div>
+      <div class="crow"><div class="cnum">03</div><div class="cname">Valuation &amp; Creating Sustainable Value</div><div class="cfaculty"><b>Priya Menon</b> · 5 modules</div><div class="ctheme">T2 · Finance</div></div>
+      <div class="crow"><div class="cnum">04</div><div class="cname">Corporate Finance</div><div class="cfaculty"><b>Arjun Bhat</b> · 5 modules</div><div class="ctheme">T2 · Finance</div></div>
+      <div class="crow"><div class="cnum">05</div><div class="cname">Customer Relationship Management</div><div class="cfaculty"><b>Samir Nair</b></div><div class="ctheme">T3 · Customers</div></div>
+      <div class="crow"><div class="cnum">06</div><div class="cname">Digital Marketing Strategy</div><div class="cfaculty"><b>Samir Nair</b></div><div class="ctheme">T3 · Customers</div></div>
+      <div class="crow"><div class="cnum">07</div><div class="cname">Innovation at Leadership Level <span class="new">NEW</span></div><div class="cfaculty"><b>Kavya Sood</b> · 6 hrs</div><div class="ctheme">T4 · Strategy</div></div>
+      <div class="crow"><div class="cnum">08</div><div class="cname">Advanced Corporate Strategy</div><div class="cfaculty"><b>Rohan Mehta</b></div><div class="ctheme">T4 · Strategy</div></div>
+      <div class="crow"><div class="cnum">09</div><div class="cname">Data-Driven Decision Making for Leaders <span class="new">NEW</span></div><div class="cfaculty"><b>Soham Das</b> · 6 hrs</div><div class="ctheme">T5 · Data</div></div>
+      <div class="crow"><div class="cnum">10</div><div class="cname">Generative AI for Managers</div><div class="cfaculty"><b>Naveen Bhansali</b> · 6 hrs</div><div class="ctheme">T5 · Data</div></div>
+      <div class="crow"><div class="cnum">11</div><div class="cname">Capstone Orientation</div><div class="cfaculty"><b>Samir Nair</b> · ALP across 7 months</div><div class="ctheme">T5 · Capstone</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPSTONE -->
+<section class="capstone" id="capstone">
+  <div class="wrap">
+    <div class="cap__inner">
+      <div>
+        <div class="cap__tag">Capstone · Action Learning Project</div>
+        <h2 class="cap">Don't write a paper. <br/><em>Move a number.</em></h2>
+      </div>
+      <div class="cap__body">
+        <p>The Action Learning Project (ALP) runs across all seven months, not bolted on at the end. You pick a real problem from your own organisation, and the programme bends around it.</p>
+        <p>Faculty mentor you. Cohort peers stress-test your hypotheses. You ship a recommendation, a prototype, or a measurable change — and present it at the valedictory in Month 7.</p>
+        <div class="cap__list">
+          <div class="l"><div class="e">Month 1</div><div class="h">Define the problem.</div><div class="d">Scope a real business question from your own desk. Faculty review the brief.</div></div>
+          <div class="l"><div class="e">Month 3</div><div class="h">In-campus stress test.</div><div class="d">First on-campus immersion. Pitch the plan. Peers challenge it. Refine.</div></div>
+          <div class="l"><div class="e">Month 5</div><div class="h">Apply the frameworks.</div><div class="d">Themes 3 &amp; 4 wrap. Your project is now informed by customer, strategy and innovation lenses.</div></div>
+          <div class="l"><div class="e">Month 7</div><div class="h">Ship &amp; defend.</div><div class="d">Valedictory on campus. Present to faculty and your sponsoring leader. Walk away with a result, not a binder.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND PROMISE BAND -->
+<div class="reveal-fast" style="text-align: center; padding: 48px 20px; background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-family: 'Source Serif 4', Georgia, serif; font-size: 24px; font-style: italic; color: var(--navy); font-weight: 500;">
+  "The same faculty. Wherever you are."
+</div>
+
+<!-- FACULTY SPOTLIGHT -->
+<section class="wrap" id="faculty">
+  <div class="eyebrow" style="margin-bottom:32px">Faculty · Northstar Learning</div>
+  <div class="spot">
+    <div class="spot__img reveal">
+      <img src="./images/faculty/demo-faculty.svg" alt="Prof. Samir Nair" />
+    </div>
+    <div class="spot__content">
+      <div class="spot__eyebrow">Programme &amp; Capstone Anchor</div>
+      <p class="spot__quote reveal reveal-delay-1">"Emerging leaders don't need more theory. They need permission to apply what they already half-know — under faculty mentorship, with peers who'll tell them the truth, on a problem that actually matters to their organisation. That's what ELP 2.0 is engineered to do."</p>
+      <div class="spot__name reveal reveal-delay-2">Prof. Samir Nair</div>
+      <div class="spot__role">Marketing · Capstone Orientation · Northstar Learning</div>
+    </div>
+  </div>
+
+  <div class="fac-grid">
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Tara Iyer" /></div><div class="fac__name">Tara Iyer</div><div class="fac__role">PM for Impact</div><div class="fac__course">Leading projects, leading people. 8 modules across the programme.</div></div>
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Nisha Kapoor" /></div><div class="fac__name">Nisha Kapoor</div><div class="fac__role">Communication for Leaders</div><div class="fac__course">From writing memos to commanding a room. 6 hrs.</div></div>
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Priya Menon" /></div><div class="fac__name">Priya Menon</div><div class="fac__role">Valuation &amp; Sustainable Value</div><div class="fac__course">Read companies the way investors do. 5 modules.</div></div>
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Arjun Bhat" /></div><div class="fac__name">Arjun Bhat</div><div class="fac__role">Corporate Finance</div><div class="fac__course">Capital allocation as a leadership discipline.</div></div>
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Dr. Kavya Sood" /></div><div class="fac__name">Kavya Sood</div><div class="fac__role">Innovation at Leadership Level</div><div class="fac__course">Frameworks for the leader who must invent, not execute. 6 hrs.</div></div>
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Rohan Mehta" /></div><div class="fac__name">Rohan Mehta</div><div class="fac__role">Advanced Corporate Strategy</div><div class="fac__course">Strategy at the altitude your role now demands.</div></div>
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Prof. Soham Das" /></div><div class="fac__name">Soham Das</div><div class="fac__role">Data-Driven Decisions</div><div class="fac__course">Use data like a leader, not a dashboard consumer. 6 hrs.</div></div>
+    <div class="fac"><div class="fac__img"><img src="./images/faculty/demo-faculty.svg" alt="Naveen Bhansali" /></div><div class="fac__name">Naveen Bhansali</div><div class="fac__role">Generative AI for Managers</div><div class="fac__course">GenAI as a managerial tool, not a hype cycle. 6 hrs hands-on.</div></div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="wrap" style="padding-top:0">
+  <div class="sec-head reveal-fast">
+    <h2>Built for managers <em>about to step up.</em></h2>
+    <p>If you were promoted in the last two years — or are about to be — ELP closes the gap between the work that got you here and the leadership the next chair demands.</p>
+  </div>
+  <div class="two-col">
+    <div class="who">
+      <h3>Ideal <em>for:</em></h3>
+      <ul>
+        <li><span><b>First-time managers</b> who've inherited a team and are learning leadership on the job, often without scaffolding.</span></li>
+        <li><span><b>Emerging leaders (3–8 yrs)</b> in product, operations, technology, marketing or finance — being groomed for cross-functional ownership.</span></li>
+        <li><span><b>Founders &amp; senior ICs</b> moving into general-management roles who need rigorous breadth across leadership, finance, customers, strategy and AI.</span></li>
+      </ul>
+    </div>
+    <div class="elig">
+      <h3>You should apply <em>if</em> you have:</h3>
+      <ul>
+        <li><span><b>3–8 years</b> of professional experience, with at least one year managing people or owning a cross-functional outcome.</span></li>
+        <li><span><b>A graduate degree</b> in any discipline — engineering, management, science, design, or relevant fields.</span></li>
+        <li><span><b>A real problem</b> at your current organisation that you'd like to make the focus of your Action Learning Project.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="origin" id="testimonials" style="padding: 90px 0;">
+  <div class="wrap">
+    <div class="sec-head reveal-fast" style="margin-bottom: 40px;">
+      <h2>Voice of the <em>cohort.</em></h2>
+      <p>Hear from managers who transformed their leadership and career trajectory through the Emerging Leaders Lab.</p>
+    </div>
+    <div class="arche" style="grid-template-columns: repeat(2, 1fr); gap: 40px; display: grid;">
+      <div class="arch reveal" style="background: var(--paper); border: 1px solid var(--line); padding: 36px 32px; border-radius: 8px; display: flex; flex-direction: column; gap: 14px;">
+        <p style="font-family: 'Source Serif 4', serif; font-style: italic; font-size: 18px; line-height: 1.5; color: var(--char);">"ELP completely changed how I approach cross-functional conflicts. T1 (PM for Impact) with Prof. Tara gave me the influence skills to drive consensus across engineering and product without formal authority."</p>
+        <div style="margin-top: auto; border-top: 1px solid var(--line); padding-top: 15px;">
+          <strong style="font-family: 'Source Serif 4', serif; font-size: 16px; color: var(--char);">Neha Shah</strong>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 4px; text-transform: uppercase;">Lead Product Manager · FinTech Scaleup (Batch 3)</p>
+        </div>
+      </div>
+      <div class="arch reveal reveal-delay-1" style="background: var(--paper); border: 1px solid var(--line); padding: 36px 32px; border-radius: 8px; display: flex; flex-direction: column; gap: 14px;">
+        <p style="font-family: 'Source Serif 4', serif; font-style: italic; font-size: 18px; line-height: 1.5; color: var(--char);">"The Action Learning Project allowed me to design a new supply chain forecasting tool for our firm. We applied the data-driven framework from Prof. Soudeep, which reduced our inventory holding costs by 15%."</p>
+        <div style="margin-top: auto; border-top: 1px solid var(--line); padding-top: 15px;">
+          <strong style="font-family: 'Source Serif 4', serif; font-size: 16px; color: var(--char);">Aditya Sen</strong>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--marigold); margin-top: 4px; text-transform: uppercase;">Operations Director · Logistics Corp (Batch 3)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="wrap" id="timeline">
+  <div class="sec-head reveal-fast">
+    <h2>The seven-month <em>arc.</em></h2>
+    <p>A blended programme — predominantly online faculty-led sessions and self-paced content, anchored by three in-campus immersions and a valedictory session at Northstar Learning.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl"><div class="m">Month 1–3</div><div class="h">Themes 1 &amp; 2</div><div class="d">Leadership essentials and financial acumen. ALP problem scoped.</div></div>
+    <div class="tl"><div class="m">Month 3–5</div><div class="h">Themes 3 &amp; 4</div><div class="d">Customer value, strategy and innovation. First on-campus immersion.</div></div>
+    <div class="tl"><div class="m">Month 5–6</div><div class="h">Theme 5 + Capstone</div><div class="d">Data-driven decisions and GenAI. ALP build and stress test.</div></div>
+    <div class="tl"><div class="m">Month 7</div><div class="h">Defend &amp; Graduate</div><div class="d">Final on-campus immersion and valedictory. Capstone presentation.</div></div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="wrap" id="faqs" style="padding-top: 80px; padding-bottom: 80px;">
+  <div class="sec-head reveal-fast" style="margin-bottom: 40px;">
+    <h2>Frequently Asked <em>Questions.</em></h2>
+    <p>Answers to common questions about the Emerging Leaders Lab.</p>
+  </div>
+  <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">What is the difference between ELP and NAM?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">ELP (Emerging Leaders Lab) is a longer, 7-month cohort program that covers core management disciplines (finance, strategy, customer metrics) in deeper academic detail with multiple on-campus sessions. NAM is a 6-month corporate-nomination program focused on practical leadership capabilities (coaching, change leadership) designed for cohort-based corporate learning pathways.</p>
+    </div>
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">Are there on-campus sessions at Northstar Learning?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">Yes, ELP 2.0 includes three mandatory on-campus immersion sessions, including a final valedictory in Month 7, where you will present your Action Learning Project directly to faculty and sponsors.</p>
+    </div>
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">What are the program fees and installment schedules?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">The program fee is ₹ 2,45,000 + GST. You can pay in standard installments: ₹ 10,000 as a registration fee, with the remaining fee payable in two equal installments before the first on-campus immersion.</p>
+    </div>
+    <div style="background: var(--paper-2); padding: 24px; border-radius: 8px; border: 1px solid var(--line);">
+      <h4 style="font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 600; color: var(--char);">What certificate is awarded?</h4>
+      <p style="font-size: 14.5px; color: var(--stone); margin-top: 10px; line-height: 1.5;">Participants who successfully complete all course requirements and defend their Capstone project will be awarded the Certificate in Emerging Leadership from Northstar Learning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="wrap" id="fees" style="padding-top:80px">
+  <div class="sec-head reveal-fast">
+    <h2>Fees and <em>key dates.</em></h2>
+    <p>Programme fee covers all faculty-led sessions, on-campus immersions, capstone mentorship and the Northstar Learning Certificate of Completion. EMI and corporate-sponsored options are available.</p>
+  </div>
+  <div class="fee-wrap">
+    <div class="fee-table">
+      <div class="fee-row"><div class="label">Programme fee</div><div class="v">₹ 2,45,000</div></div>
+      <div class="fee-row"><div class="label">Registration fee</div><div class="v">₹ 10,000</div></div>
+      <div class="fee-row"><div class="label">Convenience fee (2%) + GST (18%)</div><div class="v">As applicable</div></div>
+      <div class="fee-row"><div class="label">Total (approximate)</div><div class="v">₹ 2,80,000+</div></div>
+    </div>
+    <div class="fee-aside">
+      <div class="e">Key dates · Cohort Aug 2026</div>
+      <div class="h">Applications open · April 2026</div>
+      <div class="d">Rolling admissions. Cohort fills early. We recommend applying within the first six weeks.</div>
+      <ul>
+        <li>Application deadline · <b>July 2026</b></li>
+        <li>Inaugural session · <b>August 2026</b></li>
+        <li>Programme completion · <b>March 2027</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fee-note">*Fees subject to revision. EMI and sponsored options available. The Programme Fee includes registration cost; convenience fee and GST are over and above.</div>
+</section>
+
+<!-- FINAL -->
+<section class="final" id="apply">
+  <div class="wrap">
+    <div class="final__inner">
+      <div>
+        <h2>Seven months between<br/>the manager you are<br/><em>and the leader you'll be.</em></h2>
+        <p>ELP 2.0 doesn't reward the loudest voice in the room. It builds the leader the room turns to. Apply for the August 2026 cohort and bring a problem worth solving.</p>
+      </div>
+      <div class="final__ctas">
+        <a class="btn btn--primary" href="https://northstar-learning.example/apply" data-testid="cta-apply-now" style="background: var(--marigold); color: #FFFFFF;">Apply Now <span class="arrow">→</span></a>
+        <a class="btn btn--ghost" href="mailto:hello@northstar-learning.example" data-testid="cta-talk-admissions">Talk to admissions <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="info">
+      <div><div class="b">Inauguration</div><div class="t">August 2026</div><div class="s">7-month cohort</div></div>
+      <div><div class="b">Format</div><div class="t">Blended</div><div class="s">Online + 3 on-campus + valedictory</div></div>
+      <div><div class="b">Certificate</div><div class="t">Northstar Learning</div><div class="s">Northstar Learning Certificate of Completion</div></div>
+      <div><div class="b">Admissions desk</div><div class="t">hello@northstar-learning.example</div><div class="s">+91 90000 12347</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__inner">
+      <div class="foot__brand"><img src="./images/northstar-mark.svg" alt="Northstar Learning · An initiative of Northstar Learning" /></div>
+      <div class="foot__legal">© 2026 · Northstar Learning Studio</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
