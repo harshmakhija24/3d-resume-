@@ -10,7 +10,7 @@
 
 .what-intro {
   position: sticky;
-  top: 7.5rem;
+  top: var(--stickySectionTop);
   max-width: 18rem;
 }
 

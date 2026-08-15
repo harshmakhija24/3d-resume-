@@ -4,15 +4,15 @@
   width: var(--cWidth);
   min-height: min(82vh, 760px);
   margin: 0 auto;
-  padding: clamp(5.5rem, 9vw, 8rem) 0;
+  padding: clamp(6.5rem, 10vw, 9rem) 0;
 }
 
 .about-me {
   position: relative;
   z-index: 10;
   display: grid;
-  grid-template-columns: minmax(13rem, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(2.5rem, 7vw, 8rem);
+  grid-template-columns: minmax(19rem, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(2.25rem, 5vw, 5rem);
   align-items: start;
   width: min(100%, 1120px);
   margin: 0 auto;
@@ -20,19 +20,22 @@
 
 .about-heading {
   position: sticky;
-  top: 7rem;
+  top: var(--stickySectionTop);
 }
 
 .about-me .title {
   max-width: none;
   margin: 0;
   color: var(--inkColor);
-  white-space: nowrap;
-  font-size: clamp(3.6rem, 7vw, 6.5rem);
+  white-space: normal;
+  overflow-wrap: normal;
+  font-size: clamp(3.6rem, 6.4vw, 6.1rem);
   font-weight: 400;
   letter-spacing: -0.09em;
   line-height: 0.85;
 }
+
+.about-heading .split-line { overflow: visible; }
 
 .about-content {
   min-width: 0;
@@ -127,8 +130,8 @@
   }
 
   .about-me {
-    grid-template-columns: minmax(10rem, 0.62fr) minmax(0, 1.38fr);
-    gap: clamp(1.75rem, 5vw, 3.5rem);
+    grid-template-columns: minmax(14rem, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(1.75rem, 4vw, 3rem);
   }
 
   .about-heading { position: static; }
@@ -148,7 +151,7 @@
     max-width: none;
     margin-top: 0.3rem;
     font-size: clamp(3.3rem, 15vw, 5.2rem);
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .about-lede { font-size: clamp(1.35rem, 6vw, 1.9rem); }

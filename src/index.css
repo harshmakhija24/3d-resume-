@@ -26,6 +26,8 @@
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
   --contentMaxWidth: 1240px;
+  --sectionScrollOffset: clamp(5.5rem, 8vw, 7.25rem);
+  --stickySectionTop: clamp(6.5rem, 8vw, 8rem);
 }
 
 * { box-sizing: border-box; }
@@ -48,7 +50,7 @@ button, a {
   touch-action: manipulation;
 }
 
-section[id] { scroll-margin-top: 6rem; }
+section[id] { scroll-margin-top: var(--sectionScrollOffset); }
 canvas { display: block; max-width: 100%; }
 button { font: inherit; }
 
@@ -143,6 +145,7 @@ main {
   :root { --vh: 100svh; }
   .techstack h2 { font-size: 40px; }
   section[id] { scroll-margin-top: 5.25rem; }
+  :root { --stickySectionTop: 5.75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
