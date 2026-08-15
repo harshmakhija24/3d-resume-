@@ -14,21 +14,23 @@ const setAnimations = (gltf: GLTF) => {
   }
 
   if (gltf.animations) {
-    const clipNames = ["key1", "key2", "key5", "key6"];
-    clipNames.forEach((name) => {
-      const clip = THREE.AnimationClip.findByName(gltf.animations, name);
-      if (clip) {
-        const action = mixer.clipAction(clip);
-        action.play();
-        action.timeScale = 1.2;
-      }
-    });
+    // The source file contains several overlapping key poses. Playing them together
+    // makes the head wander and reads as accidental motion. Keep one body loop and
+    // a restrained hand/typing layer for a calmer, more intentional hero presence.
+    const idleClip = THREE.AnimationClip.findByName(gltf.animations, "key1");
+    if (idleClip) {
+      const idleAction = mixer.clipAction(idleClip);
+      idleAction.play();
+      idleAction.timeScale = 0.72;
+      idleAction.setEffectiveWeight(0.62);
+    }
 
     const typingAction = createBoneAction(gltf, mixer, "typing", typingBoneNames);
     if (typingAction) {
       typingAction.enabled = true;
       typingAction.play();
-      typingAction.timeScale = 1.2;
+      typingAction.timeScale = 0.72;
+      typingAction.setEffectiveWeight(0.38);
     }
   }
 

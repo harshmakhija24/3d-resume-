@@ -1,49 +1,40 @@
-import * as THREE from "three";
 import { GLTF, GLTFLoader } from "three-stdlib";
-import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 
-const setCharacter = (camera: THREE.PerspectiveCamera) => {
+const setCharacter = () => {
   const loader = new GLTFLoader();
 
-  const loadCharacter = () => {
-    return new Promise<GLTF | null>(async (resolve, reject) => {
-      try {
-        let character: THREE.Object3D;
-        loader.load(
-          import.meta.env.BASE_URL + "models/character_unencrypted.glb",
-          async (gltf) => {
-            character = gltf.scene;
-            character.traverse((child: any) => {
-              if (child.isMesh) {
-                const mesh = child as THREE.Mesh;
+  const loadCharacter = () =>
+    new Promise<GLTF>((resolve, reject) => {
+      loader.load(
+        `${import.meta.env.BASE_URL}models/character_unencrypted.glb`,
+        (gltf) => {
+          gltf.scene.traverse((child: any) => {
+            if (child.isMesh) {
+              child.castShadow = false;
+              child.receiveShadow = false;
+              child.frustumCulled = true;
+            }
+          });
 
-                child.castShadow = true;
-                child.receiveShadow = false;
-                mesh.frustumCulled = true;
-              }
-            });
-            resolve(gltf);
-            setCharTimeline(character, camera);
-            setAllTimeline();
-            character!.getObjectByName("footR")!.position.y = 3.36;
-            character!.getObjectByName("footL")!.position.y = 3.36;
+          const footR = gltf.scene.getObjectByName("footR");
+          const footL = gltf.scene.getObjectByName("footL");
+          if (footR) footR.position.y = 3.36;
+          if (footL) footL.position.y = 3.36;
 
-
-          },
-          undefined,
-          (error) => {
-            console.error("Error loading GLTF model:", error);
-            reject(error);
-          }
-        );
-      } catch (err) {
-        reject(err);
-        console.error(err);
-      }
+          resolve(gltf);
+        },
+        undefined,
+        (error) => {
+          console.warn("3D hero skipped; portfolio remains fully usable.", error);
+          reject(error);
+        },
+      );
     });
-  };
 
   return { loadCharacter };
 };
 
 export default setCharacter;
+
+// The loader intentionally has no camera or scroll-timeline side effects.
+// The character belongs to the landing hero only and is disposed with that scene.

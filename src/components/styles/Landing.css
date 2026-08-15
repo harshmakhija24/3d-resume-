@@ -87,17 +87,24 @@
   background: linear-gradient(180deg, rgba(17, 22, 17, 0.94), transparent);
 }
 
+.character-container {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
 .character-rim {
   position: absolute;
-  top: 50%;
+  top: 46%;
   left: 50%;
   z-index: 1;
-  width: min(42vw, 34rem);
-  height: min(42vw, 34rem);
-  transform: translate(-50%, -38%);
+  width: min(38vw, 34rem);
+  height: min(38vw, 34rem);
+  transform: translate(-50%, -42%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 239, 117, 0.15), transparent 66%);
-  filter: blur(32px);
+  background: radial-gradient(circle, rgba(200, 239, 117, 0.18), rgba(200, 239, 117, 0.04) 42%, transparent 72%);
+  filter: blur(30px);
   opacity: 0;
   pointer-events: none;
 }
@@ -108,26 +115,25 @@
 }
 
 @keyframes backlight {
-  from { opacity: 0; transform: translate(-50%, -38%) scale(0.82); }
-  to { opacity: 1; transform: translate(-50%, -38%) scale(1); }
+  from { opacity: 0; transform: translate(-50%, -42%) scale(0.88); }
+  to { opacity: 1; transform: translate(-50%, -42%) scale(1); }
 }
 
 .character-model {
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  right: -12rem;
+  bottom: -6rem;
+  left: auto;
   z-index: 3;
-  width: 100%;
-  height: 82vh;
-  max-width: 1920px;
-  max-height: 1080px;
-  opacity: 0.76;
-  transform: translateX(-50%);
-  filter: saturate(0.82) contrast(0.96);
+  width: min(46vw, 54rem);
+  height: min(76vh, 54rem);
+  opacity: 0.8;
+  transform: none;
+  filter: saturate(0.94) contrast(1.02) drop-shadow(0 1.6rem 2.8rem rgba(0, 0, 0, 0.24));
   pointer-events: none;
 }
 
-.character-model::after {
+  .character-model::after {
   position: absolute;
   right: auto;
   bottom: -1px;
@@ -380,9 +386,11 @@
 
 @media screen and (min-width: 1025px) {
   .character-model {
-    position: fixed;
-    height: 100vh;
-    z-index: 3;
+    position: absolute;
+    right: -12rem;
+    bottom: -6rem;
+    width: min(46vw, 54rem);
+    height: min(76vh, 54rem);
   }
 }
 
@@ -392,6 +400,8 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .character-container { display: none; }
+
   .landing-section,
   .landing-container { min-height: 100svh; }
 
