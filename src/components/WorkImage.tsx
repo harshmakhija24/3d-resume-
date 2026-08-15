@@ -30,6 +30,10 @@ const WorkImage = ({
         }}
       />
       <span className="work-image-sheen" aria-hidden="true" />
+      <span className="work-image-cta" aria-hidden="true">
+        <span>Click to explore</span>
+        <MdArrowOutward />
+      </span>
     </div>
   );
 

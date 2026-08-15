@@ -49,7 +49,7 @@ const projects: Project[] = [
     tools: "KrishiBot · multilingual AI journeys · Supabase RBAC · farmer-first UX",
     outcome:
       "Reworked a farmer-facing platform into a clearer product journey across discovery, dealer workflows, and AI support.",
-    image: import.meta.env.BASE_URL + "images/preview1.png",
+    image: import.meta.env.BASE_URL + "images/product-krishitech.svg",
     link: "https://krishitek-website.vercel.app",
     linkLabel: "Experience KrishiTech",
     kind: "product",
