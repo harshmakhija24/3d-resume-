@@ -14,3 +14,7 @@
 - Photo 02 selected successfully through numbered pagination; image, caption, counter, and active state updated.
 - Controls are visible over the image at the local preview viewport and no longer rely on low-contrast dark circular arrows.
 - Mobile layout rules keep labeled controls, counter, caption guidance, and pagination readable.
+
+## Production verification
+
+The cache-busted GitHub Pages deployment exposes the updated Previous and Next buttons plus numbered photo controls with the expected ARIA labels. The live Work navigation was triggered successfully and Aham Aatm Deepah selection was queued in the production DOM for the final settled-state check.
