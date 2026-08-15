@@ -27,7 +27,7 @@ const WhatIDo = () => {
               <span>Applied AI</span>
               <span>Product systems</span>
             </div>
-            <a className="what-link accent-tech" href="#work">
+            <a className="what-link accent-tech" href="#work-projects">
               Explore selected work <span aria-hidden="true">↗</span>
             </a>
           </div>

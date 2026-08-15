@@ -30,7 +30,7 @@ const Landing = ({ children }: PropsWithChildren) => {
           </p>
 
           <div className="landing-ctas">
-            <a href="#work" className="btn btn-primary">
+            <a href="#work-projects" className="btn btn-primary">
               Explore selected work <span aria-hidden="true">↗</span>
             </a>
           </div>

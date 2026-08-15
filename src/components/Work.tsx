@@ -269,7 +269,7 @@ const Work = () => {
           </p>
         </div>
 
-        <div className="carousel-wrapper">
+        <div className="carousel-wrapper work-projects-anchor" id="work-projects">
           <button
             className="carousel-arrow carousel-arrow-left"
             onClick={goToPrev}

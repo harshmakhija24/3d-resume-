@@ -1,5 +1,6 @@
 import { MdDownload, MdOpenInNew } from "react-icons/md";
 import "./styles/Presentations.css";
+import DocumentPreview from "./DocumentPreview";
 
 const asset = (path: string) => import.meta.env.BASE_URL + path;
 
@@ -52,30 +53,24 @@ const Presentations = () => {
             </div>
           </div>
 
-          <div className="presentation-preview-shell">
-            <div className="presentation-preview-bar">
-              <span>Live document preview</span>
-              <span>PDF · 17 pages</span>
-            </div>
-            <div className="presentation-pdf-preview">
-              <iframe
-                title="Disaster Response and Resilience presentation preview"
-                src={`${asset("presentations/disaster-response-resilience.pdf")}#view=FitH`}
-                loading="lazy"
-              />
-            </div>
-          </div>
+          <DocumentPreview
+            title="Disaster Response & Resilience"
+            src={asset("presentations/disaster-response-resilience.pdf")}
+            pageLabel="PDF · 16 pages"
+            downloadName="Harsh-Makhija-Disaster-Response-Resilience.pdf"
+            showActions={false}
+          />
         </div>
 
         <div className="presentation-supporting-grid">
           <article className="presentation-intro-card">
-            <div className="presentation-cover-frame">
-              <img
-                src={asset("presentations/harsh-makhija-intro-cover.png")}
-                alt="Cover slide from Harsh Makhija's Hiroshima University introduction deck"
-                loading="lazy"
-              />
-            </div>
+            <DocumentPreview
+              className="document-preview-intro"
+              title="Harsh Makhija — Intro"
+              src={asset("presentations/harsh-makhija-intro.pdf")}
+              pageLabel="PDF · 5 slides"
+              downloadName="Harsh-Makhija-Intro.pdf"
+            />
             <div className="presentation-card-copy">
               <span className="presentation-label">Hiroshima University · personal intro</span>
               <h3>Harsh Makhija — Intro</h3>
@@ -87,7 +82,7 @@ const Presentations = () => {
                 href={asset("presentations/harsh-makhija-intro.pptx")}
                 download="Harsh-Makhija-Intro.pptx"
               >
-                Download the original deck <MdDownload aria-hidden="true" />
+                Download the original PowerPoint <MdDownload aria-hidden="true" />
               </a>
             </div>
           </article>

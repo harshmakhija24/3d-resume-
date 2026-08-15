@@ -39,6 +39,11 @@
 
 .carousel-wrapper { position: relative; width: 100%; }
 
+.work-projects-anchor {
+  scroll-margin-top: 7.25rem;
+}
+
+
 .carousel-track-container {
   width: 100%;
   overflow: hidden;
@@ -356,6 +361,7 @@
 
 @media only screen and (max-width: 900px) {
   .work-section { padding: 74px 0; }
+  .work-projects-anchor { scroll-margin-top: 5.9rem; }
 
   .work-heading-row {
     display: block;
@@ -384,6 +390,7 @@
 
 @media only screen and (max-width: 520px) {
   .carousel-slide { padding: 28px 0; }
+  .work-projects-anchor { scroll-margin-top: 5.35rem; }
   .carousel-title { font-size: clamp(2.2rem, 11vw, 2.8rem); }
   .carousel-arrow { width: 44px; height: 44px; }
   .carousel-arrow-left { left: 4px; }

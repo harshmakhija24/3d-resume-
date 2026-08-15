@@ -146,18 +146,24 @@
   background: var(--accentColor);
 }
 
-.presentation-preview-shell {
+.document-preview {
+  display: flex;
   min-width: 0;
+  flex-direction: column;
   padding: 10px;
   border: 1px solid var(--lineColor);
   background: var(--backgroundColor);
 }
 
-.presentation-preview-bar {
+.document-preview-bar,
+.document-preview-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+
+.document-preview-bar {
   padding: 8px 8px 12px;
   color: var(--mutedColor);
   font-size: 0.6rem;
@@ -166,14 +172,14 @@
   text-transform: uppercase;
 }
 
-.presentation-pdf-preview {
+.document-preview-frame {
   position: relative;
   min-height: 460px;
   overflow: hidden;
   background: #f7f6f1;
 }
 
-.presentation-pdf-preview iframe {
+.document-preview-frame iframe {
   display: block;
   width: 100%;
   height: 520px;
@@ -181,10 +187,77 @@
   background: #f7f6f1;
 }
 
+.document-preview-footer {
+  align-items: flex-start;
+  padding: 14px 8px 2px;
+}
+
+.document-preview-title {
+  max-width: 42%;
+  color: var(--inkColor);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+}
+
+.document-preview-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.document-preview-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--lineColor);
+  color: var(--inkColor);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.document-preview-action svg { font-size: 0.95rem; }
+
+.document-preview-action:hover,
+.document-preview-action:focus-visible {
+  border-color: var(--pinkAccent);
+  color: var(--pinkAccent);
+}
+
+.document-preview-action-primary {
+  border-color: var(--accentColor);
+  color: var(--accentColor);
+}
+
+.document-preview-action-primary:hover,
+.document-preview-action-primary:focus-visible {
+  border-color: var(--accentColor);
+  color: #171b17;
+  background: var(--accentColor);
+}
+
+.document-preview-intro {
+  align-self: stretch;
+}
+
+.document-preview-intro .document-preview-frame {
+  min-height: 210px;
+}
+
+.document-preview-intro .document-preview-frame iframe {
+  height: 245px;
+}
+
 .presentation-supporting-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
-  gap: clamp(18px, 3vw, 40px);
+  display: block;
   margin-top: clamp(18px, 3vw, 40px);
 }
 
@@ -196,9 +269,19 @@
 
 .presentation-intro-card {
   display: grid;
-  grid-template-columns: minmax(180px, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
   gap: clamp(18px, 3vw, 34px);
   padding: clamp(16px, 2.5vw, 30px);
+}
+
+.presentation-intro-card .document-preview {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.presentation-intro-card .presentation-card-copy {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .presentation-cover-frame {
@@ -244,7 +327,10 @@
 
 .presentation-text-link:hover { color: var(--pinkAccent); }
 
-.presentation-proof-card { padding: clamp(20px, 3vw, 34px); }
+.presentation-proof-card {
+  margin-top: clamp(18px, 3vw, 40px);
+  padding: clamp(20px, 3vw, 34px);
+}
 
 .presentation-proof-card h3 { font-size: clamp(1.55rem, 2.5vw, 2.5rem); }
 
@@ -291,16 +377,26 @@
   }
 
   .presentation-copy { max-width: 620px; }
-  .presentation-pdf-preview { min-height: 360px; }
-  .presentation-pdf-preview iframe { height: 460px; }
+  .document-preview-frame { min-height: 360px; }
+  .document-preview-frame iframe { height: 460px; }
+  .document-preview-intro .document-preview-frame { min-height: 260px; }
+  .document-preview-intro .document-preview-frame iframe { height: 300px; }
 }
 
 @media only screen and (max-width: 560px) {
   .presentation-intro-card { grid-template-columns: 1fr; }
+  .presentation-intro-card .presentation-card-copy { grid-column: auto; grid-row: 1; }
+  .presentation-intro-card .document-preview { grid-column: auto; grid-row: 2; }
   .presentation-cover-frame { max-width: 520px; }
-  .presentation-preview-bar { font-size: 0.54rem; }
-  .presentation-pdf-preview { min-height: 300px; }
-  .presentation-pdf-preview iframe { height: 380px; }
+  .document-preview-bar { font-size: 0.54rem; }
+  .document-preview-frame { min-height: 300px; }
+  .document-preview-frame iframe { height: 380px; }
+  .document-preview-intro .document-preview-frame { min-height: 220px; }
+  .document-preview-intro .document-preview-frame iframe { height: 250px; }
+  .document-preview-footer { align-items: stretch; flex-direction: column; }
+  .document-preview-title { max-width: none; }
+  .document-preview-actions { justify-content: flex-start; }
+  .document-preview-action { flex: 1; }
   .presentation-actions { align-items: stretch; flex-direction: column; }
   .presentation-action { width: 100%; }
 }
