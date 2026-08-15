@@ -277,14 +277,20 @@
   margin: 0;
   color: var(--inkColor);
   font-size: clamp(4.6rem, 10.5vw, 10.6rem);
-  font-weight: 500;
-  letter-spacing: -0.1em;
-  line-height: 0.78;
+  font-weight: 650;
+  letter-spacing: -0.085em;
+  line-height: 0.82;
+  text-shadow: 0 0.08rem 1.2rem rgba(0, 0, 0, 0.16);
 }
 
-.landing-intro h1 span:first-child {
+.landing-intro h1 .split-line:first-child span {
   color: var(--accentColor);
-  font-weight: 300;
+  font-weight: 700;
+}
+
+.landing-intro h1 .split-line:last-child span {
+  color: var(--inkColor);
+  font-weight: 650;
 }
 
 .landing-info {
