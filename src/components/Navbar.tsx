@@ -40,8 +40,6 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="landing-circle1" aria-hidden="true"></div>
-      <div className="landing-circle2" aria-hidden="true"></div>
       <div className="nav-fade" aria-hidden="true"></div>
     </>
   );

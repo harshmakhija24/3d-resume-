@@ -1,8 +1,11 @@
 .work-section {
   position: relative;
   z-index: 1;
-  background: var(--backgroundColor);
-  padding: clamp(84px, 10vw, 150px) 0;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 80% 12%, rgba(240, 166, 189, 0.055), transparent 22rem),
+    var(--backgroundColor);
+  padding: clamp(96px, 11vw, 168px) 0;
 }
 
 .work-container { margin: auto; }
@@ -12,16 +15,16 @@
   align-items: end;
   justify-content: space-between;
   gap: 48px;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
 }
 
 .work-section h2 {
   max-width: 760px;
   margin: 0;
-  font-size: clamp(44px, 6vw, 82px);
+  font-size: clamp(3.7rem, 7.8vw, 7.5rem);
   font-weight: 500;
-  line-height: 0.98;
-  letter-spacing: -0.07em;
+  line-height: 0.88;
+  letter-spacing: -0.085em;
 }
 
 .work-section h2 > span { color: var(--accentColor); }
@@ -42,8 +45,9 @@
   touch-action: pan-y;
   -webkit-user-select: none;
   user-select: none;
-  border-top: 1px solid var(--lineColor);
-  border-bottom: 1px solid var(--lineColor);
+  border: 1px solid var(--lineColor);
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.018);
 }
 
 .carousel-track-container:focus-visible {
@@ -60,7 +64,7 @@
 .carousel-slide {
   min-width: 100%;
   flex-shrink: 0;
-  padding: clamp(34px, 5vw, 70px) 0;
+  padding: clamp(34px, 5vw, 70px) clamp(18px, 3vw, 48px);
 }
 
 .carousel-content {
@@ -245,6 +249,7 @@
   display: block;
   overflow: hidden;
   border: 1px solid var(--lineColor);
+  border-radius: 1.35rem;
   background: var(--panelColor);
 }
 
@@ -252,6 +257,7 @@
   position: relative;
   aspect-ratio: 1.35;
   overflow: hidden;
+  border-radius: 1.2rem;
   background: #252c25;
 }
 
@@ -351,6 +357,7 @@
   overflow: hidden;
   aspect-ratio: 1.35;
   border: 1px solid var(--lineColor);
+  border-radius: 1.35rem;
   background: #252c25;
 }
 

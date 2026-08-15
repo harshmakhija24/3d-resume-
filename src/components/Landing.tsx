@@ -15,21 +15,30 @@ const Landing = ({ children }: PropsWithChildren) => {
             <span className="status-dot" />
             <span>AI product · Growth systems · Strategy</span>
           </div>
-          <h2>Hello, I&apos;m</h2>
+          <p className="landing-greeting">Hello, I&apos;m</p>
           <h1 id="hero-title">
-            <span className="hero-first-name">Harsh</span>{" "}
+            <span className="hero-first-name">Harsh</span>
             <span>Makhija</span>
           </h1>
-          <p className="landing-role">BBA · IIM Bangalore / Product + growth builder</p>
         </div>
 
         <div className="landing-info">
           <p className="landing-eyebrow">AI × GROWTH</p>
-          <h3>I turn AI-enabled ideas into useful systems.</h3>
+          <h2>I turn AI-enabled ideas into useful systems.</h2>
           <p className="landing-tagline">
             I connect product thinking, practical AI, and growth execution — from Gemini-enabled dashboards to platforms adopted by real communities.
           </p>
 
+          <div className="landing-ctas">
+            <a href="#work" className="btn btn-primary">
+              Explore selected work <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p className="landing-note">Products, communities, and experiences behind the numbers.</p>
+        </div>
+
+        <div className="landing-bottom-bar">
+          <p className="landing-role">BBA · IIM BANGALORE / PRODUCT + GROWTH BUILDER</p>
           <div className="landing-stats" aria-label="Selected impact metrics">
             <div className="stat-item">
               <span className="stat-value accent-tech">12K+</span>
@@ -44,13 +53,6 @@ const Landing = ({ children }: PropsWithChildren) => {
               <span className="stat-label">People served through NGO work</span>
             </div>
           </div>
-
-          <div className="landing-ctas">
-            <a href="#work" className="btn btn-primary">
-              Explore selected work <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <p className="landing-note">Scroll to see the products, communities, and experiences behind the numbers.</p>
         </div>
       </div>
 
