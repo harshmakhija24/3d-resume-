@@ -34,11 +34,13 @@ const WorkImage = ({
     };
 
     const previousOverflow = document.body.style.overflow;
+    document.documentElement.classList.add("cursor-iframe");
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", closeOnEscape);
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      document.documentElement.classList.remove("cursor-iframe");
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [isPreviewOpen]);
@@ -129,11 +131,13 @@ const WorkImage = ({
             loading="eager"
             allow="fullscreen"
             referrerPolicy="strict-origin-when-cross-origin"
+            onMouseEnter={() => document.documentElement.classList.add("cursor-iframe")}
+            onMouseLeave={() => document.documentElement.classList.remove("cursor-iframe")}
           />
         </div>
         <div className="product-preview-footer">
-          <p>Explore the working interface, then open the full demo for a larger view.</p>
-          <a href={previewLink} target="_blank" rel="noreferrer noopener" data-cursor="disable">
+          <p><strong>Interactive preview:</strong> hover menus, cards, and controls inside the frame. Open the full demo for the most spacious view.</p>
+          <a className="product-preview-open" href={previewLink} target="_blank" rel="noreferrer noopener" data-cursor="disable">
             <MdOpenInNew aria-hidden="true" /> Open full demo
           </a>
         </div>

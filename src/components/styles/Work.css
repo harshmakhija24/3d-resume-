@@ -97,9 +97,9 @@
   display: inline-block;
   padding: 6px 11px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 99px;
-  color: var(--mutedColor);
-  font-size: 0.61rem;
+  border-radius: 999px;
+  color: var(--accentColor);
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.18em;
 }
@@ -477,6 +477,9 @@
   min-height: 360px;
   border: 0;
   background: #f5f5f1;
+  cursor: auto;
+  pointer-events: auto;
+  touch-action: auto;
 }
 
 .product-preview-footer {
@@ -490,10 +493,16 @@
 }
 
 .product-preview-footer p {
+  max-width: 700px;
   margin: 0;
   color: var(--mutedColor);
   font-size: 0.72rem;
   line-height: 1.45;
+}
+
+.product-preview-footer p strong {
+  color: var(--inkColor);
+  font-weight: 700;
 }
 
 .product-preview-footer a {
