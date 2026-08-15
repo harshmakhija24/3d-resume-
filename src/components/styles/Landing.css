@@ -94,6 +94,49 @@
   pointer-events: none;
 }
 
+.character-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+}
+
+.character-placeholder-glow {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 58%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 239, 117, 0.18), rgba(200, 239, 117, 0.05) 44%, transparent 72%);
+  filter: blur(24px);
+}
+
+.character-placeholder-art {
+  position: relative;
+  z-index: 1;
+  width: 72%;
+  height: auto;
+  max-height: 90%;
+  filter: drop-shadow(0 1.8rem 2.4rem rgba(0, 0, 0, 0.3));
+}
+
+.character-model canvas {
+  position: relative;
+  z-index: 2;
+  display: block;
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.character-loaded .character-placeholder { opacity: 0; }
+.character-loaded canvas { opacity: 1; }
+
 .character-rim {
   position: absolute;
   top: 46%;
@@ -162,9 +205,6 @@
 }
 
 .character-model canvas {
-  position: relative;
-  z-index: 2;
-  display: block;
   pointer-events: none;
 }
 
@@ -446,6 +486,7 @@
   .landing-stats { gap: 1rem; }
   .stat-value { font-size: 1.2rem; }
   .character-model { height: 65vh; bottom: 2rem; opacity: 0.8; }
+  .character-placeholder-art { width: 68%; }
   .character-rim { width: 22rem; height: 22rem; }
   .landing-scroll-cue { display: none; }
 }
@@ -471,6 +512,7 @@
   .stat-value { font-size: 1.05rem; }
   .stat-label { max-width: 5.7rem; font-size: 0.5rem; }
   .character-model { height: 56vh; bottom: 6rem; opacity: 0.58; }
+  .character-placeholder-art { width: 78%; }
   .landing-grid { background-size: 48px 48px; }
 }
 
