@@ -62,6 +62,48 @@ const Presentations = () => {
           />
         </div>
 
+        <article className="presentation-wandr-card">
+          <DocumentPreview
+            className="document-preview-wandr"
+            title="Wandr — Startup Strategy Report"
+            src={asset("presentations/wandr-strategy-report.pdf")}
+            pageLabel="PDF · 15 pages"
+            downloadName="Harsh-Makhija-Wandr-Strategy-Report.pdf"
+            showActions={false}
+          />
+          <div className="presentation-card-copy presentation-wandr-copy">
+            <span className="presentation-label">Product strategy deck · Wandr</span>
+            <h3>Make the idea legible.</h3>
+            <p className="presentation-role">Product strategy · research synthesis · visual storytelling</p>
+            <p>
+              An end-to-end strategy report for Wandr, a community-powered group travel discovery and consensus platform. It shows how I move from a product problem to a clear narrative across discovery research, audience segments, value architecture, business model, requirements, and strategic pivots.
+            </p>
+            <div className="presentation-tags" aria-label="Wandr deck skills">
+              <span>Problem framing</span>
+              <span>Product strategy</span>
+              <span>Deck design</span>
+              <span>Research synthesis</span>
+            </div>
+            <div className="presentation-actions">
+              <a
+                className="presentation-action presentation-action-primary"
+                href={asset("presentations/wandr-strategy-report.pdf")}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <MdOpenInNew aria-hidden="true" /> Open full PDF
+              </a>
+              <a
+                className="presentation-action"
+                href={asset("presentations/wandr-strategy-report.pdf")}
+                download="Harsh-Makhija-Wandr-Strategy-Report.pdf"
+              >
+                <MdDownload aria-hidden="true" /> Download
+              </a>
+            </div>
+          </div>
+        </article>
+
         <div className="presentation-supporting-grid">
           <article className="presentation-intro-card">
             <DocumentPreview
