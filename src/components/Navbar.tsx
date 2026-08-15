@@ -28,6 +28,11 @@ const Navbar = () => {
             </a>
           </li>
           <li>
+            <a data-href="#presentations" href="#presentations">
+              <HoverLinks text="DECKS" />
+            </a>
+          </li>
+          <li>
             <a data-href="#contact" href="#contact">
               <HoverLinks text="CONTACT" />
             </a>

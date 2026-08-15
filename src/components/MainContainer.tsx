@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
+import Presentations from "./Presentations";
 import setSplitText from "./utils/splitText";
 
 
@@ -44,6 +45,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <WhatIDo />
         <Career />
         <Work />
+        <Presentations />
         <Contact />
       </div>
     </div>

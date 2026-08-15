@@ -1,0 +1,306 @@
+.presentations-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(84px, 10vw, 150px) 0;
+  background: var(--panelColor);
+}
+
+.presentations-container { margin: auto; }
+
+.presentations-heading-row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.presentations-section h2 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(44px, 6vw, 82px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+}
+
+.presentations-section h2 > span { color: var(--pinkAccent); }
+
+.presentations-heading-note {
+  max-width: 300px;
+  margin: 0 0 4px;
+  color: var(--mutedColor);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.presentation-feature {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(28px, 5vw, 82px);
+  padding: clamp(24px, 4vw, 54px) 0;
+  border-top: 1px solid var(--lineColor);
+  border-bottom: 1px solid var(--lineColor);
+}
+
+.presentation-copy { max-width: 520px; }
+
+.presentation-label {
+  display: inline-block;
+  color: var(--pinkAccent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.presentation-copy h3,
+.presentation-card-copy h3,
+.presentation-proof-card h3 {
+  margin: 14px 0 0;
+  color: var(--inkColor);
+  font-size: clamp(1.8rem, 3.4vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.presentation-role {
+  margin: 18px 0 0;
+  color: var(--accentColor);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.presentation-copy > p:not(.presentation-role) {
+  max-width: 470px;
+  margin: 22px 0 0;
+  color: var(--bodyColor);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.presentation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.presentation-tags span {
+  padding: 7px 10px;
+  border: 1px solid var(--lineColor);
+  border-radius: 999px;
+  color: var(--mutedColor);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.presentation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.presentation-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--lineColor);
+  color: var(--inkColor);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.presentation-action svg,
+.presentation-text-link svg { font-size: 1rem; }
+
+.presentation-action:hover,
+.presentation-action:focus-visible {
+  border-color: var(--pinkAccent);
+  color: var(--pinkAccent);
+}
+
+.presentation-action-primary {
+  border-color: var(--accentColor);
+  color: var(--accentColor);
+}
+
+.presentation-action-primary:hover,
+.presentation-action-primary:focus-visible {
+  border-color: var(--accentColor);
+  color: #171b17;
+  background: var(--accentColor);
+}
+
+.presentation-preview-shell {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--lineColor);
+  background: var(--backgroundColor);
+}
+
+.presentation-preview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 8px 12px;
+  color: var(--mutedColor);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.presentation-pdf-preview {
+  position: relative;
+  min-height: 460px;
+  overflow: hidden;
+  background: #f7f6f1;
+}
+
+.presentation-pdf-preview iframe {
+  display: block;
+  width: 100%;
+  height: 520px;
+  border: 0;
+  background: #f7f6f1;
+}
+
+.presentation-supporting-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
+  gap: clamp(18px, 3vw, 40px);
+  margin-top: clamp(18px, 3vw, 40px);
+}
+
+.presentation-intro-card,
+.presentation-proof-card {
+  border: 1px solid var(--lineColor);
+  background: color-mix(in srgb, var(--backgroundColor) 72%, transparent);
+}
+
+.presentation-intro-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(18px, 3vw, 34px);
+  padding: clamp(16px, 2.5vw, 30px);
+}
+
+.presentation-cover-frame {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--lineColor);
+  background: #1a2340;
+}
+
+.presentation-cover-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.presentation-card-copy { align-self: center; }
+
+.presentation-card-copy h3 {
+  font-size: clamp(1.55rem, 2.5vw, 2.5rem);
+}
+
+.presentation-card-copy p,
+.presentation-proof-card > p {
+  max-width: 470px;
+  margin: 16px 0 0;
+  color: var(--bodyColor);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.presentation-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  color: var(--accentColor);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.presentation-text-link:hover { color: var(--pinkAccent); }
+
+.presentation-proof-card { padding: clamp(20px, 3vw, 34px); }
+
+.presentation-proof-card h3 { font-size: clamp(1.55rem, 2.5vw, 2.5rem); }
+
+.presentation-proof-line {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  padding: 15px 0;
+  border-top: 1px solid var(--lineColor);
+}
+
+.presentation-proof-line:first-of-type { margin-top: 22px; }
+
+.presentation-proof-line span {
+  color: var(--pinkAccent);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.presentation-proof-line p {
+  margin: 0;
+  color: var(--inkColor);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 900px) {
+  .presentations-section { padding: 74px 0; }
+
+  .presentations-heading-row {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .presentations-heading-note {
+    max-width: 460px;
+    margin-top: 18px;
+  }
+
+  .presentation-feature,
+  .presentation-supporting-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .presentation-copy { max-width: 620px; }
+  .presentation-pdf-preview { min-height: 360px; }
+  .presentation-pdf-preview iframe { height: 460px; }
+}
+
+@media only screen and (max-width: 560px) {
+  .presentation-intro-card { grid-template-columns: 1fr; }
+  .presentation-cover-frame { max-width: 520px; }
+  .presentation-preview-bar { font-size: 0.54rem; }
+  .presentation-pdf-preview { min-height: 300px; }
+  .presentation-pdf-preview iframe { height: 380px; }
+  .presentation-actions { align-items: stretch; flex-direction: column; }
+  .presentation-action { width: 100%; }
+}

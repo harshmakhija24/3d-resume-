@@ -3,6 +3,12 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import WorkImage from "./WorkImage";
 import "./styles/Work.css";
 
+type GalleryImage = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
 type Project = {
   title: string;
   category: string;
@@ -11,8 +17,27 @@ type Project = {
   image: string;
   link?: string;
   linkLabel?: string;
+  gallery?: GalleryImage[];
   themeClass: "accent-tech" | "accent-business";
 };
+
+const ahamAatmGallery: GalleryImage[] = [
+  {
+    src: import.meta.env.BASE_URL + "images/aham-aatm/children-sharing-food.jpeg",
+    alt: "Children sharing a meal inside a temporary community shelter",
+    caption: "Shared meals, shared dignity.",
+  },
+  {
+    src: import.meta.env.BASE_URL + "images/aham-aatm/food-distribution.jpeg",
+    alt: "A child receiving a food container during an outdoor distribution drive",
+    caption: "Food distribution in the field.",
+  },
+  {
+    src: import.meta.env.BASE_URL + "images/aham-aatm/community-distribution.jpeg",
+    alt: "Volunteers and families gathered during a community distribution drive",
+    caption: "Community support, delivered locally.",
+  },
+];
 
 const projects: Project[] = [
   {
@@ -53,9 +78,68 @@ const projects: Project[] = [
     outcome:
       "Supported community programs that served more than 10,000 people through practical, local initiatives.",
     image: import.meta.env.BASE_URL + "images/ngo.png",
+    gallery: ahamAatmGallery,
     themeClass: "accent-business",
   },
 ];
+
+const AhamAatmGallery = ({ images }: { images: GalleryImage[] }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeImage = images[activeIndex];
+
+  const showPrevious = () => {
+    setActiveIndex((index) => (index === 0 ? images.length - 1 : index - 1));
+  };
+
+  const showNext = () => {
+    setActiveIndex((index) => (index === images.length - 1 ? 0 : index + 1));
+  };
+
+  return (
+    <div className="aham-gallery" aria-label="Aham Aatm Deepah field documentation">
+      <div className="aham-gallery-frame">
+        <img src={activeImage.src} alt={activeImage.alt} loading="lazy" />
+        <button
+          className="aham-gallery-arrow aham-gallery-arrow-left"
+          type="button"
+          onClick={showPrevious}
+          aria-label="Previous Aham Aatm Deepah photo"
+          data-cursor="disable"
+        >
+          <MdArrowBack aria-hidden="true" />
+        </button>
+        <button
+          className="aham-gallery-arrow aham-gallery-arrow-right"
+          type="button"
+          onClick={showNext}
+          aria-label="Next Aham Aatm Deepah photo"
+          data-cursor="disable"
+        >
+          <MdArrowForward aria-hidden="true" />
+        </button>
+        <span className="aham-gallery-count">
+          {String(activeIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+        </span>
+      </div>
+      <div className="aham-gallery-footer">
+        <p>{activeImage.caption}</p>
+        <div className="aham-gallery-dots" aria-label="Aham Aatm Deepah photo navigation">
+          {images.map((image, index) => (
+            <button
+              key={image.src}
+              className={`aham-gallery-dot ${index === activeIndex ? "aham-gallery-dot-active" : ""}`}
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Show Aham Aatm Deepah photo ${index + 1}`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              data-cursor="disable"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -176,12 +260,16 @@ const Work = () => {
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
-                      <WorkImage
-                        image={project.image}
-                        alt={`${project.title} project preview`}
-                        link={project.link}
-                        linkLabel={project.linkLabel}
-                      />
+                      {project.gallery ? (
+                        <AhamAatmGallery images={project.gallery} />
+                      ) : (
+                        <WorkImage
+                          image={project.image}
+                          alt={`${project.title} project preview`}
+                          link={project.link}
+                          linkLabel={project.linkLabel}
+                        />
+                      )}
                     </div>
                   </div>
                 </article>
