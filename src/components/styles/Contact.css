@@ -1,116 +1,149 @@
 .contact-section {
-  margin: auto;
-  padding-bottom: 100px;
-  margin-top: 100px;
   position: relative;
   z-index: 2;
-  background-color: var(--backgroundColor);
+  margin-top: clamp(3rem, 7vw, 7rem);
+  padding-bottom: clamp(3.5rem, 7vw, 7rem);
 }
 
-.contact-section h3 {
-  font-size: 60px;
-  font-weight: 400;
-  text-transform: uppercase;
+.contact-container {
+  width: 100%;
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+  border-top: 1px solid var(--lineColor);
+}
+
+.contact-intro {
+  max-width: 48rem;
+}
+
+.contact-title {
+  max-width: 33rem;
   margin: 0;
+  color: var(--bodyColor);
+  font-size: clamp(3rem, 6vw, 6.6rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+}
+
+.contact-title span {
+  color: var(--accentColor);
+}
+
+.contact-lede {
+  max-width: 31rem;
+  margin: 1.4rem 0 0;
+  color: var(--mutedColor);
+  font-size: 0.94rem;
+  line-height: 1.65;
 }
 
 .contact-flex {
-  display: flex;
-  justify-content: space-between;
-}
-
-.contact-flex h4 {
-  font-weight: 500;
-  margin: 0;
-  opacity: 0.6;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  margin-top: clamp(3rem, 6vw, 6rem);
 }
 
 .contact-box {
   display: flex;
+  min-width: 0;
   flex-direction: column;
+  align-items: flex-start;
 }
 
-.contact-flex p {
-  margin-top: 10px;
-  margin-bottom: 20px;
+.contact-box h4 {
+  margin: 0 0 0.95rem;
+  color: var(--pinkAccent);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contact-box p {
+  max-width: 25rem;
+  margin: 0.2rem 0;
+  color: var(--bodyColor);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.contact-detail {
+  margin-top: 1rem !important;
+  color: var(--mutedColor) !important;
+  font-size: 0.78rem !important;
 }
 
 a.contact-social {
-  font-size: 25px;
-  border-bottom: 1px solid #ccc;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 42px;
+  padding: 0 0 0.42rem;
+  border-bottom: 1px solid var(--lineColor);
+  color: var(--inkColor);
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  line-height: 1.15;
 }
 
-.contact-box h2 {
-  font-weight: 400;
-  font-size: 23px;
-  margin: 0;
+a.contact-social + .contact-social {
+  margin-top: 0.7rem;
 }
 
-.contact-box h2>span {
-  color: var(--accentColor);
+a.contact-social:hover {
+  border-color: var(--pinkAccent);
+  color: var(--pinkAccent);
+}
+
+.contact-signature p {
+  max-width: 17rem;
+  color: var(--mutedColor);
+}
+
+.contact-signature strong {
+  color: var(--inkColor);
+  font-weight: 500;
 }
 
 .contact-box h5 {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 20px;
   display: flex;
-  gap: 10px;
-  opacity: 0.5;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0 0;
+  color: var(--mutedColor);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
 }
 
-@media only screen and (max-width: 1600px) {
-  .contact-section h3 {
-    font-size: 50px;
-  }
-
-  .contact-box h2 {
-    font-size: 20px;
-  }
-
-  a.contact-social {
-    font-size: 22px;
-  }
-}
-
-@media only screen and (max-width: 1300px) {
-  .contact-section h3 {
-    font-size: 40px;
-  }
-
-  .contact-box h2 {
-    font-size: 18px;
-  }
-
-  a.contact-social {
-    font-size: 20px;
-  }
-
-  .contact-flex p {
-    margin-top: 0px;
-  }
-}
-
-@media only screen and (max-width: 900px) {
+@media (max-width: 900px) {
   .contact-flex {
-    flex-direction: column;
-    gap: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 1.5rem;
   }
 
-  .contact-flex p {
-    margin-bottom: 0px;
+  .contact-signature {
+    grid-column: 1 / -1;
   }
+}
 
-  .contact-flex h4 {
-    margin-top: 20px;
-  }
-
+@media (max-width: 560px) {
   .contact-section {
-    margin-top: 50px;
-    padding-bottom: 50px;
+    margin-top: 2rem;
+    padding-bottom: 3rem;
   }
 
-  .contact-container {
-    width: calc(100% - 25px);
+  .contact-title {
+    font-size: clamp(2.7rem, 13vw, 4.3rem);
+  }
+
+  .contact-flex {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    margin-top: 3rem;
+  }
+
+  .contact-signature {
+    grid-column: auto;
   }
 }

@@ -294,7 +294,7 @@
 .work-link svg { font-size: 1rem; }
 .work-link-static { color: var(--mutedColor); }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1320px) {
   .carousel-arrow-left { left: 12px; }
   .carousel-arrow-right { right: 12px; }
 }

@@ -25,6 +25,7 @@
   --vh: 100vh;
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
+  --contentMaxWidth: 1240px;
 }
 
 * { box-sizing: border-box; }

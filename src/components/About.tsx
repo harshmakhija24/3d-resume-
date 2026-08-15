@@ -10,7 +10,7 @@ const About = () => {
           I&apos;m a BBA(DBE) student at IIM Bangalore building at the intersection of product, growth, and applied AI.
         </p>
         <p className="para">
-          My edge is moving from a question to a working system quickly. At IIMBx, I engineered executive dashboards and integrated Gemini AI into a conversational interface; across KrishiTech, Wandr, and Last Life, I have shaped products, journeys, and growth systems from the user need backwards.
+          My edge is moving from a question to a working system quickly. I have engineered executive dashboards, integrated Gemini AI into a conversational interface, and shaped products, journeys, and growth systems from the user need backwards.
         </p>
         <div className="about-stats" aria-label="Selected experience highlights">
           <span className="stat-line">

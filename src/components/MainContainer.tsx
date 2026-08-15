@@ -36,18 +36,15 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
-
       <Navbar />
       <SocialIcons />
-      <div className="container-main">
-        <Landing>{children}</Landing>
-        <About />
-        <WhatIDo />
-        <Career />
-        <Work />
-        <Presentations />
-        <Contact />
-      </div>
+      <Landing>{children}</Landing>
+      <About />
+      <WhatIDo />
+      <Career />
+      <Work />
+      <Presentations />
+      <Contact />
     </div>
   );
 };

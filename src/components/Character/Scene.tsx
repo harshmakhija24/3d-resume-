@@ -40,12 +40,17 @@ const Scene = () => {
       canvasDiv.current.appendChild(renderer.domElement);
 
       const camera = new THREE.PerspectiveCamera(14.5, aspect, 0.1, 1000);
-      camera.position.z = 10;
-      camera.position.set(0, 13.1, 24.7);
+      // The model spans roughly y=0 to y=15; center the face above the monitor in the hero frame.
+      const cameraTarget = new THREE.Vector3(0, 12.0, 0);
+      camera.position.set(0, 11.5, 24.7);
       camera.zoom = 0.85;
+      camera.lookAt(cameraTarget);
       camera.updateProjectionMatrix();
 
       let headBone: THREE.Object3D | null = null;
+      let neckBone: THREE.Object3D | null = null;
+      const neutralSpinePose = new Map<string, THREE.Euler>();
+      const headBaseRotation = new THREE.Euler();
       let screenLight: any | null = null;
       let mixer: THREE.AnimationMixer;
 
@@ -66,10 +71,36 @@ const Scene = () => {
           mixer = animations.mixer;
           let character = gltf.scene;
           scene.add(character);
-          headBone = character.getObjectByName("spine006") || null;
+          character.rotation.y = 0.3;
+          ["Cube002", "Plane", "Plane002", "Plane003", "Plane004", "screenlight"].forEach((name) => {
+            const displayProp = character.getObjectByName(name);
+            if (displayProp) displayProp.visible = false;
+          });
+          headBone = character.getObjectByName("spine006") || character.getObjectByName("spine.006") || null;
+          neckBone = character.getObjectByName("spine005") || character.getObjectByName("spine.005") || null;
+          ["spine", "spine001", "spine002", "spine003", "spine005", "spine006"].forEach((name) => {
+            const bone = character.getObjectByName(name);
+            if (bone) neutralSpinePose.set(name, bone.rotation.clone());
+          });
+          if (headBone) {
+            headBone.rotation.x = 0.04;
+            headBone.rotation.y = 0;
+            headBaseRotation.copy(headBone.rotation);
+          }
+          if (neckBone) neckBone.rotation.x = 0.6;
           screenLight = character.getObjectByName("screenlight") || null;
           light.turnOnLights();
-          animations.startIntro();
+          animations.startIntro(() => {
+            neutralSpinePose.forEach((rotation, name) => {
+              const bone = character.getObjectByName(name);
+              if (bone) bone.rotation.copy(rotation);
+            });
+            if (headBone) {
+              headBone.rotation.copy(headBaseRotation);
+              headBone.rotation.x = 0.04;
+            }
+            if (neckBone) neckBone.rotation.x = 0.6;
+          });
           renderUntil = performance.now() + 2400;
           startRenderLoop();
           const onResize = () => handleResize(renderer, camera, canvasDiv, character);
@@ -90,7 +121,7 @@ const Scene = () => {
       };
 
       const renderLoop = (time: number) => {
-        if (!isPageVisible || !isInViewport || time > renderUntil) {
+        if (!isPageVisible || !isInViewport || (!headBone && time > renderUntil)) {
           animId = 0;
           return;
         }
@@ -108,6 +139,12 @@ const Scene = () => {
         }
         if (mixer) {
           mixer.update(delta || clock.getDelta());
+        }
+        camera.lookAt(cameraTarget);
+        if (headBone) {
+          const idleTime = time * 0.001;
+          headBone.rotation.x = headBaseRotation.x + Math.sin(idleTime * 0.65) * 0.012;
+          headBone.rotation.y = headBaseRotation.y + Math.sin(idleTime * 0.45) * 0.018;
         }
         renderer.render(scene, camera);
         animId = requestAnimationFrame(renderLoop);

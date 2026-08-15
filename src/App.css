@@ -1,6 +1,8 @@
 .section-container {
-  width: 1300px;
+  width: min(calc(100% - 48px), var(--contentMaxWidth));
+  margin-inline: auto;
 }
+
 .title,
 .para {
   font-kerning: none;
@@ -9,20 +11,42 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-@media only screen and (max-width: 1600px) {
-  .section-container {
-    width: 1200px;
-    max-width: calc(100% - 160px);
-  }
-}
-@media only screen and (max-width: 1400px) {
-  .section-container {
-    width: 900px;
-  }
-}
+
 @media only screen and (max-width: 900px) {
   .section-container {
-    width: 500px;
-    max-width: var(--cWidth);
+    width: min(calc(100% - 32px), var(--contentMaxWidth));
   }
 }
+
+@media only screen and (max-width: 520px) {
+  .section-container {
+    width: calc(100% - 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .para {
+    transform: none;
+  }
+}
+
+@media (min-width: 1800px) {
+  .section-container {
+    width: min(calc(100% - 96px), var(--contentMaxWidth));
+  }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+  .section-container {
+    width: min(calc(100% - 64px), var(--contentMaxWidth));
+  }
+}
+
+@media print {
+  .section-container {
+    width: 100%;
+  }
+}
+
+/* Keep the rule intentionally small: component styles own their internal layout. */

@@ -1,149 +1,59 @@
-import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const WhatIDo = () => {
-  const containerRef = useRef<(HTMLDivElement | null)[]>([]);
-  const setRef = (el: HTMLDivElement | null, index: number) => {
-    containerRef.current[index] = el;
-  };
-  useEffect(() => {
-    const handlers = new Map<HTMLDivElement, () => void>();
-    if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          const handler = () => handleClick(container);
-          handlers.set(container, handler);
-          container.addEventListener("click", handler);
-        }
-      });
-    }
-    return () => {
-      handlers.forEach((handler, container) => {
-        container.removeEventListener("click", handler);
-      });
-    };
-  }, []);
   return (
-    <div className="whatIDO">
-      <div className="what-box">
-        <h2 className="title">
-          W<span className="hat-h2">HAT</span>
-          <div>
-            I<span className="do-h2 accent-tech"> DO</span>
-          </div>
+    <section className="whatIDO section-container" id="what-i-do" aria-labelledby="what-i-do-title">
+      <div className="what-intro">
+        <p className="section-kicker">04 / OPERATING RANGE</p>
+        <h2 id="what-i-do-title" className="what-title">
+          What I do
         </h2>
+        <p className="what-summary">
+          I work between the messy first question and the useful thing a team can actually ship, learn from, and improve.
+        </p>
       </div>
-      <div className="what-box">
-        <div className="what-box-in">
-          <div className="what-border2">
-            <svg width="100%">
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-              <line
-                x1="100%"
-                y1="0"
-                x2="100%"
-                y2="100%"
-                stroke="white"
-                strokeWidth="2"
-                strokeDasharray="7,7"
-              />
-            </svg>
-          </div>
-          <div
-            className="what-content what-noTouch"
-            ref={(el) => setRef(el, 0)}
-          >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="0"
-                  x2="100%"
-                  y2="0"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
 
-            <div className="what-content-in">
-              <h3 className="accent-tech">VIBECODING</h3>
-              <h4>AI-Driven Tech Creation</h4>
-              <p>
-                Leveraging advanced AI tools like Antigravity, Codex, and others to rapidly prototype, build, and deploy tech solutions and dashboards without being a traditional developer.
-              </p>
-              <a href="#work" className="what-link accent-tech">Explore Projects <span>&#8594;</span></a>
-              <div className="what-arrow"></div>
+      <div className="what-grid">
+        <article className="what-card what-card-tech">
+          <div className="what-card-index">01</div>
+          <div className="what-card-content">
+            <p className="what-card-kicker">PRODUCT + AI</p>
+            <h3>Build useful systems quickly.</h3>
+            <p>
+              I use practical AI, lightweight code, and strong product judgment to turn a rough idea into a working prototype, dashboard, or user journey.
+            </p>
+            <div className="what-tags" aria-label="Product and AI capabilities">
+              <span>Rapid prototyping</span>
+              <span>Applied AI</span>
+              <span>Product systems</span>
             </div>
+            <a className="what-link accent-tech" href="#work">
+              Explore selected work <span aria-hidden="true">↗</span>
+            </a>
           </div>
-          <div
-            className="what-content what-noTouch"
-            ref={(el) => setRef(el, 1)}
-          >
-            <div className="what-border1">
-              <svg height="100%">
-                <line
-                  x1="0"
-                  y1="100%"
-                  x2="100%"
-                  y2="100%"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeDasharray="6,6"
-                />
-              </svg>
+        </article>
+
+        <article className="what-card what-card-community">
+          <div className="what-card-index">02</div>
+          <div className="what-card-content">
+            <p className="what-card-kicker">GROWTH + COMMUNITY</p>
+            <h3>Make the work matter to people.</h3>
+            <p>
+              I connect communication, operations, and community insight to build programs that earn attention, create participation, and leave a measurable footprint.
+            </p>
+            <div className="what-tags" aria-label="Growth and community capabilities">
+              <span>Growth loops</span>
+              <span>Community programs</span>
+              <span>Clear storytelling</span>
             </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h3 className="accent-business">SOCIAL SERVICE</h3>
-              <h4>Community Impact & NGO Leadership</h4>
-              <p>
-                Leading and managing high-impact projects such as the Healing Society and the GMCKS Siksha project, driving meaningful change through structured organizational efforts.
-              </p>
-              <a href="#career" className="what-link accent-business">Explore Experience <span>&#8594;</span></a>
-              <div className="what-arrow"></div>
-            </div>
+            <a className="what-link accent-business" href="#career">
+              See the evidence <span aria-hidden="true">↗</span>
+            </a>
           </div>
-        </div>
+        </article>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default WhatIDo;
-
-function handleClick(container: HTMLDivElement) {
-  container.classList.toggle("what-content-active");
-  container.classList.remove("what-sibling");
-  if (container.parentElement) {
-    const siblings = Array.from(container.parentElement.children);
-
-    siblings.forEach((sibling) => {
-      if (sibling !== container) {
-        sibling.classList.remove("what-content-active");
-        sibling.classList.toggle("what-sibling");
-      }
-    });
-  }
-}

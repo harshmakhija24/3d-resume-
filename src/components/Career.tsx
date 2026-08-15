@@ -3,14 +3,6 @@ import "./styles/Career.css";
 
 const careerTimeline = [
   {
-    year: "2026 — now",
-    title: "Tech Intern",
-    company: "IIMBx",
-    description:
-      "Engineered two executive dashboards for SWAYAM and BBA DBE; integrated Gemini AI into a conversational leadership interface and managed deployment with Git, cPanel, and technical documentation.",
-    tag: "AI PRODUCT"
-  },
-  {
     year: "2024 — now",
     title: "BBA Student",
     company: "Indian Institute of Management Bangalore",
