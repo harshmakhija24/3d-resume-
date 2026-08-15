@@ -1,0 +1,74 @@
+<svg width="1200" height="880" viewBox="0 0 1200 880" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="40" x2="1120" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19241C"/>
+      <stop offset="0.55" stop-color="#0D1512"/>
+      <stop offset="1" stop-color="#111B21"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="120" y1="180" x2="1040" y2="740" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8EF75" stop-opacity="0.25"/>
+      <stop offset="0.5" stop-color="#E58A9F" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#6EA6A0" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="field" x1="780" y1="450" x2="1020" y2="730" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8EF75" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#5E8D52" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="32"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="880" rx="34" fill="url(#bg)"/>
+  <circle cx="970" cy="185" r="180" fill="#C8EF75" fill-opacity="0.12" filter="url(#blur)"/>
+  <circle cx="240" cy="680" r="210" fill="#E58A9F" fill-opacity="0.08" filter="url(#blur)"/>
+  <rect x="28" y="28" width="1144" height="824" rx="24" stroke="#C8EF75" stroke-opacity="0.18"/>
+
+  <g opacity="0.55">
+    <path d="M640 165H1084" stroke="#DCE7D2" stroke-opacity="0.14"/>
+    <path d="M640 202H1022" stroke="#DCE7D2" stroke-opacity="0.1"/>
+    <path d="M640 239H956" stroke="#DCE7D2" stroke-opacity="0.08"/>
+  </g>
+
+  <rect x="78" y="72" width="182" height="34" rx="17" fill="#C8EF75" fill-opacity="0.13" stroke="#C8EF75" stroke-opacity="0.4"/>
+  <circle cx="100" cy="89" r="5" fill="#C8EF75"/>
+  <text x="116" y="95" fill="#C8EF75" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">LIVE PRODUCT</text>
+
+  <text x="78" y="190" fill="#F4F5EE" font-family="Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-2">KRISHITECH</text>
+  <text x="82" y="236" fill="#C8EF75" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">AGRICULTURE × AI</text>
+  <text x="82" y="296" fill="#DCE7D2" fill-opacity="0.76" font-family="Arial, sans-serif" font-size="23">Farmer-first journeys, dealer workflows,</text>
+  <text x="82" y="330" fill="#DCE7D2" fill-opacity="0.76" font-family="Arial, sans-serif" font-size="23">and multilingual AI support.</text>
+
+  <rect x="78" y="390" width="474" height="1" fill="#DCE7D2" fill-opacity="0.2"/>
+  <text x="78" y="438" fill="#DCE7D2" fill-opacity="0.48" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3">PRODUCT BUILD</text>
+  <text x="78" y="478" fill="#F4F5EE" font-family="Arial, sans-serif" font-size="24" font-weight="600">KrishiBot · multilingual AI</text>
+  <text x="78" y="516" fill="#F4F5EE" font-family="Arial, sans-serif" font-size="24" font-weight="600">Supabase RBAC · farmer-first UX</text>
+
+  <g transform="translate(684 320)">
+    <path d="M58 380C110 254 158 196 248 148C332 104 404 76 500 54" stroke="#C8EF75" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="8 12"/>
+    <path d="M84 380C142 294 214 246 292 224C372 202 438 206 508 224" stroke="#E58A9F" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="8 12"/>
+    <path d="M112 380C164 338 204 316 270 298C338 280 422 288 506 326" stroke="#7BB7A4" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="8 12"/>
+    <path d="M70 375C146 330 240 308 334 316C406 322 464 346 520 378L520 420H70V375Z" fill="url(#field)" fill-opacity="0.28"/>
+    <path d="M128 394C160 336 192 284 232 244" stroke="#C8EF75" stroke-width="10" stroke-linecap="round"/>
+    <path d="M128 394C210 370 294 356 382 360" stroke="#C8EF75" stroke-width="10" stroke-linecap="round"/>
+    <path d="M238 392C270 322 310 270 366 228" stroke="#E58A9F" stroke-width="8" stroke-linecap="round"/>
+    <path d="M238 392C328 374 414 376 488 402" stroke="#E58A9F" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="128" cy="394" r="18" fill="#C8EF75"/>
+    <circle cx="238" cy="392" r="16" fill="#E58A9F"/>
+    <circle cx="366" cy="228" r="14" fill="#7BB7A4"/>
+    <circle cx="488" cy="402" r="12" fill="#DCE7D2"/>
+  </g>
+
+  <g transform="translate(724 150)">
+    <rect width="308" height="154" rx="18" fill="#19241C" stroke="#C8EF75" stroke-opacity="0.35"/>
+    <circle cx="43" cy="47" r="20" fill="#C8EF75" fill-opacity="0.18" stroke="#C8EF75" stroke-opacity="0.6"/>
+    <path d="M35 51C35 39 45 34 52 42C54 45 54 51 50 57C45 63 37 60 35 51Z" fill="#C8EF75"/>
+    <path d="M35 53L29 61M51 55L58 62" stroke="#C8EF75" stroke-width="3" stroke-linecap="round"/>
+    <text x="78" y="48" fill="#C8EF75" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">KRISHIBOT</text>
+    <text x="78" y="78" fill="#F4F5EE" font-family="Arial, sans-serif" font-size="22" font-weight="600">Ask. Discover. Act.</text>
+    <text x="28" y="122" fill="#DCE7D2" fill-opacity="0.62" font-family="Arial, sans-serif" font-size="14">Multilingual AI journeys for real field context</text>
+  </g>
+
+  <rect x="78" y="768" width="1044" height="1" fill="#DCE7D2" fill-opacity="0.16"/>
+  <text x="78" y="810" fill="#DCE7D2" fill-opacity="0.52" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3">PRODUCT PREVIEW · LIVE LINK IN PORTFOLIO</text>
+  <text x="1034" y="810" fill="#C8EF75" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">EXPLORE ↗</text>
+</svg>
