@@ -30,17 +30,17 @@ const ahamAatmGallery: GalleryImage[] = [
   {
     src: import.meta.env.BASE_URL + "images/aham-aatm/children-sharing-food.jpeg",
     alt: "Children sharing a meal inside a temporary community shelter",
-    caption: "Shared meals, shared dignity.",
+    caption: "A local school in a basti, run in collaboration with another NGO.",
   },
   {
     src: import.meta.env.BASE_URL + "images/aham-aatm/food-distribution.jpeg",
     alt: "A child receiving a food container during an outdoor distribution drive",
-    caption: "Food distribution in the field.",
+    caption: "Food distribution for children at the local school.",
   },
   {
     src: import.meta.env.BASE_URL + "images/aham-aatm/community-distribution.jpeg",
     alt: "Volunteers and families gathered during a community distribution drive",
-    caption: "Community support, delivered locally.",
+    caption: "Community support through the partnered initiative.",
   },
 ];
 
@@ -150,9 +150,9 @@ const projects: Project[] = [
   {
     title: "Aham Aatm Deepah",
     category: "Social impact · NGO initiative",
-    tools: "Community outreach · wellbeing · education, food & clothing",
+    tools: "Local school initiative · NGO collaboration · community outreach · wellbeing · education, food & clothing",
     outcome:
-      "Supported community programs that served more than 10,000 people through practical, local initiatives.",
+      "Ran a local school initiative in a basti in collaboration with another NGO, alongside community programs that served more than 10,000 people.",
     image: import.meta.env.BASE_URL + "images/ngo.png",
     gallery: ahamAatmGallery,
     kind: "impact",
