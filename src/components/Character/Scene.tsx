@@ -76,10 +76,10 @@ const Scene = () => {
 
       if (headBone) {
         const idleTime = time * 0.001;
-        headBone.rotation.x = headBaseRotation.x + Math.sin(idleTime * 0.65) * 0.012;
+        headBone.rotation.x = headBaseRotation.x - 0.12 + Math.sin(idleTime * 0.65) * 0.012;
         headBone.rotation.y = headBaseRotation.y + Math.sin(idleTime * 0.42) * 0.018;
       }
-      if (neckBone) neckBone.rotation.x = -0.08;
+      if (neckBone) neckBone.rotation.x = -0.22;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(renderLoop);
@@ -150,9 +150,9 @@ const Scene = () => {
         animations.startIntro(() => {
           if (headBone) {
             headBone.rotation.copy(headBaseRotation);
-            headBone.rotation.x = 0.015;
+            headBone.rotation.x = headBaseRotation.x - 0.12;
           }
-          if (neckBone) neckBone.rotation.x = 0.18;
+          if (neckBone) neckBone.rotation.x = -0.22;
         });
         startRenderLoop();
       })
