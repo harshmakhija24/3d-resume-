@@ -121,14 +121,15 @@
 
 .character-model {
   position: absolute;
-  right: -12rem;
+  top: auto;
+  right: auto;
   bottom: -6rem;
-  left: auto;
+  left: 50%;
   z-index: 3;
   width: min(46vw, 54rem);
   height: min(76vh, 54rem);
   opacity: 0.8;
-  transform: none;
+  transform: translateX(-50%);
   filter: saturate(0.94) contrast(1.02) drop-shadow(0 1.6rem 2.8rem rgba(0, 0, 0, 0.24));
   pointer-events: none;
 }
@@ -387,10 +388,13 @@
 @media screen and (min-width: 1025px) {
   .character-model {
     position: absolute;
-    right: -12rem;
+    top: auto;
+    right: auto;
     bottom: -6rem;
+    left: 50%;
     width: min(46vw, 54rem);
     height: min(76vh, 54rem);
+    transform: translateX(-50%);
   }
 }
 
