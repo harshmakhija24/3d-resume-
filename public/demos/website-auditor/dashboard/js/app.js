@@ -1002,10 +1002,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // We no longer render the grid immediately, we wait for folder click
   showHomeView();
   
-  // Sidebar toggle
-  document.getElementById('sidebar-toggle').addEventListener('click', () => {
-    const sidebar = document.getElementById('sidebar');
-    const main = document.getElementById('main-content');
+  // Sidebar toggle — class-based on mobile, legacy offset behavior on desktop.
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const main = document.getElementById('main-content');
+  const closeMobileSidebar = () => {
+    if (window.innerWidth <= 768) {
+      document.body.classList.remove('sidebar-open');
+      sidebarToggle.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  sidebarToggle.setAttribute('aria-expanded', 'false');
+  sidebarToggle.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      const isOpen = document.body.classList.toggle('sidebar-open');
+      sidebarToggle.setAttribute('aria-expanded', String(isOpen));
+      return;
+    }
+
     if (sidebar.style.display === 'none') {
       sidebar.style.display = 'flex';
       main.style.marginLeft = '260px';
@@ -1013,5 +1028,10 @@ document.addEventListener('DOMContentLoaded', () => {
       sidebar.style.display = 'none';
       main.style.marginLeft = '0';
     }
+  });
+
+  main.addEventListener('click', closeMobileSidebar);
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMobileSidebar();
   });
 });
