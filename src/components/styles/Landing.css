@@ -295,14 +295,6 @@
   font-weight: 650;
 }
 
-.landing-intro h1 .hero-j {
-  display: inline-block;
-  font-size: 0.9em;
-  font-weight: 600;
-  line-height: 1;
-  transform: translateY(-0.02em) scaleX(0.95) scaleY(0.85);
-  transform-origin: 50% 74%;
-}
 
 .landing-info {
   top: 37%;
