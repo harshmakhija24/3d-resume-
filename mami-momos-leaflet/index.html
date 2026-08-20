@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17262c" />
+    <meta name="description" content="Mami Momos two-sided A5 leaflet — Jaipur × Kyoto." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,ital,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="leaflet.css" />
+    <title>Mami Momos — Leaflet</title>
+  </head>
+  <body>
+    <main class="studio">
+      <header class="studio-header">
+        <div>
+          <p>MAMI MOMOS / PRINT STUDY</p>
+          <h1>Two-sided leaflet</h1>
+        </div>
+        <div class="studio-actions">
+          <div class="side-switch" role="group" aria-label="Choose leaflet side">
+            <button class="is-active" data-side="front" type="button">FRONT</button>
+            <button data-side="back" type="button">BACK / COMBOS</button>
+          </div>
+          <button id="printLeaflet" class="print-button" type="button">⌑&nbsp; PRINT BOTH SIDES</button>
+        </div>
+      </header>
+
+      <section class="workspace" aria-live="polite">
+        <div class="workspace-note left-note">A5 LEAFLET<br />DOUBLE-SIDED</div>
+
+        <div class="leaflet-preview">
+          <article id="frontLeaflet" class="leaflet leaflet-front" aria-label="Mami Momos leaflet front">
+            <div class="front-art" aria-hidden="true"><i class="jharokha"></i><i class="shoji"></i></div>
+            <div class="sheet-content">
+              <div class="topline front-topline">
+                <div class="brand"><span class="mark">◒</span><span><strong>MAMI</strong><small>MOMOS</small></span></div>
+                <span class="edition">JAIPUR × KYOTO</span>
+              </div>
+              <div class="front-copy">
+                <p class="kicker">✦&nbsp; A SMALLER, WARMER WORLD</p>
+                <h2>Fold the<br /><em>ordinary.</em></h2>
+                <p class="deck">Hand-rolled momos with Jaipur fire and a quiet Kyoto finish.</p>
+              </div>
+              <div class="flavour-line"><span>STEAMED</span><i></i><span>SPICED</span><i></i><span>SHARED</span></div>
+              <div class="front-bottom"><p>JHAROKHA TO SHOJI<br />ONE BITE AT A TIME.</p><div>↹<br /><small>TURN FOR<br />COMBOS</small></div><span>01 / FRONT</span></div>
+            </div>
+          </article>
+
+          <article id="backLeaflet" class="leaflet leaflet-back is-hidden" aria-label="Mami Momos leaflet back">
+            <i class="back-arch arch-one" aria-hidden="true"></i><i class="back-arch arch-two" aria-hidden="true"></i>
+            <div class="sheet-content back-content">
+              <div class="topline">
+                <div class="brand"><span class="mark">◒</span><span><strong>MAMI</strong><small>MOMOS</small></span></div>
+                <span class="stamp">◌&nbsp; MOMO CLUB</span>
+              </div>
+              <header class="back-heading"><p>JAIPUR HEAT · KYOTO HUSH</p><h2>Pick your<br /><em>fold.</em></h2></header>
+              <section class="combos"><div class="section-line"><span>COMBOS / BUILT TO SHARE</span><small>CHOOSE YOUR MOOD</small></div>
+                <article class="solo-card"><div class="six-graphic"><span>6</span><i></i><i></i><i></i></div><div><small>01 / THE SOLO FOLD</small><h3>One basket.<br /><em>Zero compromise.</em></h3><p>6 momos · 2 signature dips · iced chai</p><b>SET PRICE <strong>₹ ___</strong></b></div></article>
+                <div class="pair-cards"><article class="pair-card ink"><small>02 / THE PAIR UP</small><h3>12<br /><em>momos</em></h3><p>2 drinks · 2 dips</p><b>₹ ___</b></article><article class="pair-card sand"><small>03 / BIG TABLE</small><h3>20<br /><em>momos</em></h3><p>4 drinks · 3 dips</p><b>₹ ___</b></article></div>
+              </section>
+              <section class="fillings"><div class="section-line"><span>PICK A FILLING</span><small>VEG / PANEER / MUSHROOM</small></div><div class="pill-row"><span>ROSE CHILLI VEG</span><span>BLACK SESAME PANEER</span><span>MISO MUSHROOM</span></div></section>
+              <footer class="back-footer"><p>▦ PRICES LEFT OPEN FOR FINAL MENU INSERT.</p><p>⌁ ASK ABOUT VEGAN & ALLERGEN OPTIONS.</p><span>02 / BACK</span></footer>
+            </div>
+          </article>
+        </div>
+        <div class="workspace-note right-note">FRONT / IDENTITY<br /><b></b>BACK / BITES + COMBOS</div>
+      </section>
+
+      <footer class="studio-footer"><span>PRINT NOTE — SELECT <b>TWO-SIDED / FLIP ON SHORT EDGE</b> IN YOUR PRINTER DIALOGUE.</span><span>FRONT: BRAND STORY · BACK: MENU + COMBO TYPES</span></footer>
+      <div id="printPair" class="print-pair" aria-hidden="true"></div>
+    </main>
+    <script src="leaflet.js"></script>
+  </body>
+</html>
